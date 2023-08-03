@@ -5,7 +5,6 @@ using VContainer;
 public class GameBootstrapper : MonoBehaviour
 {
     [Inject] private MergeService _mergeService;
-    
 
     private void Start()
     {
