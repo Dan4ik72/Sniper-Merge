@@ -10,9 +10,4 @@ public class Installer : LifetimeScope
     {
         Configure(builder);
     }
-    
-    protected override void Configure(IContainerBuilder builder)
-    {
-        base.Configure(builder);
-    }
 }

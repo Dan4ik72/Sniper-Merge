@@ -1,4 +1,5 @@
-internal abstract class ItemView
-{
+using UnityEngine;
 
+internal class ItemView : MonoBehaviour
+{
 }
