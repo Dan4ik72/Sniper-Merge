@@ -1,5 +1,3 @@
-using System;
-using UnityEngine;
 using VContainer;
 
 public class MergeService
@@ -9,10 +7,10 @@ public class MergeService
     private MergeGrid _mergeGrid;
 
     [Inject]
-    internal MergeService(IMergeObjectDragHandler dragHandler, IMergeHandler mergeHandler, MergeGrid mergdeGrid)
+    internal MergeService(IMergeObjectDragHandler dragHandler, IMergeHandler mergeHandler, MergeGrid mergeGrid)
     {
         _dragHandler = dragHandler;
-        _mergeGrid = mergdeGrid;
+        _mergeGrid = mergeGrid;
         _mergeHandler = mergeHandler;
     }
 
@@ -23,11 +21,11 @@ public class MergeService
 
     public void Update()
     {
-
+        _dragHandler.DragItem();
     }
 
     public void Disable()
     {
-        _mergeGrid.CleanGrid();
+        _mergeGrid.ClearGrid();
     }
 }

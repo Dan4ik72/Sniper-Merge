@@ -16,5 +16,6 @@ public class MergeServiceInstaller : Installer
         builder.RegisterComponent(_gridParent);
         builder.RegisterComponent<ICell>(_gridCell);
         builder.Register<GridFactory>(Lifetime.Scoped);
+        builder.RegisterComponent(Camera.main);
     }
 }
