@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 internal class MergeItemDragHandler : IMergeObjectDragHandler
@@ -17,7 +18,7 @@ internal class MergeItemDragHandler : IMergeObjectDragHandler
     private RaycastHit _raycastInfo;
     private Vector3 _currentDraggingItemPositionOffset;
 
-    public event Action<MergeItem> DraggingObjectReleased;
+    public event Action<MergeItem> ItemReleased;
 
     internal MergeItemDragHandler(Camera camera, MergeGrid mergeGrid)
     {
@@ -54,7 +55,7 @@ internal class MergeItemDragHandler : IMergeObjectDragHandler
 
         _isDragging = false;
 
-        DraggingObjectReleased?.Invoke(_currentDraggingItem);
+        ItemReleased?.Invoke(_currentDraggingItem);
     }
 
     public void DragItem()
@@ -68,7 +69,7 @@ internal class MergeItemDragHandler : IMergeObjectDragHandler
         Ray screenToWorldPointRay = _camera.ScreenPointToRay(Input.mousePosition);
 
         if (Physics.Raycast(screenToWorldPointRay, out _raycastInfo, 100f, 1 << MergePlaneLayerIndex))
-            _currentDraggingItem.ItemView.transform.position = _raycastInfo.point + _currentDraggingItemPositionOffset;
+            _currentDraggingItem.View.transform.position = _raycastInfo.point + _currentDraggingItemPositionOffset;
         else
             OnItemReleased();
     }

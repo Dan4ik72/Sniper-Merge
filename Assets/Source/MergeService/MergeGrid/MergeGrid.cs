@@ -16,6 +16,8 @@ internal class MergeGrid
         _gridFactory = gridFactory;
     }
 
+    public IReadOnlyDictionary<Transform, MergeItem> MergeCells => _mergeCells;
+
     public void CreateGrid()
     {
         _gridFactory.Create();
@@ -39,7 +41,7 @@ internal class MergeGrid
     {
         var orderedCells = new List<Transform>();
 
-        orderedCells = _mergeCells.Keys.OrderByDescending(cell => Vector3.Distance(cell.transform.position, position)).ToList();
+        orderedCells = _mergeCells.Keys.OrderBy(cell => Vector3.Distance(cell.transform.position, position)).ToList();
 
         if (orderedCells.Count == 0)
             throw new ArgumentNullException($"There is no closest cells around {position} position");
@@ -59,7 +61,7 @@ internal class MergeGrid
 
     public bool TryGetMergeItemByView(ItemView view, out MergeItem mergeItem)
     {
-        mergeItem = _mergeCells.Values.Where(value => value != null).FirstOrDefault(value => value.ItemView == view);
+        mergeItem = _mergeCells.Values.Where(value => value != null).FirstOrDefault(value => value.View == view);
 
         return mergeItem != null;
     }
