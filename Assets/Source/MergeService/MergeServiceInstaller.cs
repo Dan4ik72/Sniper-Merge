@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using PlasticGui;
+using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 
@@ -6,6 +8,7 @@ public class MergeServiceInstaller : Installer
 {
     [SerializeField] private Transform _gridParent;
     [SerializeField] private MergeGridCell _gridCell;
+    [SerializeField] private List<BulletInfo> _bulletInfos;
 
     protected override void Configure(IContainerBuilder builder)
     {
@@ -17,5 +20,6 @@ public class MergeServiceInstaller : Installer
         builder.RegisterComponent<ICell>(_gridCell);
         builder.Register<GridFactory>(Lifetime.Scoped);
         builder.RegisterComponent(Camera.main);
+        builder.Register(container => new BulletInfoFactory(_bulletInfos), Lifetime.Scoped);
     }
 }
