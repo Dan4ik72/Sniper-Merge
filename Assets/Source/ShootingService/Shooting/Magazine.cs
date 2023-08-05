@@ -10,7 +10,7 @@ internal class Magazine
     [Inject]
     public Magazine()
     {
-
+        _allBullets = 20;
     }
 
     public bool IsLoaded => _allBullets > 0;

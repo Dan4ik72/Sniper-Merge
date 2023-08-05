@@ -1,4 +1,7 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using VContainer;
 
 internal class Reloading
@@ -8,10 +11,10 @@ internal class Reloading
     private float _elapsedTime = 0;
 
     [Inject]
-    public Reloading(Magazine magazine, float time = 2)
+    public Reloading(Magazine magazine/*, float time*/)
     {
         _magazine = magazine;
-        _time = time;
+        _time = 2;
     }
 
     public Action Ready;
