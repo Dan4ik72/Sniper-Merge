@@ -261,6 +261,7 @@ MonoBehaviour:
   _bulletInfos:
   - {fileID: 11400000, guid: 9d5ebae0430b2674083e596a72fc7e6f, type: 2}
   - {fileID: 11400000, guid: fb2fcac6944d86a4eaf0a415eecef369, type: 2}
+  - {fileID: 11400000, guid: 558a5894aa9c67d4895771c114b5b146, type: 2}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
