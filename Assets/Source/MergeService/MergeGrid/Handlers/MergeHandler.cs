@@ -1,3 +1,4 @@
+using Codice.Client.BaseCommands.Merge.Xml;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -29,6 +30,7 @@ internal class MergeHandler : IMergeHandler
                 continue;
 
             PlaceMergeItemIntoCell(newItem, cell);
+            return;
         }
     }
 
@@ -39,22 +41,19 @@ internal class MergeHandler : IMergeHandler
         if (item1.Info.Type != item2.Info.Type)
             return false;
 
+        newItem = _factory.CreateByType(item1.Info.Type + 1, Vector3.zero);
+
         _grid.ClearCellByMergeItem(item1);
         _grid.ClearCellByMergeItem(item2);
 
         Object.Destroy(item1.View.gameObject);
         Object.Destroy(item2.View.gameObject);
 
-        newItem = _factory.CreateByType(item1.Info.Type + 1, Vector3.zero);
-        
         return true;
     }
 
     private void PlaceMergeItemIntoCell(MergeItem mergeItem, Transform cell)
     {
-        _grid.ClearCellByMergeItem(mergeItem);
-
-        //smooth moving to cell will be here
         mergeItem.View.transform.position = cell.position;
 
         _grid.SetMergeItemToCell(cell, mergeItem);

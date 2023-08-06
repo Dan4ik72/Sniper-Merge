@@ -11,7 +11,7 @@ internal class MergeGrid
     private Dictionary<Transform, MergeItem> _mergeCells = new();
 
     [Inject]
-    public MergeGrid(GridFactory gridFactory)
+    internal MergeGrid(GridFactory gridFactory)
     {
         _gridFactory = gridFactory;
     }
@@ -34,14 +34,16 @@ internal class MergeGrid
 
     public void SetMergeItemToCell(Transform cell, MergeItem mergeItem)
     {
+        if (mergeItem == null)
+            throw new NullReferenceException($"merge item is null");
+
+        ClearCellByMergeItem(mergeItem);
         _mergeCells[cell] = mergeItem;
     }
 
     public List<Transform> GetOrderedCellsByPosition(Vector3 position)
     {
-        var orderedCells = new List<Transform>();
-
-        orderedCells = _mergeCells.Keys.OrderBy(cell => Vector3.Distance(cell.transform.position, position)).ToList();
+        var orderedCells = _mergeCells.Keys.OrderBy(cell => Vector3.Distance(cell.transform.position, position)).ToList();
 
         if (orderedCells.Count == 0)
             throw new ArgumentNullException($"There is no closest cells around {position} position");
@@ -55,7 +57,7 @@ internal class MergeGrid
 
         if (cell == null)
             return;
-
+        
         _mergeCells[cell] = null;
     }
 

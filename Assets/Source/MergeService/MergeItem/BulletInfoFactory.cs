@@ -1,18 +1,21 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using VContainer;
 
 internal class BulletInfoFactory
 {
     private IReadOnlyList<BulletInfo> _bulletInfos;
 
+    [Inject]
     internal BulletInfoFactory(IReadOnlyList<BulletInfo> bulletInfos) => _bulletInfos = bulletInfos;
 
     public MergeItem CreateByType(MergeItemType type, Vector3 viewPosition, Transform viewParent = null)
     {
         var bulletInfo = GetBulletInfoByType(type);
+        var bulletView = CreateView(bulletInfo.ViewPrefab, viewPosition, null);
 
-        return new MergeItem(CreateView(bulletInfo.ViewPrefab, viewPosition, null), bulletInfo);
+        return new MergeItem(bulletView, bulletInfo);
     }
 
     private BulletInfo GetBulletInfoByType(MergeItemType type)
