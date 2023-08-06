@@ -50,7 +50,7 @@ public class MergeService
 
     public void Disable()
     {
-        _mergeGrid.ClearGrid();
+        //_mergeGrid.ClearGrid();
         _dragHandler.ItemReleased -= _mergeHandler.OnItemReleased;
     }
 }
