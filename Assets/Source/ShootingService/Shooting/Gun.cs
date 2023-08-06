@@ -32,5 +32,6 @@ internal class Gun
     {
         _magazine.GiveBullet();
         Shoot?.Invoke(_magazine.GiveBullet());
+        Debug.Log("Shot!!!");
     }
 }

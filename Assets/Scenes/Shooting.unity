@@ -266,8 +266,9 @@ MonoBehaviour:
   autoRun: 0
   autoInjectGameObjects: []
   _gun: {fileID: 1214307086}
-  _target1: {fileID: 1635391203}
-  _target2: {fileID: 1756041868}
+  _targets:
+  - {fileID: 1635391203}
+  - {fileID: 1756041868}
 --- !u!1 &1214307082
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,9 +11,9 @@ internal class Aiming
     private Transform _currentTarget;
 
     [Inject]
-    public Aiming(Transform position, List<Transform> targets)
+    public Aiming(Transform gun, List<Transform> targets)
     {
-        _gun = position;
+        _gun = gun;
         _targets = targets;
     }
 
