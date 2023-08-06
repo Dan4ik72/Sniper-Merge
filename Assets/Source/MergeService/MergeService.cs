@@ -23,13 +23,15 @@ public class MergeService
         _dragHandler.ItemReleased += _mergeHandler.OnItemReleased;
 
         _mergeGrid.CreateGrid();
-        
-        CreateTestBullet(new Vector3(10, 15, 20), "0");
-        CreateTestBullet(new Vector3(-10, -15,-20), "1");
+
+        CreateTestBullet(new Vector3(10, 15, 20), "0", 0);
+        CreateTestBullet(new Vector3(10, 15, 20), "1", 1);
+        CreateTestBullet(new Vector3(10, 15, 20), "2", 2);
+        CreateTestBullet(new Vector3(10, 15, 20), "3", 3);
     }
 
     //temporary code
-    private void CreateTestBullet(Vector3 position, string name)
+    private void CreateTestBullet(Vector3 position, string name, int cum)
     {
         var bullet = _bulletInfoFactory.CreateByType(MergeItemType.Level1Item, position);
 
@@ -37,8 +39,8 @@ public class MergeService
 
         var cells = _mergeGrid.GetOrderedCellsByPosition(bullet.View.transform.position);
 
-        bullet.View.transform.position = cells[0].transform.position;
-        _mergeGrid.SetMergeItemToCell(cells[0], bullet);
+        bullet.View.transform.position = cells[cum].transform.position;
+        _mergeGrid.SetMergeItemToCell(cells[cum], bullet);
     }
 
     public void Update()

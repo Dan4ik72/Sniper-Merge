@@ -7,7 +7,7 @@ internal class MergeHandler : IMergeHandler
 {
     private BulletInfoFactory _factory;
     private MergeGrid _grid;
-
+    
     internal MergeHandler(BulletInfoFactory factory, MergeGrid grid)
     {
         _factory = factory;
