@@ -24,19 +24,21 @@ public class MergeService
 
         _mergeGrid.CreateGrid();
         
-        CreateTestBullet(new Vector3(10, 15, 20), 0);
-        CreateTestBullet(new Vector3(-10, -15,-20), 1);
+        CreateTestBullet(new Vector3(10, 15, 20), "0");
+        CreateTestBullet(new Vector3(-10, -15,-20), "1");
     }
 
     //temporary code
-    private void CreateTestBullet(Vector3 position, int cellIndex)
+    private void CreateTestBullet(Vector3 position, string name)
     {
         var bullet = _bulletInfoFactory.CreateByType(MergeItemType.Level1Item, position);
 
+        bullet.View.name = name;
+
         var cells = _mergeGrid.GetOrderedCellsByPosition(bullet.View.transform.position);
 
-        bullet.View.transform.position = cells[cellIndex].transform.position;
-        _mergeGrid.SetMergeItemToCell(cells[cellIndex], bullet);
+        bullet.View.transform.position = cells[0].transform.position;
+        _mergeGrid.SetMergeItemToCell(cells[0], bullet);
     }
 
     public void Update()
@@ -47,5 +49,6 @@ public class MergeService
     public void Disable()
     {
         _mergeGrid.ClearGrid();
+        _dragHandler.ItemReleased -= _mergeHandler.OnItemReleased;
     }
 }
