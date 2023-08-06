@@ -14,9 +14,9 @@ public class ShootingServiceInstaller : Installer
         builder.Register<Gun>(Lifetime.Scoped);
         builder.Register<Reloading>(Lifetime.Scoped);
         builder.Register<Magazine>(Lifetime.Scoped);
-        builder.RegisterComponent(_gun);
-        builder.RegisterComponent(_target1);
-        builder.RegisterComponent(_target2);
+        //builder.RegisterComponent(_gun);
+        //builder.RegisterComponent(_target1);
+        //builder.RegisterComponent(_target2);
         builder.Register(container => { return new Aiming(_gun, _target1, _target2); }, Lifetime.Scoped);
     }
 }

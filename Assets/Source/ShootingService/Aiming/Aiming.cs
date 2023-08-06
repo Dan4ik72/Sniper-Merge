@@ -11,11 +11,10 @@ internal class Aiming
     private Transform _currentTarget;
 
     [Inject]
-    public Aiming(Transform position, Transform target1, Transform target2)
+    public Aiming(Transform position, List<Transform> targets)
     {
         _gun = position;
-        _targets.Add(target1);
-        _targets.Add(target2);
+        _targets = targets;
     }
 
     public Transform CurrentTarget => _currentTarget;
@@ -23,16 +22,21 @@ internal class Aiming
     public void Update()
     {
         FindNearestTarget();
-        _gun.LookAt(_currentTarget);
-        Debug.Log(_currentTarget.name);
+
+        if (_currentTarget != null)
+            _gun.LookAt(_currentTarget);
     }
 
     private void FindNearestTarget()
     {
         if (_targets.Count == 0)
+        {
             _currentTarget = null;
+            return;
+        }
 
         float minMagnitude = (_targets[0].position - _gun.position).magnitude;
+        _currentTarget = _targets[0];
 
         for (int i = 0; i < _targets.Count; i++)
         {
