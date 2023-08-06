@@ -1,8 +1,9 @@
+using System;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using VContainer;
 
-public class GameBootstrapper : MonoBehaviour
+public class GameBootstrapper : MonoBehaviour, IDisposable
 {
     [Inject] private MergeService _mergeService;
     [Inject] private ShootingService _shootingService;
@@ -13,18 +14,13 @@ public class GameBootstrapper : MonoBehaviour
         _shootingService.Init();
     }
 
-    private void Awake()
-    {
-
-    }
-
     private void Update()
     {
         _mergeService.Update();
         _shootingService.Update(Time.deltaTime);
     }
-
-    private void OnDisable()
+    
+    public void Dispose()
     {
         _mergeService.Disable();
         _shootingService.Disable();
