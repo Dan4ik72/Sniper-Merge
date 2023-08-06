@@ -1,13 +1,12 @@
-using Codice.Client.BaseCommands.Merge.Xml;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using VContainer;
 
 internal class MergeHandler : IMergeHandler
 {
     private BulletInfoFactory _factory;
     private MergeGrid _grid;
-    
+
+    [Inject]
     internal MergeHandler(BulletInfoFactory factory, MergeGrid grid)
     {
         _factory = factory;

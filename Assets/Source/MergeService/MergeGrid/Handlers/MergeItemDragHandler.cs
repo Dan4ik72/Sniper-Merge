@@ -1,6 +1,7 @@
 using System;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using VContainer;
 
 internal class MergeItemDragHandler : IMergeObjectDragHandler
 {
@@ -20,6 +21,7 @@ internal class MergeItemDragHandler : IMergeObjectDragHandler
 
     public event Action<MergeItem> ItemReleased;
 
+    [Inject]
     internal MergeItemDragHandler(Camera camera, MergeGrid mergeGrid)
     {
         _camera = camera;
