@@ -13,14 +13,8 @@ public class MergeServiceInstaller : Installer
         builder.Register<IMergeObjectDragHandler, MergeItemDragHandler>(Lifetime.Scoped);
         builder.Register<IMergeHandler, MergeHandler>(Lifetime.Scoped);
         builder.Register<MergeGrid>(Lifetime.Scoped);
-        //builder.RegisterComponent(_gridParent);
+        builder.RegisterComponent(_gridParent);
         builder.RegisterComponent<ICell>(_gridCell);
-        //builder.Register<GridFactory>(Lifetime.Scoped);
-        builder.Register(container =>
-        {
-            var gridCell = container.Resolve<ICell>();
-            return new GridFactory(_gridParent, gridCell);
-
-        }, Lifetime.Scoped);
+        builder.Register<GridFactory>(Lifetime.Scoped);
     }
 }
