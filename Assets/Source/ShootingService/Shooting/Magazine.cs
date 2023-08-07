@@ -8,7 +8,7 @@ internal class Magazine
     private int _allBullets;
 
     [Inject]
-    public Magazine()
+    internal Magazine()
     {
         _allBullets = 20;
     }

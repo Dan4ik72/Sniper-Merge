@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using VContainer;
 
@@ -10,7 +8,7 @@ internal class Gun
     private Magazine _magazine;
 
     [Inject]
-    public Gun(Reloading reloading, Magazine magazine)
+    internal Gun(Reloading reloading, Magazine magazine)
     {
         _reloading = reloading;
         _magazine = magazine;

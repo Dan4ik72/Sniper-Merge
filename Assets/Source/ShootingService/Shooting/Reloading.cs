@@ -11,7 +11,7 @@ internal class Reloading
     private float _elapsedTime = 0;
 
     [Inject]
-    public Reloading(Magazine magazine/*, float time*/)
+    internal Reloading(Magazine magazine/*, float time*/)
     {
         _magazine = magazine;
         _time = 2;

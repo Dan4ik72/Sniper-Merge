@@ -11,7 +11,7 @@ internal class Aiming
     private Transform _currentTarget;
 
     [Inject]
-    public Aiming(Transform gun, List<Transform> targets)
+    internal Aiming(Transform gun, List<Transform> targets)
     {
         _gun = gun;
         _targets = targets;
@@ -38,13 +38,13 @@ internal class Aiming
         float minMagnitude = (_targets[0].position - _gun.position).magnitude;
         _currentTarget = _targets[0];
 
-        for (int i = 0; i < _targets.Count; i++)
+        foreach (var target in _targets)
         {
-            float currentMagnitude = (_targets[i].position - _gun.position).magnitude;
+            float currentMagnitude = (target.position - _gun.position).magnitude;
 
             if (minMagnitude > currentMagnitude)
             {
-                _currentTarget = _targets[i];
+                _currentTarget = target;
             }
         }
     }

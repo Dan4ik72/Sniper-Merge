@@ -6,7 +6,7 @@ public class MergeService
     private IMergeObjectDragHandler _dragHandler;
     private IMergeHandler _mergeHandler;
     private MergeGrid _mergeGrid;
-    //temporary code
+    //temporary code  
     private BulletInfoFactory _bulletInfoFactory;
 
     [Inject]
