@@ -3,12 +3,12 @@ using System.Linq;
 using UnityEngine;
 using VContainer;
 
-internal class BulletInfoFactory
+public class BulletInfoFactory
 {
     private IReadOnlyList<BulletInfo> _bulletInfos;
 
     [Inject]
-    internal BulletInfoFactory(IReadOnlyList<BulletInfo> bulletInfos) => _bulletInfos = bulletInfos;
+    public BulletInfoFactory(IReadOnlyList<BulletInfo> bulletInfos) => _bulletInfos = bulletInfos;
 
     public MergeItem CreateByType(MergeItemType type, Vector3 viewPosition, Transform viewParent = null)
     {
