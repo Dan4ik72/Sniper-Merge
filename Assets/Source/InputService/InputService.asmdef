@@ -1,9 +1,8 @@
 {
-    "name": "MergeService",
+    "name": "InputService",
     "rootNamespace": "",
     "references": [
-        "GUID:b0214a6008ed146ff8f122a6a9c2f6cc",
-        "GUID:c871a864286b39e4e891e042bbde7b34"
+        "GUID:b0214a6008ed146ff8f122a6a9c2f6cc"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

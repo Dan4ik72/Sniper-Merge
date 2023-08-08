@@ -9,17 +9,23 @@ public class MergeService
     //temporary code  
     private BulletInfoFactory _bulletInfoFactory;
 
+    private InputService _inputService;
+
     [Inject]
-    internal MergeService(IMergeObjectDragHandler dragHandler, IMergeHandler mergeHandler, MergeGrid mergeGrid, BulletInfoFactory bulletFactory)
+    internal MergeService(IMergeObjectDragHandler dragHandler, IMergeHandler mergeHandler, MergeGrid mergeGrid, BulletInfoFactory bulletFactory, InputService inputService)
     {
         _dragHandler = dragHandler;
         _mergeGrid = mergeGrid;
         _mergeHandler = mergeHandler;
         _bulletInfoFactory = bulletFactory;
+        _inputService = inputService;
     }
 
     public void Init()
     {
+        _inputService.InputHandler.Pressed += _dragHandler.OnItemGrab;
+        _inputService.InputHandler.Released += _dragHandler.OnItemReleased;
+
         _dragHandler.ItemReleased += _mergeHandler.OnItemReleased;
 
         _mergeGrid.CreateGrid();
@@ -50,7 +56,8 @@ public class MergeService
 
     public void Disable()
     {
-        //_mergeGrid.ClearGrid();
         _dragHandler.ItemReleased -= _mergeHandler.OnItemReleased;
+        _inputService.InputHandler.Pressed -= _dragHandler.OnItemGrab;
+        _inputService.InputHandler.Released -= _dragHandler.OnItemReleased;
     }
 }

@@ -5,8 +5,6 @@ using VContainer;
 
 internal class MergeItemDragHandler : IMergeObjectDragHandler
 {
-    //should create an input handler to separate responsibilities 
-
     private const int MergeItemLayerIndex = 7;
     private const int MergePlaneLayerIndex = 6;
 
@@ -28,29 +26,15 @@ internal class MergeItemDragHandler : IMergeObjectDragHandler
         _mergeGrid = mergeGrid;
     }
 
-    //temporary code
-    private void CheckInputPressButton()
+    public void OnItemGrab(Vector3 pressPosition)
     {
-        if (Input.GetMouseButtonDown(0))
-            OnItemGrab();
-    }
-
-    //temporary code
-    private void CheckInputReleaseButton()
-    {
-        if (Input.GetMouseButtonUp(0))
-            OnItemReleased();
-    }
-
-    public void OnItemGrab()
-    {
-        if (TryGetMergeItem(out _currentDraggingItem) == false)
+        if (TryGetMergeItem(pressPosition, out _currentDraggingItem) == false)
             return;
 
         _isDragging = true;
     }
 
-    public void OnItemReleased()
+    public void OnItemReleased(Vector3 releasePosition)
     {
         if (_isDragging == false)
             return;
@@ -62,9 +46,6 @@ internal class MergeItemDragHandler : IMergeObjectDragHandler
 
     public void DragItem()
     {
-        CheckInputPressButton();
-        CheckInputReleaseButton();
-
         if (_isDragging == false)
             return;
 
@@ -73,14 +54,14 @@ internal class MergeItemDragHandler : IMergeObjectDragHandler
         if (Physics.Raycast(screenToWorldPointRay, out _raycastInfo, 100f, 1 << MergePlaneLayerIndex))
             _currentDraggingItem.View.transform.position = _raycastInfo.point + _currentDraggingItemPositionOffset;
         else
-            OnItemReleased();
+            OnItemReleased(Input.mousePosition);
     }
 
-    private bool TryGetMergeItem(out MergeItem mergeItem)
+    private bool TryGetMergeItem(Vector3 mousePosition, out MergeItem mergeItem)
     {
         mergeItem = null;
 
-        Ray cursorToWorldPointRay = _camera.ScreenPointToRay(Input.mousePosition);
+        Ray cursorToWorldPointRay = _camera.ScreenPointToRay(mousePosition);
 
         if (Physics.Raycast(cursorToWorldPointRay, out RaycastHit viewHitInfo, 100f, 1 << MergeItemLayerIndex) == false)
             return false;
