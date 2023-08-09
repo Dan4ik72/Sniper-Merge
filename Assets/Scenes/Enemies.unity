@@ -949,9 +949,13 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8288352091252002511, guid: 53c49365be676384e8b4c6423212111e, type: 3}
+      propertyPath: _parent
+      value: 
+      objectReference: {fileID: 3671734617085608404}
+    - target: {fileID: 8288352091252002511, guid: 53c49365be676384e8b4c6423212111e, type: 3}
       propertyPath: _prefab
       value: 
-      objectReference: {fileID: 4663515483377275161, guid: 45c8cebbb953c584ba86d91d705eb0dd, type: 3}
+      objectReference: {fileID: 2542714606042819532, guid: 45c8cebbb953c584ba86d91d705eb0dd, type: 3}
     - target: {fileID: 8288352091252002511, guid: 53c49365be676384e8b4c6423212111e, type: 3}
       propertyPath: _spawnPoint
       value: 

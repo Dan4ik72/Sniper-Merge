@@ -5,12 +5,12 @@ using VContainer;
 
 public class EnemiesService
 {
-    private EnemyGenerator _enemyGenerator;
+    private EnemiesSpawner _enemiesSpawner;
 
     [Inject]
-    internal EnemiesService(EnemyGenerator enemyGenerator)
+    internal EnemiesService(EnemiesSpawner enemiesSpawner)
     {
-        _enemyGenerator = enemyGenerator;
+        _enemiesSpawner = enemiesSpawner;
     }
 
     public void Init()
@@ -20,8 +20,7 @@ public class EnemiesService
 
     public void Update(float delta)
     {
-        Debug.Log(3434);
-        _enemyGenerator.Update(delta);
+        _enemiesSpawner.Update(delta);
     }
 
     public void Disable()

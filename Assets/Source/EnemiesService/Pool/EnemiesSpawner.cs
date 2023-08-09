@@ -3,21 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using VContainer;
 
-internal class EnemyGenerator : ObjectPool
+internal class EnemiesSpawner
 {
-    private readonly float _spredSpawnPositionX = 5;
+    private readonly float _spredSpawnPositionX = 10;
 
-    private Transform _target;
+    private ObjectPool<EnemyView> _objectPool;
     private float _delayStart;
     private float _delayBetweenSpawn;
     private float _elapsedTime = 0;
 
     [Inject]
-    public EnemyGenerator(GameObject prefab, Transform spawnPoint, int capacity, Transform target, int delayStart, int delayBetweenSpawn) : base(prefab, spawnPoint, capacity) 
+    public EnemiesSpawner(Transform parent, ObjectPool<EnemyView> objectPool, int capacity, int delayStart, int delayBetweenSpawn)
     {
-        _target = target;
+        _objectPool = objectPool;
         _delayStart = delayStart;
         _delayBetweenSpawn = delayBetweenSpawn;
+        _objectPool.CreatePool(parent, capacity);
+
     }
 
     public void Update(float delta)
@@ -30,12 +32,11 @@ internal class EnemyGenerator : ObjectPool
 
             if (_delayBetweenSpawn < _elapsedTime)
             {
-                if (TryGetObject(out GameObject enemy))
+                if (_objectPool.TryGetAvailableObject(out EnemyView enemy))
                 {
                     _elapsedTime = 0;
                     float spawnPositionX = Random.Range(_spredSpawnPositionX, -_spredSpawnPositionX);
                     Vector3 spawnPoint = new Vector3(spawnPositionX, 0, 0);
-                    enemy.SetActive(true);
                     enemy.transform.localPosition = spawnPoint;
                 }
             }

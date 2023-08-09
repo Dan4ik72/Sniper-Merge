@@ -4,32 +4,45 @@ using System.Linq;
 using UnityEngine;
 using VContainer;
 
-internal class ObjectPool
+internal class ObjectPool<T> where T : MonoBehaviour
 {
-    private List<GameObject> _pool = new();
+    private List<T> _objects = new();
+    private T _prefab;
+
+    private Vector3 _disabledPosition = new Vector3(0, -100, 0);
 
     [Inject]
-    public ObjectPool(GameObject prefab, Transform spawnPoint, int capacity)
+    public ObjectPool(T prefab) => _prefab = prefab;
+
+    public void CreatePool(Transform parent, int capacity, bool isActiveByDefault = false)
     {
         for (int i = 0; i < capacity; i++)
         {
-            GameObject spawned = Object.Instantiate(prefab, Vector3.zero, Quaternion.identity, spawnPoint);
-            spawned.SetActive(false);
-            _pool.Add(spawned);
+            var spawned = Object.Instantiate(_prefab, Vector3.zero, Quaternion.identity, parent);
+            
+            if (isActiveByDefault == false)
+            {
+                spawned.transform.position = _disabledPosition;
+            }
+
+            _objects.Add(spawned);
         }
     }
 
-    protected bool TryGetObject(out GameObject result)
+    public bool TryGetAvailableObject(out T available)
     {
-        result = _pool.FirstOrDefault(p => p.activeSelf == false);
-        return result != null;
+        available = _objects.FirstOrDefault(p => p.transform.position == _disabledPosition);
+        return available != null;
     }
 
-    protected void Reset()
+    public void ReturnToPool(T obj)
     {
-        foreach (var item in _pool)
-            Object.Destroy(item.gameObject);
+        if (_objects.Contains(obj) == false)
+        {
+            Debug.LogWarning("There is no such an object in the pool " + obj.gameObject.name);
+            return;
+        }
 
-        _pool.Clear();  
+        obj.transform.position = _disabledPosition;
     }
 }
