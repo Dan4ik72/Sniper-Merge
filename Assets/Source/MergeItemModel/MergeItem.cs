@@ -9,6 +9,9 @@ public class MergeItem
         _view = view;
     }
 
+    //temporary code
+    public void Init() => _view.Init(this);
+
     public ItemView View => _view;
     public ItemInfo Info => _info;
 }

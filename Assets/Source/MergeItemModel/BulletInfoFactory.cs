@@ -15,7 +15,12 @@ public class BulletInfoFactory
         var bulletInfo = GetBulletInfoByType(type);
         var bulletView = CreateView(bulletInfo.ViewPrefab, viewPosition, null);
 
-        return new MergeItem(bulletView, bulletInfo);
+        var mergeItem = new MergeItem(bulletView, bulletInfo);
+        //temporary code//
+        mergeItem.Init();
+        //temporary code//
+
+        return mergeItem;
     }
 
     private BulletInfo GetBulletInfoByType(MergeItemType type)

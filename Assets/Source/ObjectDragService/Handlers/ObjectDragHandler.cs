@@ -3,13 +3,12 @@ using System.Runtime.CompilerServices;
 using UnityEngine;
 using VContainer;
 
-internal class MergeItemDragHandler : IMergeObjectDragHandler
+internal class ObjectDragHandler : IObjectDragHandler
 {
     private const int MergeItemLayerIndex = 7;
     private const int MergePlaneLayerIndex = 6;
 
     private Camera _camera;
-    private MergeGrid _mergeGrid;
 
     private bool _isDragging = false;
 
@@ -18,23 +17,25 @@ internal class MergeItemDragHandler : IMergeObjectDragHandler
     private Vector3 _currentDraggingItemPositionOffset;
 
     public event Action<MergeItem> ItemReleased;
+    public event Action<MergeItem> ItemGrabbed;
 
     [Inject]
-    internal MergeItemDragHandler(Camera camera, MergeGrid mergeGrid)
+    internal ObjectDragHandler(Camera camera)
     {
         _camera = camera;
-        _mergeGrid = mergeGrid;
     }
 
-    public void OnItemGrab(Vector3 pressPosition)
+    public void GrabItem(Vector3 pressPosition)
     {
         if (TryGetMergeItem(pressPosition, out _currentDraggingItem) == false)
             return;
 
         _isDragging = true;
+
+        ItemGrabbed?.Invoke(_currentDraggingItem);
     }
 
-    public void OnItemReleased(Vector3 releasePosition)
+    public void ReleaseItem(Vector3 releasePosition)
     {
         if (_isDragging == false)
             return;
@@ -54,7 +55,7 @@ internal class MergeItemDragHandler : IMergeObjectDragHandler
         if (Physics.Raycast(screenToWorldPointRay, out _raycastInfo, 100f, 1 << MergePlaneLayerIndex))
             _currentDraggingItem.View.transform.position = _raycastInfo.point + _currentDraggingItemPositionOffset;
         else
-            OnItemReleased(Input.mousePosition);
+            ReleaseItem(Input.mousePosition);
     }
 
     private bool TryGetMergeItem(Vector3 mousePosition, out MergeItem mergeItem)
@@ -72,11 +73,8 @@ internal class MergeItemDragHandler : IMergeObjectDragHandler
         var itemView = viewHitInfo.collider.GetComponent<ItemView>();
 
         _currentDraggingItemPositionOffset = itemView.transform.position - groundHitInfo.point;
-        
-        if(_mergeGrid.TryGetMergeItemByView(itemView, out mergeItem) == false)
-            throw new System.InvalidOperationException("There is no such a registered merge item in the merge grid: " + itemView);
 
-        _mergeGrid.ClearCellByMergeItem(mergeItem);
+        mergeItem = itemView.MergeItem;
 
         return true;
     }

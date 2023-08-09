@@ -3,30 +3,24 @@ using VContainer;
 
 public class MergeService
 {
-    private IMergeObjectDragHandler _dragHandler;
     private IMergeHandler _mergeHandler;
     private MergeGrid _mergeGrid;
 
+    private ObjectDragService _objectDragService;
     private BulletInfoFactory _bulletInfoFactory;
-
-    private InputService _inputService;
-
+    
     [Inject]
-    internal MergeService(IMergeObjectDragHandler dragHandler, IMergeHandler mergeHandler, MergeGrid mergeGrid, BulletInfoFactory bulletFactory, InputService inputService)
+    internal MergeService(ObjectDragService objectDragService, IMergeHandler mergeHandler, MergeGrid mergeGrid, BulletInfoFactory bulletFactory)
     {
-        _dragHandler = dragHandler;
+        _objectDragService = objectDragService;
         _mergeGrid = mergeGrid;
         _mergeHandler = mergeHandler;
         _bulletInfoFactory = bulletFactory;
-        _inputService = inputService;
     }
 
     public void Init()
     {
-        _inputService.InputHandler.Pressed += _dragHandler.OnItemGrab;
-        _inputService.InputHandler.Released += _dragHandler.OnItemReleased;
-
-        _dragHandler.ItemReleased += _mergeHandler.OnItemReleased;
+        _objectDragService.ObjectReleased += _mergeHandler.OnItemReleased;
 
         _mergeGrid.CreateGrid();
 
@@ -48,16 +42,9 @@ public class MergeService
         bullet.View.transform.position = cells[cum].transform.position;
         _mergeGrid.SetMergeItemToCell(cells[cum], bullet);
     }
-
-    public void Update()
-    {
-        _dragHandler.DragItem();
-    }
-
+    
     public void Disable()
     {
-        _dragHandler.ItemReleased -= _mergeHandler.OnItemReleased;
-        _inputService.InputHandler.Pressed -= _dragHandler.OnItemGrab;
-        _inputService.InputHandler.Released -= _dragHandler.OnItemReleased;
+        _objectDragService.ObjectReleased -= _mergeHandler.OnItemReleased;
     }
 }
