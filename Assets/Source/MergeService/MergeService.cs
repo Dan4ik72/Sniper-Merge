@@ -3,53 +3,54 @@ using VContainer;
 
 public class MergeService
 {
+    private IMergeObjectDragHandler _dragHandler;
     private IMergeHandler _mergeHandler;
     private MergeGrid _mergeGrid;
+    //temporary code  
+    private BulletInfoFactory _bulletInfoFactory;
 
-    private ObjectDragService _objectDragService;
-    
     [Inject]
-    internal MergeService(ObjectDragService objectDragService, IMergeHandler mergeHandler, MergeGrid mergeGrid)
+    internal MergeService(IMergeObjectDragHandler dragHandler, IMergeHandler mergeHandler, MergeGrid mergeGrid, BulletInfoFactory bulletFactory)
     {
-        _objectDragService = objectDragService;
+        _dragHandler = dragHandler;
         _mergeGrid = mergeGrid;
         _mergeHandler = mergeHandler;
+        _bulletInfoFactory = bulletFactory;
     }
 
     public void Init()
     {
-        _objectDragService.ObjectReleased += _mergeHandler.OnItemReleased;
+        _dragHandler.ItemReleased += _mergeHandler.OnItemReleased;
 
         _mergeGrid.CreateGrid();
+
+        CreateTestBullet(new Vector3(10, 15, 20), "0", 0);
+        CreateTestBullet(new Vector3(10, 15, 20), "1", 1);
+        CreateTestBullet(new Vector3(10, 15, 20), "2", 2);
+        CreateTestBullet(new Vector3(10, 15, 20), "3", 3);
     }
 
-    public void AddMergeItemToGrid(MergeItem mergeItem)
+    //temporary code
+    private void CreateTestBullet(Vector3 position, string name, int cum)
     {
-        var cells = _mergeGrid.GetOrderedCellsByPosition(Vector3.zero);
+        var bullet = _bulletInfoFactory.CreateByType(MergeItemType.Level1Item, position);
 
-        Transform avaliableCell = null;
+        bullet.View.name = name;
 
-        foreach(var cell in cells)
-        {
-            if (_mergeGrid.MergeCells[cell] == null)
-            {
-                avaliableCell = cell;
-                break;
-            }
-        }
+        var cells = _mergeGrid.GetOrderedCellsByPosition(bullet.View.transform.position);
 
-        if (avaliableCell == null)
-        {
-            Debug.LogWarning("There are no available cells");
-            return;
-        }
-
-        mergeItem.View.transform.position = avaliableCell.position;
-        _mergeGrid.SetMergeItemToCell(avaliableCell, mergeItem);
+        bullet.View.transform.position = cells[cum].transform.position;
+        _mergeGrid.SetMergeItemToCell(cells[cum], bullet);
     }
-    
+
+    public void Update()
+    {
+        _dragHandler.DragItem();
+    }
+
     public void Disable()
     {
-        _objectDragService.ObjectReleased -= _mergeHandler.OnItemReleased;
+        //_mergeGrid.ClearGrid();
+        _dragHandler.ItemReleased -= _mergeHandler.OnItemReleased;
     }
 }

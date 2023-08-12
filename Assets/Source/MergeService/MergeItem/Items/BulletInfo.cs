@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [CreateAssetMenu(fileName = "BulletInfo", menuName = "Bullet info/Create new bullet info")]
-public class BulletInfo : ItemInfo
+internal class BulletInfo : ItemInfo
 {
     [SerializeField] private MergeItemType _type;
     [SerializeField] private int _damage;
