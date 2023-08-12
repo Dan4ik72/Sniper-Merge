@@ -13,7 +13,6 @@ public class MergeServiceInstaller : Installer
     protected override void Configure(IContainerBuilder builder)
     {
         builder.Register<MergeService>(Lifetime.Scoped);
-        builder.Register<IMergeObjectDragHandler, MergeItemDragHandler>(Lifetime.Scoped);
         builder.Register<IMergeHandler, MergeHandler>(Lifetime.Scoped);
         builder.Register<MergeGrid>(Lifetime.Scoped);
         builder.RegisterComponent<ICell>(_gridCell);
@@ -26,7 +25,6 @@ public class MergeServiceInstaller : Installer
 
         }, Lifetime.Scoped);
 
-        builder.RegisterComponent(Camera.main);
         builder.Register(container => new BulletInfoFactory(_bulletInfos), Lifetime.Scoped);
     }
 }
