@@ -9,6 +9,7 @@ public class GameBootstrapper : MonoBehaviour, IDisposable
     [Inject] private ShootingService _shootingService;
     [Inject] private InputService _inputService;
     [Inject] private ObjectDragService _objectDragService;
+    [Inject] private BulletSpawnService _bulletSpawnService;
 
     private void Start()
     {
@@ -16,6 +17,7 @@ public class GameBootstrapper : MonoBehaviour, IDisposable
         _objectDragService.Init();
         _mergeService.Init();
         _shootingService.Init();
+        _bulletSpawnService.Init();
     }
 
     private void Update()
