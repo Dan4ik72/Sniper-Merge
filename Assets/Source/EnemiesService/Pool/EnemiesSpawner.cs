@@ -8,14 +8,21 @@ internal class EnemiesSpawner
     private readonly float _spredSpawnPositionX = 10;
 
     private ObjectPool<EnemyView> _objectPool;
+    private List<EnemyInfo> _enemies = new();
     private float _delayStart;
     private float _delayBetweenSpawn;
     private float _elapsedTime = 0;
 
     [Inject]
-    public EnemiesSpawner(Transform parent, ObjectPool<EnemyView> objectPool, int capacity, int delayStart, int delayBetweenSpawn)
+    public EnemiesSpawner(Transform parent, List<EnemyInfo> enemies, int capacity, int delayStart, int delayBetweenSpawn)
     {
-        _objectPool = objectPool;
+        _enemies = enemies;
+        List<EnemyView> enemyViews = new();
+
+        for (int i = 0; i < _enemies.Count; i++)
+            enemyViews.Add(_enemies[i].View);
+
+        _objectPool = new ObjectPool<EnemyView>(enemyViews);
         _delayStart = delayStart;
         _delayBetweenSpawn = delayBetweenSpawn;
         _objectPool.CreatePool(parent, capacity);
@@ -32,7 +39,7 @@ internal class EnemiesSpawner
 
             if (_delayBetweenSpawn < _elapsedTime)
             {
-                if (_objectPool.TryGetAvailableObject(out EnemyView enemy))
+                if (_objectPool.TryGetAvailableObject(out EnemyView enemy, (int)_enemies[1].Type))
                 {
                     _elapsedTime = 0;
                     float spawnPositionX = Random.Range(_spredSpawnPositionX, -_spredSpawnPositionX);

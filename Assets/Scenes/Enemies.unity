@@ -960,6 +960,22 @@ PrefabInstance:
       propertyPath: _spawnPoint
       value: 
       objectReference: {fileID: 3671734617085608404}
+    - target: {fileID: 8288352091252002511, guid: 53c49365be676384e8b4c6423212111e, type: 3}
+      propertyPath: _prefabs.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8288352091252002511, guid: 53c49365be676384e8b4c6423212111e, type: 3}
+      propertyPath: _prefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 2542714606042819532, guid: 45c8cebbb953c584ba86d91d705eb0dd, type: 3}
+    - target: {fileID: 8288352091252002511, guid: 53c49365be676384e8b4c6423212111e, type: 3}
+      propertyPath: _prefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 2542714606042819532, guid: 7bedef08e1135a447b6f9a5826c15a15, type: 3}
+    - target: {fileID: 8288352091252002511, guid: 53c49365be676384e8b4c6423212111e, type: 3}
+      propertyPath: _prefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 2542714606042819532, guid: 12e94878d720ab644b6c52f475ba6b4c, type: 3}
     - target: {fileID: 8833528257969299334, guid: 53c49365be676384e8b4c6423212111e, type: 3}
       propertyPath: m_Name
       value: EnemiesServiceInstaller
