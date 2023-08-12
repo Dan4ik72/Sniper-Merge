@@ -8,7 +8,6 @@ public class MergeServiceInstaller : Installer
 {
     [SerializeField] private Transform _gridParent;
     [SerializeField] private MergeGridCell _gridCell;
-    [SerializeField] private List<BulletInfo> _bulletInfos;
 
     protected override void Configure(IContainerBuilder builder)
     {
@@ -24,7 +23,5 @@ public class MergeServiceInstaller : Installer
             return new GridFactory(_gridParent, cell);
 
         }, Lifetime.Scoped);
-
-        builder.Register(container => new BulletInfoFactory(_bulletInfos), Lifetime.Scoped);
     }
 }

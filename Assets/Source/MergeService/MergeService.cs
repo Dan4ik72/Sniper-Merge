@@ -7,15 +7,13 @@ public class MergeService
     private MergeGrid _mergeGrid;
 
     private ObjectDragService _objectDragService;
-    private BulletInfoFactory _bulletInfoFactory;
     
     [Inject]
-    internal MergeService(ObjectDragService objectDragService, IMergeHandler mergeHandler, MergeGrid mergeGrid, BulletInfoFactory bulletFactory)
+    internal MergeService(ObjectDragService objectDragService, IMergeHandler mergeHandler, MergeGrid mergeGrid)
     {
         _objectDragService = objectDragService;
         _mergeGrid = mergeGrid;
         _mergeHandler = mergeHandler;
-        _bulletInfoFactory = bulletFactory;
     }
 
     public void Init()
@@ -23,24 +21,31 @@ public class MergeService
         _objectDragService.ObjectReleased += _mergeHandler.OnItemReleased;
 
         _mergeGrid.CreateGrid();
-
-        CreateTestBullet(new Vector3(10, 15, 20), "0", 0);
-        CreateTestBullet(new Vector3(10, 15, 20), "1", 1);
-        CreateTestBullet(new Vector3(10, 15, 20), "2", 2);
-        CreateTestBullet(new Vector3(10, 15, 20), "3", 3);
     }
 
-    //temporary code
-    private void CreateTestBullet(Vector3 position, string name, int cum)
+    public void AddMergeItemToGrid(MergeItem mergeItem)
     {
-        var bullet = _bulletInfoFactory.CreateByType(MergeItemType.Level1Item, position);
+        var cells = _mergeGrid.GetOrderedCellsByPosition(Vector3.zero);
 
-        bullet.View.name = name;
+        Transform avaliableCell = null;
 
-        var cells = _mergeGrid.GetOrderedCellsByPosition(bullet.View.transform.position);
+        foreach(var cell in cells)
+        {
+            if (_mergeGrid.MergeCells[cell] == null)
+            {
+                avaliableCell = cell;
+                break;
+            }
+        }
 
-        bullet.View.transform.position = cells[cum].transform.position;
-        _mergeGrid.SetMergeItemToCell(cells[cum], bullet);
+        if (avaliableCell == null)
+        {
+            Debug.LogWarning("There are no available cells");
+            return;
+        }
+
+        mergeItem.View.transform.position = avaliableCell.position;
+        _mergeGrid.SetMergeItemToCell(avaliableCell, mergeItem);
     }
     
     public void Disable()
