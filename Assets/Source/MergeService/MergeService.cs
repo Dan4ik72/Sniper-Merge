@@ -3,16 +3,16 @@ using VContainer;
 
 public class MergeService
 {
-    private IMergeObjectDragHandler _dragHandler;
     private IMergeHandler _mergeHandler;
     private MergeGrid _mergeGrid;
-    //temporary code  
-    private BulletInfoFactory _bulletInfoFactory;
 
+    private ObjectDragService _objectDragService;
+    private BulletInfoFactory _bulletInfoFactory;
+    
     [Inject]
-    internal MergeService(IMergeObjectDragHandler dragHandler, IMergeHandler mergeHandler, MergeGrid mergeGrid, BulletInfoFactory bulletFactory)
+    internal MergeService(ObjectDragService objectDragService, IMergeHandler mergeHandler, MergeGrid mergeGrid, BulletInfoFactory bulletFactory)
     {
-        _dragHandler = dragHandler;
+        _objectDragService = objectDragService;
         _mergeGrid = mergeGrid;
         _mergeHandler = mergeHandler;
         _bulletInfoFactory = bulletFactory;
@@ -20,7 +20,7 @@ public class MergeService
 
     public void Init()
     {
-        _dragHandler.ItemReleased += _mergeHandler.OnItemReleased;
+        _objectDragService.ObjectReleased += _mergeHandler.OnItemReleased;
 
         _mergeGrid.CreateGrid();
 
@@ -42,15 +42,9 @@ public class MergeService
         bullet.View.transform.position = cells[cum].transform.position;
         _mergeGrid.SetMergeItemToCell(cells[cum], bullet);
     }
-
-    public void Update()
-    {
-        _dragHandler.DragItem();
-    }
-
+    
     public void Disable()
     {
-        //_mergeGrid.ClearGrid();
-        _dragHandler.ItemReleased -= _mergeHandler.OnItemReleased;
+        _objectDragService.ObjectReleased -= _mergeHandler.OnItemReleased;
     }
 }
