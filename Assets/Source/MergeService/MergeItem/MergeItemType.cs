@@ -1,4 +1,4 @@
-public enum MergeItemType
+internal enum MergeItemType
 {
     Level1Item,
     Level2Item,
