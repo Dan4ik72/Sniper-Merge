@@ -15,7 +15,7 @@ public class EnemiesService
 
     public void Init()
     {
-        
+
     }
 
     public void Update(float delta)

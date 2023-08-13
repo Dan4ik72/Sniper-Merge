@@ -4,15 +4,20 @@ using UnityEngine;
 
 internal class AttackTransition : Transition
 {
-    private Transform _position;
+    private Enemy _enemy;
+    private Transform _target;
 
-    public AttackTransition(State targetState, Transform target) : base(targetState, target) { }
+    public AttackTransition(State targetState, Enemy enemy, Transform target) : base(targetState)
+    {
+        _enemy = enemy;
+        _target = target;
+    }
 
     public override void Update()
     {
         if (CanCountNumberNeedTransit())
         {
-            if (Vector3.Distance(_position.position, Target.position) < 0)
+            if (_enemy.IsAlive && Vector3.Distance(_enemy.transform.position, _target.position) == 0)
             {
                 CountNumberNeedTransit();
             }

@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-internal class DeathTransition : Transition
+internal class MoveTransition : Transition
 {
     private Enemy _enemy;
     private Transform _target;
 
-    public DeathTransition(State targetState, Enemy enemy, Transform target) : base(targetState)
+    public MoveTransition(State targetState, Enemy enemy, Transform target) : base(targetState)
     {
         _enemy = enemy;
         _target = target;
@@ -17,10 +17,10 @@ internal class DeathTransition : Transition
     {
         if (CanCountNumberNeedTransit())
         {
-            if (_enemy.IsAlive == false)
+            if (_enemy.IsAlive && Vector3.Distance(_enemy.transform.position, _target.position) > 0)
             {
                 CountNumberNeedTransit();
-            }    
+            }
         }
     }
 }

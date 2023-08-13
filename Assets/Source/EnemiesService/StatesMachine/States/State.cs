@@ -1,26 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 
 internal abstract class State
 {
     private List<Transition> _transitions = new();
 
-    public bool IsActive { get; protected set; }
-    protected Transform Target { get; private set; }
+    public bool IsActive { get; protected set; } = false;
 
-    public State(List<Transition> transition, Transform target)
-    {
-        _transitions = transition;
-        Target = target;
-        IsActive = false;
-    }
+    public abstract void Update(float delta);
 
-    public void Enter(Transform target)
+    public void Enter()
     {
         if (IsActive == false)
-            IsActive = true; 
+            IsActive = true;
+
+        ResetTransitions();
     }
     
     public void Exit()
@@ -33,6 +29,8 @@ internal abstract class State
     {
         foreach (var transition in _transitions)
         {
+            transition.Update();
+
             if (transition.NeedTransit)
                 return transition.TargetState;
         }
@@ -40,5 +38,14 @@ internal abstract class State
         return null;
     }
 
-    public abstract void Update();
+    public void ResetTransitions()
+    {
+        foreach (var transition in _transitions)
+            transition.ResetCountNumberNeedTransit();
+    }
+
+    public void AddAllTransitions(IReadOnlyList<Transition> transitions)
+    {
+        _transitions = transitions.ToList();
+    }
 }

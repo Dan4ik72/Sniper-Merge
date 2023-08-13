@@ -7,35 +7,30 @@ using VContainer;
 internal class ObjectPool<T> where T : MonoBehaviour
 {
     private List<T> _objects = new();
-    private List<T> _prefabs = new();
     private List<Vector3> _disabledPositions = new();
 
+    private int _levelObject = -1;
     private Vector3 _defaultDisabledPosition = new Vector3(0, -100, 0);
     private Vector3 _offsetPostion = new Vector3(0, -1, 0);
 
-    [Inject]
-    public ObjectPool(List<T> prefabs) => _prefabs = prefabs;
-
-    public void CreatePool(Transform parent, int capacity, bool isActiveByDefault = false)
+    public void AddObject(T prefab, int level = -1, bool isActiveByDefault = false)
     {
-        for (int i = 0; i < _prefabs.Count; i++)
+        Vector3 disabledPosition = _defaultDisabledPosition;
+
+        if (level >= 0)
         {
-            Vector3 disabledPosition = _defaultDisabledPosition + _offsetPostion * i;
-            _disabledPositions.Add(disabledPosition);
+            disabledPosition = _defaultDisabledPosition + _offsetPostion * level;
 
-            for (int j = 0; j < capacity; j++)
+            if (CanAddNewPosition(level))
             {
-                var spawned = Object.Instantiate(_prefabs[i], Vector3.zero, Quaternion.identity, parent);
                 _disabledPositions.Add(disabledPosition);
-
-                if (isActiveByDefault == false)
-                {
-                    spawned.transform.position = disabledPosition;
-                }
-
-                _objects.Add(spawned);
             }
         }
+
+        if (isActiveByDefault == false)
+            prefab.transform.position = disabledPosition;
+
+        _objects.Add(prefab);
     }
 
     public bool TryGetAvailableObject(out T available, int level = -1)
@@ -43,12 +38,12 @@ internal class ObjectPool<T> where T : MonoBehaviour
         if (level == -1)
             available = _objects.FirstOrDefault(p => p.transform.position == _defaultDisabledPosition);
         else
-        available = _objects.FirstOrDefault(p => p.transform.position == _disabledPositions[level]);
+            available = _objects.FirstOrDefault(p => p.transform.position == _disabledPositions[level]);
 
         return available != null;
     }
 
-    public void ReturnToPool(T obj)
+    public void ReturnToPool(T obj, int level = -1)
     {
         if (_objects.Contains(obj) == false)
         {
@@ -56,6 +51,20 @@ internal class ObjectPool<T> where T : MonoBehaviour
             return;
         }
 
-        obj.transform.position = _defaultDisabledPosition;
+        if (level == -1)
+            obj.transform.position = _defaultDisabledPosition;
+        else
+            obj.transform.position = _disabledPositions[level];
+    }
+
+    private bool CanAddNewPosition(int level)
+    {
+        if (_levelObject < level)
+        {
+            _levelObject++;
+            return true;
+        }
+
+        return false;
     }
 }

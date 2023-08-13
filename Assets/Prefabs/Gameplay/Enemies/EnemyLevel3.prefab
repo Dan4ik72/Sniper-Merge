@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5035203859145124738}
   - component: {fileID: 2542714606042819532}
   m_Layer: 0
-  m_Name: EnemyViewLevel2
+  m_Name: EnemyLevel3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8fd7f55c9aa8754429ec77fb1d93c869, type: 2}
+  - {fileID: 2100000, guid: 12e62e5003d749f459e0c5133db0d48c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

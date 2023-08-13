@@ -492,7 +492,7 @@ Transform:
   m_GameObject: {fileID: 6550803873667884866}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.85, y: 0, z: 10.79}
+  m_LocalPosition: {x: 0, y: 0, z: 15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -760,7 +760,7 @@ Transform:
   m_GameObject: {fileID: 3718450805887476917}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.64, y: 0, z: -3.22}
+  m_LocalPosition: {x: 2.26, y: 0, z: 3.27}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -957,6 +957,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2542714606042819532, guid: 45c8cebbb953c584ba86d91d705eb0dd, type: 3}
     - target: {fileID: 8288352091252002511, guid: 53c49365be676384e8b4c6423212111e, type: 3}
+      propertyPath: _target
+      value: 
+      objectReference: {fileID: 1214307086}
+    - target: {fileID: 8288352091252002511, guid: 53c49365be676384e8b4c6423212111e, type: 3}
       propertyPath: _spawnPoint
       value: 
       objectReference: {fileID: 3671734617085608404}
@@ -967,15 +971,19 @@ PrefabInstance:
     - target: {fileID: 8288352091252002511, guid: 53c49365be676384e8b4c6423212111e, type: 3}
       propertyPath: _prefabs.Array.data[0]
       value: 
-      objectReference: {fileID: 2542714606042819532, guid: 45c8cebbb953c584ba86d91d705eb0dd, type: 3}
+      objectReference: {fileID: 11400000, guid: 5a023b75f50597f4cb056f152a159532, type: 2}
     - target: {fileID: 8288352091252002511, guid: 53c49365be676384e8b4c6423212111e, type: 3}
       propertyPath: _prefabs.Array.data[1]
       value: 
-      objectReference: {fileID: 2542714606042819532, guid: 7bedef08e1135a447b6f9a5826c15a15, type: 3}
+      objectReference: {fileID: 11400000, guid: 8596f7c48aa784d4caac1fd27afb4e0d, type: 2}
     - target: {fileID: 8288352091252002511, guid: 53c49365be676384e8b4c6423212111e, type: 3}
       propertyPath: _prefabs.Array.data[2]
       value: 
-      objectReference: {fileID: 2542714606042819532, guid: 12e94878d720ab644b6c52f475ba6b4c, type: 3}
+      objectReference: {fileID: 11400000, guid: b373d4f10856e8c41ad21d22efd943c9, type: 2}
+    - target: {fileID: 8288352091252002511, guid: 53c49365be676384e8b4c6423212111e, type: 3}
+      propertyPath: autoInjectGameObjects.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8833528257969299334, guid: 53c49365be676384e8b4c6423212111e, type: 3}
       propertyPath: m_Name
       value: EnemiesServiceInstaller
@@ -1156,7 +1164,7 @@ Transform:
   m_GameObject: {fileID: 6428503563299202559}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.52, y: 0, z: -2.78}
+  m_LocalPosition: {x: -1.75, y: 0, z: 5.28}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -5,44 +5,43 @@ using VContainer;
 
 internal class EnemyStateMachine
 {
+    private StateFactory _stateFactory;
     private State _firstState;
-    private Transform _target;
     private State _currentState;
 
-    [Inject]
-    public EnemyStateMachine(State firstState, Transform target)
+    public EnemyStateMachine(StateFactory stateFactory)
     {
-        _firstState = firstState;
-        _target = target;
+        _stateFactory = stateFactory;
+        _firstState = _stateFactory.FirstState;
     }
 
-    public void Update()
+    public void Update(float delta)
     {
         if (_currentState == null)
             return;
 
+        _currentState.Update(delta);
         var nextState = _currentState.GetNextState();
 
         if (nextState != null)
             Transit(nextState);
     }
 
-    private void Transit(State nextState)
-    {
-        if (_currentState != null)
-            _currentState.Exit();
-
-        _currentState = nextState;
-
-        if (_currentState != null)
-            _currentState.Enter(_target);
-    }
-
-    private void Reset()
+    public void Reset()
     {
         _currentState = _firstState;
 
         if (_currentState != null)
-            _currentState.Enter(_target);
+            _currentState.Enter();
+    }
+
+    private void Transit(State nextState)
+    {
+        if (_currentState != nextState)
+        {
+            _currentState.Exit();
+            _currentState = nextState;
+            _currentState.Enter();
+        }
     }
 }

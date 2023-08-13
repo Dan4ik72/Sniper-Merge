@@ -1,19 +1,37 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using VContainer;
 
-internal class Enemy
+internal class Enemy : MonoBehaviour
 {
-    EnemyInfo _config;
-    int _currentHealth;
+    private EnemyInfo _config;
+    private Transform _target;
+    private int _currentHealth;
+    private StateFactory _stateFactory;
+    private EnemyStateMachine _stateMachine;
 
-    [Inject]
-    public Enemy(EnemyInfo config)
+    public void Init(EnemyInfo config, Transform target)
     {
         _config = config;
-        _currentHealth = _config.Health;
+        _target = target;
+        _currentHealth = 0;
+        _stateFactory = new StateFactory(this, target);
+        _stateFactory.CreateStates();
+        _stateMachine = new EnemyStateMachine(_stateFactory);
+        _stateMachine.Reset();
     }
 
-    public EnemyType Type => _config.Type;
+    public bool IsAlive => _currentHealth > 0;
+    public EnemyInfo Config => _config;
+
+    public void Update()
+    {
+        _stateMachine.Update(Time.deltaTime);
+    }
+
+    public void Respawn()
+    {
+        _currentHealth = _config.Health;
+    }
 }
