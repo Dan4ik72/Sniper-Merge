@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 01084adc202711048943be4cf213fefe, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -564,6 +564,22 @@ PrefabInstance:
       propertyPath: _gridParent
       value: 
       objectReference: {fileID: 5350749418885252085}
+    - target: {fileID: 7608936156255840028, guid: 934d6881b8bc7f54e8b6afef0b49de7b, type: 3}
+      propertyPath: _bulletInfos.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7608936156255840028, guid: 934d6881b8bc7f54e8b6afef0b49de7b, type: 3}
+      propertyPath: _bulletInfos.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 9d5ebae0430b2674083e596a72fc7e6f, type: 2}
+    - target: {fileID: 7608936156255840028, guid: 934d6881b8bc7f54e8b6afef0b49de7b, type: 3}
+      propertyPath: _bulletInfos.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: fb2fcac6944d86a4eaf0a415eecef369, type: 2}
+    - target: {fileID: 7608936156255840028, guid: 934d6881b8bc7f54e8b6afef0b49de7b, type: 3}
+      propertyPath: _bulletInfos.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 558a5894aa9c67d4895771c114b5b146, type: 2}
     - target: {fileID: 8623471447780408246, guid: 934d6881b8bc7f54e8b6afef0b49de7b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.0002450943
@@ -660,7 +676,7 @@ GameObject:
   - component: {fileID: 8801918319547464344}
   - component: {fileID: 8663931212310397756}
   - component: {fileID: 4006232863414506554}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -1,17 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using VContainer;
 
 public class EnemiesService
 {
-    public void Init()
+    private EnemiesSpawner _enemiesSpawner;
+
+    [Inject]
+    internal EnemiesService(EnemiesSpawner enemiesSpawner)
     {
-        
+        _enemiesSpawner = enemiesSpawner;
     }
 
-    public void Update()
+    public void Init()
     {
 
+    }
+
+    public void Update(float delta)
+    {
+        _enemiesSpawner.Update(delta);
     }
 
     public void Disable()
