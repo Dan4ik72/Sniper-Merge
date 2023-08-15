@@ -19,6 +19,7 @@ public class MergeService
     public void Init()
     {
         _objectDragService.ObjectReleased += _mergeHandler.OnItemReleased;
+        _objectDragService.ObjectGrabbed += _mergeGrid.ClearCellByMergeItem;
 
         _mergeGrid.CreateGrid();
     }
@@ -51,5 +52,6 @@ public class MergeService
     public void Disable()
     {
         _objectDragService.ObjectReleased -= _mergeHandler.OnItemReleased;
+        _objectDragService.ObjectGrabbed += _mergeGrid.ClearCellByMergeItem;
     }
 }

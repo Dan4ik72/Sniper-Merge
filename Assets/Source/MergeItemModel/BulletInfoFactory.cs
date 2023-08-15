@@ -13,7 +13,7 @@ public class BulletInfoFactory
     public MergeItem CreateByType(MergeItemType type, Vector3 viewPosition, Transform viewParent = null)
     {
         var bulletInfo = GetBulletInfoByType(type);
-        var bulletView = CreateView(bulletInfo.ViewPrefab, viewPosition, null);
+        var bulletView = CreateView(bulletInfo.ViewPrefab, viewPosition, viewParent);
 
         var mergeItem = new MergeItem(bulletView, bulletInfo);
         //temporary code//
