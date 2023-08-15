@@ -3,15 +3,12 @@ using System.Runtime.CompilerServices;
 using UnityEngine;
 using VContainer;
 
-internal class MergeItemDragHandler : IMergeObjectDragHandler
+internal class ObjectDragHandler : IObjectDragHandler
 {
-    //should create an input handler to separate responsibilities 
-
     private const int MergeItemLayerIndex = 7;
     private const int MergePlaneLayerIndex = 6;
 
     private Camera _camera;
-    private MergeGrid _mergeGrid;
 
     private bool _isDragging = false;
 
@@ -20,37 +17,25 @@ internal class MergeItemDragHandler : IMergeObjectDragHandler
     private Vector3 _currentDraggingItemPositionOffset;
 
     public event Action<MergeItem> ItemReleased;
+    public event Action<MergeItem> ItemGrabbed;
 
     [Inject]
-    internal MergeItemDragHandler(Camera camera, MergeGrid mergeGrid)
+    internal ObjectDragHandler(Camera camera)
     {
         _camera = camera;
-        _mergeGrid = mergeGrid;
     }
 
-    //temporary code
-    private void CheckInputPressButton()
+    public void GrabItem(Vector3 pressPosition)
     {
-        if (Input.GetMouseButtonDown(0))
-            OnItemGrab();
-    }
-
-    //temporary code
-    private void CheckInputReleaseButton()
-    {
-        if (Input.GetMouseButtonUp(0))
-            OnItemReleased();
-    }
-
-    public void OnItemGrab()
-    {
-        if (TryGetMergeItem(out _currentDraggingItem) == false)
+        if (TryGetMergeItem(pressPosition, out _currentDraggingItem) == false)
             return;
 
         _isDragging = true;
+
+        ItemGrabbed?.Invoke(_currentDraggingItem);
     }
 
-    public void OnItemReleased()
+    public void ReleaseItem(Vector3 releasePosition)
     {
         if (_isDragging == false)
             return;
@@ -62,9 +47,6 @@ internal class MergeItemDragHandler : IMergeObjectDragHandler
 
     public void DragItem()
     {
-        CheckInputPressButton();
-        CheckInputReleaseButton();
-
         if (_isDragging == false)
             return;
 
@@ -73,14 +55,14 @@ internal class MergeItemDragHandler : IMergeObjectDragHandler
         if (Physics.Raycast(screenToWorldPointRay, out _raycastInfo, 100f, 1 << MergePlaneLayerIndex))
             _currentDraggingItem.View.transform.position = _raycastInfo.point + _currentDraggingItemPositionOffset;
         else
-            OnItemReleased();
+            ReleaseItem(Input.mousePosition);
     }
 
-    private bool TryGetMergeItem(out MergeItem mergeItem)
+    private bool TryGetMergeItem(Vector3 mousePosition, out MergeItem mergeItem)
     {
         mergeItem = null;
 
-        Ray cursorToWorldPointRay = _camera.ScreenPointToRay(Input.mousePosition);
+        Ray cursorToWorldPointRay = _camera.ScreenPointToRay(mousePosition);
 
         if (Physics.Raycast(cursorToWorldPointRay, out RaycastHit viewHitInfo, 100f, 1 << MergeItemLayerIndex) == false)
             return false;
@@ -91,11 +73,8 @@ internal class MergeItemDragHandler : IMergeObjectDragHandler
         var itemView = viewHitInfo.collider.GetComponent<ItemView>();
 
         _currentDraggingItemPositionOffset = itemView.transform.position - groundHitInfo.point;
-        
-        if(_mergeGrid.TryGetMergeItemByView(itemView, out mergeItem) == false)
-            throw new System.InvalidOperationException("There is no such a registered merge item in the merge grid: " + itemView);
 
-        _mergeGrid.ClearCellByMergeItem(mergeItem);
+        mergeItem = itemView.MergeItem;
 
         return true;
     }
