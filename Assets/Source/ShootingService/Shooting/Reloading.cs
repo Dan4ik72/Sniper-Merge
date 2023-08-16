@@ -6,41 +6,39 @@ using VContainer;
 
 internal class Reloading
 {
-    private Magazine _magazine;
-    private float _time;
+    private GunInfo _config;
+    private float _currentSpeed;
     private float _elapsedTime = 0;
+    private bool _isCompleted = false;
 
     [Inject]
-    internal Reloading(Magazine magazine/*, float time*/)
+    internal Reloading(GunInfo config)
     {
-        _magazine = magazine;
-        _time = 2;
+        _config = config;
+        _currentSpeed = _config.SpeedCooldown;
     }
 
     public Action Ready;
 
+    public bool IsLoaded => _isCompleted;
+
     public void Update(float delta)
     {
-        if (_magazine.IsLoaded)
-        {
-            _elapsedTime += delta;
+        _elapsedTime += delta;
 
-            if (_elapsedTime > _time)
-            {
-                Ready?.Invoke();
-                Reset();
-            }
-        }
+        if (_elapsedTime > _currentSpeed)
+            _isCompleted = true;
     }
 
     public void Reduce(float value)
     {
-        float newTime = _time -= value;
-        _time = _time > newTime ? newTime : _time;
+        float newTime = _currentSpeed -= value;
+        _currentSpeed = _currentSpeed > newTime ? newTime : _currentSpeed;
     }
 
     public void Reset()
     {
         _elapsedTime = 0;
+        _isCompleted = false;
     }
 }

@@ -5,16 +5,14 @@ using UnityEngine;
 internal class VictoryState : State
 {
     private Enemy _enemy;
-    private Transform _target;
 
-    public VictoryState(Enemy enemy, Transform target)
+    public VictoryState(Enemy enemy)
     {
         _enemy = enemy;
-        _target = target;
     }
 
     public override void Update(float delta)
     {
-
+        _enemy.transform.localScale = Vector3.one * 2;
     }
 }

@@ -17,15 +17,19 @@ public class ShootingService
         _aiming = aiming;
     }
 
-    public void Init()
+    public IDamageble Gun => _gun;
+
+    public void Init(IReadOnlyList<IDamageble> enemies)
     {
         _gun.Init();
+        _aiming.Init(enemies);
     }
 
     public void Update(float delta)
     {
+        _gun.Update();
         _reloading.Update(delta);
-        _aiming.Update();
+        _aiming.Update(delta);
     }
 
     public void Disable()

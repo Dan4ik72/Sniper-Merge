@@ -5,9 +5,9 @@ using UnityEngine;
 internal class VictoryTransition : Transition
 {
     private Enemy _enemy;
-    private Transform _target;
+    private IDamageble _target;
 
-    public VictoryTransition(State targetState, Enemy enemy, Transform target) : base(targetState) 
+    public VictoryTransition(State targetState, Enemy enemy, IDamageble target) : base(targetState) 
     {
         _enemy = enemy;
         _target = target;
@@ -15,6 +15,12 @@ internal class VictoryTransition : Transition
 
     public override void Update()
     {
-        
+        if (CanCountNumberNeedTransit())
+        {
+            if (_target.IsAlive == false && _enemy.IsAlive)
+            {
+                CountNumberNeedTransit();
+            }
+        }
     }
 }

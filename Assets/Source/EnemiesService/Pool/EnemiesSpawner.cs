@@ -7,9 +7,11 @@ internal class EnemiesSpawner
 {
     private readonly float _spredSpawnPositionX = 10;
 
+    private Transform _parent;
     private ObjectPool<Enemy> _objectPool = new();
     private IReadOnlyList<EnemyInfo> _enemiesPrefabs;
-    private Transform _target;
+    private IDamageble _target;
+    private int _capacity;
     private float _delayStart;
     private float _delayBetweenSpawn;
     private float _elapsedTime = 0;
@@ -17,13 +19,21 @@ internal class EnemiesSpawner
     private List<Enemy> _enemies = new();
 
     [Inject]
-    public EnemiesSpawner(Transform parent, IReadOnlyList<EnemyInfo> enemiesPrefabs, Transform target, int capacity, int delayStart, int delayBetweenSpawn)
+    public EnemiesSpawner(Transform parent, IReadOnlyList<EnemyInfo> enemiesPrefabs, int capacity, int delayStart, int delayBetweenSpawn)
     {
+        _parent = parent;
         _enemiesPrefabs = enemiesPrefabs;
-        _target = target;
+        _capacity = capacity;
         _delayStart = delayStart;
         _delayBetweenSpawn = delayBetweenSpawn;
-        Spawn(parent, capacity);
+    }
+
+    public IReadOnlyList<IDamageble> Enemies => _enemies;
+
+    public void Init(IDamageble target)
+    {
+        _target = target;
+        Spawn(_parent, _capacity);
     }
 
     public void Update(float delta)
@@ -36,7 +46,7 @@ internal class EnemiesSpawner
 
             if (_delayBetweenSpawn < _elapsedTime)
             {
-                if (_objectPool.TryGetAvailableObject(out Enemy enemy, (int)_enemiesPrefabs[2].Type))
+                if (_objectPool.TryGetAvailableObject(out Enemy enemy, (int)_enemiesPrefabs[0].Type))
                 {
                     _elapsedTime = 0;
                     float spawnPositionX = Random.Range(_spredSpawnPositionX, -_spredSpawnPositionX);
@@ -48,6 +58,14 @@ internal class EnemiesSpawner
         }
     }
 
+    public void Disable()
+    {
+        foreach (var enemy in _enemies)
+            enemy.Die -= OnDie;
+
+        _enemies.Clear();
+    }
+
     private void Spawn(Transform parent, int capacity)
     {
         for (int i = 0; i < _enemiesPrefabs.Count; i++)
@@ -55,10 +73,13 @@ internal class EnemiesSpawner
             for (int j = 0; j < capacity; j++)
             {
                 var newEnemy = Object.Instantiate(_enemiesPrefabs[i].View, Vector3.zero, Quaternion.identity, parent);
+                newEnemy.Die += OnDie;
                 newEnemy.Init(_enemiesPrefabs[i], _target);
                 _enemies.Add(newEnemy);
                 _objectPool.AddObject(newEnemy, (int)newEnemy.Config.Type);
             }
         }
     }
+
+    private void OnDie(Enemy enemy) => _objectPool.ReturnToPool(enemy, (int)enemy.Config.Type);
 }

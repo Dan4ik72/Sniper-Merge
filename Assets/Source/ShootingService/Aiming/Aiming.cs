@@ -6,25 +6,29 @@ using VContainer;
 internal class Aiming
 {
     private Transform _gun;
-    private List<Transform> _targets = new();
+    private GunInfo _config;
+    private IReadOnlyList<IDamageble> _targets;
 
-    private Transform _currentTarget;
+    private IDamageble _currentTarget;
 
     [Inject]
-    internal Aiming(Transform gun, List<Transform> targets)
+    internal Aiming(Transform gun, GunInfo config)
     {
         _gun = gun;
-        _targets = targets;
+        _config = config;
     }
+    public IDamageble CurrentTarget => _currentTarget;
 
-    public Transform CurrentTarget => _currentTarget;
+    public void Init(IReadOnlyList<IDamageble> targets) => _targets = targets;
 
-    public void Update()
+    public void Update(float delta)
     {
         FindNearestTarget();
 
         if (_currentTarget != null)
-            _gun.LookAt(_currentTarget);
+            LookAt(_currentTarget.Position, delta);
+        else
+            LookAt(_gun.transform.position + Vector3.forward, delta);
     }
 
     private void FindNearestTarget()
@@ -35,17 +39,27 @@ internal class Aiming
             return;
         }
 
-        float minMagnitude = (_targets[0].position - _gun.position).magnitude;
-        _currentTarget = _targets[0];
+        float minMagnitude = (_targets[0].Position - _gun.position).magnitude;
+
+        if (_targets[0].IsAlive)
+            _currentTarget = _targets[0];
 
         foreach (var target in _targets)
         {
-            float currentMagnitude = (target.position - _gun.position).magnitude;
+            float currentMagnitude = (target.Position - _gun.position).magnitude;
 
-            if (minMagnitude > currentMagnitude)
+            if (target.IsAlive && minMagnitude > currentMagnitude)
             {
+                minMagnitude = currentMagnitude;
                 _currentTarget = target;
             }
         }
+    }
+
+    private void LookAt(Vector3 target, float delta)
+    {
+        Vector3 direction = target - _gun.position;
+        Quaternion rotation = Quaternion.LookRotation(direction);
+        _gun.rotation = Quaternion.Lerp(_gun.rotation, rotation, delta * _config.SpeedRotate);
     }
 }

@@ -13,9 +13,11 @@ public class EnemiesService
         _enemiesSpawner = enemiesSpawner;
     }
 
-    public void Init()
-    {
+    public IReadOnlyList<IDamageble> Enemies => _enemiesSpawner.Enemies;
 
+    public void Init(IDamageble gun)
+    {
+        _enemiesSpawner.Init(gun);
     }
 
     public void Update(float delta)
@@ -25,6 +27,6 @@ public class EnemiesService
 
     public void Disable()
     {
-        
+        _enemiesSpawner.Disable();
     }
 }
