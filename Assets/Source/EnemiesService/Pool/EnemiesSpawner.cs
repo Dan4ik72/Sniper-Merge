@@ -39,22 +39,22 @@ internal class EnemiesSpawner
     public void Update(float delta)
     {
         _elapsedTime += delta;
+        
+        if (_elapsedTime < _delayStart)
+            return;
 
-        if (_delayStart < _elapsedTime)
+        _delayStart = 0;
+
+        if (_elapsedTime < _delayBetweenSpawn)
+            return;
+
+        if (_objectPool.TryGetAvailableObject(out Enemy enemy, (int)_enemiesPrefabs[0].Type))
         {
-            _delayStart = 0;
-
-            if (_delayBetweenSpawn < _elapsedTime)
-            {
-                if (_objectPool.TryGetAvailableObject(out Enemy enemy, (int)_enemiesPrefabs[0].Type))
-                {
-                    _elapsedTime = 0;
-                    float spawnPositionX = Random.Range(_spredSpawnPositionX, -_spredSpawnPositionX);
-                    Vector3 spawnPoint = new Vector3(spawnPositionX, 0, 0);
-                    enemy.Respawn();
-                    enemy.transform.localPosition = spawnPoint;
-                }
-            }
+            _elapsedTime = 0;
+            float spawnPositionX = Random.Range(_spredSpawnPositionX, -_spredSpawnPositionX);
+            Vector3 spawnPoint = new Vector3(spawnPositionX, 0, 0);
+            enemy.Respawn();
+            enemy.transform.localPosition = spawnPoint;
         }
     }
 

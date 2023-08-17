@@ -29,7 +29,7 @@ public class GameBootstrapper : MonoBehaviour, IDisposable
     {
         _mergeItemDragService.Update();
         _shootingService.Update(Time.deltaTime);
-        //_enemiesService.Update(Time.deltaTime);
+        _enemiesService.Update(Time.deltaTime);
         _inputService.Update();
     }
 
