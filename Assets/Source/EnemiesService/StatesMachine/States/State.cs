@@ -33,7 +33,6 @@ internal abstract class State
 
             if (transition.NeedTransit)
             {
-                Debug.Log(11);
                 return transition.TargetState;
             }
         }

@@ -28,11 +28,6 @@ internal class Gun : IDamageble
 
     public Vector3 Position => _position.position;
 
-    public void Init()
-    {
-
-    }
-
     public void Update()
     {
         if (_reloading.IsLoaded && _magazine.IsLoaded && _aiming.CurrentTarget != null)
@@ -42,17 +37,12 @@ internal class Gun : IDamageble
         }
     }
 
-    public void Disable()
-    {
-
-    }
-
     public void ApplyDamage(int damage)
     {
         if (damage > 0)
             _currentHealth -= damage;
 
-        if (_currentHealth < 0)
+        if (_currentHealth <= 0)
             _currentHealth = 0;
     }
 }
