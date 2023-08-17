@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using VContainer;
 
@@ -5,23 +6,22 @@ public class MergeService
 {
     private IMergeHandler _mergeHandler;
     private MergeGrid _mergeGrid;
-
-    private ObjectDragService _objectDragService;
+    private MergeItemDragService _mergeItemDragService;
     
     [Inject]
-    internal MergeService(ObjectDragService objectDragService, IMergeHandler mergeHandler, MergeGrid mergeGrid)
+    internal MergeService(IMergeHandler mergeHandler, MergeGrid mergeGrid, MergeItemDragService dragService)
     {
-        _objectDragService = objectDragService;
         _mergeGrid = mergeGrid;
         _mergeHandler = mergeHandler;
+        _mergeItemDragService = dragService;
     }
 
     public void Init()
     {
-        _objectDragService.ObjectReleased += _mergeHandler.OnItemReleased;
-        _objectDragService.ObjectGrabbed += _mergeGrid.ClearCellByMergeItem;
-
         _mergeGrid.CreateGrid();
+
+        _mergeItemDragService.ObjectGrabbed += _mergeGrid.ClearCellByMergeItem;
+        _mergeItemDragService.ObjectReleased += _mergeHandler.OnItemReleased;
     }
 
     public void AddMergeItemToGrid(MergeItem mergeItem)
@@ -48,10 +48,20 @@ public class MergeService
         mergeItem.View.transform.position = avaliableCell.position;
         _mergeGrid.SetMergeItemToCell(avaliableCell, mergeItem);
     }
-    
+
+    public Transform GetClosestMergeGridCell(Vector3 position)
+    {
+        return _mergeGrid.GetOrderedCellsByPosition(position)[0];
+    }
+
+    public void ClearGridCell(MergeItem mergeItem)
+    {
+        _mergeGrid.ClearCellByMergeItem(mergeItem);
+    }
+
     public void Disable()
     {
-        _objectDragService.ObjectReleased -= _mergeHandler.OnItemReleased;
-        _objectDragService.ObjectGrabbed += _mergeGrid.ClearCellByMergeItem;
+        _mergeItemDragService.ObjectGrabbed -= _mergeGrid.ClearCellByMergeItem;
+        _mergeItemDragService.ObjectReleased -= _mergeHandler.OnItemReleased;
     }
 }

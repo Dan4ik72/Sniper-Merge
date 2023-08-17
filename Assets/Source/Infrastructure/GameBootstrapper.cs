@@ -1,5 +1,6 @@
 using System;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using UnityEngine;
 using VContainer;
 
@@ -9,14 +10,14 @@ public class GameBootstrapper : MonoBehaviour, IDisposable
     [Inject] private ShootingService _shootingService;
     [Inject] private EnemiesService _enemiesService;
     [Inject] private InputService _inputService;
-    [Inject] private ObjectDragService _objectDragService;
+    [Inject] private MergeItemDragService _mergeItemDragService;
     [Inject] private BulletSpawnService _bulletSpawnService;
     [Inject] private InspectorCompletedLevelService _inspectorCompletedLevelService;
 
     private void Start()
     {
         _inputService.Init();
-        _objectDragService.Init();
+        _mergeItemDragService.Init();
         _mergeService.Init();
         _bulletSpawnService.Init();
         _inspectorCompletedLevelService.Init(_enemiesService.Enemies, _shootingService.Gun);
@@ -26,15 +27,15 @@ public class GameBootstrapper : MonoBehaviour, IDisposable
 
     private void Update()
     {
-        _objectDragService.Update();
+        _mergeItemDragService.Update();
         _shootingService.Update(Time.deltaTime);
-        _enemiesService.Update(Time.deltaTime);
+        //_enemiesService.Update(Time.deltaTime);
         _inputService.Update();
     }
-    
+
     public void Dispose()
     {
-        _objectDragService.Disable();
+        _mergeItemDragService.Disable();
         _mergeService.Disable();
         _shootingService.Disable();
         _inputService.Disable();

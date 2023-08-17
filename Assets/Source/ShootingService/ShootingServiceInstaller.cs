@@ -1,12 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using VContainer;
-using VContainer.Unity;
 
 public class ShootingServiceInstaller : Installer
 {
     [SerializeField] private Transform _gun;
     [SerializeField] private GunInfo _config;
+    [SerializeField] private List<Transform> _targets;
+    [SerializeField] private BulletHolderCell _cell;
 
     protected override void Configure(IContainerBuilder builder)
     {
@@ -30,7 +31,15 @@ public class ShootingServiceInstaller : Installer
             var aiming = container.Resolve<Aiming>();
 
             return new Gun(_gun, config, reloading, magazine, aiming);
+        builder.Register(container => { return new Aiming(_gun, _targets); }, Lifetime.Scoped);
 
+        builder.Register<BulletHolder>(container =>
+        {
+            var magazine = container.Resolve<Magazine>();
+            var mergeService = container.Resolve<MergeService>();
+
+            return new BulletHolder(_cell, magazine, mergeService);
+            
         }, Lifetime.Scoped);
     }
 }
