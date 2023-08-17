@@ -12,14 +12,17 @@ public class GameBootstrapper : MonoBehaviour, IDisposable
     [Inject] private InputService _inputService;
     [Inject] private MergeItemDragService _mergeItemDragService;
     [Inject] private BulletSpawnService _bulletSpawnService;
+    [Inject] private InspectorCompletedLevelService _inspectorCompletedLevelService;
 
     private void Start()
     {
         _inputService.Init();
         _mergeItemDragService.Init();
         _mergeService.Init();
-        _shootingService.Init();
         _bulletSpawnService.Init();
+        _inspectorCompletedLevelService.Init(_enemiesService.Enemies, _shootingService.Gun);
+        _shootingService.Init(_enemiesService.Enemies);
+        _enemiesService.Init(_shootingService.Gun);
     }
 
     private void Update()

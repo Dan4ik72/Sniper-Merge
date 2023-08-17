@@ -5,9 +5,9 @@ using UnityEngine;
 internal class MoveState : State
 {
     private Enemy _enemy;
-    private Transform _target;
+    private IDamageble _target;
 
-    public MoveState(Enemy enemy, Transform target)
+    public MoveState(Enemy enemy, IDamageble target)
     {
         _enemy = enemy;
         _target = target;
@@ -15,6 +15,6 @@ internal class MoveState : State
 
     public override void Update(float delta)
     {
-        _enemy.transform.position = Vector3.MoveTowards(_enemy.transform.position, _target.position, delta * _enemy.Config.Speed);
+        _enemy.transform.position = Vector3.MoveTowards(_enemy.transform.position, _target.Position, delta * _enemy.Config.Speed);
     }
 }

@@ -5,9 +5,9 @@ using UnityEngine;
 internal class MoveTransition : Transition
 {
     private Enemy _enemy;
-    private Transform _target;
+    private IDamageble _target;
 
-    public MoveTransition(State targetState, Enemy enemy, Transform target) : base(targetState)
+    public MoveTransition(State targetState, Enemy enemy, IDamageble target) : base(targetState)
     {
         _enemy = enemy;
         _target = target;
@@ -17,7 +17,7 @@ internal class MoveTransition : Transition
     {
         if (CanCountNumberNeedTransit())
         {
-            if (_enemy.IsAlive && Vector3.Distance(_enemy.transform.position, _target.position) > 0)
+            if (_enemy.IsAlive && _target.IsAlive && Vector3.Distance(_enemy.transform.position, _target.Position) > 0.1f)
             {
                 CountNumberNeedTransit();
             }

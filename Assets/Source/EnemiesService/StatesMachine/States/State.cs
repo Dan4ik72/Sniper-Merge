@@ -5,7 +5,7 @@ using UnityEngine;
 
 internal abstract class State
 {
-    private List<Transition> _transitions = new();
+    private IReadOnlyList<Transition> _transitions;
 
     public bool IsActive { get; protected set; } = false;
 
@@ -32,7 +32,9 @@ internal abstract class State
             transition.Update();
 
             if (transition.NeedTransit)
+            {
                 return transition.TargetState;
+            }
         }
 
         return null;
@@ -44,8 +46,8 @@ internal abstract class State
             transition.ResetCountNumberNeedTransit();
     }
 
-    public void AddAllTransitions(IReadOnlyList<Transition> transitions)
+    public void AddTransitions(IReadOnlyList<Transition> transitions)
     {
-        _transitions = transitions.ToList();
+        _transitions = transitions;
     }
 }

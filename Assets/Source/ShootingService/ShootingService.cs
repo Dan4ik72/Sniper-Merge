@@ -22,18 +22,21 @@ public class ShootingService
         _mergeItemDragService = mergeItemDragService;
     }
 
-    public void Init()
+    public IDamageble Gun => _gun;
+
+    public void Init(IReadOnlyList<IDamageble> enemies)
     {
         _gun.Init();
-
+        _aiming.Init(enemies);
         _mergeItemDragService.ObjectGrabbed += _bulletHolder.OnBulletGrabbed;
         _mergeItemDragService.ObjectReleased += _bulletHolder.OnBulletReleased;
     }
 
     public void Update(float delta)
     {
+        _gun.Update();
         _reloading.Update(delta);
-        _aiming.Update();
+        _aiming.Update(delta);
     }
 
     public void Disable()
