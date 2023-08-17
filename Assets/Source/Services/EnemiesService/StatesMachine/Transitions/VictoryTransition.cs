@@ -15,12 +15,9 @@ internal class VictoryTransition : Transition
 
     public override void Update()
     {
-        if (CanCountNumberNeedTransit())
-        {
-            if (_target.IsAlive == false && _enemy.IsAlive)
-            {
-                CountNumberNeedTransit();
-            }
-        }
+        base.Update();
+
+        if (_target.IsAlive == false && _enemy.IsAlive)
+            CountNumberNeedTransit();
     }
 }

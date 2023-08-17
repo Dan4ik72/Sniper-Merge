@@ -10,13 +10,13 @@ internal abstract class Transition
     public State TargetState => _targetState;
     public bool NeedTransit => _numberNeedTransit == 1;
 
+    internal Transition(State targetState) => _targetState = targetState;
 
-    public Transition(State targetState)
+    public virtual void Update()
     {
-        _targetState = targetState;
+        if (CanCountNumberNeedTransit() == false)
+            return;
     }
-
-    public abstract void Update();
 
     public bool CanCountNumberNeedTransit()
     {
@@ -26,13 +26,7 @@ internal abstract class Transition
         return false;
     }
 
-    public void CountNumberNeedTransit()
-    {
-        _numberNeedTransit++;
-    }
+    public void CountNumberNeedTransit() => _numberNeedTransit++;
 
-    public void ResetCountNumberNeedTransit()
-    {
-        _numberNeedTransit = 0;
-    }
+    public void ResetCountNumberNeedTransit() => _numberNeedTransit = 0;
 }

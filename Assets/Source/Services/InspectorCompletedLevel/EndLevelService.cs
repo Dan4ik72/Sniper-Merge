@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using VContainer;
 
-public class InspectorCompletedLevelService
+public class EndLevelService
 {
     private IReadOnlyList<IDamageble> _enemies;
     private IDamageble _gun;

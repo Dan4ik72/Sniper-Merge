@@ -6,7 +6,7 @@ internal class StateFactory
     private Enemy _enemy;
     private IDamageble _target;
     private State _firstState;
-
+    
     public StateFactory(Enemy enemy, IDamageble target)
     {
         _enemy = enemy;

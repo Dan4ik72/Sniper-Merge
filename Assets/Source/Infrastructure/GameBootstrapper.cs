@@ -12,7 +12,7 @@ public class GameBootstrapper : MonoBehaviour, IDisposable
     [Inject] private InputService _inputService;
     [Inject] private MergeItemDragService _mergeItemDragService;
     [Inject] private BulletSpawnService _bulletSpawnService;
-    [Inject] private InspectorCompletedLevelService _inspectorCompletedLevelService;
+    [Inject] private EndLevelService _endLevelService;
 
     private void Start()
     {
@@ -20,7 +20,7 @@ public class GameBootstrapper : MonoBehaviour, IDisposable
         _mergeItemDragService.Init();
         _mergeService.Init();
         _bulletSpawnService.Init();
-        _inspectorCompletedLevelService.Init(_enemiesService.Enemies, _shootingService.Gun);
+        _endLevelService.Init(_enemiesService.Enemies, _shootingService.Gun);
         _shootingService.Init(_enemiesService.Enemies);
         _enemiesService.Init(_shootingService.Gun);
     }

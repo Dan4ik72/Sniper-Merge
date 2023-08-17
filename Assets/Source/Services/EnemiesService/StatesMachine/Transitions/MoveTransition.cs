@@ -15,12 +15,9 @@ internal class MoveTransition : Transition
 
     public override void Update()
     {
-        if (CanCountNumberNeedTransit())
-        {
-            if (_enemy.IsAlive && _target.IsAlive && Vector3.Distance(_enemy.transform.position, _target.Position) > 0.1f)
-            {
-                CountNumberNeedTransit();
-            }
-        }
+        base.Update();
+
+        if (_enemy.IsAlive && _target.IsAlive && Vector3.Distance(_enemy.transform.position, _target.Position) > 0.1f)
+            CountNumberNeedTransit();
     }
 }

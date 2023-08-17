@@ -13,12 +13,9 @@ internal class DeathTransition : Transition
 
     public override void Update()
     {
-        if (CanCountNumberNeedTransit())
-        {
-            if (_enemy.IsAlive == false)
-            {
-                CountNumberNeedTransit();
-            }    
-        }
+        base.Update();
+
+        if (_enemy.IsAlive == false)
+            CountNumberNeedTransit();
     }
 }

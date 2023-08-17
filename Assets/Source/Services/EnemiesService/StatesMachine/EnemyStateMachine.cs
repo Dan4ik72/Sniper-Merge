@@ -37,11 +37,11 @@ internal class EnemyStateMachine
 
     private void Transit(State nextState)
     {
-        if (_currentState != nextState)
-        {
-            _currentState.Exit();
-            _currentState = nextState;
-            _currentState.Enter();
-        }
+        if (_currentState == nextState)
+            return;
+
+        _currentState.Exit();
+        _currentState = nextState;
+        _currentState.Enter();
     }
 }

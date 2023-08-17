@@ -48,7 +48,7 @@ internal class EnemiesSpawner
         if (_elapsedTime < _delayBetweenSpawn)
             return;
 
-        if (_objectPool.TryGetAvailableObject(out Enemy enemy, (int)_enemiesPrefabs[0].Type))
+        if (_objectPool.TryGetAvailableObject(out Enemy enemy))
         {
             _elapsedTime = 0;
             float spawnPositionX = Random.Range(_spredSpawnPositionX, -_spredSpawnPositionX);
@@ -76,10 +76,10 @@ internal class EnemiesSpawner
                 newEnemy.Die += OnDie;
                 newEnemy.Init(_enemiesPrefabs[i], _target);
                 _enemies.Add(newEnemy);
-                _objectPool.AddObject(newEnemy, (int)newEnemy.Config.Type);
+                _objectPool.AddObject(newEnemy);
             }
         }
     }
 
-    private void OnDie(Enemy enemy) => _objectPool.ReturnToPool(enemy, (int)enemy.Config.Type);
+    private void OnDie(Enemy enemy) => _objectPool.ReturnToPool(enemy);
 }

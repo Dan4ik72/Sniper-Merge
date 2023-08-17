@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-internal class Enemy : MonoBehaviour, IDamageble
+internal class Enemy : MonoBehaviour, IDamageble, IPoolElement
 {
     private EnemyInfo _config;
     private IDamageble _target;
@@ -17,6 +17,7 @@ internal class Enemy : MonoBehaviour, IDamageble
     public void Init(EnemyInfo config, IDamageble target)
     {
         _config = config;
+        Level = (int)config.Type;
         _target = target;
         _currentHealth = 0;
         _stateFactory = new StateFactory(this, target);
@@ -25,14 +26,18 @@ internal class Enemy : MonoBehaviour, IDamageble
         _stateMachine.Reset();
     }
 
-    public int Health => _currentHealth;
+    public int Level { get; private set; }
     public bool IsAlive => _currentHealth > 0;
+
+    public int Health => _currentHealth;
     public EnemyInfo Config => _config;
     public Vector3 Position => transform.position;
 
     public void Update() => _stateMachine.Update(Time.deltaTime);
 
     public void Respawn() => _currentHealth = _config.Health;
+
+    public Transform GetTransform() => transform;
 
     public void ApplyDamage(int damage)
     {
