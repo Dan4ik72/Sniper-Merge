@@ -26,7 +26,6 @@ public class ShootingService
 
     public void Init(IReadOnlyList<IDamageble> enemies)
     {
-        _gun.Init();
         _aiming.Init(enemies);
         _mergeItemDragService.ObjectGrabbed += _bulletHolder.OnBulletGrabbed;
         _mergeItemDragService.ObjectReleased += _bulletHolder.OnBulletReleased;
@@ -41,8 +40,6 @@ public class ShootingService
 
     public void Disable()
     {
-        _gun.Disable();
-
         _mergeItemDragService.ObjectGrabbed -= _bulletHolder.OnBulletGrabbed;
         _mergeItemDragService.ObjectReleased -= _bulletHolder.OnBulletReleased;
     }
