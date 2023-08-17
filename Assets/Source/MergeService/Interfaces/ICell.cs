@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-internal interface ICell
+public interface ICell
 {
     public int Heigh { get; }
     public int Width { get; }

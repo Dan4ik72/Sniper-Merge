@@ -54,7 +54,7 @@ internal class MergeGrid
     public void ClearCellByMergeItem(MergeItem mergeItem)
     {
         var cell = _mergeCells.Where(c => c.Value != null).FirstOrDefault(c => c.Value == mergeItem).Key;
-
+        
         if (cell == null)
             return;
         

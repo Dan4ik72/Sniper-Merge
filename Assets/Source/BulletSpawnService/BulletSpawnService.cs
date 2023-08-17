@@ -16,15 +16,16 @@ public class BulletSpawnService
 
     public void Init()
     {
-        SpawnBullet(MergeItemType.Level1Item);
-        SpawnBullet(MergeItemType.Level1Item);
-        SpawnBullet(MergeItemType.Level1Item);
-        SpawnBullet(MergeItemType.Level1Item);
+        SpawnBullet(MergeItemType.Level1Item, "0");
+        SpawnBullet(MergeItemType.Level1Item, "1");
+        SpawnBullet(MergeItemType.Level1Item, "2");
+        SpawnBullet(MergeItemType.Level1Item, "3");
     }
 
-    public void SpawnBullet(MergeItemType bulletType)
+    public void SpawnBullet(MergeItemType bulletType, string name)
     {
         var createdBullet = _bulletInfoFactory.CreateByType(bulletType, Vector3.zero, _bulletParent);
         _mergeService.AddMergeItemToGrid(createdBullet);
+        createdBullet.View.name = name;
     }
 }
