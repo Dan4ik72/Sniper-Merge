@@ -81,5 +81,5 @@ internal class EnemiesSpawner
         }
     }
 
-    private void OnDie(Enemy enemy) => _objectPool.ReturnToPool(enemy);
+    private void OnDie(IDamageble enemy) => _objectPool.ReturnToPool((Enemy)enemy);
 }

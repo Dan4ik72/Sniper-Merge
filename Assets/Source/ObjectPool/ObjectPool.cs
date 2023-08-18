@@ -1,18 +1,17 @@
-using log4net.Core;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-internal class ObjectPool<T> where T : IPoolElement
+public class ObjectPool<T> where T : IPoolElement
 {
     private List<T> _objects = new();
 
-    private Vector3 _defaultDisabledPosition = new Vector3(0, -100, 0);
+    private Vector3 _disabledPosition = new Vector3(0, -100, 0);
 
     public void AddObject(T prefab, bool isActiveByDefault = false)
     {
         if (isActiveByDefault == false)
-            prefab.GetTransform().position = _defaultDisabledPosition;
+            prefab.GetTransform().position = _disabledPosition;
 
         _objects.Add(prefab);
     }
@@ -32,6 +31,6 @@ internal class ObjectPool<T> where T : IPoolElement
             return;
         }
 
-        obj.GetTransform().position = _defaultDisabledPosition;
+        obj.GetTransform().position = _disabledPosition;
     }
 }
