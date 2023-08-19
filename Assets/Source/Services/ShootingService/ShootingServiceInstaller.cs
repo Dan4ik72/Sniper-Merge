@@ -39,9 +39,8 @@ public class ShootingServiceInstaller : Installer
         builder.Register<BulletHolder>(container =>
         {
             var magazine = container.Resolve<Magazine>();
-            var mergeService = container.Resolve<MergeService>();
 
-            return new BulletHolder(_cell, magazine, mergeService);
+            return new BulletHolder(_cell, magazine);
             
         }, Lifetime.Scoped);
     }

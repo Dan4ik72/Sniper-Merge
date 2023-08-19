@@ -1,3 +1,4 @@
+using Codice.Client.BaseCommands.Merge.Xml;
 using System.Collections.Generic;
 using UnityEngine;
 using VContainer;
@@ -19,13 +20,13 @@ public class MergeService
         _mergeGrid.CreateGrid();
     }
 
-    public void AddMergeItemToGrid(MergeItem mergeItem)
+    public void TryPlaceMergeItemToAvailableCell(MergeItem mergeItem)
     {
-        var cells = _mergeGrid.GetOrderedCellsByPosition(Vector3.zero);
+        var cells = _mergeGrid.GetOrderedCellsByPosition(mergeItem.View.transform.position);
 
         Transform avaliableCell = null;
 
-        foreach(var cell in cells)
+        foreach (var cell in cells)
         {
             if (_mergeGrid.MergeCells[cell] == null)
             {
@@ -42,6 +43,11 @@ public class MergeService
 
         mergeItem.View.transform.position = avaliableCell.position;
         _mergeGrid.SetMergeItemToCell(avaliableCell, mergeItem);
+    }
+
+    public void OnItemReleasedOnGrid(MergeItem mergeItem)
+    {
+        _mergeHandler.OnItemReleased(mergeItem);
     }
 
     public Transform GetClosestMergeGridCell(Vector3 position)

@@ -18,14 +18,8 @@ internal abstract class Transition
             return;
     }
 
-    public bool CanCountNumberNeedTransit()
-    {
-        if (_numberNeedTransit < 2)
-            return true;
-
-        return false;
-    }
-
+    public bool CanCountNumberNeedTransit() => _numberNeedTransit < 2;
+    
     public void CountNumberNeedTransit() => _numberNeedTransit++;
 
     public void ResetCountNumberNeedTransit() => _numberNeedTransit = 0;
