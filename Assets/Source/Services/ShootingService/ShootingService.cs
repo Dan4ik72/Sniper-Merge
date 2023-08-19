@@ -21,6 +21,7 @@ public class ShootingService
     }
 
     public IDamageble Gun => _gun;
+    public Vector3 BulletHolderPosition => _bulletHolder.BulletPlace.position;
 
     public void Init(IReadOnlyList<IDamageble> enemies)
     {
@@ -33,6 +34,10 @@ public class ShootingService
         _reloading.Update(delta);
         _aiming.Update(delta);
     }
+
+    public bool TryPlaceBulletToBulletHolder(MergeItem bullet) => _bulletHolder.TryPlaceBullet(bullet);
+
+    public void ClearBulletPlace() => _bulletHolder.ClearBulletPlace();
 
     public void Disable()
     {

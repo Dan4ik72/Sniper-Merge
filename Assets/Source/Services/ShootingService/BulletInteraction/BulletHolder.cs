@@ -5,40 +5,29 @@ internal class BulletHolder
 {
     private ICell _bulletPlace;
     private Magazine _magazine;
-
-    private MergeService _mergeSerivce;
-
+    
     private MergeItem _currentBullet;
-    private float _minDistanceToCell = 1.7f;
 
     [Inject]
-    internal BulletHolder(ICell bulletPlace, Magazine magazine, MergeService mergeService)
+    internal BulletHolder(ICell bulletPlace, Magazine magazine)
     {
         _bulletPlace = bulletPlace;
         _magazine = magazine;
-        _mergeSerivce = mergeService;
     }
 
-    public void OnBulletReleased(MergeItem bullet)
-    {
-        if(Vector3.Distance(bullet.View.transform.position, _bulletPlace.GetTransform().position) > _minDistanceToCell)
-            return;
+    public Transform BulletPlace => _bulletPlace.GetTransform();
 
+    public bool TryPlaceBullet(MergeItem bullet)
+    {
         if (_currentBullet != null)
-        {
-            _mergeSerivce.AddMergeItemToGrid(bullet);
-            return;
-        }
+            return false;
 
         _currentBullet = bullet;
-        _currentBullet.View.transform.position = _bulletPlace.GetTransform().position;
+        bullet.View.transform.position = _bulletPlace.GetTransform().position;
+
+        //methods to spawn bullet and connect it to magazine
+        return true;
     }
 
-    public void OnBulletGrabbed(MergeItem grabbedItem)
-    {
-        if(grabbedItem != _currentBullet)
-            return;
-
-        _currentBullet = null;
-    }
+    public void ClearBulletPlace() => _currentBullet = null;
 }

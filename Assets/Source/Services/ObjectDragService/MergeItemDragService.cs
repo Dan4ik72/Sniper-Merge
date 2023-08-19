@@ -1,6 +1,5 @@
-using Codice.Client.BaseCommands.Merge.Xml;
-using System;
 using UnityEngine;
+using VContainer;
 
 public class MergeItemDragService
 {
@@ -11,13 +10,13 @@ public class MergeItemDragService
 
     private InputService _inputService;
 
-    public event Action<MergeItem> ObjectGrabbed;
-    public event Action<MergeItem> ObjectReleased;
-
-    internal MergeItemDragService(IObjectDragHandler objectDragHandler, InputService inputService)
+    [Inject]
+    internal MergeItemDragService(IObjectDragHandler objectDragHandler, InputService inputService, MergeService mergeService, ShootingService shootingService)
     {
         _dragHandler = objectDragHandler;
         _inputService = inputService;
+        _mergeService = mergeService;
+        _shootingService = shootingService;
     }
 
     public void Init()
@@ -51,6 +50,12 @@ public class MergeItemDragService
             _mergeService.ClearGridCell(mergeItem);
             return;
         }
+
+        if (Vector3.Distance(_shootingService.BulletHolderPosition, mergeItem.View.transform.position) <= 1.7f)
+        {
+            _shootingService.ClearBulletPlace();
+            return;
+        }
     }
 
     private void OnObjectReleased(MergeItem mergeItem)
@@ -58,7 +63,16 @@ public class MergeItemDragService
         if (Vector3.Distance(_mergeService.GetClosestMergeGridCell(mergeItem.View.transform.position).position,
                 mergeItem.View.transform.position) <= 1.7f)
         {
-            _mergeService.AddMergeItemToGrid(mergeItem);
+            _mergeService.OnItemReleasedOnGrid(mergeItem);
+            return;
         }
+        
+        if (Vector3.Distance(_shootingService.BulletHolderPosition, mergeItem.View.transform.position) <= 1.7f)
+        {
+            if (_shootingService.TryPlaceBulletToBulletHolder(mergeItem))
+                return;
+        }
+
+        _mergeService.TryPlaceMergeItemToAvailableCell(mergeItem);
     }
 }
