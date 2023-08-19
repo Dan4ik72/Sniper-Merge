@@ -1,3 +1,4 @@
+using Codice.Client.BaseCommands.Merge.Xml;
 using System;
 using UnityEngine;
 
@@ -5,8 +6,8 @@ public class MergeItemDragService
 {
     private IObjectDragHandler _dragHandler;
 
-    //private MergeService _mergeService;
-    //private ShootingService _shootingService;
+    private MergeService _mergeService;
+    private ShootingService _shootingService;
 
     private InputService _inputService;
 
@@ -44,18 +45,20 @@ public class MergeItemDragService
 
     private void OnObjectGrabbed(MergeItem mergeItem)
     {
-        ObjectGrabbed?.Invoke(mergeItem);
-
-        //if (Vector3.Distance(_mergeService.GetClosestMergeGridCell(mergeItem.View.transform.position, mergeItem.View.transform.position) <= 1f)
-        //{
-        //    _mergeService.ClearGridCell(mergeItem);
-        //    return;
-        //}
-        
+        if (Vector3.Distance(_mergeService.GetClosestMergeGridCell(mergeItem.View.transform.position).position, 
+                mergeItem.View.transform.position ) <= 1.7f)
+        {
+            _mergeService.ClearGridCell(mergeItem);
+            return;
+        }
     }
 
-    private void OnObjectReleased(MergeItem mergeObject)
+    private void OnObjectReleased(MergeItem mergeItem)
     {
-        ObjectReleased?.Invoke(mergeObject);
+        if (Vector3.Distance(_mergeService.GetClosestMergeGridCell(mergeItem.View.transform.position).position,
+                mergeItem.View.transform.position) <= 1.7f)
+        {
+            _mergeService.AddMergeItemToGrid(mergeItem);
+        }
     }
 }
