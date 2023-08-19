@@ -28,10 +28,7 @@ public class MergeItemDragService
         _dragHandler.ItemReleased += OnObjectReleased;
     }
 
-    public void Update()
-    {
-        _dragHandler.DragItem();
-    }
+    public void Update() => _dragHandler.DragItem();
 
     public void Disable()
     {
