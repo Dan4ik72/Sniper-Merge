@@ -1320,7 +1320,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7660122088684430956, guid: 9df014edd2177a6409e7c05c202a8eef, type: 3}
       propertyPath: m_Name
-      value: ObjectDragServiceInstaller
+      value: MergeItemDragServiceInstaller
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
