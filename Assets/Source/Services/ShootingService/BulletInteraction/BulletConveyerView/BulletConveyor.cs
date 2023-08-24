@@ -3,7 +3,7 @@ using UnityEngine;
 internal class BulletConveyor
 {
     private BulletViewFactory _bulletViewFactory;
-    private ObjectPool<BulletView> _bulletViewPool;
+    private ObjectPool<BulletView> _bulletViewPool = new();
 
     private BulletConveyorMover _mover;
     private BulletViewsHolder _bulletViewsHolder;
@@ -12,10 +12,9 @@ internal class BulletConveyor
     
     private BulletInfo _currentBulletInfo;
 
-    internal BulletConveyor(BulletViewFactory bulletViewFactory, ObjectPool<BulletView> bulletViewPool)
+    internal BulletConveyor(BulletViewFactory bulletViewFactory)
     {
         _bulletViewFactory = bulletViewFactory;
-        _bulletViewPool = bulletViewPool;
     }
 
     private void FillPoll()
