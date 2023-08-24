@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _type: 0
   _damage: 5
-  _view: {fileID: 1973022462246709697, guid: f9c436b284a99a9499bf2258b2bec5bf, type: 3}
+  _bulletBoxViewPrefab: {fileID: 1973022462246709697, guid: f9c436b284a99a9499bf2258b2bec5bf, type: 3}
+  _bulletView: {fileID: 7013616649952796137, guid: 746501a4e88e06e479fd03c690b0067d, type: 3}
