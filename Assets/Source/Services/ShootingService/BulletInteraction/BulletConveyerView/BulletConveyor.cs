@@ -18,7 +18,7 @@ internal class BulletConveyor
         _bulletViewPool = bulletViewPool;
     }
 
-    public void Init()
+    private void FillPoll()
     {    
         for (int i = 0; i < _bulletViewPoolCapacity; i++)
         {
@@ -29,6 +29,12 @@ internal class BulletConveyor
         _mover.Arrived += OnBulletArrived;
     }
 
+    public void SetNewBulletInfo(BulletInfo newBulletInfo)
+    {
+        _currentBulletInfo = newBulletInfo;
+        FillPoll();
+    }
+
     public void OnSpawnBullet()
     {
         if (_bulletViewPool.TryGetAvailableObject(out BulletView obj, _currentBulletInfo.BulletViewPrefab.Level) == false)
@@ -37,7 +43,7 @@ internal class BulletConveyor
             return;
         }
 
-        //Use RoutineRunner or async;
+        //Use RoutineRunner or async; 
         _mover.Move(obj);
     }
 

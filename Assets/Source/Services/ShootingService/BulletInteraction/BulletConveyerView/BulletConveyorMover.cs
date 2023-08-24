@@ -7,7 +7,7 @@ internal class BulletConveyorMover
 {
     private List<Transform> _bulletPathPoints;
 
-    private float _timeToGetAllPoints = 5f;
+    private float _bulletSpeed = 5f;
 
     public event Action<BulletView> Arrived;
 
@@ -17,14 +17,12 @@ internal class BulletConveyorMover
     }
 
     public IEnumerator Move(BulletView view)
-    {
-        var timePerPoint = _timeToGetAllPoints / _bulletPathPoints.Count;
-
+    {   
         foreach (var pathPoint in _bulletPathPoints)
         {
             while (Vector3.Distance(pathPoint.position, view.transform.position) > 0.1f)
             {
-                view.transform.position = Vector3.Lerp(view.transform.position, pathPoint.position, timePerPoint);
+                view.transform.position = Vector3.MoveTowards(view.transform.position, pathPoint.position, _bulletSpeed * Time.deltaTime);
                 yield return null;
             }
         }
