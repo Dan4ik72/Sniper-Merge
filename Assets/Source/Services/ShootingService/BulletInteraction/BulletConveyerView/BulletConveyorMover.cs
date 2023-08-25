@@ -1,6 +1,6 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 internal class BulletConveyorMover
@@ -16,14 +16,14 @@ internal class BulletConveyorMover
         _bulletPathPoints = bulletPathPoints;
     }
 
-    public IEnumerator Move(BulletView view)
+    public async UniTask Move(BulletView view)
     {   
         foreach (var pathPoint in _bulletPathPoints)
         {
             while (Vector3.Distance(pathPoint.position, view.transform.position) > 0.1f)
             {
                 view.transform.position = Vector3.MoveTowards(view.transform.position, pathPoint.position, _bulletSpeed * Time.deltaTime);
-                yield return null;
+                await UniTask.Yield();
             }
         }
 

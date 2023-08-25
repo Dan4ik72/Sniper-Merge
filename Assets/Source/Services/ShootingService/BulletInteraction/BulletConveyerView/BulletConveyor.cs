@@ -12,9 +12,11 @@ internal class BulletConveyor
     
     private BulletInfo _currentBulletInfo;
 
-    internal BulletConveyor(BulletViewFactory bulletViewFactory)
+    internal BulletConveyor(BulletViewFactory bulletViewFactory, BulletConveyorMover mover, BulletViewsHolder holder)
     {
         _bulletViewFactory = bulletViewFactory;
+        _mover = mover;
+        _bulletViewsHolder = holder;
     }
 
     private void FillPoll()
