@@ -1,8 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using VContainer;
-
 internal class EnemyStateMachine
 {
     private StateFactory _stateFactory;
@@ -30,9 +25,6 @@ internal class EnemyStateMachine
     public void Reset()
     {
         _currentState = _firstState;
-
-        if (_currentState != null)
-            _currentState.Enter();
     }
 
     private void Transit(State nextState)
@@ -40,8 +32,6 @@ internal class EnemyStateMachine
         if (_currentState == nextState)
             return;
 
-        _currentState.Exit();
         _currentState = nextState;
-        _currentState.Enter();
     }
 }

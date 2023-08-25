@@ -1,5 +1,7 @@
+using log4net.Core;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using VContainer;
 
@@ -33,7 +35,7 @@ internal class Aiming
 
     private void FindNearestTarget()
     {
-        if (_targets.Count == 0)
+        if (_targets.Count == 0 || _targets.FirstOrDefault(obj => obj.IsAlive) == null)
         {
             _currentTarget = null;
             return;

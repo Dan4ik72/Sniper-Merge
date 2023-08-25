@@ -20,9 +20,9 @@ public class GameBootstrapper : MonoBehaviour, IDisposable
         _mergeItemDragService.Init();
         _mergeService.Init();
         _bulletSpawnService.Init();
-        _endLevelService.Init(_enemiesService.Enemies, _shootingService.Gun);
         _shootingService.Init(_enemiesService.Enemies);
         _enemiesService.Init(_shootingService.Gun);
+        _endLevelService.Init(_enemiesService.Enemies, _shootingService.Gun);
     }
 
     private void Update()

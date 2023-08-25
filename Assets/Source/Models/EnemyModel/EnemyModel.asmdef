@@ -1,11 +1,8 @@
 {
-    "name": "EnemiesService",
+    "name": "EnemyModel",
     "rootNamespace": "",
     "references": [
-        "GUID:b0214a6008ed146ff8f122a6a9c2f6cc",
-        "GUID:dfe6de703460bdb4689d767cdac49912",
-        "GUID:e2ffea52f567cb848aaf81b30f3252c8",
-        "GUID:72600bc4e58237c4d9f90af6f6d0ed4d"
+        "GUID:b0214a6008ed146ff8f122a6a9c2f6cc"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

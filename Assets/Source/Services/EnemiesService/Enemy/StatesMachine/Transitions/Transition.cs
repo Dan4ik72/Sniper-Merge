@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 internal abstract class Transition
 {
     private State _targetState;
@@ -12,19 +8,7 @@ internal abstract class Transition
 
     internal Transition(State targetState) => _targetState = targetState;
 
-    public virtual void Update()
-    {
-        if (CanCountNumberNeedTransit() == false)
-            return;
-    }
-
-    public bool CanCountNumberNeedTransit()
-    {
-        if (_numberNeedTransit < 2)
-            return true;
-
-        return false;
-    }
+    public abstract void Update();
 
     public void CountNumberNeedTransit() => _numberNeedTransit++;
 

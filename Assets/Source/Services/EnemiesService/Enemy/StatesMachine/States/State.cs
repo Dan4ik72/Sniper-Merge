@@ -1,29 +1,10 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using UnityEngine;
 
 internal abstract class State
 {
     private IReadOnlyList<Transition> _transitions;
 
-    public bool IsActive { get; protected set; } = false;
-
     public abstract void Update(float delta);
-
-    public void Enter()
-    {
-        if (IsActive == false)
-            IsActive = true;
-
-        ResetTransitions();
-    }
-    
-    public void Exit()
-    {
-        if (IsActive == true)
-            IsActive = false;
-    }
 
     public State GetNextState()
     {
@@ -33,6 +14,7 @@ internal abstract class State
 
             if (transition.NeedTransit)
             {
+                ResetTransitions();
                 return transition.TargetState;
             }
         }

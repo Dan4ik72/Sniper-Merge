@@ -7,7 +7,7 @@ internal class Magazine
     [Inject]
     internal Magazine()
     {
-        _allBullets = 20;
+        _allBullets = 200;
     }
 
     public bool IsLoaded => _allBullets > 0;
@@ -20,7 +20,7 @@ internal class Magazine
     public int GiveBullet()
     {
         _allBullets--;
-        return 1;
+        return 10;
         //return damage;
     }
 }

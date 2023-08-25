@@ -44,8 +44,5 @@ internal class StateFactory
 
         foreach (var state in _states)
             state.AddTransitions(transitions);
-
-        foreach (var transition in transitions)
-            transition.ResetCountNumberNeedTransit();
     }
 }

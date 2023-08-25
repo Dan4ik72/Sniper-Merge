@@ -1,4 +1,4 @@
-internal enum EnemyType
+public enum EnemyType
 {
     Level1Enemy,
     Level2Enemy,

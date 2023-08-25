@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-internal class Enemy : MonoBehaviour, IDamageble, IPoolElement
+public class Enemy : MonoBehaviour, IDamageble, IPoolElement
 {
     private EnemyInfo _config;
     private int _currentHealth;

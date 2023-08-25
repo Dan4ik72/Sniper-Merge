@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 internal class DeathTransition : Transition
@@ -13,8 +11,6 @@ internal class DeathTransition : Transition
 
     public override void Update()
     {
-        base.Update();
-
         if (_enemy.IsAlive == false)
             CountNumberNeedTransit();
     }

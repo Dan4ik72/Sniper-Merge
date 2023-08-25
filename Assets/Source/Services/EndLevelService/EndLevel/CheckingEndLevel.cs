@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 using VContainer;
 
 internal class CheckingEndLevel
@@ -8,15 +9,15 @@ internal class CheckingEndLevel
     private IDamageble _gun;
 
     private int _totalEnemies;
-    private int _counterKilledEnemies = 0;
+    private int _counterKilledEnemies;
 
     public event Action Losed;
     public event Action Victory;
 
     [Inject]
-    public CheckingEndLevel(/*int totalEnemies*/)
+    public CheckingEndLevel(LevelInfo levelConfig)
     {
-        _totalEnemies = 5;
+        _totalEnemies = levelConfig.AllEnemies;
     }
 
     public void Init(IReadOnlyList<IDamageble> enemies, IDamageble gun)
@@ -24,6 +25,7 @@ internal class CheckingEndLevel
         _enemies = enemies;
         _gun = gun;
         _gun.Die += OnDieGun;
+        _counterKilledEnemies = 0;
 
         foreach (var enemy in _enemies)
             enemy.Die += OnDieEnemy;
@@ -47,8 +49,5 @@ internal class CheckingEndLevel
             Victory?.Invoke();
     }
 
-    private void OnDieGun(IDamageble damageble)
-    {
-        Losed?.Invoke();
-    }
+    private void OnDieGun(IDamageble damageble) => Losed?.Invoke();
 }

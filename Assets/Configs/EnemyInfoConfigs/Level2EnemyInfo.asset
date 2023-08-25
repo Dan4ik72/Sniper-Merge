@@ -9,13 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b7f3028fb5d7d84285956da03e880eb, type: 3}
+  m_Script: {fileID: 0}
   m_Name: Level2EnemyInfo
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: EnemiesService::EnemyInfo
   _type: 1
-  _damage: 4
+  _damage: 3
   _health: 20
-  _speedAttack: 1.6
-  _speed: 1.2
-  _reward: 10
+  _speedAttack: 1.7
+  _speed: 2
+  _reward: 20
   _view: {fileID: 2542714606042819532, guid: 7bedef08e1135a447b6f9a5826c15a15, type: 3}

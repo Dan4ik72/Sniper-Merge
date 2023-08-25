@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using VContainer;
 
@@ -8,24 +9,25 @@ internal class EnemiesSpawner
     private readonly float _spredSpawnPositionX = 10;
 
     private Transform _parent;
-    private ObjectPool<Enemy> _objectPool = new();
     private IReadOnlyList<EnemyInfo> _enemiesPrefabs;
+    private LevelInfo _levelConfig;
     private IDamageble _target;
-    private int _capacity;
-    private float _delayStart;
-    private float _delayBetweenSpawn;
     private float _elapsedTime = 0;
+    private int _counterSpawn = 0;
 
+    private ObjectPool<Enemy> _objectPool = new();
     private List<Enemy> _enemies = new();
+    private float _delayStart;
+
+    private bool _isFinished => _counterSpawn == _enemies.Count;
 
     [Inject]
-    public EnemiesSpawner(Transform parent, IReadOnlyList<EnemyInfo> enemiesPrefabs, int capacity, int delayStart, int delayBetweenSpawn)
+    public EnemiesSpawner(Transform parent, IReadOnlyList<EnemyInfo> enemiesPrefabs, LevelInfo levelConfig)
     {
         _parent = parent;
         _enemiesPrefabs = enemiesPrefabs;
-        _capacity = capacity;
-        _delayStart = delayStart;
-        _delayBetweenSpawn = delayBetweenSpawn;
+        _levelConfig = levelConfig;
+        _delayStart = _levelConfig.DelayBeforeStartSpawn;
     }
 
     public IReadOnlyList<IDamageble> Enemies => _enemies;
@@ -33,7 +35,7 @@ internal class EnemiesSpawner
     public void Init(IDamageble target)
     {
         _target = target;
-        Spawn(_parent, _capacity);
+        CreatePool();
     }
 
     public void Update(float delta)
@@ -45,10 +47,10 @@ internal class EnemiesSpawner
 
         _delayStart = 0;
 
-        if (_elapsedTime < _delayBetweenSpawn)
+        if (_elapsedTime < _levelConfig.DelayBetweenSpawn)
             return;
 
-        if (_objectPool.TryGetAvailableObject(out Enemy enemy))
+        if (_isFinished == false && _target.IsAlive && _objectPool.TryGetAvailableObject(out Enemy enemy, _enemies[_counterSpawn++].Level))
         {
             _elapsedTime = 0;
             float spawnPositionX = Random.Range(_spredSpawnPositionX, -_spredSpawnPositionX);
@@ -66,13 +68,15 @@ internal class EnemiesSpawner
         _enemies.Clear();
     }
 
-    private void Spawn(Transform parent, int capacity)
+    private void CreatePool()
     {
-        for (int i = 0; i < _enemiesPrefabs.Count; i++)
+        for (int i = 0; i < _levelConfig.EnemyTypes.Count; i++)
         {
-            for (int j = 0; j < capacity; j++)
+            var _currentPrefab = _enemiesPrefabs.FirstOrDefault(obj => obj.Type == _levelConfig.EnemyTypes[i]);
+
+            for (int j = 0; j < _levelConfig.AmountEnemy[i]; j++)
             {
-                var newEnemy = Object.Instantiate(_enemiesPrefabs[i].View, Vector3.zero, Quaternion.identity, parent);
+                var newEnemy = Object.Instantiate(_currentPrefab.View, Vector3.zero, Quaternion.identity, _parent);
                 newEnemy.Die += OnDie;
                 newEnemy.Init(_enemiesPrefabs[i], _target);
                 _enemies.Add(newEnemy);

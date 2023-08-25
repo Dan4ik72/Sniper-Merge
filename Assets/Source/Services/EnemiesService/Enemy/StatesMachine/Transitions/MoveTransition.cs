@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 internal class MoveTransition : Transition
@@ -15,8 +13,6 @@ internal class MoveTransition : Transition
 
     public override void Update()
     {
-        base.Update();
-
         if (_enemy.IsAlive && _target.IsAlive && Vector3.Distance(_enemy.transform.position, _target.Position) > 0.1f)
             CountNumberNeedTransit();
     }
