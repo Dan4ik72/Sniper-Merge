@@ -1,10 +1,12 @@
 using UnityEngine;
+using VContainer;
 
 internal class BulletViewFactory
 {
     private Transform _spawnPoint;
 
-    private BulletViewFactory(Transform spawnPoint)
+    [Inject]
+    internal BulletViewFactory(Transform spawnPoint)
     {
         _spawnPoint = spawnPoint;
     }

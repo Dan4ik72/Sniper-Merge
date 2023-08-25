@@ -1,4 +1,5 @@
 using UnityEngine;
+using VContainer;
 
 internal class BulletConveyor
 {
@@ -11,12 +12,59 @@ internal class BulletConveyor
     private int _bulletViewPoolCapacity = 30;
     
     private BulletInfo _currentBulletInfo;
+    private Transform _bulletViewSpawnPosition;
 
-    internal BulletConveyor(BulletViewFactory bulletViewFactory, BulletConveyorMover mover, BulletViewsHolder holder)
+    [Inject]
+    internal BulletConveyor(BulletViewFactory bulletViewFactory, BulletConveyorMover mover, BulletViewsHolder holder, Transform bulletViewSpawnPosition)
     {
         _bulletViewFactory = bulletViewFactory;
         _mover = mover;
         _bulletViewsHolder = holder;
+        _bulletViewSpawnPosition = bulletViewSpawnPosition;
+    }
+
+    public void Init()
+    {
+        _mover.Arrived += OnBulletArrived;
+    }
+
+    public void SetNewBulletInfo(BulletInfo newBulletInfo)
+    {
+        _currentBulletInfo = newBulletInfo;
+        FillPoll();
+    }
+
+    public void SpawnBulletView(BulletInfo bulletInfo)
+    {
+        if(_currentBulletInfo == null)
+            return;
+
+        if (_bulletViewPool.TryGetAvailableObject(out BulletView obj, _currentBulletInfo.BulletViewPrefab.Level) == false)
+        {
+            Debug.LogWarning("There is no available bulletView in the object pool");
+            return;
+        }
+
+        obj.transform.position = _bulletViewSpawnPosition.transform.position;
+        obj.SetAlive(true);
+        _mover.Move(obj);
+    }
+
+    private void OnBulletArrived(BulletView view)
+    {
+        _bulletViewsHolder.PlaceViewToGrid(view);
+    }
+
+    public void OnBulletUsed(BulletInfo bulletInfo)
+    {
+        var removing = _bulletViewsHolder.RemoveView();
+        removing.SetAlive(false);
+        _bulletViewPool.ReturnToPool(removing);
+    }
+
+    public void Disable()
+    {
+        _mover.Arrived -= OnBulletArrived;
     }
 
     private void FillPoll()
@@ -28,39 +76,5 @@ internal class BulletConveyor
         }
 
         _mover.Arrived += OnBulletArrived;
-    }
-
-    public void SetNewBulletInfo(BulletInfo newBulletInfo)
-    {
-        _currentBulletInfo = newBulletInfo;
-        FillPoll();
-    }
-
-    public void OnSpawnBullet()
-    {
-        if (_bulletViewPool.TryGetAvailableObject(out BulletView obj, _currentBulletInfo.BulletViewPrefab.Level) == false)
-        {
-            Debug.LogWarning("There is no available bulletView in the object pool");
-            return;
-        }
-
-        //Use RoutineRunner or async; 
-        _mover.Move(obj);
-    }
-
-    public void OnBulletArrived(BulletView view)
-    {
-        _bulletViewsHolder.PlaceViewToGrid(view);
-    }
-
-    public void OnBulletUsed()
-    {
-        var removing = _bulletViewsHolder.RemoveView();
-        _bulletViewPool.ReturnToPool(removing);
-    }
-
-    public void Disable()
-    {
-        _mover.Arrived -= OnBulletArrived;
     }
 }
