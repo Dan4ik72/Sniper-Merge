@@ -8,7 +8,7 @@ public class GameLifetimeScope : LifetimeScope
     [SerializeField] private GameBootstrapper _gameBootstrapper;
 
     [SerializeField, Space] private List<Installer> _installers;
-
+    
     protected override void Configure(IContainerBuilder builder)
     {
         foreach (var installer in _installers)

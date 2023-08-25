@@ -6,8 +6,6 @@ internal class MergeHandler : IMergeHandler
     private BulletInfoFactory _factory;
     private MergeGrid _grid;
 
-    private float _minDistanceToAddMergeItem = 1.7f;
-
     [Inject]
     internal MergeHandler(BulletInfoFactory factory, MergeGrid grid)
     {

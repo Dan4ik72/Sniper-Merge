@@ -1,6 +1,4 @@
 using System;
-using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
 using UnityEngine;
 using VContainer;
 
@@ -24,7 +22,7 @@ public class GameBootstrapper : MonoBehaviour, IDisposable
         _shootingService.Init(_enemiesService.Enemies);
         _enemiesService.Init(_shootingService.Gun);
     }
-
+    
     private void Update()
     {
         _mergeItemDragService.Update();
