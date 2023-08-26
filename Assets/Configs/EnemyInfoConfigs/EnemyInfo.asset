@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b7f3028fb5d7d84285956da03e880eb, type: 3}
-  m_Name: Level3EnemyInfo
+  m_Name: EnemyInfo
   m_EditorClassIdentifier: 
-  _type: 2
-  _damage: 4
-  _health: 30
-  _speed: 3
-  _speedAttack: 2
-  _reward: 30
-  _view: {fileID: 2542714606042819532, guid: 12e94878d720ab644b6c52f475ba6b4c, type: 3}
+  _type: 0
+  _damage: 0
+  _health: 0
+  _speedAttack: 0
+  _speed: 0
+  _reward: 0
+  _view: {fileID: 0}
