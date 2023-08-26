@@ -11,11 +11,5 @@ public class BulletInfo : ItemInfo
     public override ItemView BulletBoxViewPrefab => _bulletBoxViewPrefab;
     public override MergeItemType Type => _type;
     public int Damage => _damage;
-    public BulletView
-
-
-
-        BulletViewPrefab => _bulletViewPrefab;
-
-
+    public BulletView BulletViewPrefab => _bulletViewPrefab;
 }
