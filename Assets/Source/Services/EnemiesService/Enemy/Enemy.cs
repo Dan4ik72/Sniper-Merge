@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour, IDamageble, IPoolElement
+internal class Enemy : MonoBehaviour, IDamageble, IPoolElement
 {
     private EnemyInfo _config;
     private int _currentHealth;
@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour, IDamageble, IPoolElement
 
     public event Action<IDamageble> Die;
 
-    public void Init(EnemyInfo config, IDamageble target)
+    internal void Init(EnemyInfo config, IDamageble target)
     {
         Level = (int)config.Type;
         _config = config;
@@ -24,7 +24,7 @@ public class Enemy : MonoBehaviour, IDamageble, IPoolElement
     public int Level { get; private set; }
     public bool IsAlive => _currentHealth > 0;
     public int Health => _currentHealth;
-    public EnemyInfo Config => _config;
+    internal EnemyInfo Config => _config;
     public Vector3 Position => transform.position;
 
     public void Update() => _stateMachine.Update(Time.deltaTime);
