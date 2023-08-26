@@ -1,26 +1,26 @@
+using System;
+using System.Collections.Generic;
 using VContainer;
 
 internal class Magazine
 {
-    private int _allBullets;
+    private Queue<BulletInfo> _bulletsInMagazine = new();
+    
+    public bool IsLoaded => _bulletsInMagazine.Count > 0;
 
-    [Inject]
-    internal Magazine()
+    public event Action<BulletInfo> BulletSpawned;
+
+    public void ReceiveBullet(BulletInfo bulletInfo)
     {
-        _allBullets = 200;
-    }
-
-    public bool IsLoaded => _allBullets > 0;
-
-    public void ReceiveBullet(/*BulletType bulletType*/)
-    {
-        _allBullets++;
+        _bulletsInMagazine.Enqueue(bulletInfo);
     }
 
     public int GiveBullet()
     {
-        _allBullets--;
-        return 10;
-        //return damage;
+        var bullet = _bulletsInMagazine.Dequeue();
+
+        BulletSpawned?.Invoke(bullet);
+
+        return bullet.Damage;
     }
 }

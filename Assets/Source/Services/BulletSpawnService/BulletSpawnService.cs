@@ -25,7 +25,7 @@ public class BulletSpawnService
     public void SpawnBullet(MergeItemType bulletType, string name)
     {
         var createdBullet = _bulletInfoFactory.CreateByType(bulletType, Vector3.zero, _bulletParent);
-        _mergeService.AddMergeItemToGrid(createdBullet);
+        _mergeService.TryPlaceMergeItemToAvailableCell(createdBullet);
         createdBullet.View.name = name;
     }
 }

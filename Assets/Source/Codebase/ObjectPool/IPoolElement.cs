@@ -6,5 +6,5 @@ public interface IPoolElement
 
     public bool IsAlive { get; }
 
-    public Transform GetTransform();   
+    public Transform GetTransform();
 }

@@ -1,44 +1,40 @@
 using VContainer;
+using System;
 using UnityEngine;
 
 internal class BulletHolder
 {
     private ICell _bulletPlace;
-    private Magazine _magazine;
-
-    private MergeService _mergeSerivce;
-
+    
     private MergeItem _currentBullet;
-    private float _minDistanceToCell = 1.7f;
+
+    public event Action<BulletInfo> OnNewBulletPlaced;
+    public event Action<BulletInfo> BulletRemoved;
 
     [Inject]
-    internal BulletHolder(ICell bulletPlace, Magazine magazine, MergeService mergeService)
+    internal BulletHolder(ICell bulletPlace)
     {
         _bulletPlace = bulletPlace;
-        _magazine = magazine;
-        _mergeSerivce = mergeService;
     }
 
-    public void OnBulletReleased(MergeItem bullet)
-    {
-        if(Vector3.Distance(bullet.View.transform.position, _bulletPlace.GetTransform().position) > _minDistanceToCell)
-            return;
+    public Transform BulletPlace => _bulletPlace.GetTransform();
 
+    public bool TryPlaceBullet(MergeItem bullet)
+    {
         if (_currentBullet != null)
-        {
-            _mergeSerivce.AddMergeItemToGrid(bullet);
-            return;
-        }
+            return false;
 
         _currentBullet = bullet;
-        _currentBullet.View.transform.position = _bulletPlace.GetTransform().position;
+        bullet.View.transform.position = _bulletPlace.GetTransform().position;
+
+        OnNewBulletPlaced?.Invoke((BulletInfo)bullet.Info);
+
+        return true;
     }
 
-    public void OnBulletGrabbed(MergeItem grabbedItem)
+    public void ClearBulletPlace()
     {
-        if(grabbedItem != _currentBullet)
-            return;
-
         _currentBullet = null;
-    }
+        BulletRemoved?.Invoke(null);
+    } 
 }

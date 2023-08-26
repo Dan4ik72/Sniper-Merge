@@ -8,12 +8,12 @@ public class ObjectPool<T> where T : IPoolElement
 
     private Vector3 _disabledPosition = new Vector3(0, -100, 0);
 
-    public void AddObject(T prefab, bool isActiveByDefault = false)
+    public void AddObject(T obj, bool isActiveByDefault = false)
     {
         if (isActiveByDefault == false)
-            prefab.GetTransform().position = _disabledPosition;
+            obj.GetTransform().position = _disabledPosition;
 
-        _objects.Add(prefab);
+        _objects.Add(obj);
     }
 
     public bool TryGetAvailableObject(out T available, int level = 0)

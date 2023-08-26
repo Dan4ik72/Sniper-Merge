@@ -1,22 +1,22 @@
-using System;
 using UnityEngine;
+using VContainer;
 
 public class MergeItemDragService
 {
     private IObjectDragHandler _dragHandler;
 
-    //private MergeService _mergeService;
-    //private ShootingService _shootingService;
+    private MergeService _mergeService;
+    private ShootingService _shootingService;
 
     private InputService _inputService;
 
-    public event Action<MergeItem> ObjectGrabbed;
-    public event Action<MergeItem> ObjectReleased;
-
-    internal MergeItemDragService(IObjectDragHandler objectDragHandler, InputService inputService)
+    [Inject]
+    internal MergeItemDragService(IObjectDragHandler objectDragHandler, InputService inputService, MergeService mergeService, ShootingService shootingService)
     {
         _dragHandler = objectDragHandler;
         _inputService = inputService;
+        _mergeService = mergeService;
+        _shootingService = shootingService;
     }
 
     public void Init()
@@ -28,10 +28,7 @@ public class MergeItemDragService
         _dragHandler.ItemReleased += OnObjectReleased;
     }
 
-    public void Update()
-    {
-        _dragHandler.DragItem();
-    }
+    public void Update() => _dragHandler.DragItem();
 
     public void Disable()
     {
@@ -44,18 +41,35 @@ public class MergeItemDragService
 
     private void OnObjectGrabbed(MergeItem mergeItem)
     {
-        ObjectGrabbed?.Invoke(mergeItem);
+        if (Vector3.Distance(_mergeService.GetClosestMergeGridCell(mergeItem.View.transform.position).position, 
+                mergeItem.View.transform.position ) <= 1.7f)
+        {
+            _mergeService.ClearGridCell(mergeItem);
+            return;
+        }
 
-        //if (Vector3.Distance(_mergeService.GetClosestMergeGridCell(mergeItem.View.transform.position, mergeItem.View.transform.position) <= 1f)
-        //{
-        //    _mergeService.ClearGridCell(mergeItem);
-        //    return;
-        //}
-        
+        if (Vector3.Distance(_shootingService.BulletHolderPosition, mergeItem.View.transform.position) <= 1.7f)
+        {
+            _shootingService.ClearBulletPlace();
+            return;
+        }
     }
 
-    private void OnObjectReleased(MergeItem mergeObject)
+    private void OnObjectReleased(MergeItem mergeItem)
     {
-        ObjectReleased?.Invoke(mergeObject);
+        if (Vector3.Distance(_mergeService.GetClosestMergeGridCell(mergeItem.View.transform.position).position,
+                mergeItem.View.transform.position) <= 1.7f)
+        {
+            _mergeService.OnItemReleasedOnGrid(mergeItem);
+            return;
+        }
+        
+        if (Vector3.Distance(_shootingService.BulletHolderPosition, mergeItem.View.transform.position) <= 1.7f)
+        {
+            if (_shootingService.TryPlaceBulletToBulletHolder(mergeItem))
+                return;
+        }
+
+        _mergeService.TryPlaceMergeItemToAvailableCell(mergeItem);
     }
 }

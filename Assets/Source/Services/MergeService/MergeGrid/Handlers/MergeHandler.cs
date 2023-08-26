@@ -6,8 +6,6 @@ internal class MergeHandler : IMergeHandler
     private BulletInfoFactory _factory;
     private MergeGrid _grid;
 
-    private float _minDistanceToAddMergeItem = 1.7f;
-
     [Inject]
     internal MergeHandler(BulletInfoFactory factory, MergeGrid grid)
     {
@@ -19,9 +17,6 @@ internal class MergeHandler : IMergeHandler
     {
         var cells = _grid.GetOrderedCellsByPosition(mergeItem.View.transform.position);
 
-        if (Vector3.Distance(cells[0].transform.position, mergeItem.View.transform.position) > _minDistanceToAddMergeItem)
-            return;
-        
         foreach (var cell in cells)
         {
             if (_grid.MergeCells[cell] == null)
@@ -38,7 +33,7 @@ internal class MergeHandler : IMergeHandler
         }
     }
 
-    private bool TryMergeItem(MergeItem item1, MergeItem item2, out MergeItem newItem)
+    public bool TryMergeItem(MergeItem item1, MergeItem item2, out MergeItem newItem)
     {
         newItem = null;
 
@@ -56,7 +51,7 @@ internal class MergeHandler : IMergeHandler
         return true;
     }
 
-    private void PlaceMergeItemIntoCell(MergeItem mergeItem, Transform cell)
+    public void PlaceMergeItemIntoCell(MergeItem mergeItem, Transform cell)
     {
         mergeItem.View.transform.position = cell.position;
 

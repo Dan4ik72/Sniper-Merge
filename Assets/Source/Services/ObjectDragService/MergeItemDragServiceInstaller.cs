@@ -1,9 +1,8 @@
-using System.ComponentModel;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 
-public class ObjectDragServiceInstaller : Installer
+public class MergeItemDragServiceInstaller : Installer
 {
     protected override void Configure(IContainerBuilder builder)
     {

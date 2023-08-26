@@ -8,8 +8,6 @@ internal abstract class Transition
 
     internal Transition(State targetState) => _targetState = targetState;
 
-    public abstract void Update();
-
     public void CountNumberNeedTransit() => _numberNeedTransit++;
 
     public void ResetCountNumberNeedTransit() => _numberNeedTransit = 0;
