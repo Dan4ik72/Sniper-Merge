@@ -643,6 +643,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2037856337}
     - target: {fileID: 8288352091252002511, guid: 53c49365be676384e8b4c6423212111e, type: 3}
+      propertyPath: _levelConfig
+      value: 
+      objectReference: {fileID: 11400000, guid: 28da910b217e2e94c91a57e3216e1b68, type: 2}
+    - target: {fileID: 8288352091252002511, guid: 53c49365be676384e8b4c6423212111e, type: 3}
       propertyPath: _prefabs.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -656,6 +660,22 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 8596f7c48aa784d4caac1fd27afb4e0d, type: 2}
     - target: {fileID: 8288352091252002511, guid: 53c49365be676384e8b4c6423212111e, type: 3}
       propertyPath: _prefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: b373d4f10856e8c41ad21d22efd943c9, type: 2}
+    - target: {fileID: 8288352091252002511, guid: 53c49365be676384e8b4c6423212111e, type: 3}
+      propertyPath: _enemiesPrefabs.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8288352091252002511, guid: 53c49365be676384e8b4c6423212111e, type: 3}
+      propertyPath: _enemiesPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 0c38dc8abedc86448a6ece729eed60bc, type: 2}
+    - target: {fileID: 8288352091252002511, guid: 53c49365be676384e8b4c6423212111e, type: 3}
+      propertyPath: _enemiesPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: f52248330e6d0d64bb7fb077f9d5a7cd, type: 2}
+    - target: {fileID: 8288352091252002511, guid: 53c49365be676384e8b4c6423212111e, type: 3}
+      propertyPath: _enemiesPrefabs.Array.data[2]
       value: 
       objectReference: {fileID: 11400000, guid: b373d4f10856e8c41ad21d22efd943c9, type: 2}
     - target: {fileID: 8833528257969299334, guid: 53c49365be676384e8b4c6423212111e, type: 3}
@@ -843,7 +863,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2877492778362577592, guid: 5dfd1d5e0440e6144abcd5579f0601dd, type: 3}
       propertyPath: m_Name
-      value: InspectorCompletedLevelServiceInstaller
+      value: EndLevelServiceInstaller
       objectReference: {fileID: 0}
     - target: {fileID: 4564603731797182467, guid: 5dfd1d5e0440e6144abcd5579f0601dd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -885,6 +905,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8106552011323060343, guid: 5dfd1d5e0440e6144abcd5579f0601dd, type: 3}
+      propertyPath: _levelConfig
+      value: 
+      objectReference: {fileID: 11400000, guid: 28da910b217e2e94c91a57e3216e1b68, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

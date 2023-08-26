@@ -16,6 +16,6 @@ MonoBehaviour:
   _damage: 3
   _health: 20
   _speedAttack: 1.7
-  _speed: 2
+  _speed: 2.5
   _reward: 20
   _view: {fileID: 2542714606042819532, guid: 7bedef08e1135a447b6f9a5826c15a15, type: 3}

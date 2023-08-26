@@ -8,7 +8,7 @@ internal class BulletSpawner
 
     private BulletInfo _currentSpawningBullet;
 
-    private float _spawnTime = 2f;
+    private float _spawnTime = 1.1f;
     private float _timer;
 
     public event Action<BulletInfo> BulletSpawned;

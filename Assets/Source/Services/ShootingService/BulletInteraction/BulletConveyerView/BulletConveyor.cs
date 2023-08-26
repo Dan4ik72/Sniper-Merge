@@ -58,6 +58,10 @@ internal class BulletConveyor
     public void OnBulletUsed(BulletInfo bulletInfo)
     {
         var removing = _bulletViewsHolder.RemoveView();
+
+        if (removing == null)
+            return;
+
         removing.SetAlive(false);
         _bulletViewPool.ReturnToPool(removing);
     }
