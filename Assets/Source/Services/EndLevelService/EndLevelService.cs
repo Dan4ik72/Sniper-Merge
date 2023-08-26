@@ -1,3 +1,10 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using VContainer;
+
+public class EndLevelService
+{
     private CheckingEndLevel _checkingEndLevel;
 
     [Inject]
