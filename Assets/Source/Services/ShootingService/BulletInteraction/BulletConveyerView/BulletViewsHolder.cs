@@ -23,6 +23,10 @@ internal class BulletViewsHolder
     public BulletView RemoveView()
     {
         var last = _views[^1];
+
+        if (last == null)
+            return null;
+
         _views.Remove(last);
         return last;
     }
