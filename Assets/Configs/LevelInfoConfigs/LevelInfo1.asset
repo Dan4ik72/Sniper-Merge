@@ -15,4 +15,4 @@ MonoBehaviour:
   _enemyTypes: 000000000100000002000000
   _amountEnemy: 050000000a00000003000000
   _delayBeforeStartSpawn: 3
-  _delayBetweenSpawn: 2
+  _delayBetweenSpawn: 7
