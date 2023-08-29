@@ -25,6 +25,9 @@ internal class BulletConveyorMover
         {
             while (Vector3.Distance(pathPoint.position, view.transform.position) > 0.1f)
             {
+                if(view.IsAlive == false)
+                    return;
+
                 view.transform.position = Vector3.MoveTowards(view.transform.position, pathPoint.position, _bulletSpeed * Time.deltaTime);
                 await UniTask.Yield();
             }

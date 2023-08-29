@@ -12,6 +12,8 @@ internal class BulletConveyor
     private int _bulletViewPoolCapacity = 30;
     
     private BulletInfo _currentBulletInfo;
+    private BulletInfo _previousBulletInfo;
+
     private Transform _bulletViewSpawnPosition;
 
     [Inject]
@@ -30,6 +32,9 @@ internal class BulletConveyor
 
     public void SetNewBulletInfo(BulletInfo newBulletInfo)
     {
+        if (_currentBulletInfo != null)
+            _previousBulletInfo = _currentBulletInfo;
+
         _currentBulletInfo = newBulletInfo;
         FillPoll();
     }
@@ -45,8 +50,8 @@ internal class BulletConveyor
             return;
         }
 
-        obj.transform.position = _bulletViewSpawnPosition.transform.position;
         obj.SetAlive(true);
+        obj.transform.position = _bulletViewSpawnPosition.transform.position;
         _mover.Move(obj);
     }
 
@@ -62,8 +67,8 @@ internal class BulletConveyor
         if (removing == null)
             return;
 
-        removing.SetAlive(false);
         _bulletViewPool.ReturnToPool(removing);
+        removing.SetAlive(false);
     }
 
     public void Disable()
@@ -73,12 +78,13 @@ internal class BulletConveyor
 
     private void FillPoll()
     {    
+        if(_previousBulletInfo != null && _currentBulletInfo.Type == _previousBulletInfo.Type)
+            return;
+
         for (int i = 0; i < _bulletViewPoolCapacity; i++)
         {
             var created = _bulletViewFactory.CreateBulletView(_currentBulletInfo);
             _bulletViewPool.AddObject(created, false);
         }
-
-        _mover.Arrived += OnBulletArrived;
     }
 }

@@ -42,11 +42,6 @@ internal class EnemiesSpawner
     {
         _elapsedTime += delta;
         
-        if (_elapsedTime < _delayStart)
-            return;
-
-        _delayStart = 0;
-
         if (_elapsedTime < _levelConfig.DelayBetweenSpawn)
             return;
 

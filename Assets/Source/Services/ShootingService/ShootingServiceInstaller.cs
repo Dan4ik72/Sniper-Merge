@@ -51,6 +51,7 @@ public class ShootingServiceInstaller : Installer
                 container.Resolve<BulletViewsHolder>(), _bulletViewParent);
 
         }, Lifetime.Scoped);
+
         builder.Register(_ => new BulletConveyorMover(_bulletViewPathPoints), Lifetime.Scoped);
         builder.Register<BulletViewsHolder>(Lifetime.Scoped);
         builder.Register<BulletSpawner>(Lifetime.Scoped);
