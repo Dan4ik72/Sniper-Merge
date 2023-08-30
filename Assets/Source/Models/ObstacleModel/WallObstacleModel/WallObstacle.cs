@@ -13,11 +13,13 @@ public class WallObstacle : IObstacle
 
     public void Init()
     {
-        Debug.Log((_view != null) + " " + (_model != null));
+        _view.TriggerEntered += _model.OnTriggerEntered;
+        _view.TriggerExited += _model.OnTriggerExited;
     }
     
     public void Dispose()
     {
-        //unsubs on some events
+        _view.TriggerEntered -= _model.OnTriggerEntered;
+        _view.TriggerExited -= _model.OnTriggerExited;
     }
 }

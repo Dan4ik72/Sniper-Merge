@@ -1,11 +1,10 @@
 using System.Collections.Generic;
 using VContainer;
-using UnityEngine;
 
 public class ObstacleSpawnService 
 {
     private WallObstacleFactory _wallObstacleFactory;
-
+    
     private List<IObstacle> _obstacles = new();
 
     //temporary code (replace with DataStorageService)
