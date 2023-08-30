@@ -44,7 +44,7 @@ internal class EnemiesSpawner
         
         if (_elapsedTime < _levelConfig.DelayBetweenSpawn)
             return;
-
+        
         if (_isFinished == false && _target.IsAlive && _objectPool.TryGetAvailableObject(out Enemy enemy, _enemies[_counterSpawn++].Level))
         {
             _elapsedTime = 0;
