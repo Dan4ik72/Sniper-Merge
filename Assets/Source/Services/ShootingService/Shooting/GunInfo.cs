@@ -8,8 +8,10 @@ internal class GunInfo : ScriptableObject
     [SerializeField] private int _health;
     [SerializeField] private float _speedCooldown;
     [SerializeField] private float _speedRotate;
+    [SerializeField] private float _range;
 
     public int Health => _health;
     public float SpeedCooldown => _speedCooldown;
     public float SpeedRotate => _speedRotate;
+    public float Range => _range;
 }
