@@ -16,7 +16,6 @@ public class GameBootstrapper : MonoBehaviour, IDisposable
 
     private void Start()
     {
-        _dataStorageService.Init();
         _inputService.Init();
         _mergeItemDragService.Init();
         _mergeService.Init();
@@ -24,32 +23,6 @@ public class GameBootstrapper : MonoBehaviour, IDisposable
         _shootingService.Init(_enemiesService.Enemies);
         _enemiesService.Init(_shootingService.Gun);
         _endLevelService.Init(_enemiesService.Enemies, _shootingService.Gun);
-
-        DataStorageServiceTest();
-    }
-
-    private void DataStorageServiceTest()
-    {
-        var testData = new TestData
-        {
-            Cum = "Cum",
-            DataString = "String",
-            DataInt = 1
-        };
-
-        _dataStorageService.SaveData<TestData>(testData);
-
-        var obj = _dataStorageService.Data[typeof(TestData)];
-
-        Debug.Log(obj);
-        
-        //Debug.Log(obj.Equals(testData));
-
-        _dataStorageService.TryGetData<TestData>(out object data);
-
-        var test2 = (TestData)data;
-
-        Debug.Log(test2.DataString + " " + test2.DataInt + " " + test2.Cum);
     }
 
     private void Update()
@@ -67,11 +40,4 @@ public class GameBootstrapper : MonoBehaviour, IDisposable
         _shootingService.Disable();
         _inputService.Disable();
     }
-}
-
-public class TestData : IData
-{
-    public string DataString;
-    public int DataInt;
-    public string Cum;
 }
