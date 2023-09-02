@@ -35,7 +35,7 @@ internal class Aiming
 
     private void FindNearestTarget()
     {
-        if (_targets.Count == 0 || _targets.FirstOrDefault(obj => obj.IsAlive) == null)
+        if (_targets.Count == 0 && _targets.FirstOrDefault(obj => obj.IsAlive) == null)
         {
             _currentTarget = null;
             return;
@@ -43,14 +43,14 @@ internal class Aiming
 
         float minMagnitude = (_targets[0].Position - _gun.position).magnitude;
 
-        if (_targets[0].IsAlive)
+        if (_targets[0].IsAlive && minMagnitude < _config.Range)
             _currentTarget = _targets[0];
 
         foreach (var target in _targets)
         {
             float currentMagnitude = (target.Position - _gun.position).magnitude;
 
-            if (target.IsAlive && minMagnitude > currentMagnitude)
+            if (target.IsAlive && minMagnitude > currentMagnitude && currentMagnitude < _config.Range)
             {
                 minMagnitude = currentMagnitude;
                 _currentTarget = target;

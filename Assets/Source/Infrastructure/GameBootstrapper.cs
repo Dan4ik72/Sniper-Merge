@@ -10,8 +10,9 @@ public class GameBootstrapper : MonoBehaviour, IDisposable
     [Inject] private InputService _inputService;
     [Inject] private MergeItemDragService _mergeItemDragService;
     [Inject] private BulletSpawnService _bulletSpawnService;
-    [Inject] private EndLevelService _endLevelService;
+    [Inject] private EndLevelService _endLevelService;   
     [Inject] private ObstacleSpawnService _obstacleSpawnService;
+    [Inject] private DataStorageService _dataStorageService;
 
     private void Start()
     {
@@ -23,8 +24,8 @@ public class GameBootstrapper : MonoBehaviour, IDisposable
         _enemiesService.Init(_shootingService.Gun);
         _endLevelService.Init(_enemiesService.Enemies, _shootingService.Gun);
         _obstacleSpawnService.Init();
+		
     }
-    
     private void Update()
     {
         _mergeItemDragService.Update();
