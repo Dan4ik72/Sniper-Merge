@@ -302,10 +302,7 @@ MonoBehaviour:
     TypeName: 
   autoRun: 0
   autoInjectGameObjects: []
-  <Parent>k__BackingField: {fileID: 0}
-  <IsRoot>k__BackingField: 0
   _wallBObstacleConfig: {fileID: 11400000, guid: cd92c78e13cb0aa46889b54532487833, type: 2}
-  _spikeObstacleConfig: {fileID: 0}
 --- !u!1001 &614126284
 PrefabInstance:
   m_ObjectHideFlags: 0
