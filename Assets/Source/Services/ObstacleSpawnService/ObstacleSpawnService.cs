@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Codice.Client.BaseCommands.BranchExplorer;
 using VContainer;
 
 public class ObstacleSpawnService 
@@ -15,11 +14,12 @@ public class ObstacleSpawnService
 
     public void Init()
     {
-        foreach(var factory in _factories)
-            
-        
-        foreach (var obstacle in _obstacles)
-            obstacle.Init();
+        foreach (var factory in _factories)
+        {
+            var created = factory.Create();
+            created.Init();
+            _obstacles.Add(created);
+        }
     }
 
     public void Disable()
