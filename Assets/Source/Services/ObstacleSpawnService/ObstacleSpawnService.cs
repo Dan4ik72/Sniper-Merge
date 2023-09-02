@@ -1,21 +1,22 @@
 using System.Collections.Generic;
+using Codice.Client.BaseCommands.BranchExplorer;
 using VContainer;
 
 public class ObstacleSpawnService 
-{
-    private WallObstacleFactory _wallObstacleFactory;
-    
+{   
     private List<IObstacle> _obstacles = new();
-    private List<IObstacleFactory> _factories = new();
+    private IObstacleFactory[] _factories;
 
     [Inject] 
-    internal ObstacleSpawnService()
+    internal ObstacleSpawnService(params IObstacleFactory[] factories)
     {
+        _factories = factories;
     }
 
     public void Init()
     {
-        _obstacles.Add(_wallObstacleFactory.Create());
+        foreach(var factory in _factories)
+            
         
         foreach (var obstacle in _obstacles)
             obstacle.Init();
