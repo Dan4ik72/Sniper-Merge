@@ -1,13 +1,15 @@
 ﻿using UnityEngine;
 
 [CreateAssetMenu(fileName = "ObstacleInfo", menuName = "Obstacle Info/Create obstacle info")]
-public class WallObstacleInfo : ScriptableObject
+public class WallObstacleConfig : ScriptableObject
 {
-    [SerializeField] private CollisionDetectionView _prefab;
+    [SerializeField] private int _durability;
+    [SerializeField] private DamagableView _prefab;
     [SerializeField] private Vector3 _position;
     [SerializeField] private Quaternion _rotation;
 
-    public CollisionDetectionView Prefab => _prefab;
+    public int Durability => _durability;
+    public DamagableView Prefab => _prefab;
     public Vector3 Position => _position;
     public Quaternion Rotation => _rotation;
 }

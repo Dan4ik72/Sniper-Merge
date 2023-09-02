@@ -6,21 +6,16 @@ public class ObstacleSpawnService
     private WallObstacleFactory _wallObstacleFactory;
     
     private List<IObstacle> _obstacles = new();
+    private List<IObstacleFactory> _factories = new();
 
-    //temporary code (replace with DataStorageService)
-    private WallObstacleInfo _wallObstacleInfo;
-    //temporary code
-
-    [Inject]
-    internal ObstacleSpawnService(WallObstacleFactory wallObstacleFactory, WallObstacleInfo wallObstacleInfo)
+    [Inject] 
+    internal ObstacleSpawnService()
     {
-        _wallObstacleFactory = wallObstacleFactory;
-        _wallObstacleInfo = wallObstacleInfo;
     }
 
     public void Init()
     {
-        _obstacles.Add(_wallObstacleFactory.Create(_wallObstacleInfo));
+        _obstacles.Add(_wallObstacleFactory.Create());
         
         foreach (var obstacle in _obstacles)
             obstacle.Init();

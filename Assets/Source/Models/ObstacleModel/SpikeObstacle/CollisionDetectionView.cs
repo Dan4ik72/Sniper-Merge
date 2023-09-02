@@ -9,7 +9,9 @@ public class CollisionDetectionView : MonoBehaviour
 
     public event Action<Collision> CollisionEntered;
     public event Action<Collision> CollisionExited;
-    
+
+    public void OnObstacleBroke() => Destroy(gameObject);
+
     private void OnTriggerEnter(Collider other)
     {
         TriggerEntered?.Invoke(other);

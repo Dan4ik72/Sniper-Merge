@@ -6,15 +6,24 @@ using VContainer.Unity;
 
 public class ObstacleSpawnServiceInstaller : Installer
 {
-    [SerializeField] private WallObstacleInfo _wallBObstacleConfig;
+    [SerializeField] private WallObstacleConfig _wallBObstacleConfig;
+    [SerializeField] private SpikeObstacleConfig _spikeObstacleConfig;
 
     protected override void Configure(IContainerBuilder builder)
     {
-        builder.Register<ObstacleSpawnService>(Lifetime.Scoped);
-        builder.Register<WallObstacleFactory>(Lifetime.Scoped);
+        builder.Register<ObstacleSpawnService>(container =>
+        {
+            var wallObstacleFactory = container.Resolve<WallObstacleFactory>();
+            var spikeObstacleFactory = container.Resolve<SpikeObstacleFactory>();
 
-        //temporary code
+            return new ObstacleSpawnService(wallObstacleFactory, spikeObstacleFactory);
+
+        }, Lifetime.Scoped);
+
+        builder.Register<WallObstacleFactory>(Lifetime.Scoped);
+        builder.Register<SpikeObstacleFactory>(Lifetime.Scoped);
+
         builder.RegisterComponent(_wallBObstacleConfig);
-        //temporary code
+        builder.RegisterComponent(_spikeObstacleConfig);
     }
 }

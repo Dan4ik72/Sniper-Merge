@@ -2,10 +2,10 @@
 
 public class WallObstacle : IObstacle
 {
-    private CollisionDetectionView _view;
+    private DamagableView _view;
     private WallObstacleModel _model;
 
-    public WallObstacle(CollisionDetectionView view, WallObstacleModel model)
+    public WallObstacle(DamagableView view, WallObstacleModel model)
     {
         _view = view;
         _model = model;
@@ -13,13 +13,13 @@ public class WallObstacle : IObstacle
 
     public void Init()
     {
-        _view.TriggerEntered += _model.OnTriggerEntered;
-        _view.TriggerExited += _model.OnTriggerExited;
+        _view.RecievingDamage += _model.OnReceivingDamage;
+        _model.ObstacleBroke += _view.OnObstacleBroke;
     }
     
     public void Dispose()
     {
-        _view.TriggerEntered -= _model.OnTriggerEntered;
-        _view.TriggerExited -= _model.OnTriggerExited;
+        _view.RecievingDamage -= _model.OnReceivingDamage;
+        _model.ObstacleBroke -= _view.OnObstacleBroke;
     }
 }

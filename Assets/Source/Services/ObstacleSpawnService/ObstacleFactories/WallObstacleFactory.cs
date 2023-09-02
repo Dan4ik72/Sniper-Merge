@@ -2,20 +2,34 @@
 
 internal class WallObstacleFactory : IObstacleFactory
 {
-    public IObstacle Create(WallObstacleInfo config)
+    private WallObstacleConfig _defaultConfig;
+
+    internal WallObstacleFactory(WallObstacleConfig defaultConfig)
     {
-        IObstacle wallObstacle = new WallObstacle(CreateView(config), CreateModel(config));
+        _defaultConfig = defaultConfig;
+    }
+
+    public IObstacle Create()
+    {
+        var data = CreateData();
+
+        IObstacle wallObstacle = new WallObstacle(CreateView(data.Config), CreateModel(data.Config));
 
         return wallObstacle;
     }
 
-    private WallObstacleModel CreateModel(WallObstacleInfo config)
+    private WallObstacleModel CreateModel(WallObstacleConfig config)
     {
-        return new WallObstacleModel();
+        return new WallObstacleModel(config.Durability);
     }
 
-    private CollisionDetectionView CreateView(WallObstacleInfo config)
+    private DamagableView CreateView(WallObstacleConfig config)
     {
         return Object.Instantiate(config.Prefab, config.Position, config.Rotation);
+    }
+
+    private WallObstacleData CreateData()
+    {
+        return new WallObstacleData(_defaultConfig);
     }
 }
