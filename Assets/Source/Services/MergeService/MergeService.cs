@@ -57,8 +57,4 @@ public class MergeService
     {
         _mergeGrid.ClearCellByMergeItem(mergeItem);
     }
-
-    public void Disable()
-    {
-    }
 }

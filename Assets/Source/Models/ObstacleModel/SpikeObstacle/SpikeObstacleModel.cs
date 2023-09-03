@@ -50,14 +50,12 @@ public class SpikeObstacleModel
     
     private async UniTask ApplyingDamage(IDamageble damagable, CancellationToken token)
     {
-        MakeDamage(damagable);
-
         while (token.IsCancellationRequested == false)
         {   
-            await UniTask.WaitForSeconds(_damageTickRate, cancellationToken: token);
-
             MakeDamage(damagable);
             DecreaseDurability();
+            
+            await UniTask.WaitForSeconds(_damageTickRate, cancellationToken: token);
         }
     }
 
@@ -81,11 +79,10 @@ public class SpikeObstacleModel
     private void OnObstacleBroke()
     {
         foreach (var keyValuePair in _currentDamageables)
-        {
             keyValuePair.Value.Cancel();
-            _currentDamageables.Remove(keyValuePair.Key);
-        }
-
+        
+        _currentDamageables.Clear();
+        
         ObstacleBroke?.Invoke();
     }
 

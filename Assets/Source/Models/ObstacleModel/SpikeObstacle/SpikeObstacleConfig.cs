@@ -1,23 +1,16 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = "SpikeObstacleConfig", menuName = "Spike obstacle config/Create new Spike obstacle config")]
+[CreateAssetMenu(fileName = "SpikeObstacleConfig", menuName = "Obstacle info/Create spike obstacle config")]
 public class SpikeObstacleConfig : ScriptableObject
 {
-    [SerializeField] private CollisionDetectionView _viewPrefab;
-    [SerializeField] private Vector3 _position;
-    [SerializeField] private Quaternion _rotation;
-    [Space]
-    [SerializeField] private int _damage;
-    [SerializeField] private int _obstacleDurability;
-    [SerializeField] private float _damageTickRate;
-    [SerializeField] private int _durabilityDecreasingStep;
+    [SerializeField] private SpikeObstacleData _data;
+    
+    public string ViewPrefabPath => _data.ViewPrefabPath;
+    public Vector3 Position => _data.Position;
+    public Quaternion Rotation => _data.Rotation;
 
-    public CollisionDetectionView ViewPrefab => _viewPrefab;
-    public Vector3 Position => _position;
-    public Quaternion Rotation => _rotation;
-
-    public int Damage => _damage;
-    public int ObstacleDurability => _obstacleDurability;
-    public float DamageTickRate => _damageTickRate;
-    public int DurabilityDecreasingStep => _durabilityDecreasingStep;
+    public int Damage => _data.Damage;
+    public int ObstacleDurability => _data.ObstacleDurability;
+    public float DamageTickRate => _data.DamageTickRate;
+    public int DurabilityDecreasingStep => _data.DurabilityDecreasingStep;
 }

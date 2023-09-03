@@ -4,10 +4,10 @@ using VContainer;
 public class ObstacleSpawnService 
 {   
     private List<IObstacle> _obstacles = new();
-    private IObstacleFactory[] _factories;
+    private List<IObstacleFactory> _factories;
 
     [Inject] 
-    internal ObstacleSpawnService(params IObstacleFactory[] factories)
+    internal ObstacleSpawnService(List<IObstacleFactory> factories)
     {
         _factories = factories;
     }

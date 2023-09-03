@@ -10,8 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 304d3fc807564ca409e992cd9fe46939, type: 3}
-  m_Name: TestWallObstacleInfo
+  m_Name: DefaultWallObstacleConfig
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 5462687169747026895, guid: 9927f9b5d6dfc0b45a5f4743e943b7b5, type: 3}
-  _position: {x: -10.77, y: 3.86, z: 7.95}
-  _rotation: {x: 0, y: 0, z: 0, w: 0}
+  _data:
+    Durability: 27
+    PrefabPath: Prefabs/Gameplay/Obstacles/WallObstacleTest
+    Position: {x: 0, y: 0, z: 0}
+    Rotation: {x: 1, y: 2, z: 0, w: 0}

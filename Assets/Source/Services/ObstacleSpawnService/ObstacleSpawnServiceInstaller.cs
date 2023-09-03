@@ -13,10 +13,13 @@ public class ObstacleSpawnServiceInstaller : Installer
     {
         builder.Register<ObstacleSpawnService>(container =>
         {
-            var wallObstacleFactory = container.Resolve<WallObstacleFactory>();
-            var spikeObstacleFactory = container.Resolve<SpikeObstacleFactory>();
+            var list = new List<IObstacleFactory>
+            {
+                 container.Resolve<SpikeObstacleFactory>(),
+                 container.Resolve<WallObstacleFactory>(),
+            };
 
-            return new ObstacleSpawnService(wallObstacleFactory, spikeObstacleFactory);
+            return new ObstacleSpawnService(list);
 
         }, Lifetime.Scoped);
 
