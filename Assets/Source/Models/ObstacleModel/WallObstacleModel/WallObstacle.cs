@@ -4,7 +4,7 @@ public class WallObstacle : IObstacle
 {
     private DamagableView _view;
     private WallObstacleModel _model;
-
+    
     public WallObstacle(DamagableView view, WallObstacleModel model)
     {
         _view = view;

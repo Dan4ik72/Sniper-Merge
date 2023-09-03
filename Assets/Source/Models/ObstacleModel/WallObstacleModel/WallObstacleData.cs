@@ -1,11 +1,19 @@
 ﻿using UnityEngine;
 
-public class WallObstacleData
+[System.Serializable]
+public class WallObstacleData : IData
 {
-    public WallObstacleConfig Config { get; private set; }
-
+    public string PrefabPath;
+    [Space(30)]
+    public int Durability;
+    public Vector3 Position;
+    public Quaternion Rotation;
+    
     public WallObstacleData(WallObstacleConfig config)
     {
-        Config = config;
+        Durability = config.Durability;
+        PrefabPath = config.PrefabPath;
+        Position = config.Position;
+        Rotation = config.Rotation;
     }
 }

@@ -26,11 +26,13 @@ public class DataStorageService
     {
         data = default;
 
-        if (_dataSaveHandler.HasKey(nameof(T)) == false)
+        string name = typeof(T).ToString();
+
+        if (_dataSaveHandler.HasKey(name) == false)
             return false;
 
-        string json = _dataSaveHandler.LoadString(nameof(T));
-
+        var json = _dataSaveHandler.LoadString(name);
+        
         data = _jsonConverter.Deconvert<T>(json);
 
         return true;

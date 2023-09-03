@@ -5,6 +5,7 @@ internal class PlayerPrefsSaveHandler : IDataSaveHandler
     public void SaveString(string key, string value)
     {
         PlayerPrefs.SetString(key, value);
+        PlayerPrefs.Save();
     }
     
     public string LoadString(string key)

@@ -1,4 +1,5 @@
 using System;
+using UnityEditor;
 using UnityEngine;
 using VContainer;
 
@@ -15,7 +16,7 @@ public class GameBootstrapper : MonoBehaviour, IDisposable
     [Inject] private DataStorageService _dataStorageService;
 
     private void Start()
-    {
+    {   
         _inputService.Init();
         _mergeItemDragService.Init();
         _mergeService.Init();
@@ -24,8 +25,8 @@ public class GameBootstrapper : MonoBehaviour, IDisposable
         _enemiesService.Init(_shootingService.Gun);
         _endLevelService.Init(_enemiesService.Enemies, _shootingService.Gun);
         _obstacleSpawnService.Init();
-		
     }
+    
     private void Update()
     {
         _mergeItemDragService.Update();
@@ -37,7 +38,6 @@ public class GameBootstrapper : MonoBehaviour, IDisposable
     public void Dispose()
     {
         _mergeItemDragService.Disable();
-        _mergeService.Disable();
         _shootingService.Disable();
         _inputService.Disable();
         _obstacleSpawnService.Disable();

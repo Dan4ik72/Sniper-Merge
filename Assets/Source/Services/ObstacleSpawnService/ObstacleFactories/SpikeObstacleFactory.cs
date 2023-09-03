@@ -3,12 +3,15 @@ using VContainer;
 
 internal class SpikeObstacleFactory : IObstacleFactory
 {
-    private SpikeObstacleConfig _defalutConfig;
+    private SpikeObstacleConfig _defaultConfig;
 
+    private DataStorageService _dataStorageService;
+    
     [Inject]
-    internal SpikeObstacleFactory(SpikeObstacleConfig config)
+    internal SpikeObstacleFactory(SpikeObstacleConfig config, DataStorageService dataStorageService)
     {
-        _defalutConfig = config;
+        _defaultConfig = config;
+        _dataStorageService = dataStorageService;
     }
 
     public IObstacle Create()
@@ -22,19 +25,23 @@ internal class SpikeObstacleFactory : IObstacleFactory
 
     private SpikeObstacleModel CreateModel(SpikeObstacleData data)
     {
-        return new SpikeObstacleModel(data.Config.Damage, data.Config.ObstacleDurability,
-            data.Config.DurabilityDecreasingStep, data.Config.DamageTickRate);
+        return new SpikeObstacleModel(data.Damage, data.ObstacleDurability,
+            data.DurabilityDecreasingStep, data.DamageTickRate);
     }
 
     private CollisionDetectionView CreateView(SpikeObstacleData data)
     {
-        return Object.Instantiate(data.Config.ViewPrefab, data.Config.Position, data.Config.Rotation);
+        return Object.Instantiate(Resources.Load<CollisionDetectionView>(data.ViewPrefabPath), data.Position, data.Rotation);
     }
 
     private SpikeObstacleData CreateData()
     {
-        //temporary code
-        return new SpikeObstacleData(_defalutConfig);
-        //temporary code
+        if (_dataStorageService.TryGetData(out SpikeObstacleData data))
+            return data;
+                        
+        var defaultData = new SpikeObstacleData(_defaultConfig);
+        _dataStorageService.SaveData<SpikeObstacleData>(defaultData);
+
+        return defaultData;
     }
 }
