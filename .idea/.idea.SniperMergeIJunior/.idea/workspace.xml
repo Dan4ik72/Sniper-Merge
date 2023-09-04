@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="404a428e-a3e1-4923-bf31-5ffe94a37924" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Configs/ObstacleConfigs/DefaultSpikeObstacleConfig.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Configs/ObstacleConfigs/DefaultSpikeObstacleConfig.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.SniperMergeIJunior/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SniperMergeIJunior/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/DataStorageService/DataStorageService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Services/DataStorageService/DataStorageService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/ObstacleSpawnService/ObstacleSpawnService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Services/ObstacleSpawnService/ObstacleSpawnService.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +53,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;ObstacleUpgradeSystem&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Dev&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -115,7 +117,8 @@
       <updated>1693722407030</updated>
       <workItem from="1693722407032" duration="13879000" />
       <workItem from="1693744943341" duration="4497000" />
-      <workItem from="1693764895784" duration="357000" />
+      <workItem from="1693764895784" duration="872000" />
+      <workItem from="1693812144868" duration="376000" />
     </task>
     <servers />
   </component>

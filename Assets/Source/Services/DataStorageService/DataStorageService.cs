@@ -27,7 +27,7 @@ public class DataStorageService
         data = default;
 
         string name = typeof(T).ToString();
-
+        
         if (_dataSaveHandler.HasKey(name) == false)
             return false;
 
