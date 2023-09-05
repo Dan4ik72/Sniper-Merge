@@ -28,7 +28,7 @@ public class BulletInfoFactory
         var bulletInfo = _bulletInfos.FirstOrDefault(bulletInfo => bulletInfo.Type == type);
 
         if (bulletInfo == null)
-            throw new System.ArgumentException($"There is no such a bullet info with type {type}");
+            Debug.LogWarning($"There is no such a bullet info with type {type}");
 
         return bulletInfo;
     }
@@ -37,4 +37,7 @@ public class BulletInfoFactory
     {
         return Object.Instantiate(prefab, viewPosition, Quaternion.identity, parent: viewParent);
     }
+
+    public bool IsBulletInfoExistByType(MergeItemType type) =>
+        _bulletInfos.FirstOrDefault(bulletInfo => bulletInfo.Type == type) != null;
 }

@@ -1,5 +1,5 @@
 using System;
-using UnityEditor;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using VContainer;
 
@@ -14,6 +14,9 @@ public class GameBootstrapper : MonoBehaviour, IDisposable
     [Inject] private EndLevelService _endLevelService;   
     [Inject] private ObstacleSpawnService _obstacleSpawnService;
     [Inject] private DataStorageService _dataStorageService;
+    [Inject] private LevelWalletService _levelWalletService;
+    [Inject] private GameSceneUIBootstrapService _gameSceneUIBootstrapService;
+    [Inject] private UIPanelTransitService _uiPanelTransitService;
 
     private void Start()
     {   
@@ -25,6 +28,18 @@ public class GameBootstrapper : MonoBehaviour, IDisposable
         _enemiesService.Init(_shootingService.Gun);
         _endLevelService.Init(_enemiesService.Enemies, _shootingService.Gun);
         _obstacleSpawnService.Init();
+        _gameSceneUIBootstrapService.Init();
+        
+        SubscribeEvents();
+    }
+    
+    private void SubscribeEvents()
+    {
+        //subscribe shooting service enemy died event to LevelWalletService (receiving money)
+    }
+
+    private void UnsubscribeEvents()
+    {
     }
     
     private void Update()
@@ -41,5 +56,8 @@ public class GameBootstrapper : MonoBehaviour, IDisposable
         _shootingService.Disable();
         _inputService.Disable();
         _obstacleSpawnService.Disable();
+        _gameSceneUIBootstrapService.Disable();
+        
+        UnsubscribeEvents();
     }
 }
