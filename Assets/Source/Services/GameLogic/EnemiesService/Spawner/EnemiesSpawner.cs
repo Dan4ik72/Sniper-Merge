@@ -54,8 +54,8 @@ internal class EnemiesSpawner
             _elapsedTime = 0;
             float spawnPositionX = Random.Range(_spredSpawnPositionX, -_spredSpawnPositionX);
             Vector3 spawnPoint = new Vector3(spawnPositionX, 0, 0);
-            enemy.Respawn();
             enemy.transform.localPosition = spawnPoint;
+            enemy.Respawn();
         }
     }
 

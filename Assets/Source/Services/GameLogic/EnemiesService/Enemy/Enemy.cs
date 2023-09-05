@@ -7,6 +7,7 @@ internal class Enemy : MonoBehaviour, IDamageble, IPoolElement
     private int _currentHealth;
     private StateFactory _stateFactory;
     private EnemyStateMachine _stateMachine;
+    private IDamageble _target;
 
     public event Action<IDamageble> Died;
 
@@ -15,6 +16,8 @@ internal class Enemy : MonoBehaviour, IDamageble, IPoolElement
         Level = (int)config.Type;
         _config = config;
         _currentHealth = 0;
+        _target = target;
+        RaycastDistance = UnityEngine.Random.Range(0.1f, 0.3f);
         _stateFactory = new StateFactory(this, target);
         _stateFactory.CreateStates();
         _stateMachine = new EnemyStateMachine(_stateFactory);
@@ -24,12 +27,17 @@ internal class Enemy : MonoBehaviour, IDamageble, IPoolElement
     public int Level { get; private set; }
     public bool IsAlive => _currentHealth > 0;
     public int Health => _currentHealth;
+    public float RaycastDistance { get; private set; }
     internal EnemyInfo Config => _config;
     public Vector3 Position => transform.position;
 
     public void Update() => _stateMachine.Update(Time.deltaTime);
 
-    public void Respawn() => _currentHealth = _config.Health;
+    public void Respawn() 
+    {
+        _currentHealth = _config.Health;
+        transform.LookAt(_target.Position);
+    }
 
     public Transform GetTransform() => transform;
 

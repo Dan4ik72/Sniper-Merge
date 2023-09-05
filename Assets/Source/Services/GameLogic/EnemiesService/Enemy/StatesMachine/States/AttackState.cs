@@ -4,6 +4,7 @@ using UnityEngine;
 
 internal class AttackState : State
 {
+    private const int DamageableLayer = 3;
     private Enemy _enemy;
     private IDamageble _target;
     private float _elapsedTime = 0;
@@ -21,7 +22,21 @@ internal class AttackState : State
         if (_elapsedTime > _enemy.Config.SpeedAttack)
         {
             _elapsedTime = 0;
-            _target.ApplyDamage(_enemy.Config.Damage);
+            var target = RayCastForward().collider.GetComponent<IDamageble>();
+
+            if (target == null)
+                _target.ApplyDamage(_enemy.Config.Damage);
+            else
+                target.ApplyDamage(_enemy.Config.Damage);
         }
+    }
+
+    private RaycastHit RayCastForward()
+    {
+        var hit = new RaycastHit();
+        var ray = new Ray(_enemy.transform.position, _enemy.transform.forward);
+        Physics.Raycast(ray, out hit, _enemy.RaycastDistance, 1 << DamageableLayer);
+
+        return hit;
     }
 }
