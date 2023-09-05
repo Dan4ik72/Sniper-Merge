@@ -5,232 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="404a428e-a3e1-4923-bf31-5ffe94a37924" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Source/Codebase/CommonViewTypes/View.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Source/Codebase/CommonViewTypes/View.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Source/Codebase/Interfaces/IUiPanel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Source/Codebase/Interfaces/IUiPanel.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Source/Services/UILogic/GameSceneUIBootstrapService/GameSceneUIBootstrapService.asmdef" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Source/Services/UILogic/GameSceneUIBootstrapService/GameSceneUIBootstrapService.asmdef.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Source/Services/UILogic/GameSceneUIBootstrapService/GameSceneUIBootstrapService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Source/Services/UILogic/GameSceneUIBootstrapService/GameSceneUIBootstrapServiceInstaller.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Source/Services/UILogic/UIPanelsTransitService/UIPanelTransitService.asmdef" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Source/Services/UILogic/UIPanelsTransitService/UIPanelTransitService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Source/Services/UILogic/UIPanelsTransitService/UIPanelTransitServiceInstaller.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Source/Services/UILogic/UIPanelsTransitService/UIPanelTransitServiceInstaller.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Source/UI/GameplayScene/BasicOverlayPanel/BasicOverlayPanel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Source/UI/GameplayScene/BasicOverlayPanel/BasicOverlayPanel.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Source/UI/GameplayScene/BasicOverlayPanel/BasicOverlayPresenter.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Source/UI/GameplayScene/BasicOverlayPanel/BasicOverlayPresenter.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Source/UI/GameplayScene/BasicOverlayPanel/UpdatableTextView.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Source/UI/GameplayScene/BasicOverlayPanel/UpdatableTextView.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Source/UI/GameplayScene/GameplaySceneUI.asmdef" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Source/UI/GameplayScene/GameplaySceneUI.asmdef.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.SniperMergeIJunior/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SniperMergeIJunior/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.SniperMergeIJunior/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SniperMergeIJunior/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Level2BulletMat.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Level2BulletMat.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Level3BulletMat 1.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Level3BulletMat 1.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/MergePlaneMat.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/MergePlaneMat.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Red.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Red.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/PrefabTestData.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/PrefabTestData.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/ObstalceSystemScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/ObstalceSystemScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Codebase/ObjectPool/ObjectPool.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Codebase/ObjectPool/ObjectPool.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Source/Infrastructure/GameBootstrapper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Infrastructure/GameBootstrapper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/LevelsConfig.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/LevelsConfig/LevelInfo.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/LevelsConfig/LevelInfo.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/LevelsConfig/LevelsConfig.asmdef" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/LevelsConfig/LevelsConfig.asmdef.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Models/ObstacleModel/SpikeObstacle/CollisionDetectionView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Codebase/CommonViewTypes/CollisionDetectionView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Models/ObstacleModel/SpikeObstacle/CollisionDetectionView.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Codebase/CommonViewTypes/CollisionDetectionView.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Models/ObstacleModel/WallObstacleModel/DamagableView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Codebase/CommonViewTypes/DamagableView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Models/ObstacleModel/WallObstacleModel/DamagableView.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Codebase/CommonViewTypes/DamagableView.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Models/ObstacleModel/WallObstacleModel/WallObstacle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Models/ObstacleModel/WallObstacleModel/WallObstacle.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/BulletSpawnService.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/BulletSpawnService/BulletSpawnService.asmdef" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/BulletSpawnService/BulletSpawnService.asmdef.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/BulletSpawnService/BulletSpawnService.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/BulletSpawnService/BulletSpawnService.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/BulletSpawnService/BulletSpawnServiceInstaller.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/BulletSpawnService/BulletSpawnServiceInstaller.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/BulletSpawnService/Factory.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/DataStorageService.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/DataStorageService/DataSaveHandlers.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/DataStorageService/DataSaveHandlers/IDataSaveHandler.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/DataStorageService/DataSaveHandlers/IDataSaveHandler.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/DataStorageService/DataSaveHandlers/PlayerPrefsSaveHandler.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/DataStorageService/DataSaveHandlers/PlayerPrefsSaveHandler.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/DataStorageService/DataStorageService.asmdef" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/DataStorageService/DataStorageService.asmdef.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/DataStorageService/DataStorageService.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/DataStorageService/DataStorageService.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/DataStorageService/DataStorageServiceInstaller.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/DataStorageService/DataStorageServiceInstaller.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/DataStorageService/DataToJsonConverters.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/DataStorageService/DataToJsonConverters/IDataToJsonConverter.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/DataStorageService/DataToJsonConverters/IDataToJsonConverter.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/DataStorageService/DataToJsonConverters/JsonUtilityConverter.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/DataStorageService/DataToJsonConverters/JsonUtilityConverter.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/DataStorageService/DataToJsonConverters/NewtonsoftJsonConverter.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/DataStorageService/DataToJsonConverters/NewtonsoftJsonConverter.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/EndLevelService.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/EndLevelService/EndLevel.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/EndLevelService/EndLevel/CheckingEndLevel.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/EndLevelService/EndLevel/CheckingEndLevel.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/EndLevelService/EndLevelService.asmdef" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/EndLevelService/EndLevelService.asmdef.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/EndLevelService/EndLevelService.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/EndLevelService/EndLevelService.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/EndLevelService/EndLevelServiceInstaller.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/EndLevelService/EndLevelServiceInstaller.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/EnemiesService.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/EnemiesService/EnemiesService.asmdef" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/EnemiesService/EnemiesService.asmdef.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/EnemiesService/EnemiesService.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/EnemiesService/EnemiesService.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/EnemiesService/EnemiesServiceInstaller.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/EnemiesService/EnemiesServiceInstaller.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/EnemiesService/Enemy.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/EnemiesService/Enemy/Enemy.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/EnemiesService/Enemy/Enemy.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/EnemiesService/Enemy/EnemyInfo.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/EnemiesService/Enemy/EnemyInfo.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/EnemiesService/Enemy/StatesMachine.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/EnemiesService/Enemy/StatesMachine/EnemyStateMachine.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/EnemiesService/Enemy/StatesMachine/EnemyStateMachine.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/EnemiesService/Enemy/StatesMachine/StateFactory.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/EnemiesService/Enemy/StatesMachine/StateFactory.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/EnemiesService/Enemy/StatesMachine/States.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/EnemiesService/Enemy/StatesMachine/States/AttackState.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/EnemiesService/Enemy/StatesMachine/States/AttackState.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/EnemiesService/Enemy/StatesMachine/States/DeathState.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/EnemiesService/Enemy/StatesMachine/States/DeathState.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/EnemiesService/Enemy/StatesMachine/States/MoveState.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/EnemiesService/Enemy/StatesMachine/States/MoveState.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/EnemiesService/Enemy/StatesMachine/States/State.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/EnemiesService/Enemy/StatesMachine/States/State.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/EnemiesService/Enemy/StatesMachine/States/VictoryState.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/EnemiesService/Enemy/StatesMachine/States/VictoryState.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/EnemiesService/Enemy/StatesMachine/Transitions.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/EnemiesService/Enemy/StatesMachine/Transitions/AttackTransition.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/EnemiesService/Enemy/StatesMachine/Transitions/AttackTransition.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/EnemiesService/Enemy/StatesMachine/Transitions/DeathTransition.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/EnemiesService/Enemy/StatesMachine/Transitions/DeathTransition.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/EnemiesService/Enemy/StatesMachine/Transitions/MoveTransition.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/EnemiesService/Enemy/StatesMachine/Transitions/MoveTransition.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/EnemiesService/Enemy/StatesMachine/Transitions/Transition.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/EnemiesService/Enemy/StatesMachine/Transitions/Transition.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/EnemiesService/Enemy/StatesMachine/Transitions/VictoryTransition.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/EnemiesService/Enemy/StatesMachine/Transitions/VictoryTransition.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/EnemiesService/Spawner.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/EnemiesService/Spawner/EnemiesSpawner.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/EnemiesService/Spawner/EnemiesSpawner.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/InputService.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/InputService/InputHandler.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/InputService/InputHandler/InputHandler.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/InputService/InputHandler/InputHandler.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/InputService/InputService.asmdef" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/InputService/InputService.asmdef.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/InputService/InputService.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/InputService/InputService.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/InputService/InputServiceInstaller.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/InputService/InputServiceInstaller.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/InputService/InputTypes.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/InputService/InputTypes/DefaultInput.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/InputService/InputTypes/DefaultInput.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/InputService/Interfaces.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/InputService/Interfaces/IInput.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/InputService/Interfaces/IInput.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/InputService/Interfaces/IInputHandler.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/InputService/Interfaces/IInputHandler.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/MergeService.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/MergeService/Interfaces.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/MergeService/Interfaces/ICell.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/MergeService/Interfaces/ICell.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/MergeService/Interfaces/IMergeHandler.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/MergeService/Interfaces/IMergeHandler.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/MergeService/MergeGrid.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/MergeService/MergeGrid/GridFactory.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/MergeService/MergeGrid/GridFactory.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/MergeService/MergeGrid/Handlers.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/MergeService/MergeGrid/Handlers/MergeHandler.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/MergeService/MergeGrid/Handlers/MergeHandler.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/MergeService/MergeGrid/MergeGrid.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/MergeService/MergeGrid/MergeGrid.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/MergeService/MergeGrid/MergeGridCell.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/MergeService/MergeGrid/MergeGridCell.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/MergeService/MergeService.asmdef" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/MergeService/MergeService.asmdef.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/MergeService/MergeService.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/MergeService/MergeService.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/MergeService/MergeServiceInstaller.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/MergeService/MergeServiceInstaller.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/ObjectDragService.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/ObjectDragService/Handlers.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/ObjectDragService/Handlers/ObjectDragHandler.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/ObjectDragService/Handlers/ObjectDragHandler.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/ObjectDragService/Interfaces.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/ObjectDragService/Interfaces/IObjectDragHandler.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/ObjectDragService/Interfaces/IObjectDragHandler.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/ObjectDragService/MergeItemDragService.asmdef" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/ObjectDragService/MergeItemDragService.asmdef.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/ObjectDragService/MergeItemDragService.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/ObjectDragService/MergeItemDragService.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/ObjectDragService/MergeItemDragServiceInstaller.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/ObjectDragService/MergeItemDragServiceInstaller.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/ObstacleSpawnService.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/ObstacleSpawnService/ObstacleFactories.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/ObstacleSpawnService/ObstacleFactories/IObstacleFactory.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/ObstacleSpawnService/ObstacleFactories/IObstacleFactory.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/ObstacleSpawnService/ObstacleFactories/SpikeObstacleFactory.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/ObstacleSpawnService/ObstacleFactories/SpikeObstacleFactory.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/ObstacleSpawnService/ObstacleFactories/WallObstacleFactory.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/ObstacleSpawnService/ObstacleFactories/WallObstacleFactory.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/ObstacleSpawnService/ObstacleService.asmdef" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/ObstacleSpawnService/ObstacleService.asmdef.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/ObstacleSpawnService/ObstacleSpawnService.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/ObstacleSpawnService/ObstacleSpawnService.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/ObstacleSpawnService/ObstacleSpawnServiceInstaller.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/ObstacleSpawnService/ObstacleSpawnServiceInstaller.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/ShootingService.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/ShootingService/Aiming.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/ShootingService/Aiming/Aiming.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/ShootingService/Aiming/Aiming.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/ShootingService/BulletInteraction.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/ShootingService/BulletInteraction/BulletConveyerView.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/ShootingService/BulletInteraction/BulletConveyerView/BulletConveyor.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/ShootingService/BulletInteraction/BulletConveyerView/BulletConveyor.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/ShootingService/BulletInteraction/BulletConveyerView/BulletConveyorMover.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/ShootingService/BulletInteraction/BulletConveyerView/BulletConveyorMover.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/ShootingService/BulletInteraction/BulletConveyerView/BulletViewFactory.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/ShootingService/BulletInteraction/BulletConveyerView/BulletViewFactory.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/ShootingService/BulletInteraction/BulletConveyerView/BulletViewsHolder.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/ShootingService/BulletInteraction/BulletConveyerView/BulletViewsHolder.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/ShootingService/BulletInteraction/BulletHolder.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/ShootingService/BulletInteraction/BulletHolder.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/ShootingService/BulletInteraction/BulletHolderCell.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/ShootingService/BulletInteraction/BulletHolderCell.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/ShootingService/BulletInteraction/BulletSpawner.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/ShootingService/BulletInteraction/BulletSpawner.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/ShootingService/Shooting.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/ShootingService/Shooting/Gun.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/ShootingService/Shooting/Gun.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/ShootingService/Shooting/GunInfo.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/ShootingService/Shooting/GunInfo.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/ShootingService/Shooting/Magazine.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/ShootingService/Shooting/Magazine.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/ShootingService/Shooting/Reloading.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/ShootingService/Shooting/Reloading.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/ShootingService/ShootingService.asmdef" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/ShootingService/ShootingService.asmdef.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/ShootingService/ShootingService.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/ShootingService/ShootingService.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/ShootingService/ShootingServiceInstaller.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/ShootingService/ShootingServiceInstaller.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/GameLogic/EnemiesService/EnemiesService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Services/GameLogic/EnemiesService/EnemiesService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/GameLogic/EnemiesService/Enemy/StatesMachine/StateFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Services/GameLogic/EnemiesService/Enemy/StatesMachine/StateFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/GameLogic/EnemiesService/Enemy/StatesMachine/Transitions/MoveTransition.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Services/GameLogic/EnemiesService/Enemy/StatesMachine/Transitions/MoveTransition.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/GameLogic/EnemiesService/Spawner/EnemiesSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Services/GameLogic/EnemiesService/Spawner/EnemiesSpawner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Services/GameLogic/LevelWalletService/LevelWalletService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Services/GameLogic/LevelWalletService/LevelWalletService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -246,11 +28,15 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/0a/7b99e5d0/Void.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3ea01e77be99618395f448b16bd7cc2bd4248bd9e5d8474964b2d97f39c5d74/System.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Source/Services/GameLogic/SmoothObjectMovementService/SmoothObjectMovementService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Source/Services/UILogic/GameSceneUIBootstrapService/GameSceneUIBootstrapService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Source/Services/UILogic/UIPanelsTransitService/UIPanelTransitServiceInstaller.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.unitask@d210e3d76a/Runtime/UniTask.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.unitask@d210e3d76a/Runtime/UniTaskScheduler.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.unitask@d210e3d76a/Runtime/UniTaskVoid.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="JsbtTreeLayoutManager">
     <layout place="tools.popupGrunt">
@@ -276,6 +62,8 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Notification.DisplayName-DoNotAsk-Backend notifications": "Backend notifications",
+    "Notification.DoNotAsk-Backend notifications": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
@@ -345,6 +133,7 @@
       <workItem from="1693744943341" duration="4497000" />
       <workItem from="1693764895784" duration="872000" />
       <workItem from="1693812144868" duration="16327000" />
+      <workItem from="1693895570681" duration="19350000" />
     </task>
     <servers />
   </component>

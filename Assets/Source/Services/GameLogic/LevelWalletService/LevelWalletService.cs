@@ -18,11 +18,16 @@ public class LevelWalletService
     
     public uint GetCurrentMoneyCount() => _levelWallet.MoneyCount;
     
-    public void ReceiveMoney(uint count)
+    public void ReceiveMoney(int count)
     {
-        _levelWallet.ReceiveMoney(count);
+        if (count < 0)
+            throw new ArgumentOutOfRangeException(nameof(count));
 
-        MoneyReceived?.Invoke(count);
+        var uintCount = (uint)count;
+
+        _levelWallet.ReceiveMoney(uintCount);
+
+        MoneyReceived?.Invoke(uintCount);
     }
 
     public bool TrySpendMoney(uint required)

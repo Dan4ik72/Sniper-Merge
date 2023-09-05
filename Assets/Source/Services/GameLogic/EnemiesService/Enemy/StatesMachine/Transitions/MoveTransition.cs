@@ -2,6 +2,8 @@ using UnityEngine;
 
 internal class MoveTransition : Transition
 {
+    private const int DamageableLayer = 3;
+    
     private Enemy _enemy;
     private IDamageble _target;
 
@@ -13,7 +15,19 @@ internal class MoveTransition : Transition
 
     public override void Update()
     {
-        if (_enemy.IsAlive && _target.IsAlive && Vector3.Distance(_enemy.transform.position, _target.Position) > 0.1f)
+        if(RaycastForward(out RaycastHit hit) == false)
+            return;
+        
+        if (_enemy.IsAlive && _target.IsAlive)
             CountNumberNeedTransit();
+    }
+
+    private bool RaycastForward(out RaycastHit hit)
+    {
+        var ray = new Ray(_enemy.transform.position, Vector3.forward);
+        
+        var isHit = Physics.Raycast(ray, out hit ,0.1f, 1<<DamageableLayer);
+
+        return isHit;
     }
 }

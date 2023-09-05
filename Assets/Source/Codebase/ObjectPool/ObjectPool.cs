@@ -27,7 +27,9 @@ public class ObjectPool<T> where T : IPoolElement
     {
         if (_objects.Contains(obj) == false)
         {
+#if UNITY_EDITOR
             Debug.LogWarning("There is no such an object in the pool " + obj.GetTransform().name);
+#endif
             return;
         }
 

@@ -1,8 +1,10 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using VContainer;
+using Object = UnityEngine.Object;
+using Random = UnityEngine.Random;
 
 internal class EnemiesSpawner
 {
@@ -19,7 +21,7 @@ internal class EnemiesSpawner
     private List<Enemy> _enemies = new();
     private float _delayStart;
 
-    private bool _isFinished => _counterSpawn == _enemies.Count;
+    public event Action<Enemy> EnemyDied;
 
     [Inject]
     public EnemiesSpawner(Transform parent, IReadOnlyList<EnemyInfo> enemiesPrefabs, LevelInfo levelConfig)
@@ -29,6 +31,8 @@ internal class EnemiesSpawner
         _levelConfig = levelConfig;
         _delayStart = _levelConfig.DelayBeforeStartSpawn;
     }
+
+    private bool _isFinished => _counterSpawn == _enemies.Count;
 
     public IReadOnlyList<IDamageble> Enemies => _enemies;
 
@@ -80,5 +84,10 @@ internal class EnemiesSpawner
         }
     }
 
-    private void OnDie(IDamageble enemy) => _objectPool.ReturnToPool((Enemy)enemy);
+    private void OnDie(IDamageble enemy)
+    {
+        var enemyCasted = (Enemy)enemy;
+        EnemyDied?.Invoke(enemyCasted);
+        _objectPool.ReturnToPool(enemyCasted);  
+    } 
 }

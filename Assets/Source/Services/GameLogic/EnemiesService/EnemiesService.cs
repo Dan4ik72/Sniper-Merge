@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,8 @@ public class EnemiesService
 {
     private EnemiesSpawner _enemiesSpawner;
 
+    public event Action<int> EnemyDied;
+    
     [Inject]
     internal EnemiesService(EnemiesSpawner enemiesSpawner)
     {
@@ -18,6 +21,7 @@ public class EnemiesService
     public void Init(IDamageble gun)
     {
         _enemiesSpawner.Init(gun);
+        _enemiesSpawner.EnemyDied += OnEnemyDied;
     }
 
     public void Update(float delta)
@@ -28,5 +32,8 @@ public class EnemiesService
     public void Disable()
     {
         _enemiesSpawner.Disable();
+        _enemiesSpawner.EnemyDied -= OnEnemyDied;
     }
+
+    private void OnEnemyDied(Enemy died) => EnemyDied?.Invoke(died.Config.Reward);
 }

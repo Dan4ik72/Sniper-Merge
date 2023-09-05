@@ -39,7 +39,7 @@ internal class StateFactory
         _states.Add(victoryState);
         var victoryTransition = new VictoryTransition(victoryState, _enemy, _target);
         transitions.Add(victoryTransition);
-
+        
         _firstState = deathState;
 
         foreach (var state in _states)

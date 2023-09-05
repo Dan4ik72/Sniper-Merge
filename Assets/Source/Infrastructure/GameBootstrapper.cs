@@ -35,11 +35,12 @@ public class GameBootstrapper : MonoBehaviour, IDisposable
     
     private void SubscribeEvents()
     {
-        //subscribe shooting service enemy died event to LevelWalletService (receiving money)
+        _enemiesService.EnemyDied += _levelWalletService.ReceiveMoney;
     }
 
     private void UnsubscribeEvents()
     {
+        _enemiesService.EnemyDied -= _levelWalletService.ReceiveMoney;
     }
     
     private void Update()
@@ -57,6 +58,7 @@ public class GameBootstrapper : MonoBehaviour, IDisposable
         _inputService.Disable();
         _obstacleSpawnService.Disable();
         _gameSceneUIBootstrapService.Disable();
+        _enemiesService.Disable();
         
         UnsubscribeEvents();
     }
