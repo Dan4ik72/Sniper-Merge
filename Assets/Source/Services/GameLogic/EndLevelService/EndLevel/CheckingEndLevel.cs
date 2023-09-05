@@ -24,19 +24,19 @@ internal class CheckingEndLevel
     {
         _enemies = enemies;
         _gun = gun;
-        _gun.Die += OnDieGun;
+        _gun.Died += OnDieGun;
         _counterKilledEnemies = 0;
 
         foreach (var enemy in _enemies)
-            enemy.Die += OnDieEnemy;
+            enemy.Died += OnDieEnemy;
     }
 
     public void Disable()
     {
-        _gun.Die -= OnDieGun;
+        _gun.Died -= OnDieGun;
 
         foreach (var enemy in _enemies)
-            enemy.Die -= OnDieEnemy;
+            enemy.Died -= OnDieEnemy;
 
         _counterKilledEnemies = 0;
     }

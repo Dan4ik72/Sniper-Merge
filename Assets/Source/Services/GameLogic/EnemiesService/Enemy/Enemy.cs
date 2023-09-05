@@ -8,7 +8,7 @@ internal class Enemy : MonoBehaviour, IDamageble, IPoolElement
     private StateFactory _stateFactory;
     private EnemyStateMachine _stateMachine;
 
-    public event Action<IDamageble> Die;
+    public event Action<IDamageble> Died;
 
     internal void Init(EnemyInfo config, IDamageble target)
     {
@@ -41,7 +41,7 @@ internal class Enemy : MonoBehaviour, IDamageble, IPoolElement
         if (_currentHealth <= 0)
         {
             _currentHealth = 0;
-            Die?.Invoke(this);
+            Died?.Invoke(this);
         }
     }
 }

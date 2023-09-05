@@ -11,7 +11,7 @@ internal class Gun : IDamageble
     private Aiming _aiming;
     private int _currentHealth;
 
-    public event Action<IDamageble> Die;
+    public event Action<IDamageble> Died;
 
     [Inject]
     internal Gun(Transform position, GunInfo config, Reloading reloading, Magazine magazine, Aiming aiming)
@@ -47,7 +47,7 @@ internal class Gun : IDamageble
         if (_currentHealth <= 0)
         {
             _currentHealth = 0;
-            Die?.Invoke(this);
+            Died?.Invoke(this);
         }
     }
 }

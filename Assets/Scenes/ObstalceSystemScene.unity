@@ -218,6 +218,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1076836685}
   - {fileID: 445426883}
   - {fileID: 1710243589}
   - {fileID: 711371181}
@@ -227,7 +228,6 @@ Transform:
   - {fileID: 1953366191}
   - {fileID: 1302023767}
   - {fileID: 2034935796}
-  - {fileID: 1076836685}
   - {fileID: 1276348672}
   - {fileID: 2032241368}
   m_Father: {fileID: 0}
@@ -435,8 +435,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -635,6 +635,7 @@ GameObject:
   - component: {fileID: 768809482}
   - component: {fileID: 768809483}
   - component: {fileID: 768809484}
+  - component: {fileID: 768809485}
   m_Layer: 5
   m_Name: BasicOverlayPanel
   m_TagString: Untagged
@@ -698,6 +699,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerLevelMoneyView: {fileID: 1927027926}
+--- !u!222 &768809485
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 768809481}
+  m_CullTransparentMesh: 1
 --- !u!1 &772904149
 GameObject:
   m_ObjectHideFlags: 0
@@ -1079,6 +1088,7 @@ GameObject:
   - component: {fileID: 1076383442}
   - component: {fileID: 1076383444}
   - component: {fileID: 1076383443}
+  - component: {fileID: 1076383445}
   m_Layer: 0
   m_Name: MergeOverlayPanel
   m_TagString: Untagged
@@ -1141,6 +1151,14 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!222 &1076383445
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1076383441}
+  m_CullTransparentMesh: 1
 --- !u!1 &1076836683
 GameObject:
   m_ObjectHideFlags: 0

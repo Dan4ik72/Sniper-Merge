@@ -62,7 +62,7 @@ internal class EnemiesSpawner
     public void Disable()
     {
         foreach (var enemy in _enemies)
-            enemy.Die -= OnDie;
+            enemy.Died -= OnDie;
 
         _enemies.Clear();
     }
@@ -76,7 +76,7 @@ internal class EnemiesSpawner
             for (int j = 0; j < _levelConfig.AmountEnemy[i]; j++)
             {
                 var newEnemy = Object.Instantiate(_currentPrefab.View, Vector3.zero, Quaternion.identity, _parent);
-                newEnemy.Die += OnDie;
+                newEnemy.Died += OnDie;
                 newEnemy.Init(_enemiesPrefabs[i], _target);
                 _enemies.Add(newEnemy);
                 _objectPool.AddObject(newEnemy);

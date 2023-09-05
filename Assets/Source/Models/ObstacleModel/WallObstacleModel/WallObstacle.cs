@@ -14,12 +14,12 @@ public class WallObstacle : IObstacle
     public void Init()
     {
         _view.ReceivingDamage += _model.OnReceivingDamage;
-        _model.ObstacleBroke += _view.OnObstacleBroke;
+        _model.ObstacleBroke += _view.OnViewBroke;
     }
     
     public void Dispose()
     {
         _view.ReceivingDamage -= _model.OnReceivingDamage;
-        _model.ObstacleBroke -= _view.OnObstacleBroke;
+        _model.ObstacleBroke -= _view.OnViewBroke;
     }
 }

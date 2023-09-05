@@ -10,7 +10,7 @@ public class CollisionDetectionView : View
     public event Action<Collision> CollisionEntered;
     public event Action<Collision> CollisionExited;
 
-    public void OnObstacleBroke() => Destroy(gameObject);
+    public void OnViewDestroy() => Destroy(gameObject);
 
     private void OnTriggerEnter(Collider other)
     {

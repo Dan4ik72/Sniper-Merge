@@ -31,9 +31,9 @@ public class SpikeObstacleModel
 
         var cancellationTokenSource = new CancellationTokenSource();
         _currentDamageables.Add(damagable, cancellationTokenSource);
-        damagable.Die += OnCurrentDamageableDied;
+        damagable.Died += OnCurrentDamageableDied;
 
-        ApplyingDamage(damagable, cancellationTokenSource.Token);
+        MakingDamage(damagable, cancellationTokenSource.Token);
     }
 
     public void OnTriggerExit(Collider exited)
@@ -48,7 +48,7 @@ public class SpikeObstacleModel
         _currentDamageables.Remove(damageble);
     }
     
-    private async UniTask ApplyingDamage(IDamageble damagable, CancellationToken token)
+    private async UniTask MakingDamage(IDamageble damagable, CancellationToken token)
     {
         while (token.IsCancellationRequested == false)
         {   

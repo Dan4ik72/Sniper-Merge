@@ -5,7 +5,7 @@ public class DamagableView : View, IDamageble
 {
     public Vector3 Position => transform.position;
 
-    public event Action<IDamageble> Die;
+    public event Action<IDamageble> Died;
     public event Action<int> ReceivingDamage;
 
     public void ApplyDamage(int damage)
@@ -13,9 +13,9 @@ public class DamagableView : View, IDamageble
         ReceivingDamage?.Invoke(damage);
     }
 
-    public void OnObstacleBroke()
+    public void OnViewBroke()
     {
-        Die?.Invoke(this);
+        Died?.Invoke(this);
         Destroy(gameObject);
     }
 }
