@@ -1,7 +1,5 @@
-using log4net.Core;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using VContainer;
 
@@ -25,26 +23,21 @@ internal class Aiming
 
     public void Update(float delta)
     {   
-        FindNearestTarget();
-
         if (_currentTarget != null)
             LookAt(_currentTarget.Position, delta);
         else
             LookAt(_gun.transform.position + Vector3.forward, delta);
     }
 
-    private void FindNearestTarget()
+    public void FindNearestTarget()
     {
-        if (_targets.Count == 0 && _targets.FirstOrDefault(obj => obj.IsAlive) == null)
+        if (_targets.Count == 0 || FindLiveTarget())
         {
             _currentTarget = null;
             return;
         }
 
-        float minMagnitude = (_targets[0].Position - _gun.position).magnitude;
-
-        if (_targets[0].IsAlive && minMagnitude < _config.Range)
-            _currentTarget = _targets[0];
+        float minMagnitude = _config.Range;
 
         foreach (var target in _targets)
         {
@@ -56,6 +49,17 @@ internal class Aiming
                 _currentTarget = target;
             }
         }
+    }
+
+    private bool FindLiveTarget()
+    {
+        foreach (var target in _targets)
+        {
+            if (target.IsAlive)
+                return false;
+        }
+
+        return true;
     }
 
     private void LookAt(Vector3 target, float delta)

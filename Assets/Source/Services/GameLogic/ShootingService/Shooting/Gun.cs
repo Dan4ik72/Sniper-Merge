@@ -32,9 +32,15 @@ internal class Gun : IDamageble
 
     public void Update()
     {
-        if (IsAlive && _reloading.IsLoaded && _magazine.IsLoaded && _aiming.CurrentTarget != null)
+        if (IsAlive == false || _reloading.IsLoaded == false || _magazine.IsLoaded == false)
+            return;
+
+        _aiming.FindNearestTarget();
+
+        if (_aiming.CurrentTarget != null)
         {
             _aiming.CurrentTarget.ApplyDamage(_magazine.GiveBullet());
+            _aiming.FindNearestTarget();
             _reloading.Reset();
         }
     }
