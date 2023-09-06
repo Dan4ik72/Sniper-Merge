@@ -14,7 +14,7 @@ public class SpikeObstacle : IObstacle
         _view.TriggerEntered += _model.OnTriggerEnter;
         _view.TriggerExited += _model.OnTriggerExit;
 
-        _model.ObstacleBroke += _view.OnObstacleBroke;
+        _model.ObstacleBroke += _view.OnViewDestroy;
     }
 
     public void Dispose()
@@ -22,6 +22,6 @@ public class SpikeObstacle : IObstacle
         _view.TriggerEntered -= _model.OnTriggerEnter;
         _view.TriggerExited -= _model.OnTriggerExit;
 
-        _model.ObstacleBroke -= _view.OnObstacleBroke;
+        _model.ObstacleBroke -= _view.OnViewDestroy;
     }
 }

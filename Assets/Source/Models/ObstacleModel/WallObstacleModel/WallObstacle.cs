@@ -13,13 +13,13 @@ public class WallObstacle : IObstacle
 
     public void Init()
     {
-        _view.RecievingDamage += _model.OnReceivingDamage;
-        _model.ObstacleBroke += _view.OnObstacleBroke;
+        _view.ReceivingDamage += _model.OnReceivingDamage;
+        _model.ObstacleBroke += _view.OnViewBroke;
     }
     
     public void Dispose()
     {
-        _view.RecievingDamage -= _model.OnReceivingDamage;
-        _model.ObstacleBroke -= _view.OnObstacleBroke;
+        _view.ReceivingDamage -= _model.OnReceivingDamage;
+        _model.ObstacleBroke -= _view.OnViewBroke;
     }
 }
