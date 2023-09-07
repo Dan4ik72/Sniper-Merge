@@ -27,7 +27,7 @@ public class LevelWalletService
 
         _levelWallet.ReceiveMoney(uintCount);
 
-        MoneyReceived?.Invoke(uintCount);
+        MoneyReceived?.Invoke(_levelWallet.MoneyCount);
     }
 
     public bool TrySpendMoney(uint required)
