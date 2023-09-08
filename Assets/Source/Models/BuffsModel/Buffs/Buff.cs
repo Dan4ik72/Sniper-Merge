@@ -1,14 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public abstract class Buff : ScriptableObject
+[System.Serializable]
+public abstract class Buff : IData
 {
-    [SerializeField] private float _duration;
-    [SerializeField] private bool _isDurationStackable;
-    [SerializeField] private bool _isEffectStackable;
-
-    public float Duration => _duration;
-    public bool IsDurationStackable => _isDurationStackable;
-    public bool IsEffectStackable => _isEffectStackable;
+    public int BuffLevel;
+    [Space]
+    public bool IsDurationStackable;
+    public float Duration;
+    public bool IsEffectStackable;
 }

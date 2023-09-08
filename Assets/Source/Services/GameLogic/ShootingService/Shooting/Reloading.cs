@@ -43,17 +43,17 @@ internal class Reloading : IBuffable
         _isCompleted = false;
     }
 
-    public void ApplyBuff(Buff buff)
+    public void ApplyBuff(Buff Buff)
     {
-        var speedBuff = TryToCastType(buff);
+        var speedBuff = TryToCastType(Buff);
         
         _currentSpeed *= speedBuff.SpeedMultiplier;
         _currentBuffs.Add(speedBuff);
     }
 
-    public void EndBuff(Buff buff)
+    public void EndBuff(Buff Buff)
     {
-        var speedBuff = TryToCastType(buff);
+        var speedBuff = TryToCastType(Buff);
         
         if(_currentBuffs.Contains(speedBuff) == false)
             return;
@@ -62,11 +62,11 @@ internal class Reloading : IBuffable
         _currentBuffs.Remove(speedBuff);
     }
 
-    private ShootingSpeedBuff TryToCastType(Buff buff)
+    private ShootingSpeedBuff TryToCastType(Buff Buff)
     {
-        if (buff.GetType() != BuffableType)
+        if (Buff.GetType() != BuffableType)
             throw new InvalidCastException("Invalid type boxed in the passed argument");
 
-        return (ShootingSpeedBuff)buff;
+        return (ShootingSpeedBuff)Buff;
     }
 }

@@ -19,19 +19,22 @@ public class DataStorageService
     {
         var json = _jsonConverter.Convert<T>(data);
         
-        _dataSaveHandler.SaveString(nameof(T), json);
+        _dataSaveHandler.SaveString(typeof(T).ToString(), json);
     }
-
+    
     public bool TryGetData<T>(out T data) where T : IData
     {
         data = default;
 
         string name = typeof(T).ToString();
-        
+
         if (_dataSaveHandler.HasKey(name) == false)
             return false;
 
         var json = _dataSaveHandler.LoadString(name);
+        
+        if (json == string.Empty || json == "{}" || json == "{ }")
+            return false;
         
         data = _jsonConverter.Deconvert<T>(json);
 

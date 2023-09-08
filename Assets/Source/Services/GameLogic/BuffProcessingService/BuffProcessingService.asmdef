@@ -1,8 +1,11 @@
 {
-    "name": "BuffModel",
+    "name": "BuffProcessingService",
     "rootNamespace": "",
     "references": [
-        "GUID:e619540f8bb80cd4d8e5afa76bfb02c4"
+        "GUID:8e77978d14ac4534ba619a91204f82d6",
+        "GUID:b36272d3f91f3904dac2d57aff1e9361",
+        "GUID:f51ebe6a0ceec4240a699833d6309b23",
+        "GUID:b0214a6008ed146ff8f122a6a9c2f6cc"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
