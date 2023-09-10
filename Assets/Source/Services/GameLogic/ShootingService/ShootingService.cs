@@ -15,10 +15,9 @@ public class ShootingService
     private BulletHolder _bulletHolder;
     private BulletConveyor _bulletConveyor;
 
-    public event Action OnEnemyKilled;
-    
     [Inject]
-    internal ShootingService(Reloading reloading, Gun gun, Aiming aiming, Magazine magazine,BulletHolder bulletHolder, BulletSpawner bulletSpawner, BulletConveyor bulletConveyor)
+    internal ShootingService(Reloading reloading, Gun gun, Aiming aiming, Magazine magazine,
+        BulletHolder bulletHolder, BulletSpawner bulletSpawner, BulletConveyor bulletConveyor)
     {
         _reloading = reloading;
         _gun = gun;
@@ -27,10 +26,15 @@ public class ShootingService
         _bulletConveyor = bulletConveyor;
         _bulletSpawner = bulletSpawner;
         _magazine = magazine;
+        
+        ShootingBuffables.Add(_magazine);
+        ShootingBuffables.Add(_reloading);
     }
 
     public IDamageble Gun => _gun;
     public Vector3 BulletHolderPosition => _bulletHolder.BulletPlace.position;
+
+    public List<IBuffable> ShootingBuffables { get; } = new();
 
     public void Init(IReadOnlyList<IDamageble> enemies)
     {

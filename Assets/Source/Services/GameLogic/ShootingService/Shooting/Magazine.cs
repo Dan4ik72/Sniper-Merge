@@ -2,9 +2,13 @@ using System;
 using System.Collections.Generic;
 using VContainer;
 
-internal class Magazine
+internal class Magazine : IBuffable
 {
     private Queue<BulletInfo> _bulletsInMagazine = new();
+
+    private List<DamageBuff> _currentBuffs = new();
+
+    private int _damageMultiplier = 1;
     
     public bool IsLoaded => _bulletsInMagazine.Count > 0;
 
@@ -21,6 +25,38 @@ internal class Magazine
 
         BulletSpawned?.Invoke(bullet);
 
-        return bullet.Damage;
+        return bullet.Damage * _damageMultiplier;
+    }
+
+    public void ApplyBuff(Buff buffConfig)
+    {
+        var damageBuff = TryCastBuff(buffConfig);
+
+        _damageMultiplier = damageBuff.DamageMultiplier;
+        _currentBuffs.Add(damageBuff);
+    }
+
+    public void EndBuff(Buff buffConfig)
+    {
+        var damageBuff = TryCastBuff(buffConfig);
+
+        if (_currentBuffs.Contains(damageBuff) == false)
+            return;
+
+        _damageMultiplier = 1;
+        _currentBuffs.Remove(damageBuff);
+    }
+
+    public bool CheckType(Buff type)
+    {
+        return typeof(DamageBuff) == type.GetType();
+    }
+
+    private DamageBuff TryCastBuff(Buff buff)
+    {
+        if (buff.GetType() != typeof(DamageBuff))
+            throw new InvalidCastException("Invalid type boxed in the passed argument");
+
+        return (DamageBuff)buff;
     }
 }

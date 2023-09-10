@@ -13,6 +13,11 @@ public class ButtonView : MonoBehaviour
         _button.onClick.AddListener(OnButtonClick);
     }
 
+    public void SetButtonActivity(bool isActive)
+    {
+        _button.interactable = isActive;
+    }
+    
     public void Disable()
     {
         _button.onClick.RemoveListener(OnButtonClick);
