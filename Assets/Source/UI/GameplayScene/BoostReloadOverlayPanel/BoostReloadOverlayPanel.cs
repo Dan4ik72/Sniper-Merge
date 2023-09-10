@@ -1,7 +1,8 @@
 using UnityEngine;
+using UnityEngine.UI;
 using VContainer;
 
-[RequireComponent(typeof(Canvas))]
+[RequireComponent(typeof(Canvas), typeof(GraphicRaycaster))]
 public class BoostReloadOverlayPanel : MonoBehaviour, IUiPanel
 {
     [SerializeField] private ButtonView _boostReloadButtonView;
