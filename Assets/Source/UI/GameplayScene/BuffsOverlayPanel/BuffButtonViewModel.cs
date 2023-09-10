@@ -29,14 +29,12 @@ internal class BuffButtonViewModel
         UpdateButtonState();
 
         _levelWalletService.MoneySpent += UpdateButtonState;
-        _levelWalletService.MoneyReceived += UpdateButtonState;
         _buffProcessingService.BuffEnded += OnBuffEnded;
     }
 
     public void Disable()
     {
         _levelWalletService.MoneySpent -= UpdateButtonState;
-        _levelWalletService.MoneyReceived -= UpdateButtonState;
         _buffProcessingService.BuffEnded -= OnBuffEnded;
     }
     
