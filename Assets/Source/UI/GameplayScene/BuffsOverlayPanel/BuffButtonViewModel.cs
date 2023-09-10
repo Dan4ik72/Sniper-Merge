@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -29,12 +30,14 @@ internal class BuffButtonViewModel
         UpdateButtonState();
 
         _levelWalletService.MoneySpent += UpdateButtonState;
+        _levelWalletService.MoneyReceived += UpdateButtonState;
         _buffProcessingService.BuffEnded += OnBuffEnded;
     }
 
     public void Disable()
     {
         _levelWalletService.MoneySpent -= UpdateButtonState;
+        _levelWalletService.MoneyReceived -= UpdateButtonState;
         _buffProcessingService.BuffEnded -= OnBuffEnded;
     }
     

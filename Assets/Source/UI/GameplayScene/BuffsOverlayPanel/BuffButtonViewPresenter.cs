@@ -1,4 +1,6 @@
-﻿internal class BuffButtonViewPresenter
+﻿using UnityEngine;
+
+internal class BuffButtonViewPresenter
 {
     private readonly BuffButtonViewModel _model;
     private readonly BuffButtonView _view;
@@ -29,7 +31,10 @@
         _view.Clicked -= _model.OnButtonClicked;
     }
 
-    private void StartViewTimer() => _view.SetTimerActivity(true);
-    
+    private void StartViewTimer()
+    {
+        _view.SetTimerActivity(true);
+    }
+
     private void DisableViewTimer() => _view.SetTimerActivity(false);
 }
