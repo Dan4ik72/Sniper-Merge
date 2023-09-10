@@ -1,5 +1,4 @@
 using System;
-using Cysharp.Threading.Tasks;
 using UnityEngine;
 using VContainer;
 
@@ -17,7 +16,8 @@ public class GameBootstrapper : MonoBehaviour, IDisposable
     [Inject] private LevelWalletService _levelWalletService;
     [Inject] private GameSceneUIBootstrapService _gameSceneUIBootstrapService;
     [Inject] private UIPanelTransitService _uiPanelTransitService;
-
+    [Inject] private BuffProcessingService _buffProcessingService;
+    
     private void Start()
     {   
         _inputService.Init();
@@ -32,7 +32,7 @@ public class GameBootstrapper : MonoBehaviour, IDisposable
         
         SubscribeEvents();
     }
-    
+
     private void SubscribeEvents()
     {
         _enemiesService.EnemyDied += _levelWalletService.ReceiveMoney;

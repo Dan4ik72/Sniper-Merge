@@ -1,15 +1,17 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using VContainer;
 
-internal class Reloading
+internal class Reloading : IBuffable
 {
     private GunInfo _config;
     private float _currentSpeed;
     private float _elapsedTime = 0;
     private bool _isCompleted = false;
+
+    private List<ShootingSpeedBuff> _currentBuffs = new();
+    
+    public Action Ready;
 
     [Inject]
     internal Reloading(GunInfo config)
@@ -18,7 +20,7 @@ internal class Reloading
         _currentSpeed = _config.SpeedCooldown;
     }
 
-    public Action Ready;
+    public Type BuffableType => typeof(ShootingSpeedBuff);
 
     public bool IsLoaded => _isCompleted;
 
@@ -40,5 +42,37 @@ internal class Reloading
     {
         _elapsedTime = 0;
         _isCompleted = false;
+    }
+
+    public void ApplyBuff(Buff Buff)
+    {
+        var speedBuff = TryToCastType(Buff);
+        
+        _currentSpeed *= speedBuff.SpeedMultiplier;
+        _currentBuffs.Add(speedBuff);
+    }
+
+    public void EndBuff(Buff Buff)
+    {
+        var speedBuff = TryToCastType(Buff);
+        
+        if(_currentBuffs.Contains(speedBuff) == false)
+            return;
+
+        _currentSpeed /= speedBuff.SpeedMultiplier;
+        _currentBuffs.Remove(speedBuff);
+    }
+
+    public bool CheckType(Buff type)
+    {
+        return typeof(ShootingSpeedBuff) == type.GetType();
+    }
+    
+    private ShootingSpeedBuff TryToCastType(Buff Buff)
+    {
+        if (Buff.GetType() != BuffableType)
+            throw new InvalidCastException("Invalid type boxed in the passed argument");
+
+        return (ShootingSpeedBuff)Buff;
     }
 }
