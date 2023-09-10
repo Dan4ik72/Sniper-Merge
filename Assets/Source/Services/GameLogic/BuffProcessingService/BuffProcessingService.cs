@@ -17,7 +17,7 @@ public class BuffProcessingService
     
     public async void ApplyBuff<T>(T buff) where T : Buff
     {
-        var buffable = _allBuffables.FirstOrDefault(buffable => buffable.BuffableType == typeof(T));
+        var buffable = _allBuffables.FirstOrDefault(buffable => buffable.CheckType(buff));
 
         if (buffable == null)
             throw new InvalidCastException("There is no buffable with type " + typeof(T) + " in the list");

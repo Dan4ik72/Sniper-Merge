@@ -9,6 +9,8 @@ internal class Reloading : IBuffable
     private float _elapsedTime = 0;
     private bool _isCompleted = false;
 
+    private List<ShootingSpeedBuff> _currentBuffs = new();
+    
     public Action Ready;
 
     [Inject]
@@ -19,8 +21,7 @@ internal class Reloading : IBuffable
     }
 
     public Type BuffableType => typeof(ShootingSpeedBuff);
-    private List<ShootingSpeedBuff> _currentBuffs;
-    
+
     public bool IsLoaded => _isCompleted;
 
     public void Update(float delta)
@@ -62,6 +63,11 @@ internal class Reloading : IBuffable
         _currentBuffs.Remove(speedBuff);
     }
 
+    public bool CheckType(Buff type)
+    {
+        return typeof(ShootingSpeedBuff) == type.GetType();
+    }
+    
     private ShootingSpeedBuff TryToCastType(Buff Buff)
     {
         if (Buff.GetType() != BuffableType)

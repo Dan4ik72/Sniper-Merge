@@ -1,4 +1,5 @@
-﻿using VContainer;
+﻿using System.Collections.Generic;
+using VContainer;
 
 public class BuffProcessingServiceInstaller : Installer
 {
@@ -8,8 +9,11 @@ public class BuffProcessingServiceInstaller : Installer
         {
             //Services with buffables models
             var shootingService = container.Resolve<ShootingService>();
+
+            var list = new List<IBuffable>();
+            list.AddRange(shootingService.ShootingBuffables);
             
-            return new BuffProcessingService(shootingService.ShootingBuffables);
+            return new BuffProcessingService(list);
 
         }, Lifetime.Scoped);
     }

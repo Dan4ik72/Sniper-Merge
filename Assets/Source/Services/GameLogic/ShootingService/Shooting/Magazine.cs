@@ -13,7 +13,6 @@ internal class Magazine : IBuffable
     public bool IsLoaded => _bulletsInMagazine.Count > 0;
 
     public event Action<BulletInfo> BulletSpawned;
-    public Type BuffableType => typeof(DamageBuff);
 
     public void ReceiveBullet(BulletInfo bulletInfo)
     {
@@ -48,11 +47,16 @@ internal class Magazine : IBuffable
         _currentBuffs.Remove(damageBuff);
     }
 
-    private DamageBuff TryCastBuff(Buff buffConfig)
+    public bool CheckType(Buff type)
     {
-        if (buffConfig.GetType() != typeof(DamageBuffConfig))
+        return typeof(DamageBuff) == type.GetType();
+    }
+
+    private DamageBuff TryCastBuff(Buff buff)
+    {
+        if (buff.GetType() != typeof(DamageBuff))
             throw new InvalidCastException("Invalid type boxed in the passed argument");
 
-        return (DamageBuff)buffConfig;
+        return (DamageBuff)buff;
     }
 }

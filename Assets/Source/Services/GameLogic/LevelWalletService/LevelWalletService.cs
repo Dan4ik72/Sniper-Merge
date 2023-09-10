@@ -10,7 +10,7 @@ public class LevelWalletService
     public event Action<uint> MoneyReceived;
 
     [Inject]
-    public LevelWalletService(Wallet levelWallet)
+    internal LevelWalletService(Wallet levelWallet)
     {
         _levelWallet = levelWallet;
         _levelWallet.ReceiveMoney(20);
