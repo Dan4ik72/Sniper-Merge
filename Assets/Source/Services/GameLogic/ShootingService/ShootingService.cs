@@ -59,6 +59,8 @@ public class ShootingService
 
     public void ClearBulletPlace() => _bulletHolder.ClearBulletPlace();
 
+    public void BoostReload(float value) => _reloading.Reduce(value);
+
     public void Disable()
     {
         _bulletConveyor.Disable();

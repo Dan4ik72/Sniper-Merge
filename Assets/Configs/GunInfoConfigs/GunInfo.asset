@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: GunInfo
   m_EditorClassIdentifier: 
   _health: 20
-  _speedCooldown: 0.9
+  _speedCooldown: 1.5
   _speedRotate: 7
   _range: 20
