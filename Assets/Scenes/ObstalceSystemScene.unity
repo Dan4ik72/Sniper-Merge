@@ -1283,8 +1283,8 @@ MonoBehaviour:
     TypeName: 
   autoRun: 0
   autoInjectGameObjects: []
-  _damageBuffDefaultConfig: {fileID: 11400000, guid: 86441de6b74464b48b603052f0317453, type: 2}
-  _shootingSpeedBuffDefaultConfig: {fileID: 11400000, guid: e06e78b9cb980974fb66d90568c53cb0, type: 2}
+  _damageBuffDefaultConfig: {fileID: 11400000, guid: 82707ee499294894bba8ce3d2cd29a80, type: 2}
+  _shootingSpeedBuffDefaultConfig: {fileID: 11400000, guid: fcd2f66237913104f9c9a45f5f6a2a5c, type: 2}
 --- !u!1 &872792817
 GameObject:
   m_ObjectHideFlags: 0
