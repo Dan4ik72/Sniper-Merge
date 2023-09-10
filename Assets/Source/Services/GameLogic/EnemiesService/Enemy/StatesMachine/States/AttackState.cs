@@ -33,10 +33,9 @@ internal class AttackState : State
 
     private RaycastHit RayCastForward()
     {
-        var hit = new RaycastHit();
+        RaycastHit hit;
         var ray = new Ray(_enemy.transform.position, _enemy.transform.forward);
         Physics.Raycast(ray, out hit, _enemy.RaycastDistance, 1 << DamageableLayer);
-
         return hit;
     }
 }

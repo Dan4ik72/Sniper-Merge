@@ -26,6 +26,9 @@ internal class Reloading : IBuffable
 
     public void Update(float delta)
     {
+        if (_isCompleted)
+            return;
+
         _elapsedTime += delta;
 
         if (_elapsedTime > _currentSpeed)
@@ -36,11 +39,13 @@ internal class Reloading : IBuffable
     {
         float newTime = _currentSpeed -= value;
         _currentSpeed = _currentSpeed > newTime ? newTime : _currentSpeed;
+        _currentSpeed = _currentSpeed < _config.MinSpeedCooldown ? _config.MinSpeedCooldown : _currentSpeed;
     }
 
     public void Reset()
     {
         _elapsedTime = 0;
+        _currentSpeed = _config.SpeedCooldown;
         _isCompleted = false;
     }
 
