@@ -24,6 +24,7 @@ public class UIGameEndingPanel : MonoBehaviour, IUiPanel
 
     public void Disable()
     {
+
     }
 
     public Canvas GetCanvas() => _canvas;

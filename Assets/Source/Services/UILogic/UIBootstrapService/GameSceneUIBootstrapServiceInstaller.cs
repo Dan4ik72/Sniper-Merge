@@ -9,6 +9,7 @@ public class GameSceneUIBootstrapServiceInstaller : Installer
     [SerializeField] private MergeOverlayPanel _mergeOverlayPanel;
     [SerializeField] private BuffsOverlayPanel _buffsOverlayPanel;
     [SerializeField] private BoostReloadOverlayPanel _boostReloadOverlayPanel;
+    [SerializeField] private EndGameOverlayPanel _endGameOverlayPanel;
     
     protected override void Configure(IContainerBuilder builder)
     {
@@ -21,6 +22,7 @@ public class GameSceneUIBootstrapServiceInstaller : Installer
                 container.Resolve<MergeOverlayPanel>(),
                 container.Resolve<BuffsOverlayPanel>(),
                 container.Resolve<BoostReloadOverlayPanel>(),
+                container.Resolve<EndGameOverlayPanel>(),
             };
 
             return new UIBootstrapService(panels);
@@ -32,5 +34,6 @@ public class GameSceneUIBootstrapServiceInstaller : Installer
         builder.RegisterComponent(_basicOverlayPanel);
         builder.RegisterComponent(_mergeOverlayPanel);
         builder.RegisterComponent(_boostReloadOverlayPanel);
+        builder.RegisterComponent(_endGameOverlayPanel);
     }
 }
