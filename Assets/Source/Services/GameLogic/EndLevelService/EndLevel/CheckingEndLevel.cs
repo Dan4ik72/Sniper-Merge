@@ -11,7 +11,7 @@ internal class CheckingEndLevel
     private int _totalEnemies;
     private int _counterKilledEnemies;
 
-    public event Action Losed;
+    public event Action Lost;
     public event Action Victory;
 
     [Inject]
@@ -19,6 +19,8 @@ internal class CheckingEndLevel
     {
         _totalEnemies = levelConfig.AllEnemies;
     }
+
+    public int EnemyKilledCount => _counterKilledEnemies;
 
     public void Init(IReadOnlyList<IDamageble> enemies, IDamageble gun)
     {
@@ -49,5 +51,5 @@ internal class CheckingEndLevel
             Victory?.Invoke();
     }
 
-    private void OnDieGun(IDamageble damageble) => Losed?.Invoke();
+    private void OnDieGun(IDamageble damageble) => Lost?.Invoke();
 }

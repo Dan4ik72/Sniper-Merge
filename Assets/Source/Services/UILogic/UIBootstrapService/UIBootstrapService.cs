@@ -1,12 +1,12 @@
 using System.Collections.Generic;
 using VContainer;
 
-public class GameSceneUIBootstrapService
+public class UIBootstrapService
 {
     private IReadOnlyList<IUiPanel> _allPanels;
 
     [Inject]
-    public GameSceneUIBootstrapService(IReadOnlyList<IUiPanel> panels)
+    public UIBootstrapService(IReadOnlyList<IUiPanel> panels)
     {
         _allPanels = panels;
     }

@@ -1,12 +1,12 @@
 using VContainer;
 
-public class UIPanelTransitServiceInstaller : Installer
+public class UIPanelTransitServiceMainMenuInstaller : Installer
 {
     protected override void Configure(IContainerBuilder builder)
     {
         builder.Register<UIPanelTransitService>(container =>
         {
-            var allPanelsList = container.Resolve<GameSceneUIBootstrapService>().AllPanels;
+            var allPanelsList = container.Resolve<UIBootstrapService>().AllPanels;
             
             return new UIPanelTransitService(allPanelsList);
             

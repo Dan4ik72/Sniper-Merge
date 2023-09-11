@@ -12,7 +12,7 @@ public class GameSceneUIBootstrapServiceInstaller : Installer
     
     protected override void Configure(IContainerBuilder builder)
     {
-        builder.Register<GameSceneUIBootstrapService>(container =>
+        builder.Register<UIBootstrapService>(container =>
         {
             var panels = new List<IUiPanel>
             {
@@ -23,7 +23,7 @@ public class GameSceneUIBootstrapServiceInstaller : Installer
                 container.Resolve<BoostReloadOverlayPanel>(),
             };
 
-            return new GameSceneUIBootstrapService(panels);
+            return new UIBootstrapService(panels);
 
         }, Lifetime.Scoped);
         

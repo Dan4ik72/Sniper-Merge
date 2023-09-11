@@ -14,7 +14,7 @@ public class GameBootstrapper : MonoBehaviour, IDisposable
     [Inject] private ObstacleSpawnService _obstacleSpawnService;
     [Inject] private DataStorageService _dataStorageService;
     [Inject] private LevelWalletService _levelWalletService;
-    [Inject] private GameSceneUIBootstrapService _gameSceneUIBootstrapService;
+    [Inject] private UIBootstrapService _uiBootstrapService;
     [Inject] private UIPanelTransitService _uiPanelTransitService;
     [Inject] private BuffProcessingService _buffProcessingService;
     
@@ -28,7 +28,7 @@ public class GameBootstrapper : MonoBehaviour, IDisposable
         _enemiesService.Init(_shootingService.Gun);
         _endLevelService.Init(_enemiesService.Enemies, _shootingService.Gun);
         _obstacleSpawnService.Init();
-        _gameSceneUIBootstrapService.Init();
+        _uiBootstrapService.Init();
         
         SubscribeEvents();
     }
@@ -57,7 +57,7 @@ public class GameBootstrapper : MonoBehaviour, IDisposable
         _shootingService.Disable();
         _inputService.Disable();
         _obstacleSpawnService.Disable();
-        _gameSceneUIBootstrapService.Disable();
+        _uiBootstrapService.Disable();
         _enemiesService.Disable();
         
         UnsubscribeEvents();
