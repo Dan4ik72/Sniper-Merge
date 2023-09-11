@@ -1,11 +1,11 @@
 ﻿using VContainer;
 
-public class BasicOverlayPresenter
+public class PlayerMoneyViewPresenter
 {
     private UpdatableTextView _view;
     private LevelWalletService _model;
 
-    public BasicOverlayPresenter(UpdatableTextView view, LevelWalletService model)
+    public PlayerMoneyViewPresenter(UpdatableTextView view, LevelWalletService model)
     {
         _view = view;
         _model = model;

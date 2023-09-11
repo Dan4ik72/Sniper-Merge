@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.PlayerLoop;
 using UnityEngine.UI;
 using VContainer;
 
@@ -6,29 +7,38 @@ using VContainer;
 public class BasicOverlayPanel : MonoBehaviour, IUiPanel
 {
     [SerializeField] private UpdatableTextView _playerLevelMoneyView;
+    [SerializeField] private UpdatableTextView _updatablePlayerHealthView;
+    [SerializeField] private UpdatableTextView _defaultPlayerHealthView;
+    [SerializeField] private SliderView _playerHealthSlider;
     
     private Canvas _canvas;
 
-    private BasicOverlayPresenter _basicOverlayPresenter;
-    private LevelWalletService _playerMoneyModel;
-    
+    private PlayerMoneyViewPresenter _playerMoneyViewPresenter;
+
+    private PlayerHeathViewPresenter _playerHeathViewPresenter;
+
     [Inject]
-    public void Construct(LevelWalletService levelWalletService)
+    public void Construct(LevelWalletService levelWalletService, ShootingService shootingService)
     {
         _canvas = GetComponent<Canvas>();
-        _playerMoneyModel = levelWalletService;
-        _basicOverlayPresenter = new BasicOverlayPresenter(_playerLevelMoneyView, _playerMoneyModel);
+        
+        _playerMoneyViewPresenter = new PlayerMoneyViewPresenter(_playerLevelMoneyView, levelWalletService);
+
+        _playerHeathViewPresenter = new PlayerHeathViewPresenter(_updatablePlayerHealthView, _defaultPlayerHealthView, _playerHealthSlider, shootingService);
     }
 
     public Canvas GetCanvas() => _canvas;
 
     public void Init()
     {
-        _basicOverlayPresenter.Init();
+        _playerMoneyViewPresenter.Init();
+        _playerHeathViewPresenter.Init();
+        _playerHealthSlider.Init();
     }
 
     public void Disable()
     {
-        _basicOverlayPresenter.Disable();
+        _playerMoneyViewPresenter.Disable();
+        _playerHeathViewPresenter.Disable();
     }
 }

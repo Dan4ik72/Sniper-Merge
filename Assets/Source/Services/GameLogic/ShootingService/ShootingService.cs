@@ -15,6 +15,8 @@ public class ShootingService
     private BulletHolder _bulletHolder;
     private BulletConveyor _bulletConveyor;
 
+    public event Action<int> GunRecievedDamage;
+    
     [Inject]
     internal ShootingService(Reloading reloading, Gun gun, Aiming aiming, Magazine magazine,
         BulletHolder bulletHolder, BulletSpawner bulletSpawner, BulletConveyor bulletConveyor)
@@ -35,11 +37,14 @@ public class ShootingService
     public Vector3 BulletHolderPosition => _bulletHolder.BulletPlace.position;
 
     public List<IBuffable> ShootingBuffables { get; } = new();
+    public int GunHealth => _gun.Health;
 
     public void Init(IReadOnlyList<IDamageble> enemies)
     {
         _aiming.Init(enemies);
 
+        _gun.RecievedDamage += OnGunRecievedDamage;
+        
         //temporary code
         _bulletConveyor.Init();
 
@@ -69,10 +74,14 @@ public class ShootingService
     {
         _bulletConveyor.Disable();
 
+        _gun.RecievedDamage += OnGunRecievedDamage;
+        
         _bulletHolder.OnNewBulletPlaced -= _bulletSpawner.ChangeBullet;
         _bulletHolder.OnNewBulletPlaced -= _bulletConveyor.SetNewBulletInfo;
         _bulletHolder.BulletRemoved -= _bulletSpawner.ChangeBullet;
         _bulletSpawner.BulletSpawned -= _bulletConveyor.SpawnBulletView;
         _magazine.BulletSpawned -= _bulletConveyor.OnBulletUsed;
     }
+
+    private void OnGunRecievedDamage(int currentHealth) => GunRecievedDamage?.Invoke(currentHealth);
 }
