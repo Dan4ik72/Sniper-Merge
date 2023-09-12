@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Canvas), typeof(GraphicRaycaster))]
@@ -14,6 +15,7 @@ public class ButtonView : MonoBehaviour
     public void Init()
     {
         _canvas = GetComponent<Canvas>();
+        _button ??= GetComponent<Button>(); 
         _button.onClick.AddListener(OnButtonClick);
     }
 
@@ -33,4 +35,13 @@ public class ButtonView : MonoBehaviour
     }
 
     private void OnButtonClick() => Clicked?.Invoke();
+
+    private void OnValidate()
+    {
+        /*if(_button != null)
+            return;
+
+        if (TryGetComponent(out Button button))
+            _button = button;*/
+    }
 }

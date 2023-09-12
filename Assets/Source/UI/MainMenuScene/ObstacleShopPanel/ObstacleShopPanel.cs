@@ -1,7 +1,4 @@
-﻿namespace Source.UI.MainMenuScene.ObstacleShopPanel
+﻿public class ObstacleShopPanel : ShopPanel
 {
-    public class ObstacleShopPanel
-    {
-        
-    }
+    
 }
