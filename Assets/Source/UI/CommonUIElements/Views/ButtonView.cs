@@ -1,7 +1,8 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.UI;
-[RequireComponent(typeof(Canvas))]
+
+[RequireComponent(typeof(Canvas), typeof(GraphicRaycaster))]
 public class ButtonView : MonoBehaviour
 {
     [SerializeField] private Button _button;

@@ -29,12 +29,14 @@ internal class EndLevelViewPresenter
 
     private void OnGameWon()
     {
+        _wonViewPanel.GetCanvas().enabled = true;
         _wonViewPanel.SetUiPanelParameters((int)_endLevelViewModel.MoneyReceived, _endLevelViewModel.EnemyKilled);
         _mainMenuButton.SetButtonEnable(true);
     }
 
     private void OnGameLost()
     {
+        _lostViewPanel.GetCanvas().enabled = true;
         _lostViewPanel.SetUiPanelParameters((int)_endLevelViewModel.MoneyReceived, _endLevelViewModel.EnemyKilled);
         _mainMenuButton.SetButtonEnable(true);
     }
