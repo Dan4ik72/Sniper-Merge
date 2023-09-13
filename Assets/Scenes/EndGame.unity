@@ -271,6 +271,7 @@ GameObject:
   - component: {fileID: 29799818}
   - component: {fileID: 29799816}
   - component: {fileID: 29799821}
+  - component: {fileID: 29799822}
   m_Layer: 5
   m_Name: ShootingSpeedBuffButton
   m_TagString: Untagged
@@ -418,6 +419,23 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &29799822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 29799815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1 &92230252
 GameObject:
   m_ObjectHideFlags: 0
@@ -647,6 +665,7 @@ GameObject:
   - component: {fileID: 323960349}
   - component: {fileID: 323960348}
   - component: {fileID: 323960353}
+  - component: {fileID: 323960354}
   m_Layer: 5
   m_Name: MainMenuButton
   m_TagString: Untagged
@@ -792,6 +811,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _button: {fileID: 323960349}
+--- !u!114 &323960354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 323960346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1 &329770865
 GameObject:
   m_ObjectHideFlags: 0
@@ -2649,6 +2685,7 @@ GameObject:
   - component: {fileID: 889679540}
   - component: {fileID: 889679539}
   - component: {fileID: 889679544}
+  - component: {fileID: 889679545}
   m_Layer: 0
   m_Name: BoostReloadButton
   m_TagString: Untagged
@@ -2794,6 +2831,23 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &889679545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 889679538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1 &900296035
 GameObject:
   m_ObjectHideFlags: 0
@@ -2808,6 +2862,7 @@ GameObject:
   - component: {fileID: 900296037}
   - component: {fileID: 900296040}
   - component: {fileID: 900296041}
+  - component: {fileID: 900296042}
   m_Layer: 0
   m_Name: BuyMergeItemButton
   m_TagString: Untagged
@@ -2953,6 +3008,23 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &900296042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 900296035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1 &901370192
 GameObject:
   m_ObjectHideFlags: 0
@@ -4716,7 +4788,7 @@ Transform:
   m_GameObject: {fileID: 1589948780}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.44, y: 4.826, z: -3.87}
+  m_LocalPosition: {x: 15.01, y: 4.826, z: -4.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5062,6 +5134,7 @@ GameObject:
   - component: {fileID: 1733629637}
   - component: {fileID: 1733629640}
   - component: {fileID: 1733629641}
+  - component: {fileID: 1733629642}
   m_Layer: 5
   m_Name: DamageBuffButtonView
   m_TagString: Untagged
@@ -5209,6 +5282,23 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1733629642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1733629635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1 &1763365721
 GameObject:
   m_ObjectHideFlags: 0
@@ -5779,7 +5869,7 @@ Transform:
   m_GameObject: {fileID: 1977988368}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 25.8155, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5992,7 +6082,7 @@ Transform:
   m_GameObject: {fileID: 2115294121}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.01, y: 0.842, z: -1.998}
+  m_LocalPosition: {x: 25.8155, y: 0.842, z: -1.998}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6009,6 +6099,7 @@ GameObject:
   - component: {fileID: 2116446572}
   - component: {fileID: 2116446573}
   - component: {fileID: 2116446574}
+  - component: {fileID: 2116446575}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -6103,6 +6194,29 @@ MonoBehaviour:
   _slider: {fileID: 2116446573}
   _minValue: 0
   _maxValue: 0
+--- !u!223 &2116446575
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2116446571}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
 --- !u!1 &2125201311
 GameObject:
   m_ObjectHideFlags: 0

@@ -79,6 +79,10 @@ internal class EnemiesSpawner
                 newEnemy.Died += OnDie;
                 newEnemy.Init(_enemiesPrefabs[i], _target);
                 _enemies.Add(newEnemy);
+
+                var healthView = newEnemy.GetComponentInChildren<EnemyHealthView>();
+                healthView.Init(newEnemy);
+
                 _objectPool.AddObject(newEnemy);
             }
         }
