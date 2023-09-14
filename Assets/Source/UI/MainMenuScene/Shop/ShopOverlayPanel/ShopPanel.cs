@@ -6,21 +6,25 @@ using UnityEngine.UI;
 public abstract class ShopPanel : MonoBehaviour, IUiPanel
 {
     [SerializeField] private ButtonView _panelSwitchButtonView;
-    
-    private Canvas _canvas;
+    [SerializeField] private ShopItemView _prefab;
 
+    private Canvas _canvas;
+    
     public event Action<ShopPanel> PanelSwitchRequested;
 
-    public void Construct(/*DataStorageService dataStorageService*/)
+    public void Construct(DataStorageService dataStorageService, PlayerMoneyService playerMoneyService)
     {
         _canvas = GetComponent<Canvas>();
-        //DataStorageService = dataStorageService;
+        PlayerMoneyService = playerMoneyService;
+        ShopItemFactory = new ShopItemFactory(_prefab);
+        DataStorageService = dataStorageService;
     }
 
     protected DataStorageService DataStorageService { get; private set; }
-    //protected PlayerMoneyService PlayerMoneyService { get; }
-    
-    public void Init()
+    protected ShopItemFactory ShopItemFactory { get; private set; }
+    protected PlayerMoneyService PlayerMoneyService { get; private set; }
+
+    public virtual void Init()
     {
         _panelSwitchButtonView.Init();
         _panelSwitchButtonView.Clicked += OnButtonClick;
@@ -44,6 +48,10 @@ public abstract class ShopPanel : MonoBehaviour, IUiPanel
         _canvas.enabled = true;
         _panelSwitchButtonView.SetButtonActivity(false);
     }
+
+    protected abstract void OnShopItemBuyButtonClicked(ShopItemView shopItemView);
+     
+    protected abstract void OnShopItemSelectButtonClicked(ShopItemView shopItemView);
     
     private void OnButtonClick()
     {   

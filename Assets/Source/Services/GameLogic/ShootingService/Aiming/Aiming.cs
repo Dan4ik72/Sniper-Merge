@@ -6,13 +6,13 @@ using VContainer;
 internal class Aiming
 {
     private Transform _gun;
-    private GunInfo _config;
+    private GunConfig _config;
     private IReadOnlyList<IDamageble> _targets;
 
     private IDamageble _currentTarget;
     
     [Inject]
-    internal Aiming(Transform gun, GunInfo config)
+    internal Aiming(Transform gun, GunConfig config)
     {
         _gun = gun;
         _config = config;
@@ -66,6 +66,6 @@ internal class Aiming
     {
         Vector3 direction = target - _gun.position;
         Quaternion rotation = Quaternion.LookRotation(direction);
-        _gun.rotation = Quaternion.Lerp(_gun.rotation, rotation, delta * _config.SpeedRotate);
+        _gun.rotation = Quaternion.Lerp(_gun.rotation, rotation, delta * _config.RotateSpeed);
     }
 }

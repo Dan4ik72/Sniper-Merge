@@ -5,7 +5,7 @@ using VContainer;
 internal class Gun : IDamageble
 {
     private Transform _position;
-    private GunInfo _config;
+    private GunConfig _config;
     private Reloading _reloading;
     private Magazine _magazine;
     private Aiming _aiming;
@@ -15,7 +15,7 @@ internal class Gun : IDamageble
     public event Action<int> RecievedDamage;
     
     [Inject]
-    internal Gun(Transform position, GunInfo config, Reloading reloading, Magazine magazine, Aiming aiming)
+    internal Gun(Transform position, GunConfig config, Reloading reloading, Magazine magazine, Aiming aiming)
     {
         _position = position;
         _config = config;

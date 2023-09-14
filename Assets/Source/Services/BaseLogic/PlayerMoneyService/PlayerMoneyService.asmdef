@@ -1,14 +1,10 @@
 {
-    "name": "MainMenuSceneUI",
+    "name": "PlayerMoneyService",
     "rootNamespace": "",
     "references": [
-        "GUID:e619540f8bb80cd4d8e5afa76bfb02c4",
-        "GUID:ce905c413ace4910aca643eea8599eb5",
+        "GUID:d2bb5d110cda39045bdeaa8c1e8c0784",
         "GUID:b0214a6008ed146ff8f122a6a9c2f6cc",
-        "GUID:6055be8ebefd69e48b49212b09b47b2f",
-        "GUID:3374be8c6178a0e478f52d11e4aa3563",
-        "GUID:8e77978d14ac4534ba619a91204f82d6",
-        "GUID:901bca7c6a5a491c9a7b50a8960eb6af"
+        "GUID:3374be8c6178a0e478f52d11e4aa3563"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

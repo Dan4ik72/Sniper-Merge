@@ -8,16 +8,18 @@ using VContainer;
 public class ShopOverlayPanel : MonoBehaviour, IUiPanel
 {
     [SerializeField] private List<ShopPanel> _shopPanels;
+
+    [SerializeField] private ShopPanel _defaultPanel;
     
     private Canvas _canvas;
 
     [Inject]
-    public void Construct(/*DataStorageService dataStorageService*/)
+    public void Construct(DataStorageService dataStorageService, PlayerMoneyService playerMoneyService)
     {
         _canvas = GetComponent<Canvas>();
 
         foreach (var shopPanel in _shopPanels)
-            shopPanel.Construct(/*dataStorageService*/);
+            shopPanel.Construct(dataStorageService, playerMoneyService);
     }
     
     public void Init()
@@ -28,6 +30,8 @@ public class ShopOverlayPanel : MonoBehaviour, IUiPanel
 
             shopPanel.PanelSwitchRequested += OnPanelSwitchRequested;
         }
+        
+        OnPanelSwitchRequested(_defaultPanel);
     }
 
     public void Disable()

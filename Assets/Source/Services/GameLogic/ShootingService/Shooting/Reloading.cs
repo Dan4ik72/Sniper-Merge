@@ -4,7 +4,7 @@ using VContainer;
 
 internal class Reloading : IBuffable
 {
-    private GunInfo _config;
+    private GunConfig _config;
     private float _currentSpeed;
     private float _elapsedTime = 0;
     private bool _isCompleted = false;
@@ -14,7 +14,7 @@ internal class Reloading : IBuffable
     public Action Ready;
 
     [Inject]
-    internal Reloading(GunInfo config)
+    internal Reloading(GunConfig config)
     {
         _config = config;
         _currentSpeed = _config.SpeedCooldown;

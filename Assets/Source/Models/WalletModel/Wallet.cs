@@ -2,13 +2,12 @@
 {
     private uint _moneyCount = 0;
     
-    public Wallet(uint startMoneyCount = 0)
-    {
-        _moneyCount = startMoneyCount;
-    }
+    public Wallet(uint startMoneyCount = 0) => _moneyCount = startMoneyCount;
 
     public uint MoneyCount => _moneyCount;
 
+    public void Init(uint startMoneyCount) => _moneyCount = startMoneyCount;
+    
     public void ReceiveMoney(uint money)
     {
         _moneyCount += money;

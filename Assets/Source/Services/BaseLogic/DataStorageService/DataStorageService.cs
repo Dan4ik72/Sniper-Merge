@@ -21,6 +21,13 @@ public class DataStorageService
         
         _dataSaveHandler.SaveString(typeof(T).ToString(), json);
     }
+
+    public void SaveData<T>(string key, object data)
+    {
+        var json = _jsonConverter.Convert<T>(data);
+
+        _dataSaveHandler.SaveString(key, json);
+    }
     
     public bool TryGetData<T>(out T data) where T : IData
     {
@@ -35,6 +42,29 @@ public class DataStorageService
         
         if (json == string.Empty || json == "{}" || json == "{ }")
             return false;
+        
+        data = _jsonConverter.Deconvert<T>(json);
+
+        return true;
+    }
+
+    public bool TryGetData<T>(string key, out T data)
+    {
+        data = default;
+
+        //Debug.Log(key + " " +_dataSaveHandler.HasKey(key));
+        
+        if (_dataSaveHandler.HasKey(key) == false)
+            return false;
+
+        //Debug.Log(key);
+        
+        var json = _dataSaveHandler.LoadString(key);
+
+        if (json == string.Empty || json == "{}" || json == "{ }")
+            return false;
+
+        //Debug.Log(key);
         
         data = _jsonConverter.Deconvert<T>(json);
 
