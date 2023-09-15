@@ -10,9 +10,9 @@ public class MainMenuBootstrapper : MonoBehaviour, IDisposable
     [Inject] private DataStorageService _dataStorageService;
 
     private void Start()
-    {   
-        _uiBootstrapService.Init();
+    {
         _playerMoneyService.Init();
+        _uiBootstrapService.Init();
     }
 
     private void Update()

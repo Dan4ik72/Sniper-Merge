@@ -6,6 +6,7 @@ using VContainer.Unity;
 public class MainMenuUIBootstrapServiceInstaller : Installer
 {
     [SerializeField] private ShopOverlayPanel _shopOverlayPanel;
+    [SerializeField] private MainMenuBasicOverlayPanel _basicOverlayPanel;
     
     protected override void Configure(IContainerBuilder builder)
     {
@@ -14,6 +15,7 @@ public class MainMenuUIBootstrapServiceInstaller : Installer
             var panels = new List<IUiPanel>
             {
                 container.Resolve<ShopOverlayPanel>(),
+                container.Resolve<MainMenuBasicOverlayPanel>(),
             };
 
             return new UIBootstrapService(panels);
@@ -22,5 +24,6 @@ public class MainMenuUIBootstrapServiceInstaller : Installer
         
         //panels
         builder.RegisterComponent(_shopOverlayPanel);
+        builder.RegisterComponent(_basicOverlayPanel);
     }
 }
