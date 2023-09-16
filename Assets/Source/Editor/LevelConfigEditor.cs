@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
@@ -15,12 +16,16 @@ public class LevelConfigEditor : Editor
     private List<EnemyUnitSetUp> _enemySpawnList = new();
 
     private List<bool> _isElementsEnable = new();
-    
+
+    private bool _isAllOpen = true;
+    private bool _isAllOpenLast = true;
+
     private void OnEnable()
     {
         _levelConfig = (LevelConfig)target;
         
         InitEnemySpawnList();
+        
         _enemyTypes = serializedObject.FindProperty("_enemyTypes");
         _spawnDelay = serializedObject.FindProperty("_spawnDelay");
     }
@@ -41,13 +46,31 @@ public class LevelConfigEditor : Editor
         waveLabelStyle.fixedHeight = 27;
         
         EditorGUILayout.LabelField("Wave set up", waveLabelStyle);
+
+        EditorGUILayout.Space(10);
+        EditorGUILayout.BeginHorizontal();
+
+        EditorGUILayout.LabelField("Open all", GUILayout.Width(60));
+        _isAllOpen = EditorGUILayout.Toggle("", _isAllOpen);
+
+        if (_isAllOpenLast != _isAllOpen)
+        {
+            for (int i = 0; i < _isElementsEnable.Count; i++)
+            {
+                _isElementsEnable[i] = _isAllOpen;
+            }
+
+            _isAllOpenLast = _isAllOpen;
+        }
+        
+        EditorGUILayout.EndHorizontal();
         
         EditorGUILayout.Space(8);
 
         for (int i = 0; i < _enemySpawnList.Count; i++)
         {
             //_isElementsEnable[i] = EditorGUILayout.Toggle(_isElementsEnable[i]);
-             
+            
             _isElementsEnable[i] = EditorGUILayout.Foldout(_isElementsEnable[i], $"Unit {i + 1}");
             
             if(_isElementsEnable[i] == false)
@@ -56,7 +79,7 @@ public class LevelConfigEditor : Editor
             EditorGUILayout.BeginVertical(EditorStyles.helpBox);
 
             EditorGUILayout.BeginHorizontal();
-            EditorGUILayout.LabelField($"Unit {i}", unitLabelStyle );
+            EditorGUILayout.LabelField($"Unit {i}", unitLabelStyle);
             
             EditorGUILayout.EndHorizontal();
             EditorGUILayout.Space(8);
@@ -85,17 +108,24 @@ public class LevelConfigEditor : Editor
                 _enemySpawnList.RemoveAt(i);
                 _levelConfig.EnemyTypesEditorOnly.RemoveAt(i);
                 _levelConfig.SpawnDelayEditorOnly.RemoveAt(i);
+                _isElementsEnable.RemoveAt(i);
             }
             
             EditorGUILayout.Space(20);
             
             if (GUILayout.Button("Down", GUILayout.Width(50)))
             {
+                if(i + 1 >= _enemySpawnList.Count)
+                    return;
+                
                 (_enemySpawnList[i + 1], _enemySpawnList[i]) = (_enemySpawnList[i], _enemySpawnList[i + 1]);
             }
             
             if (GUILayout.Button("Up", GUILayout.Width(50)))
             {
+                if(i - 1 < 0)
+                    return;
+                
                 (_enemySpawnList[i - 1], _enemySpawnList[i]) = (_enemySpawnList[i], _enemySpawnList[i - 1]);
             }
             
@@ -109,18 +139,17 @@ public class LevelConfigEditor : Editor
         if (GUILayout.Button("Add", GUILayout.Width(80)))
         {
             _enemySpawnList.Add(new EnemyUnitSetUp());
+            _isElementsEnable.Add(true);
         }
          
         serializedObject.ApplyModifiedProperties(); 
+        
+        if(GUI.changed)
+            EditorUtility.SetDirty(target);
     }
 
     private void InitEnemySpawnList()
     {
-        for (int i = 0; i < _enemySpawnList.Count; i++)
-        {
-            _isElementsEnable.Add(false);
-        }
-        
         if(_enemySpawnList.Count != 0)
             return;
         
@@ -134,6 +163,12 @@ public class LevelConfigEditor : Editor
                 EnemyType = _levelConfig.EnemyTypesEditorOnly[i], 
                 SpawnDelay = _levelConfig.SpawnDelayEditorOnly[i]
             });
+        }
+
+        
+        for (int i = 0; i < _enemySpawnList.Count; i++)
+        {
+            _isElementsEnable.Add(false);
         }
     }
     

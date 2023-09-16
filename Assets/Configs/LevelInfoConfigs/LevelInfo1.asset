@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49dfeaedf6faf34408c2c9c200a4f0d5, type: 3}
   m_Name: LevelInfo1
   m_EditorClassIdentifier: 
-  _enemyTypes: 000000000100000002000000
-  _amountEnemy: 010000000100000001000000
-  _delayBeforeStartSpawn: 3
-  _delayBetweenSpawn: 7
+  _enemyTypesEditorOnly: 01000000000000000000000000000000
+  _spawnDelayEditorOnly:
+  - 890
+  - 0
+  - 0
+  - 0
