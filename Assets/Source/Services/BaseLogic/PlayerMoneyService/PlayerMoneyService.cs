@@ -23,7 +23,7 @@ public class PlayerMoneyService
     
     public void Init()
     {
-        _moneyWallet = new Wallet(20);
+        _moneyWallet = new Wallet(100);
         _gemsWallet = new Wallet(0);
         
         if(_dataStorageService.TryGetData(MoneyWalletSaveKey, out uint money))

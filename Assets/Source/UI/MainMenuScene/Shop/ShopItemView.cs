@@ -1,9 +1,5 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class ShopItemView : MonoBehaviour
@@ -15,7 +11,6 @@ public class ShopItemView : MonoBehaviour
     [Space]
     [SerializeField] private ButtonView _buyButton;
     [SerializeField] private ButtonView _selectButton;
-
 
     public event Action<ShopItemView> BuyButtonClicked;
     public event Action<ShopItemView> SelectButtonClicked; 
@@ -73,11 +68,8 @@ public class ShopItemView : MonoBehaviour
         _selectButton.SetButtonEnable(isPurchased);
     }
 
-    public void SetPurchaseUnavailableState(bool isAvailable)
-    {
-        _buyButton.SetButtonActivity(isAvailable);
-    } 
-    
+    public void SetPurchaseAvailableState(bool isAvailable) => _buyButton.SetButtonActivity(isAvailable);
+
     public void SetSelectedState(bool isSelected) => _selectButton.SetButtonActivity(!isSelected);
 
     private void OnBuyButtonClick() => BuyButtonClicked?.Invoke(this);

@@ -51,6 +51,9 @@ public class GunShopPanel : ShopPanel
         
         DataStorageService.SaveData<GunData>(gunShopItemData.GunData);
         DataStorageService.SaveData<string>(SelectedShopItemKey + _gunShopItemsInstances[shopItemView].GunData.GunLevel, "true");
+
+        foreach(var selected in _gunShopItemsInstances.Keys)
+            selected.SetSelectedState(false);
         
         shopItemView.SetSelectedState(true);
     }
@@ -68,7 +71,7 @@ public class GunShopPanel : ShopPanel
             bool isSelected = DataStorageService.TryGetData(SelectedShopItemKey + data.GunData.GunLevel, out string selected);
             
             var created = ShopItemFactory.Create(data.GunIcon, data.Price, _shopItemsParent,
-                false, isBought, isSelected,data.LevelRequired >= currentPlayerLevel);
+                true, isBought, isSelected,data.LevelRequired >= currentPlayerLevel);
             created.Init();
             
             _gunShopItemsInstances.Add(created, data);
@@ -89,11 +92,11 @@ public class GunShopPanel : ShopPanel
         
         var unlockedNotBoughtForGems = _gunShopItemsInstances.Where(keyValuePair =>
             keyValuePair.Key.IsBought == false && keyValuePair.Key.IsLocked == false && keyValuePair.Key.IsMoneyCurrency == false).ToList();
-        
-        foreach(var shopItemView in unlockedNotBoughtForMoney)
-            shopItemView.Key.SetPurchaseUnavailableState(PlayerMoneyService.MoneyCount >= shopItemView.Value.Price);
-        
+
+        foreach (var shopItemView in unlockedNotBoughtForMoney)
+            shopItemView.Key.SetPurchaseAvailableState(PlayerMoneyService.MoneyCount >= shopItemView.Value.Price);
+
         foreach(var shopItemView in unlockedNotBoughtForGems)
-            shopItemView.Key.SetPurchaseUnavailableState(PlayerMoneyService.GemsCount >= shopItemView.Value.Price );
+            shopItemView.Key.SetPurchaseAvailableState(PlayerMoneyService.GemsCount >= shopItemView.Value.Price);
     }
 }

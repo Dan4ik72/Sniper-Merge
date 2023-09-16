@@ -21,39 +21,3 @@ MonoBehaviour:
     _price: 20
     _levelRequired: 5
     _gunConfig: {fileID: 11400000, guid: daa5ce80004d24147b6e7563120baa5e, type: 2}
-  - _gunIcon: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
-    _price: 30
-    _levelRequired: 0
-    _gunConfig: {fileID: 11400000, guid: daa5ce80004d24147b6e7563120baa5e, type: 2}
-  - _gunIcon: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
-    _price: 40
-    _levelRequired: 0
-    _gunConfig: {fileID: 11400000, guid: daa5ce80004d24147b6e7563120baa5e, type: 2}
-  - _gunIcon: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
-    _price: 40
-    _levelRequired: 0
-    _gunConfig: {fileID: 11400000, guid: daa5ce80004d24147b6e7563120baa5e, type: 2}
-  - _gunIcon: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
-    _price: 40
-    _levelRequired: 0
-    _gunConfig: {fileID: 11400000, guid: daa5ce80004d24147b6e7563120baa5e, type: 2}
-  - _gunIcon: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
-    _price: 40
-    _levelRequired: 0
-    _gunConfig: {fileID: 11400000, guid: daa5ce80004d24147b6e7563120baa5e, type: 2}
-  - _gunIcon: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
-    _price: 40
-    _levelRequired: 0
-    _gunConfig: {fileID: 11400000, guid: daa5ce80004d24147b6e7563120baa5e, type: 2}
-  - _gunIcon: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
-    _price: 40
-    _levelRequired: 0
-    _gunConfig: {fileID: 11400000, guid: daa5ce80004d24147b6e7563120baa5e, type: 2}
-  - _gunIcon: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
-    _price: 40
-    _levelRequired: 0
-    _gunConfig: {fileID: 11400000, guid: daa5ce80004d24147b6e7563120baa5e, type: 2}
-  - _gunIcon: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
-    _price: 40
-    _levelRequired: 0
-    _gunConfig: {fileID: 11400000, guid: daa5ce80004d24147b6e7563120baa5e, type: 2}
