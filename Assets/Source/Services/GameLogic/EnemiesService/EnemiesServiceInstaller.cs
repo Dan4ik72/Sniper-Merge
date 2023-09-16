@@ -7,7 +7,7 @@ public class EnemiesServiceInstaller : Installer
 {
     [SerializeField] private Transform _parent;
     [SerializeField] private List<EnemyInfo> _enemiesPrefabs;
-    [SerializeField] private LevelInfo _levelConfig;
+    [SerializeField] private LevelConfig _levelConfig;
 
     protected override void Configure(IContainerBuilder builder)
     {

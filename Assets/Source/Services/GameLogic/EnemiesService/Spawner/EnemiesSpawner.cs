@@ -12,7 +12,7 @@ internal class EnemiesSpawner
 
     private Transform _parent;
     private IReadOnlyList<EnemyInfo> _enemiesPrefabs;
-    private LevelInfo _levelConfig;
+    private LevelConfig _levelConfig;
     private IDamageble _target;
     private float _elapsedTime = 0;
     private int _counterSpawn = 0;
@@ -24,7 +24,7 @@ internal class EnemiesSpawner
     public event Action<Enemy> EnemyDied;
 
     [Inject]
-    public EnemiesSpawner(Transform parent, IReadOnlyList<EnemyInfo> enemiesPrefabs, LevelInfo levelConfig)
+    public EnemiesSpawner(Transform parent, IReadOnlyList<EnemyInfo> enemiesPrefabs, LevelConfig levelConfig)
     {
         _parent = parent;
         _enemiesPrefabs = enemiesPrefabs;
@@ -69,9 +69,9 @@ internal class EnemiesSpawner
 
     private void CreatePool()
     {
-        for (int i = 0; i < _levelConfig.EnemyTypes.Count; i++)
+        for (int i = 0; i < _levelConfig.EnemyTypesEditorOnly.Count; i++)
         {
-            var _currentPrefab = _enemiesPrefabs.FirstOrDefault(obj => obj.Type == _levelConfig.EnemyTypes[i]);
+            var _currentPrefab = _enemiesPrefabs.FirstOrDefault(obj => obj.Type == _levelConfig.EnemyTypesEditorOnly[i]);
 
             for (int j = 0; j < _levelConfig.AmountEnemy[i]; j++)
             {

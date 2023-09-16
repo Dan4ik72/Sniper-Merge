@@ -3,7 +3,7 @@ using VContainer;
 
 public class EndLevelServiceInstaller : Installer
 {
-    [SerializeField] private LevelInfo _levelConfig;
+    [SerializeField] private LevelConfig _levelConfig;
 
     protected override void Configure(IContainerBuilder builder)
     {

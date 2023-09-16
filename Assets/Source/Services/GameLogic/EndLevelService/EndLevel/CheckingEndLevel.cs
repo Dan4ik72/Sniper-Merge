@@ -15,7 +15,7 @@ internal class CheckingEndLevel
     public event Action Victory;
 
     [Inject]
-    public CheckingEndLevel(LevelInfo levelConfig)
+    public CheckingEndLevel(LevelConfig levelConfig)
     {
         _totalEnemies = levelConfig.AllEnemies;
     }
