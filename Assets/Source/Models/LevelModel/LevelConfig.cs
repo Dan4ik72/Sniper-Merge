@@ -8,27 +8,15 @@ using UnityEngine.Serialization;
 [CreateAssetMenu(fileName = "LevelInfo", menuName = "Level info/Create new level info")]
 public class LevelConfig : ScriptableObject
 {
-    [SerializeField] private List<EnemyType> _enemyTypesEditorOnly = new();
-    [SerializeField] private List<float> _spawnDelayEditorOnly = new();
+    [SerializeField] private int _levelIndex;
 
-    private List<int> _amountEnemy;
-    private int _delayBeforeStartSpawn;
-    private int _delayBetweenSpawn;
+    private List<EnemyType> _enemyTypes = new();
+    private List<float> _spawnDelay = new();
 
-    public List<EnemyType> EnemyTypesEditorOnly
-    {
-        get => _enemyTypesEditorOnly;
-        set => _enemyTypesEditorOnly = value;
-    }
+    internal List<EnemyType> EnemyTypesEditorOnly => _enemyTypes;
+    internal List<float> SpawnDelayEditorOnly => _spawnDelay;
 
-    public List<float> SpawnDelayEditorOnly
-    {
-        get => _spawnDelayEditorOnly;
-        set => _spawnDelayEditorOnly = value;
-    }
-    
-    public IReadOnlyList<int> AmountEnemy => _amountEnemy;
-    public int DelayBeforeStartSpawn => _delayBeforeStartSpawn;
-    public int DelayBetweenSpawn => _delayBetweenSpawn;
-    public int AllEnemies => _amountEnemy.Sum();
+    public int EnemyCount => _enemyTypes.Count;
+    public IReadOnlyList<EnemyType> EnemyTypes => _enemyTypes;
+    public IReadOnlyList<float> SpawnDelayForEachEnemy => _spawnDelay;
 }

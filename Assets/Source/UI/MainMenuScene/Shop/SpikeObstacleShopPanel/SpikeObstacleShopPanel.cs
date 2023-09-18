@@ -1,18 +1,20 @@
-﻿using System.Collections.Generic;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class GunShopPanel : ShopPanel
+public class SpikeObstacleShopPanel : ShopPanel
 {
-    private const string BoughtShopItemKey = "GunBought";
-    private const string SelectedShopItemKey = "GunSelected";
-    
-    [SerializeField] private GunShopItemsConfig _gunShopItemsConfig;
+    private const string BoughtShopItemKey = "SpikeObstacleBought";
+    private const string SelectedShopItemKey = "SpikeObstacleSelected";
+
+    [SerializeField] private SpikeObstacleConfigsContainer _spikeObstacleConfigsContainer;
     [SerializeField] private Transform _shopItemsParent;
     
-    private IReadOnlyList<GunShopItemData> _gunShopItemsData;
+    private IReadOnlyList<SpikeObstacleShopItemData> _wallObstaclesData;
     
-    private Dictionary<ShopItemView, GunShopItemData> _gunShopItemsInstances = new();
+    private Dictionary<ShopItemView, SpikeObstacleShopItemData> _shopItemsInstances = new();
     
     public override void Init()
     {
@@ -22,7 +24,7 @@ public class GunShopPanel : ShopPanel
         PlayerMoneyService.MoneySpent += UpdateButtons;
         
         UpdateButtons();
-        SortGunShopItemsListByGunLevel();
+        SortShopItemsListByLevel();
         CreateShopItems();
     }
 
@@ -30,8 +32,8 @@ public class GunShopPanel : ShopPanel
     {
         base.Disable();
         
-        foreach(var gunShopItem in _gunShopItemsInstances.Keys)
-            gunShopItem.Disable();
+        foreach(var shopItem in _shopItemsInstances.Keys)
+            shopItem.Disable();
     }
 
     protected override void OnShopItemBuyButtonClicked(ShopItemView shopItemView)
@@ -48,19 +50,19 @@ public class GunShopPanel : ShopPanel
         }
         
         shopItemView.SetPurchasedState(true);
-        DataStorageService.SaveData<string>(BoughtShopItemKey + _gunShopItemsInstances[shopItemView].GunData.GunLevel, "true");
+        DataStorageService.SaveData<string>(BoughtShopItemKey + _shopItemsInstances[shopItemView].SpikeObstacleData.Level, "true");
 
         shopItemView.BuyButtonClicked -= OnShopItemBuyButtonClicked;
     }
 
     protected override void OnShopItemSelectButtonClicked(ShopItemView shopItemView)
     {
-        var gunShopItemData = _gunShopItemsInstances[shopItemView];
+        var shopItemsInstance = _shopItemsInstances[shopItemView];
         
-        DataStorageService.SaveData<GunData>(gunShopItemData.GunData);
-        DataStorageService.SaveData<string>(SelectedShopItemKey + _gunShopItemsInstances[shopItemView].GunData.GunLevel, "true");
+        DataStorageService.SaveData<SpikeObstacleData>(shopItemsInstance.SpikeObstacleData);
+        DataStorageService.SaveData<string>(SelectedShopItemKey + _shopItemsInstances[shopItemView].SpikeObstacleData.Level, "true");
 
-        foreach(var selected in _gunShopItemsInstances.Keys)
+        foreach(var selected in _shopItemsInstances.Keys)
             selected.SetSelectedState(false);
         
         shopItemView.SetSelectedState(true);
@@ -73,32 +75,32 @@ public class GunShopPanel : ShopPanel
         if (DataStorageService.TryGetData("CurrentPlayerLevel", out int currentLevel))
             currentPlayerLevel = currentLevel;
 
-        foreach (var data in _gunShopItemsData)
+        foreach (var data in _wallObstaclesData)
         {
-            bool isBought = DataStorageService.TryGetData(BoughtShopItemKey + data.GunData.GunLevel, out string bought);
-            bool isSelected = DataStorageService.TryGetData(SelectedShopItemKey + data.GunData.GunLevel, out string selected);
+            bool isBought = DataStorageService.TryGetData(BoughtShopItemKey + data.Level, out string bought);
+            bool isSelected = DataStorageService.TryGetData(SelectedShopItemKey + data.SpikeObstacleData.Level, out string selected);
             
-            var created = ShopItemFactory.Create(data.GunIcon, data.Price, _shopItemsParent,
+            var created = ShopItemFactory.Create(data.Sprite, data.Price, _shopItemsParent,
                 data.IsMoneyCurrency, isBought, isSelected,data.LevelRequired >= currentPlayerLevel);
             created.Init();
             
-            _gunShopItemsInstances.Add(created, data);
+            _shopItemsInstances.Add(created, data);
             
             created.BuyButtonClicked += OnShopItemBuyButtonClicked;
             created.SelectButtonClicked += OnShopItemSelectButtonClicked;
         }
     }
 
-    private void SortGunShopItemsListByGunLevel() =>
-        _gunShopItemsData = _gunShopItemsConfig.GunShopItems.OrderBy(gunShopItem => gunShopItem.GunData.GunLevel)
+    private void SortShopItemsListByLevel() =>
+        _wallObstaclesData = _spikeObstacleConfigsContainer.SpikeObstacleShopItemsData.OrderBy(shopItem => shopItem.Level)
             .ToList();
 
     private void UpdateButtons(int newValue = 0)
     {
-        var unlockedNotBoughtForMoney = _gunShopItemsInstances.Where(keyValuePair =>
+        var unlockedNotBoughtForMoney = _shopItemsInstances.Where(keyValuePair =>
             keyValuePair.Key.IsBought == false && keyValuePair.Key.IsLocked == false && keyValuePair.Key.IsMoneyCurrency).ToList();
         
-        var unlockedNotBoughtForGems = _gunShopItemsInstances.Where(keyValuePair =>
+        var unlockedNotBoughtForGems = _shopItemsInstances.Where(keyValuePair =>
             keyValuePair.Key.IsBought == false && keyValuePair.Key.IsLocked == false && keyValuePair.Key.IsMoneyCurrency == false).ToList();
 
         foreach (var shopItemView in unlockedNotBoughtForMoney)

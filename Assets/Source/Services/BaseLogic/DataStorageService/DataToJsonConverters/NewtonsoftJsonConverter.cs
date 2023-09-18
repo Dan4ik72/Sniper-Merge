@@ -7,7 +7,7 @@ public class NewtonsoftJsonConverter : IDataToJsonConverter
         return JsonConvert.SerializeObject(data, typeof(T), new JsonSerializerSettings
         {
             TypeNameHandling = TypeNameHandling.Auto,
-            ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+            ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
         });
     }
 

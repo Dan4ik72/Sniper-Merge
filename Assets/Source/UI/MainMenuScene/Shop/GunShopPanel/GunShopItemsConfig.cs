@@ -16,9 +16,11 @@ internal class GunShopItemData
     [SerializeField] private int _price;
     [SerializeField] private int _levelRequired;
     [SerializeField] private GunConfig _gunConfig;
-
+    [SerializeField] private bool _isMoneyCurrency = true;
+    
     public Sprite GunIcon => _gunIcon;
     public int Price => _price;
+    public bool IsMoneyCurrency => _isMoneyCurrency;
     public int LevelRequired => _levelRequired;
     public GunData GunData => _gunConfig.GunData;
 }

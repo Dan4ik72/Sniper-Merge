@@ -19,7 +19,6 @@ internal class EnemiesSpawner
 
     private ObjectPool<Enemy> _objectPool = new();
     private List<Enemy> _enemies = new();
-    private float _delayStart;
 
     public event Action<Enemy> EnemyDied;
 
@@ -29,7 +28,6 @@ internal class EnemiesSpawner
         _parent = parent;
         _enemiesPrefabs = enemiesPrefabs;
         _levelConfig = levelConfig;
-        _delayStart = _levelConfig.DelayBeforeStartSpawn;
     }
 
     private bool _isFinished => _counterSpawn == _enemies.Count;
@@ -46,7 +44,10 @@ internal class EnemiesSpawner
     {
         _elapsedTime += delta;
         
-        if (_elapsedTime < _levelConfig.DelayBetweenSpawn)
+        if(_counterSpawn > _levelConfig.EnemyTypes.Count - 1)
+            return;
+        
+        if (_elapsedTime < _levelConfig.SpawnDelayForEachEnemy[_counterSpawn])
             return;
         
         if (_isFinished == false && _target.IsAlive && _objectPool.TryGetAvailableObject(out Enemy enemy, _enemies[_counterSpawn++].Level))
@@ -69,18 +70,19 @@ internal class EnemiesSpawner
 
     private void CreatePool()
     {
-        for (int i = 0; i < _levelConfig.EnemyTypesEditorOnly.Count; i++)
+        for (int i = 0; i < _levelConfig.EnemyTypes.Count; i++)
         {
-            var _currentPrefab = _enemiesPrefabs.FirstOrDefault(obj => obj.Type == _levelConfig.EnemyTypesEditorOnly[i]);
+            var currentPrefab = _enemiesPrefabs.FirstOrDefault(obj => obj.Type == _levelConfig.EnemyTypes[i]);
 
-            for (int j = 0; j < _levelConfig.AmountEnemy[i]; j++)
-            {
-                var newEnemy = Object.Instantiate(_currentPrefab.View, Vector3.zero, Quaternion.identity, _parent);
-                newEnemy.Died += OnDie;
-                newEnemy.Init(_enemiesPrefabs[i], _target);
-                _enemies.Add(newEnemy);
-                _objectPool.AddObject(newEnemy);
-            }
+            if(currentPrefab == null)
+                throw new NullReferenceException("There is no such an enemy Prefab with type " 
+                        + _levelConfig.EnemyTypes[i].GetType() + " in " + _enemiesPrefabs + " list");
+            
+            var newEnemy = Object.Instantiate(currentPrefab.View, Vector3.zero, Quaternion.identity, _parent);
+            newEnemy.Died += OnDie;
+            newEnemy.Init(_enemiesPrefabs[i], _target);
+            _enemies.Add(newEnemy);
+            _objectPool.AddObject(newEnemy);
         }
     }
 

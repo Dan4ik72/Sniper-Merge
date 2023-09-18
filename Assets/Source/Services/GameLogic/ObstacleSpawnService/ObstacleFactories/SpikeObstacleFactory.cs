@@ -38,8 +38,18 @@ internal class SpikeObstacleFactory : IObstacleFactory
     {
         if (_dataStorageService.TryGetData(out SpikeObstacleData data))
             return data;
-                        
-        var defaultData = new SpikeObstacleData(_defaultConfig);
+                      
+        var defaultData = new SpikeObstacleData
+        {
+            ViewPrefabPath = _defaultConfig.ViewPrefabPath,
+            Position = _defaultConfig.Position,
+            Rotation = _defaultConfig.Rotation,
+            Damage = _defaultConfig.Damage,
+            ObstacleDurability = _defaultConfig.ObstacleDurability,
+            DamageTickRate = _defaultConfig.DamageTickRate,
+            DurabilityDecreasingStep = _defaultConfig.DurabilityDecreasingStep
+        };
+        
         _dataStorageService.SaveData<SpikeObstacleData>(defaultData);
 
         return defaultData;

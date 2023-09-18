@@ -1,12 +1,13 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Canvas), typeof(GraphicRaycaster))]
 public abstract class ShopPanel : MonoBehaviour, IUiPanel
 {
     [SerializeField] private ButtonView _panelSwitchButtonView;
-    [SerializeField] private ShopItemView _prefab;
+    [SerializeField] private ShopItemView _shopItemPrefab;
 
     private Canvas _canvas;
     
@@ -15,8 +16,8 @@ public abstract class ShopPanel : MonoBehaviour, IUiPanel
     public void Construct(DataStorageService dataStorageService, PlayerMoneyService playerMoneyService)
     {
         _canvas = GetComponent<Canvas>();
+        ShopItemFactory = new ShopItemFactory(_shopItemPrefab);
         PlayerMoneyService = playerMoneyService;
-        ShopItemFactory = new ShopItemFactory(_prefab);
         DataStorageService = dataStorageService;
     }
 
