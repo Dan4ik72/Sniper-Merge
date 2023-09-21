@@ -5,8 +5,10 @@ using VContainer;
 public class BuffsContainerService
 {
     private IReadOnlyList<BuffConfig> _allDefaultBuffConfigs;
-
+    
     private DataStorageService _dataStorageService;
+    
+    private Buff _currentBuff;
     
     [Inject]
     public BuffsContainerService(IReadOnlyList<BuffConfig> allDefaultBuffConfigs, DataStorageService dataStorageService)
@@ -19,12 +21,12 @@ public class BuffsContainerService
     {
         if (_dataStorageService.TryGetData(out T data))
             return data;
-
+    
         var defaultBuffConfig = _allDefaultBuffConfigs.FirstOrDefault(buffConfig => buffConfig.GetBuff().GetType() == typeof(T));
-
+    
         if (defaultBuffConfig == null)
             throw new System.NullReferenceException("There is no such registered default buff config with type " + typeof(T));
-
+    
         return (T)defaultBuffConfig.GetBuff();
     }
 }

@@ -5,7 +5,6 @@ using VContainer;
 internal class Gun : IDamageble
 {
     private Transform _position;
-    private GunInfo _config;
     private Reloading _reloading;
     private Magazine _magazine;
     private Aiming _aiming;
@@ -15,14 +14,11 @@ internal class Gun : IDamageble
     public event Action<int> RecievedDamage;
     
     [Inject]
-    internal Gun(Transform position, GunInfo config, Reloading reloading, Magazine magazine, Aiming aiming)
+    internal Gun(Reloading reloading, Magazine magazine, Aiming aiming)
     {
-        _position = position;
-        _config = config;
         _reloading = reloading;
         _magazine = magazine;
         _aiming = aiming;
-        _currentHealth = _config.Health;
     }
 
     public int Health => _currentHealth;
@@ -31,6 +27,12 @@ internal class Gun : IDamageble
 
     public Vector3 Position => _position.position;
 
+    public void Init(GunData data, Transform gun)
+    {
+        _currentHealth = data.Health;
+        _position = gun;
+    }
+    
     public void Update()
     {
         if (IsAlive == false || _reloading.IsLoaded == false || _magazine.IsLoaded == false)

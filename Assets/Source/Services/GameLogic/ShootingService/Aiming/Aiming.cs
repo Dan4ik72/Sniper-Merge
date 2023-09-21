@@ -6,21 +6,21 @@ using VContainer;
 internal class Aiming
 {
     private Transform _gun;
-    private GunInfo _config;
+    private GunData _data;
     private IReadOnlyList<IDamageble> _targets;
 
     private IDamageble _currentTarget;
     
-    [Inject]
-    internal Aiming(Transform gun, GunInfo config)
-    {
-        _gun = gun;
-        _config = config;
-    }
     public IDamageble CurrentTarget => _currentTarget;
 
     public void Init(IReadOnlyList<IDamageble> targets) => _targets = targets;
 
+    public void Init(GunData data, Transform gun)
+    {
+        _data = data;
+        _gun = gun;
+    }
+    
     public void Update(float delta)
     {   
         if (_currentTarget != null)
@@ -37,13 +37,13 @@ internal class Aiming
             return;
         }
 
-        float minMagnitude = _config.Range;
+        float minMagnitude = _data.Range;
 
         foreach (var target in _targets)
         {
             float currentMagnitude = (target.Position - _gun.position).magnitude;
 
-            if (target.IsAlive && minMagnitude > currentMagnitude && currentMagnitude < _config.Range)
+            if (target.IsAlive && minMagnitude > currentMagnitude && currentMagnitude < _data.Range)
             {
                 minMagnitude = currentMagnitude;
                 _currentTarget = target;
@@ -66,6 +66,6 @@ internal class Aiming
     {
         Vector3 direction = target - _gun.position;
         Quaternion rotation = Quaternion.LookRotation(direction);
-        _gun.rotation = Quaternion.Lerp(_gun.rotation, rotation, delta * _config.SpeedRotate);
+        _gun.rotation = Quaternion.Lerp(_gun.rotation, rotation, delta * _data.RotateSpeed);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,6 +8,8 @@ public class ButtonView : MonoBehaviour
 {
     [SerializeField] private Button _button;
 
+    [SerializeField] private TMP_Text _buttonText;
+    
     private Canvas _canvas;
 
     public event Action Clicked;
@@ -14,6 +17,7 @@ public class ButtonView : MonoBehaviour
     public void Init()
     {
         _canvas = GetComponent<Canvas>();
+        _button ??= GetComponent<Button>(); 
         _button.onClick.AddListener(OnButtonClick);
     }
 
@@ -25,6 +29,11 @@ public class ButtonView : MonoBehaviour
     public void SetButtonEnable(bool isEnable)
     {
         _canvas.enabled = isEnable;
+    }
+
+    public void SetButtonText(string text)
+    {
+        _buttonText.text = text;
     }
 
     public void Disable()

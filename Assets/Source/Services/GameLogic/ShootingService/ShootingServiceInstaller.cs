@@ -5,8 +5,7 @@ using VContainer.Unity;
 
 public class ShootingServiceInstaller : Installer
 {
-    [SerializeField] private Transform _gun;
-    [SerializeField] private GunInfo _config;
+    [SerializeField] private GunConfig _config;
     [SerializeField] private BulletHolderCell _cell;
     
     //temporary code
@@ -21,26 +20,18 @@ public class ShootingServiceInstaller : Installer
          
         builder.RegisterComponent(_config);
 
-        builder.Register(container => 
-        {
-            var config = container.Resolve<GunInfo>();
-            
-            return new Aiming(_gun, config); 
-
-        }, Lifetime.Scoped);
-
+        builder.Register<Aiming>(Lifetime.Scoped);
+        
         builder.Register(container =>
         {
-            var config = container.Resolve<GunInfo>();
+            var config = container.Resolve<GunConfig>();
             var reloading = container.Resolve<Reloading>();
             var magazine = container.Resolve<Magazine>();
             var aiming = container.Resolve<Aiming>();
 
-            return new Gun(_gun, config, reloading, magazine, aiming);
+            return new Gun(reloading, magazine, aiming);
 
         }, Lifetime.Scoped);
-
-        builder.Register(container => new Aiming(_gun, _config), Lifetime.Scoped);
 
         builder.Register<BulletHolder>(_ => new BulletHolder(_cell), Lifetime.Scoped);
 

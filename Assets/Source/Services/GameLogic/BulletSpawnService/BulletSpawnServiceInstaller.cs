@@ -9,7 +9,7 @@ public class BulletSpawnServiceInstaller : Installer
     
     protected override void Configure(IContainerBuilder builder)
     {
-        builder.Register<BulletInfoFactory>(ñontainer =>
+        builder.Register<BulletInfoFactory>(container =>
         {
             return new BulletInfoFactory(_bulletInfos);
 

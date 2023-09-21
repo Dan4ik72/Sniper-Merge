@@ -18,9 +18,9 @@ public class EnemiesService
 
     public IReadOnlyList<IDamageble> Enemies => _enemiesSpawner.Enemies;
 
-    public void Init(IDamageble gun)
+    public void Init(IDamageble gun, LevelConfig levelConfig)
     {
-        _enemiesSpawner.Init(gun);
+        _enemiesSpawner.Init(gun, levelConfig);
         _enemiesSpawner.EnemyDied += OnEnemyDied;
     }
 

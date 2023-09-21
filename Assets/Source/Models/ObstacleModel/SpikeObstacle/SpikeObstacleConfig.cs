@@ -4,7 +4,9 @@
 public class SpikeObstacleConfig : ScriptableObject
 {
     [SerializeField] private SpikeObstacleData _data;
-    
+
+    public int Level => _data.Level;
+    public SpikeObstacleData Data => _data;
     public string ViewPrefabPath => _data.ViewPrefabPath;
     public Vector3 Position => _data.Position;
     public Quaternion Rotation => _data.Rotation;
