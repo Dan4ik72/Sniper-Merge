@@ -5,6 +5,7 @@ internal class Enemy : MonoBehaviour, IDamageble, IPoolElement, IModelHealth
 {
     private EnemyInfo _config;
     private int _currentHealth;
+    private float _raycastDistance;
     private StateFactory _stateFactory;
     private EnemyStateMachine _stateMachine;
     private IDamageble _target;
@@ -18,7 +19,7 @@ internal class Enemy : MonoBehaviour, IDamageble, IPoolElement, IModelHealth
         _config = config;
         _currentHealth = 0;
         _target = target;
-        RaycastDistance = UnityEngine.Random.Range(0.1f, 0.3f);
+        _raycastDistance = UnityEngine.Random.Range(0.1f, 0.3f);
         _stateFactory = new StateFactory(this, target);
         _stateFactory.CreateStates();
         _stateMachine = new EnemyStateMachine(_stateFactory);
@@ -29,7 +30,7 @@ internal class Enemy : MonoBehaviour, IDamageble, IPoolElement, IModelHealth
     public bool IsAlive => _currentHealth > 0;
     public int Health => _currentHealth;
     public int MaxHealth => _config.Health;
-    public float RaycastDistance { get; private set; }
+    public float RaycastDistance => _raycastDistance;
     internal EnemyInfo Config => _config;
     public Vector3 Position => transform.position;
 

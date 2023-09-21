@@ -68,6 +68,7 @@ public class GameBootstrapper : MonoBehaviour, IDisposable
         _obstacleSpawnService.Disable();
         _uiBootstrapService.Disable();
         _enemiesService.Disable();
+        _endLevelService.Disable();
         
         UnsubscribeEvents();
     }

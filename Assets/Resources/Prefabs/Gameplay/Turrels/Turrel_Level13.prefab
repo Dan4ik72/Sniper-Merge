@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7736187523517732444}
   - component: {fileID: 7736754965082758205}
   - component: {fileID: 6703451328161867114}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7598625966794260263}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Turrel_Level13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 7894149333622509579}
   - component: {fileID: 2613757146438589049}
   - component: {fileID: 8179784989525621058}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: head3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
