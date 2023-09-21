@@ -4,5 +4,7 @@ internal interface IDataSaveHandler
 
     public string LoadString(string key);
 
+    public void RemoveKey(string key);
+    
     public bool HasKey(string key);
 }

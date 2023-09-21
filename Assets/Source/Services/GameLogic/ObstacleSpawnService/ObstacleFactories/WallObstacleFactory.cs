@@ -36,7 +36,14 @@ internal class WallObstacleFactory : IObstacleFactory
         if (_dataStorageService.TryGetData(out WallObstacleData data))
             return data;
 
-        var defaultData = new WallObstacleData(_defaultConfig);
+        var defaultData = new WallObstacleData
+        {
+            PrefabPath = _defaultConfig.PrefabPath,
+            Durability = _defaultConfig.Durability,
+            Position = _defaultConfig.Position,
+            Rotation = _defaultConfig.Rotation
+        };
+        
         _dataStorageService.SaveData<WallObstacleData>(defaultData);
         
         return defaultData;

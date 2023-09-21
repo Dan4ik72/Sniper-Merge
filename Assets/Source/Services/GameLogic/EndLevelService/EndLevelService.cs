@@ -19,9 +19,9 @@ public class EndLevelService
 
     public int EnemyKilledCount => _checkingEndLevel.EnemyKilledCount;
     
-    public void Init(IReadOnlyList<IDamageble> enemies, IDamageble gun)
+    public void Init(IReadOnlyList<IDamageble> enemies, IDamageble gun, LevelConfig levelConfig)
     {
-        _checkingEndLevel.Init(enemies, gun);
+        _checkingEndLevel.Init(enemies, gun, levelConfig);
         
         _checkingEndLevel.Lost += OnGameLost;
         _checkingEndLevel.Victory += OnGameWon;

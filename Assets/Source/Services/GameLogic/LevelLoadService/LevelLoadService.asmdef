@@ -1,0 +1,18 @@
+{
+    "name": "LevelLoadService",
+    "rootNamespace": "",
+    "references": [
+        "GUID:b0214a6008ed146ff8f122a6a9c2f6cc",
+        "GUID:e2ffea52f567cb848aaf81b30f3252c8",
+        "GUID:3374be8c6178a0e478f52d11e4aa3563"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
