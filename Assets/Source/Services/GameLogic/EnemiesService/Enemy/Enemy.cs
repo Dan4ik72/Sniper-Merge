@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-internal class Enemy : MonoBehaviour, IDamageble, IPoolElement
+internal class Enemy : MonoBehaviour, IDamageble, IPoolElement, IModelHealth
 {
     private EnemyInfo _config;
     private int _currentHealth;
@@ -10,6 +10,7 @@ internal class Enemy : MonoBehaviour, IDamageble, IPoolElement
     private IDamageble _target;
 
     public event Action<IDamageble> Died;
+    public event Action<int> RecievedDamage;
 
     internal void Init(EnemyInfo config, IDamageble target)
     {
@@ -27,6 +28,7 @@ internal class Enemy : MonoBehaviour, IDamageble, IPoolElement
     public int Level { get; private set; }
     public bool IsAlive => _currentHealth > 0;
     public int Health => _currentHealth;
+    public int MaxHealth => _config.Health;
     public float RaycastDistance { get; private set; }
     internal EnemyInfo Config => _config;
     public Vector3 Position => transform.position;
@@ -45,6 +47,8 @@ internal class Enemy : MonoBehaviour, IDamageble, IPoolElement
     {
         if (damage > 0)
             _currentHealth -= damage;
+
+        RecievedDamage?.Invoke(_currentHealth);
 
         if (_currentHealth <= 0)
         {

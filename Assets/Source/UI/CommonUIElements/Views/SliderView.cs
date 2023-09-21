@@ -1,17 +1,16 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
+
+[RequireComponent(typeof(Canvas))]
 public class SliderView : MonoBehaviour
 {
     [SerializeField] private Slider _slider;
 
-    [SerializeField, Range(0, 100)] private float _minValue;
-    [SerializeField, Range(0, 100)] private float _maxValue;
+    private Canvas _canvas;
 
     public void Init()
     {
-        _slider.minValue = _minValue;
-        //_slider.maxValue = _maxValue;
+        _canvas = GetComponent<Canvas>();
 
         _slider.interactable = false;
     }
@@ -27,4 +26,6 @@ public class SliderView : MonoBehaviour
 
         _slider.value = newValue;
     }
+
+    public Canvas GetCanvas() => _canvas;
 }
