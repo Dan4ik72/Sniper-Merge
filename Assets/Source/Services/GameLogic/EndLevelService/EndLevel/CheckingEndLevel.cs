@@ -14,13 +14,11 @@ internal class CheckingEndLevel
     public event Action Lost;
     public event Action Victory;
 
-    [Inject]
-    public CheckingEndLevel(LevelConfig levelConfig) => _totalEnemies = levelConfig.EnemyCount;
-
     public int EnemyKilledCount => _counterKilledEnemies;
 
-    public void Init(IReadOnlyList<IDamageble> enemies, IDamageble gun)
+    public void Init(IReadOnlyList<IDamageble> enemies, IDamageble gun, LevelConfig levelConfig)
     {
+        _totalEnemies = levelConfig.EnemyCount;
         _enemies = enemies;
         _gun = gun;
         _gun.Died += OnDieGun;

@@ -14,7 +14,11 @@ public class DataStorageService
         _jsonConverter = jsonConverter;
         _dataSaveHandler = dataSaveHandler;
     }
-    
+
+    public void RemoveSaveData(string key) => _dataSaveHandler.RemoveKey(key);
+
+    public void RemoveData<T>() where T : IData => _dataSaveHandler.RemoveKey(typeof(T).ToString());
+
     public void SaveData<T>(object data) where T : IData
     {
         var json = _jsonConverter.Convert<T>(data);
@@ -52,20 +56,14 @@ public class DataStorageService
     {
         data = default;
 
-        //Debug.Log(key + " " +_dataSaveHandler.HasKey(key));
-        
         if (_dataSaveHandler.HasKey(key) == false)
             return false;
 
-        //Debug.Log(key);
-        
         var json = _dataSaveHandler.LoadString(key);
 
         if (json == string.Empty || json == "{}" || json == "{ }")
             return false;
 
-        //Debug.Log(key);
-        
         data = _jsonConverter.Deconvert<T>(json);
 
         return true;

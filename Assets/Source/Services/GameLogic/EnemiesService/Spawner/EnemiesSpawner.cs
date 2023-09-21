@@ -23,20 +23,20 @@ internal class EnemiesSpawner
     public event Action<Enemy> EnemyDied;
 
     [Inject]
-    public EnemiesSpawner(Transform parent, IReadOnlyList<EnemyInfo> enemiesPrefabs, LevelConfig levelConfig)
+    public EnemiesSpawner(Transform parent, IReadOnlyList<EnemyInfo> enemiesPrefabs)
     {
         _parent = parent;
         _enemiesPrefabs = enemiesPrefabs;
-        _levelConfig = levelConfig;
     }
 
     private bool _isFinished => _counterSpawn == _enemies.Count;
 
     public IReadOnlyList<IDamageble> Enemies => _enemies;
 
-    public void Init(IDamageble target)
+    public void Init(IDamageble target, LevelConfig levelConfig)
     {
         _target = target;
+        _levelConfig = levelConfig;
         CreatePool();
     }
 

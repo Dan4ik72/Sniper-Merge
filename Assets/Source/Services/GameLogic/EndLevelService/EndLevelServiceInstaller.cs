@@ -1,18 +1,13 @@
+using System.Collections.Generic;
 using UnityEngine;
 using VContainer;
 
 public class EndLevelServiceInstaller : Installer
 {
-    [SerializeField] private LevelConfig _levelConfig;
-
     protected override void Configure(IContainerBuilder builder)
     {
         builder.Register<EndLevelService>(Lifetime.Scoped);
 
-        builder.Register(container =>
-        {
-            return new CheckingEndLevel(_levelConfig);
-
-        }, Lifetime.Scoped);
+        builder.Register<CheckingEndLevel>(Lifetime.Scoped);
     }
 }

@@ -16,12 +16,10 @@ MonoBehaviour:
   - _gunIcon: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
     _price: 20
     _levelRequired: 0
-    _gunConfig: {fileID: 11400000, guid: f5bdf5ae6f01bed478e600956d12832f, type: 2}
-  - _gunIcon: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
-    _price: 20
-    _levelRequired: 5
-    _gunConfig: {fileID: 11400000, guid: daa5ce80004d24147b6e7563120baa5e, type: 2}
-  - _gunIcon: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
-    _price: 26
+    _gunConfig: {fileID: 11400000, guid: 4f252107721b47a448eb97fe1df4fc6f, type: 2}
+    _isMoneyCurrency: 1
+  - _gunIcon: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+    _price: 15
     _levelRequired: 0
-    _gunConfig: {fileID: 11400000, guid: 13edfe84c6f8db94b8d62ce9df4792b4, type: 2}
+    _gunConfig: {fileID: 11400000, guid: 4c5cf1eb20e71f34db2e2e1e83e6516d, type: 2}
+    _isMoneyCurrency: 1

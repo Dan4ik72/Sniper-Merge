@@ -12,4 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b518419094243f998122770d30d3156, type: 3}
   m_Name: SpikeObstacleContainer
   m_EditorClassIdentifier: 
-  _spikeObstacleShopItemsData: []
+  _spikeObstacleShopItemsData:
+  - _sprite: {fileID: 0}
+    _price: 20
+    _levelRequired: 0
+    _spikeObstacleConfig: {fileID: 11400000, guid: 3c6a20461ec62414dbc7b59fb93b26c8, type: 2}
+    _isMoneyCurrency: 1

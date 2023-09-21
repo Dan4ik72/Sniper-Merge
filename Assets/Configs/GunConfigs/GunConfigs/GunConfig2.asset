@@ -13,10 +13,12 @@ MonoBehaviour:
   m_Name: GunConfig2
   m_EditorClassIdentifier: 
   _gunData:
-    GunLevel: 2
-    PathToGunPrefab: 
-    Health: 0
-    SpeedCooldown: 0
+    GunLevel: 1
+    PathToGunPrefab: Prefabs/Gameplay/ShootingSystem/Gun1
+    Position: {x: 3.24, y: 2.79, z: 1.95}
+    Rotation: {x: 0, y: 4.88, z: 3.33, w: 0}
+    Health: 20
+    SpeedCooldown: 2
     MinSpeedCooldown: 0
-    RotateSpeed: 0
-    Range: 0
+    RotateSpeed: 5
+    Range: 10

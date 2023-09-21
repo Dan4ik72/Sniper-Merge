@@ -17,22 +17,31 @@ public class GameBootstrapper : MonoBehaviour, IDisposable
     [Inject] private UIBootstrapService _uiBootstrapService;
     [Inject] private UIPanelTransitService _uiPanelTransitService;
     [Inject] private BuffProcessingService _buffProcessingService;
+    [Inject] private LevelLoadService _levelLoadService;
     
     private void Start()
-    {   
+    {
+        _levelLoadService.Init();
         _inputService.Init();
         _mergeItemDragService.Init();
         _mergeService.Init();
         _bulletSpawnService.Init();
+
+        InitLevel(_levelLoadService.GetCurrentLevelConfig());
+        
         _shootingService.Init(_enemiesService.Enemies);
-        _enemiesService.Init(_shootingService.Gun);
-        _endLevelService.Init(_enemiesService.Enemies, _shootingService.Gun);
         _obstacleSpawnService.Init();
         _uiBootstrapService.Init();
         
         SubscribeEvents();
     }
 
+    private void InitLevel(LevelConfig levelConfig)
+    {
+        _endLevelService.Init(_enemiesService.Enemies, _shootingService.Gun, levelConfig);
+        _enemiesService.Init(_shootingService.Gun, levelConfig);
+    }
+    
     private void SubscribeEvents()
     {
         _enemiesService.EnemyDied += _levelWalletService.ReceiveMoney;

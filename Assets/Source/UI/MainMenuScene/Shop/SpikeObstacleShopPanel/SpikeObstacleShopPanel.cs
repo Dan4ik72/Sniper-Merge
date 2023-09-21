@@ -60,12 +60,15 @@ public class SpikeObstacleShopPanel : ShopPanel
         var shopItemsInstance = _shopItemsInstances[shopItemView];
         
         DataStorageService.SaveData<SpikeObstacleData>(shopItemsInstance.SpikeObstacleData);
-        DataStorageService.SaveData<string>(SelectedShopItemKey + _shopItemsInstances[shopItemView].SpikeObstacleData.Level, "true");
 
-        foreach(var selected in _shopItemsInstances.Keys)
-            selected.SetSelectedState(false);
-        
+        foreach (var selected in _shopItemsInstances)
+        {
+            DataStorageService.RemoveSaveData(SelectedShopItemKey + selected.Value.SpikeObstacleData.Level);
+            selected.Key.SetSelectedState(false);
+        }
+
         shopItemView.SetSelectedState(true);
+        DataStorageService.SaveData<string>(SelectedShopItemKey + _shopItemsInstances[shopItemView].SpikeObstacleData.Level, "true");
     }
 
     private void CreateShopItems()

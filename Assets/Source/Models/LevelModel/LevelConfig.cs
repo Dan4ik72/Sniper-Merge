@@ -5,7 +5,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-[CreateAssetMenu(fileName = "LevelInfo", menuName = "Level info/Create new level info")]
+[CreateAssetMenu(fileName = "LevelInfo", menuName = "Level config/Create new level config")]
 public class LevelConfig : ScriptableObject
 {
     [SerializeField] private int _levelIndex;
@@ -16,6 +16,7 @@ public class LevelConfig : ScriptableObject
     internal List<EnemyType> EnemyTypesEditorOnly => _enemyTypes;
     internal List<float> SpawnDelayEditorOnly => _spawnDelay;
 
+    public int LevelIndex => _levelIndex;
     public int EnemyCount => _enemyTypes.Count;
     public IReadOnlyList<EnemyType> EnemyTypes => _enemyTypes;
     public IReadOnlyList<float> SpawnDelayForEachEnemy => _spawnDelay;

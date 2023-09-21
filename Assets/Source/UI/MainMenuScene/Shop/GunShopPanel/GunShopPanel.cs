@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -20,10 +21,10 @@ public class GunShopPanel : ShopPanel
 
         PlayerMoneyService.MoneyReceived += UpdateButtons;
         PlayerMoneyService.MoneySpent += UpdateButtons;
-        
-        UpdateButtons();
+
         SortGunShopItemsListByGunLevel();
         CreateShopItems();
+        UpdateButtons();
     }
 
     public override void Disable()
@@ -58,12 +59,15 @@ public class GunShopPanel : ShopPanel
         var gunShopItemData = _gunShopItemsInstances[shopItemView];
         
         DataStorageService.SaveData<GunData>(gunShopItemData.GunData);
-        DataStorageService.SaveData<string>(SelectedShopItemKey + _gunShopItemsInstances[shopItemView].GunData.GunLevel, "true");
 
-        foreach(var selected in _gunShopItemsInstances.Keys)
-            selected.SetSelectedState(false);
-        
+        foreach (var selected in _gunShopItemsInstances)
+        {
+            DataStorageService.RemoveSaveData(SelectedShopItemKey + selected.Value.GunData.GunLevel);
+            selected.Key.SetSelectedState(false);
+        }
+
         shopItemView.SetSelectedState(true);
+        DataStorageService.SaveData<string>(SelectedShopItemKey + _gunShopItemsInstances[shopItemView].GunData.GunLevel, "true");
     }
 
     private void CreateShopItems()
@@ -79,7 +83,7 @@ public class GunShopPanel : ShopPanel
             bool isSelected = DataStorageService.TryGetData(SelectedShopItemKey + data.GunData.GunLevel, out string selected);
             
             var created = ShopItemFactory.Create(data.GunIcon, data.Price, _shopItemsParent,
-                data.IsMoneyCurrency, isBought, isSelected,data.LevelRequired >= currentPlayerLevel);
+                data.IsMoneyCurrency, isBought ,isSelected,data.LevelRequired >= currentPlayerLevel);
             created.Init();
             
             _gunShopItemsInstances.Add(created, data);

@@ -8,6 +8,7 @@ public class MainMenuUIBootstrapServiceInstaller : Installer
     [SerializeField] private ShopOverlayPanel _shopOverlayPanel;
     [SerializeField] private MainMenuBasicOverlayPanel _basicOverlayPanel;
     [SerializeField] private TabTransitionOverlay _tabTransitionOverlay;
+    [SerializeField] private LevelSelectionPanel _levelSelectionPanel;
     
     protected override void Configure(IContainerBuilder builder)
     {
@@ -17,7 +18,8 @@ public class MainMenuUIBootstrapServiceInstaller : Installer
             {
                 container.Resolve<ShopOverlayPanel>(),
                 container.Resolve<MainMenuBasicOverlayPanel>(),
-                container.Resolve<TabTransitionOverlay>()
+                container.Resolve<TabTransitionOverlay>(),
+                container.Resolve<LevelSelectionPanel>(),
             };
 
             return new UIBootstrapService(panels);
@@ -28,5 +30,6 @@ public class MainMenuUIBootstrapServiceInstaller : Installer
         builder.RegisterComponent(_shopOverlayPanel);
         builder.RegisterComponent(_basicOverlayPanel);
         builder.RegisterComponent(_tabTransitionOverlay);
+        builder.RegisterComponent(_levelSelectionPanel);
     }
 }

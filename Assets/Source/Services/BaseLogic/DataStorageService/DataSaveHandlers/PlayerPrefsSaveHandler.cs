@@ -13,6 +13,11 @@ internal class PlayerPrefsSaveHandler : IDataSaveHandler
         return PlayerPrefs.GetString(key);
     }
 
+    public void RemoveKey(string key)
+    {
+        PlayerPrefs.DeleteKey(key);
+    }
+    
     public bool HasKey(string key)
     {
         return PlayerPrefs.HasKey(key);

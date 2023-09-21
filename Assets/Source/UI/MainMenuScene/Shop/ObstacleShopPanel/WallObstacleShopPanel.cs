@@ -58,12 +58,15 @@ public class WallObstacleShopPanel : ShopPanel
         var shopItemsInstance = _shopItemsInstances[shopItemView];
         
         DataStorageService.SaveData<WallObstacleData>(shopItemsInstance.WallObstacleData);
-        DataStorageService.SaveData<string>(SelectedShopItemKey + _shopItemsInstances[shopItemView].WallObstacleData.Level, "true");
 
-        foreach(var selected in _shopItemsInstances.Keys)
-            selected.SetSelectedState(false);
-        
+        foreach (var selected in _shopItemsInstances)
+        {
+            DataStorageService.RemoveSaveData(SelectedShopItemKey + selected.Value.WallObstacleData.Level);   
+            selected.Key.SetSelectedState(false);
+        }
+
         shopItemView.SetSelectedState(true);
+        DataStorageService.SaveData<string>(SelectedShopItemKey + _shopItemsInstances[shopItemView].WallObstacleData.Level, "true");
     }
 
     private void CreateShopItems()

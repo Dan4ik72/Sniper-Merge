@@ -9,14 +9,15 @@ public class TabTransitionOverlay : MonoBehaviour, IUiPanel
     [SerializeField] private ButtonView _transitToShopButtonView;
 
     private ShopOverlayPanel _shopPanel;
-    //private LevelSelectionPanel;
+    private LevelSelectionPanel _levelSelectionPanel;
     
     private Canvas _canvas;
 
     [Inject]
-    public void Construct(ShopOverlayPanel shopOverlayPanel/*, LevelSelectionPanel levelSelectionPanel*/)
+    public void Construct(ShopOverlayPanel shopOverlayPanel, LevelSelectionPanel levelSelectionPanel)
     {
         _shopPanel = shopOverlayPanel;
+        _levelSelectionPanel = levelSelectionPanel;
         _canvas = GetComponent<Canvas>();
     }
     
@@ -43,7 +44,7 @@ public class TabTransitionOverlay : MonoBehaviour, IUiPanel
     private void OnTransitToShopButtonClicked()
     {
         SetPanelEnable(_shopPanel, true);
-        //SetPanelEnable(_levelSelectionPanel, false);
+        SetPanelEnable(_levelSelectionPanel, false);
         _transitToShopButtonView.SetButtonEnable(false);
         _backToLevelSelectButtonView.SetButtonEnable(true);
     }
@@ -51,7 +52,7 @@ public class TabTransitionOverlay : MonoBehaviour, IUiPanel
     private void OnBackToLevelSelectButtonClicked()
     {
         SetPanelEnable(_shopPanel, false);
-        //SetPanelEnable(_levelSelectionPanel, true);
+        SetPanelEnable(_levelSelectionPanel, true);
         _transitToShopButtonView.SetButtonEnable(true);
         _backToLevelSelectButtonView.SetButtonEnable(false);
     }
