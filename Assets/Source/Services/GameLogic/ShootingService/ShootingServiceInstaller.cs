@@ -24,7 +24,6 @@ public class ShootingServiceInstaller : Installer
         
         builder.Register(container =>
         {
-            var config = container.Resolve<GunConfig>();
             var reloading = container.Resolve<Reloading>();
             var magazine = container.Resolve<Magazine>();
             var aiming = container.Resolve<Aiming>();
