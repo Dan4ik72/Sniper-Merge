@@ -1,7 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 using VContainer;
 
 public class LevelLoadService
@@ -14,6 +12,7 @@ public class LevelLoadService
     private DataStorageService _dataStorageService;
     
     private int _currentLevel;
+
     private int _levelsOpened;
 
     [Inject]
@@ -24,6 +23,7 @@ public class LevelLoadService
     }
 
     public int CurrentLevel => _currentLevel;
+
     public int LevelsOpened => _levelsOpened;
     
     public IReadOnlyList<LevelConfig> LevelConfigs => _levelConfigsContainer.LevelConfigs;
