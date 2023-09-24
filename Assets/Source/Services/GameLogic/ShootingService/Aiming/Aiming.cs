@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using VContainer;
@@ -15,10 +14,11 @@ internal class Aiming
 
     public void Init(IReadOnlyList<IDamageble> targets) => _targets = targets;
 
-    public void Init(GunData data, Transform gun)
+    public void Init(GunData data, Transform gun, IReadOnlyList<IDamageble> targets)
     {
         _data = data;
         _gun = gun;
+        _targets = targets;
     }
     
     public void Update(float delta)

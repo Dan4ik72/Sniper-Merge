@@ -10,8 +10,8 @@ public class LevelConfig : ScriptableObject
 {
     [SerializeField] private int _levelIndex;
 
-    private List<EnemyType> _enemyTypes = new();
-    private List<float> _spawnDelay = new();
+    [SerializeField, HideInInspector] private List<EnemyType> _enemyTypes = new();
+    [SerializeField, HideInInspector] private List<float> _spawnDelay = new();
 
     internal List<EnemyType> EnemyTypesEditorOnly => _enemyTypes;
     internal List<float> SpawnDelayEditorOnly => _spawnDelay;

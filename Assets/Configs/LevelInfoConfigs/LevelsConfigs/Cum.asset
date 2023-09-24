@@ -13,3 +13,10 @@ MonoBehaviour:
   m_Name: Cum
   m_EditorClassIdentifier: 
   _levelIndex: 0
+  _enemyTypes: 0100000002000000010000000200000002000000
+  _spawnDelay:
+  - 2
+  - 2
+  - 2
+  - 2
+  - 2

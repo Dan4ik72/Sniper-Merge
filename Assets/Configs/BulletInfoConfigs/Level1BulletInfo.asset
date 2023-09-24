@@ -15,4 +15,4 @@ MonoBehaviour:
   _type: 0
   _damage: 5
   _bulletBoxViewPrefab: {fileID: 1973022462246709697, guid: f9c436b284a99a9499bf2258b2bec5bf, type: 3}
-  _bulletViewPrefab: {fileID: 7013616649952796137, guid: 746501a4e88e06e479fd03c690b0067d, type: 3}
+  _bulletViewPrefab: {fileID: 2159394765876485517, guid: 983bc079d78b6dc4a82d048b8ffe5138, type: 3}
