@@ -18,7 +18,6 @@ internal class Gun : IDamageble
     [Inject]
     internal Gun(Reloading reloading, Magazine magazine, Aiming aiming, ParticleSystem particleSystem)
     {
-
         _reloading = reloading;
         _magazine = magazine;
         _aiming = aiming;
@@ -59,13 +58,17 @@ internal class Gun : IDamageble
             _currentHealth -= damage;
 
         RecievedDamage?.Invoke(_currentHealth);
-        
+
         if (_currentHealth <= 0)
-        {
-            _currentHealth = 0;
-            _dieEffect.Play();
-            Died?.Invoke(this);
-        }
+            OnDie();
+    }
+
+    private void OnDie()
+    {
+        _currentHealth = 0;
+        _aiming.Disable();
+        _dieEffect.Play();
+        Died?.Invoke(this);
     }
     
     private void OnShotPerformed()

@@ -51,6 +51,11 @@ internal class Aiming
         }
     }
 
+    public void Disable()
+    {
+        _currentTarget = null;
+    }
+
     private bool FindLiveTarget()
     {
         foreach (var target in _targets)
