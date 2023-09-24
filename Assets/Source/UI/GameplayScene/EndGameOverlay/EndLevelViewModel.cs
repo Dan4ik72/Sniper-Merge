@@ -1,15 +1,18 @@
 using System;
+using UnityEngine;
 
 internal class EndLevelViewModel
 {
     private EndLevelService _endLevelService;
+    private SceneTransitionService _sceneTransitionService;
 
     public event Action ShowLostGamePanel;
     public event Action ShowWonGamePanel;
 
-    public EndLevelViewModel(EndLevelService endLevelService)
+    public EndLevelViewModel(EndLevelService endLevelService, SceneTransitionService sceneTransitionService)
     {
         _endLevelService = endLevelService;
+        _sceneTransitionService = sceneTransitionService;
     }
 
     public int EnemyKilled => _endLevelService.EnemyKilledCount;
@@ -29,7 +32,7 @@ internal class EndLevelViewModel
 
     public void OnButtonClick()
     {
-        //SceneManager.LoadScene(MainScene);
+        _sceneTransitionService.TransitToMainMenuScene();
     }
 
     private void OnLevelWon() => ShowWonGamePanel?.Invoke();

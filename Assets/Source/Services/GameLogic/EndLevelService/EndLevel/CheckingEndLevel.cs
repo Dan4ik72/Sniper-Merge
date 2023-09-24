@@ -25,8 +25,8 @@ internal class CheckingEndLevel
         _gun = gun;
         _gun.Died += OnDieGun;
         _counterKilledEnemies = 0;
-
-        foreach (var enemy in _enemies)
+        
+        foreach (var enemy in _enemies) 
             enemy.Died += OnDieEnemy;
     }
 
@@ -42,13 +42,9 @@ internal class CheckingEndLevel
 
     private void OnDieEnemy(IDamageble damageble)
     {
-        Debug.Log("Enemy died");
-        
         _counterKilledEnemies++;
         
-        TotalReward += ((IReward)damageble).RewardAmount;
-        
-        Debug.Log(((IReward)damageble).RewardAmount);
+        TotalReward += ((Enemy)damageble).RewardAmount;
         
         if (_counterKilledEnemies == _totalEnemies)
             Victory?.Invoke();

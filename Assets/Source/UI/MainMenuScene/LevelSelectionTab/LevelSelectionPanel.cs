@@ -44,6 +44,7 @@ public class LevelSelectionPanel : MonoBehaviour, IUiPanel
         for (int i = 0; i < _levelLoadService.LevelConfigs.Count; i++)
         {
             var level = _levelLoadService.LevelConfigs[i];
+            
             var created = _levelViewFactory.Create((uint)level.LevelIndex, _levelLoadService.LevelsOpened < level.LevelIndex);
             
             created.Init();

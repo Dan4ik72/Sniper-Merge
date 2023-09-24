@@ -22,8 +22,8 @@ public class GameBootstrapper : MonoBehaviour, IDisposable
     
     private void Start()
     {
-        _playerMoneyService.Init();
         _levelLoadService.Init();
+        _playerMoneyService.Init();
         _inputService.Init();
         _mergeItemDragService.Init();
         _mergeService.Init();
@@ -40,8 +40,8 @@ public class GameBootstrapper : MonoBehaviour, IDisposable
 
     private void InitLevel(LevelConfig levelConfig)
     {
-        _endLevelService.Init(_enemiesService.Enemies, _shootingService.Gun, levelConfig);
         _enemiesService.Init(_shootingService.Gun, levelConfig);
+        _endLevelService.Init(_enemiesService.Enemies, _shootingService.Gun, levelConfig);
     }
     
     private void SubscribeEvents()

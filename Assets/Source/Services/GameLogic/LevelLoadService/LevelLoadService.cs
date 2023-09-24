@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 using VContainer;
 
 public class LevelLoadService
@@ -53,15 +54,16 @@ public class LevelLoadService
         _dataStorageService.SaveData<int>(CurrentLevelSaveKey, _currentLevel);
     }
 
-    public void SetLevelOpenedValue(int levelsOpened)
+    public void IncrementOpenedLevels()
     {
-        if(levelsOpened < 0)
-            throw new System.ArgumentOutOfRangeException(nameof(levelsOpened), "value cannot be less than zero");
+        _levelsOpened++;
         
-        if(levelsOpened <= _levelsOpened)
-            return;
+        _dataStorageService.SaveData<int>(OpenedLevelsCountSaveKey, _levelsOpened);
 
-        _levelsOpened = levelsOpened;
+        if (_dataStorageService.TryGetData(OpenedLevelsCountSaveKey, out int data))
+        {
+        }
+        Debug.Log(data);            
     }
     
     private void InitCurrentLevel()
@@ -76,7 +78,7 @@ public class LevelLoadService
 
     private void InitLevelsOpenedCount()
     {
-        _levelsOpened = 1;
+        _levelsOpened = 0;
         
         if(_dataStorageService.TryGetData(OpenedLevelsCountSaveKey, out int data) == false)
             return;
