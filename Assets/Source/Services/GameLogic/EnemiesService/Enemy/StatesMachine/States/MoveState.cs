@@ -20,6 +20,6 @@ internal class MoveState : State
 
     public override void Update(float delta)
     {
-        _enemy.transform.position = Vector3.MoveTowards(_enemy.transform.position, _target.Position, delta * _enemy.Config.Speed);
+        _enemy.transform.position = Vector3.MoveTowards(_enemy.transform.position, new Vector3(_target.Position.x, _enemy.transform.position.y, _target.Position.z), delta * _enemy.Config.Speed);
     }
 }

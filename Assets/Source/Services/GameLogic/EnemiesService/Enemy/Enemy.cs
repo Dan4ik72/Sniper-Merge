@@ -23,7 +23,7 @@ internal class Enemy : MonoBehaviour, IDamageble, IPoolElement, IModelHealth
         _config = config;
         _currentHealth = 0;
         _target = target;
-        _raycastDistance = UnityEngine.Random.Range(2f, 4f);
+        _raycastDistance = UnityEngine.Random.Range(0, 0.5f);
         _animator = GetComponent<Animator>();
         _animation = new AnimationEnemy(_animator);
         _stateFactory = new StateFactory(this, target, _animation);

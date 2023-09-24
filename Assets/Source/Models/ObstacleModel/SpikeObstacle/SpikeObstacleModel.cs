@@ -73,7 +73,7 @@ public class SpikeObstacleModel
         if (_currentDamageables.ContainsKey(damagable) == false)
             return;
 
-        //damagable.Died -= OnCurrentDamageableDied;
+        damagable.Died -= OnCurrentDamageableDied;
         _currentDamageables[damagable].Cancel();
         _currentDamageables.Remove(damagable);
     }

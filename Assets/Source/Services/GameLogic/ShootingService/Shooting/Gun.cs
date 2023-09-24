@@ -8,7 +8,7 @@ internal class Gun : IDamageble
     private Reloading _reloading;
     private Magazine _magazine;
     private Aiming _aiming;
-
+    private ParticleSystem _dieEffect;
     private ParticleSystem _shotVfx;
     private int _currentHealth;
 
@@ -16,11 +16,13 @@ internal class Gun : IDamageble
     public event Action<int> RecievedDamage;
     
     [Inject]
-    internal Gun(Reloading reloading, Magazine magazine, Aiming aiming)
+    internal Gun(Reloading reloading, Magazine magazine, Aiming aiming, ParticleSystem particleSystem)
     {
+
         _reloading = reloading;
         _magazine = magazine;
         _aiming = aiming;
+        _dieEffect = particleSystem;
     }
 
     public int Health => _currentHealth;
@@ -43,13 +45,12 @@ internal class Gun : IDamageble
 
         _aiming.FindNearestTarget();
 
-        if (_aiming.CurrentTarget != null)
-        {
-            _aiming.CurrentTarget.ApplyDamage(_magazine.GiveBullet());
-            OnShotPerformed();
-            _aiming.FindNearestTarget();
-            _reloading.Reset();
-        }
+        if (_aiming.CurrentTarget == null)
+            return;
+
+        _aiming.CurrentTarget.ApplyDamage(_magazine.GiveBullet());
+        OnShotPerformed();
+        _reloading.Reset();
     }
 
     public void ApplyDamage(int damage)
@@ -62,6 +63,7 @@ internal class Gun : IDamageble
         if (_currentHealth <= 0)
         {
             _currentHealth = 0;
+            _dieEffect.Play();
             Died?.Invoke(this);
         }
     }

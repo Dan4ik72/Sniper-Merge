@@ -19,10 +19,7 @@ internal class DeathState : State
         StartDeath();
     }
 
-    public override void Update(float delta)
-    {
-
-    }
+    public override void Update(float delta) { }
 
     public async UniTask StartDeath()
     {

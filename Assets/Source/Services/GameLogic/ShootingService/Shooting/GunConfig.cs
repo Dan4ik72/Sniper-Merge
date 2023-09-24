@@ -9,7 +9,6 @@ public class GunConfig : ScriptableObject
     [SerializeField] private GunData _gunData;
 
     public GunData GunData => _gunData;
-
     public int GunLevel => _gunData.GunLevel;
     public string PathToGunPrefab => _gunData.PathToGunPrefab;
     public int Health => _gunData.Health;

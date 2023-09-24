@@ -22,9 +22,9 @@ internal class Aiming
     }
     
     public void Update(float delta)
-    {   
+    {
         if (_currentTarget != null)
-            LookAt(_currentTarget.Position, delta);
+            LookAt(new Vector3(_currentTarget.Position.x, _gun.transform.position.y, _currentTarget.Position.z), delta);
         else
             LookAt(_gun.transform.position + Vector3.forward, delta);
     }
