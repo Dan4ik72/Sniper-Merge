@@ -59,11 +59,6 @@ public class LevelLoadService
         _levelsOpened++;
         
         _dataStorageService.SaveData<int>(OpenedLevelsCountSaveKey, _levelsOpened);
-
-        if (_dataStorageService.TryGetData(OpenedLevelsCountSaveKey, out int data))
-        {
-        }
-        Debug.Log(data);            
     }
     
     private void InitCurrentLevel()

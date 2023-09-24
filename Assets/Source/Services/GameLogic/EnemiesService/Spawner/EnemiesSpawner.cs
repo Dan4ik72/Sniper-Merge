@@ -133,10 +133,7 @@ internal class EnemiesSpawner
         EnemyDied?.Invoke(enemyCasted);
 
         if (_effectsPool.TryGetAvailableObject(out Effect effect))
-        {
-            Debug.Log(11);
             effect.Active(enemy.Position);
-        }
     }
 
     private void OnDestroy(IDamageble enemy)

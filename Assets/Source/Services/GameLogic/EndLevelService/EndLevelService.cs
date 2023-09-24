@@ -52,11 +52,7 @@ public class EndLevelService
         _playerMoneyService.ReceiveMoney(_checkingEndLevel.TotalReward);
         TotalLevelReward = _checkingEndLevel.TotalReward;
         
-        Debug.Log(_levelLoadService.LevelsOpened);
-        
         _levelLoadService.IncrementOpenedLevels();
-        
-        Debug.Log(_levelLoadService.LevelsOpened);
         
         Won?.Invoke();
     }
