@@ -35,5 +35,5 @@ public class EnemiesService
         _enemiesSpawner.EnemyDied -= OnEnemyDied;
     }
 
-    private void OnEnemyDied(Enemy died) => EnemyDied?.Invoke(died.Config.Reward);
+    private void OnEnemyDied(Enemy died){}/* => EnemyDied?.Invoke(died.Config.Reward);*/
 }

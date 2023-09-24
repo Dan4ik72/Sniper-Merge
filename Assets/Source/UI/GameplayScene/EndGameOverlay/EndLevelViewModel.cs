@@ -1,21 +1,22 @@
 using System;
+using UnityEngine;
 
 internal class EndLevelViewModel
 {
     private EndLevelService _endLevelService;
-    private LevelWalletService _levelWalletService;
+    private SceneTransitionService _sceneTransitionService;
 
     public event Action ShowLostGamePanel;
     public event Action ShowWonGamePanel;
 
-    public EndLevelViewModel(EndLevelService endLevelService, LevelWalletService levelWalletService)
+    public EndLevelViewModel(EndLevelService endLevelService, SceneTransitionService sceneTransitionService)
     {
         _endLevelService = endLevelService;
-        _levelWalletService = levelWalletService;
+        _sceneTransitionService = sceneTransitionService;
     }
 
     public int EnemyKilled => _endLevelService.EnemyKilledCount;
-    public uint MoneyReceived => _levelWalletService.GetCurrentMoneyCount();
+    public int MoneyReceived => _endLevelService.TotalLevelReward;
 
     public void Init()
     {
@@ -31,7 +32,7 @@ internal class EndLevelViewModel
 
     public void OnButtonClick()
     {
-        //SceneManager.LoadScene(MainScene);
+        _sceneTransitionService.TransitToMainMenuScene();
     }
 
     private void OnLevelWon() => ShowWonGamePanel?.Invoke();

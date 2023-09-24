@@ -18,12 +18,12 @@ public class EndGameOverlayPanel : MonoBehaviour, IUiPanel
     private EndLevelViewModel _endLevelViewModel;
     
     [Inject]
-    public void Cosntruct(EndLevelService endLevelService, LevelWalletService levelWalletService)
+    public void Cosntruct(EndLevelService endLevelService, LevelWalletService levelWalletService, SceneTransitionService sceneTransitionService)
     {
         _canvas = GetComponent<Canvas>();
         _endLevelService = endLevelService;
         _levelWaletService = levelWalletService;
-        _endLevelViewModel = new EndLevelViewModel(_endLevelService, _levelWaletService);
+        _endLevelViewModel = new EndLevelViewModel(_endLevelService, sceneTransitionService);
         _endLevelViewPresenter = new EndLevelViewPresenter(_gameWonEndingPanel, _gameLostEndingPanel, _mainMenuButton, _endLevelViewModel);
     }
     

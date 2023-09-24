@@ -36,6 +36,7 @@ public class PlayerMoneyService
     public void ReceiveMoney(int count)
     {
         Receive(count, _moneyWallet);
+
         _dataStorageService.SaveData<uint>(MoneyWalletSaveKey, _moneyWallet.MoneyCount);
     }
 

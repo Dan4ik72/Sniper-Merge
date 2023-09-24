@@ -17,14 +17,13 @@ public class UIGameEndingPanel : MonoBehaviour, IUiPanel
     }
 
     public void SetUiPanelParameters(int moneyReceived, int enemyKilled)
-    {
+    { 
         _moneyReceived.text = moneyReceived.ToString();
         _enemiesKilled.text = enemyKilled.ToString();
     }
 
     public void Disable()
     {
-
     }
 
     public Canvas GetCanvas() => _canvas;

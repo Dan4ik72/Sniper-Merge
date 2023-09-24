@@ -19,25 +19,27 @@ internal class EndLevelViewPresenter
     {
         _endLevelViewModel.ShowWonGamePanel += OnGameWon;
         _endLevelViewModel.ShowLostGamePanel += OnGameLost;
+        _mainMenuButton.Clicked += _endLevelViewModel.OnButtonClick;
     }
 
     public void Disable()
     {
         _endLevelViewModel.ShowWonGamePanel -= OnGameWon;
         _endLevelViewModel.ShowLostGamePanel -= OnGameLost;
+        _mainMenuButton.Clicked -= _endLevelViewModel.OnButtonClick;
     }
 
     private void OnGameWon()
     {
         _wonViewPanel.GetCanvas().enabled = true;
-        _wonViewPanel.SetUiPanelParameters((int)_endLevelViewModel.MoneyReceived, _endLevelViewModel.EnemyKilled);
+        _wonViewPanel.SetUiPanelParameters(_endLevelViewModel.MoneyReceived, _endLevelViewModel.EnemyKilled);
         _mainMenuButton.SetButtonEnable(true);
     }
 
     private void OnGameLost()
     {
         _lostViewPanel.GetCanvas().enabled = true;
-        _lostViewPanel.SetUiPanelParameters((int)_endLevelViewModel.MoneyReceived, _endLevelViewModel.EnemyKilled);
+        _lostViewPanel.SetUiPanelParameters(_endLevelViewModel.MoneyReceived, _endLevelViewModel.EnemyKilled);
         _mainMenuButton.SetButtonEnable(true);
     }
 }

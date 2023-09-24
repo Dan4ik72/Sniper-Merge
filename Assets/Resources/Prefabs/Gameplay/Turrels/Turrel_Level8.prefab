@@ -92,7 +92,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1462049257899590245}
-  - component: {fileID: 3422631342048427594}
+  - component: {fileID: 6490957574390015363}
   m_Layer: 3
   m_Name: Turrel_Level8
   m_TagString: Untagged
@@ -118,8 +118,8 @@ Transform:
   - {fileID: 3651255626130910126}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &3422631342048427594
-BoxCollider:
+--- !u!135 &6490957574390015363
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -137,8 +137,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 4.7208357, y: 2.5248995, z: 1.0525274}
-  m_Center: {x: 0.3847022, y: -0.22957516, z: 3.62844}
+  m_Radius: 3.93
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5890321884801847482
 GameObject:
   m_ObjectHideFlags: 0
