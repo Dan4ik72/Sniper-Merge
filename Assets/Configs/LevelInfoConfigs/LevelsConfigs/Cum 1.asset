@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49dfeaedf6faf34408c2c9c200a4f0d5, type: 3}
   m_Name: Cum 1
   m_EditorClassIdentifier: 
-  _levelIndex: 2
+  _levelIndex: 1
+  _enemyTypes: 0000000000000000
+  _spawnDelay:
+  - 0
+  - 0
