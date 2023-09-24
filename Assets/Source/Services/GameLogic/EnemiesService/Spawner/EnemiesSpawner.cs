@@ -1,9 +1,9 @@
+using Cysharp.Threading.Tasks;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using VContainer;
-using static UnityEngine.EventSystems.EventTrigger;
 using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 
@@ -15,19 +15,23 @@ internal class EnemiesSpawner
     private IReadOnlyList<EnemyInfo> _enemiesPrefabs;
     private LevelConfig _levelConfig;
     private IDamageble _target;
+    private Effect _prefabEffect;
     private float _elapsedTime = 0;
     private int _counterSpawn = 0;
 
     private ObjectPool<Enemy> _objectPool = new();
     private List<Enemy> _enemies = new();
+    private ObjectPool<Effect> _effectsPool = new();
+    private List<Effect> _effects = new();
 
     public event Action<Enemy> EnemyDied;
 
     [Inject]
-    public EnemiesSpawner(Transform parent, IReadOnlyList<EnemyInfo> enemiesPrefabs)
+    public EnemiesSpawner(Transform parent, IReadOnlyList<EnemyInfo> enemiesPrefabs, Effect prefabEffect)
     {
         _parent = parent;
         _enemiesPrefabs = enemiesPrefabs;
+        _prefabEffect = prefabEffect;
     }
 
     private bool _isFinished => _counterSpawn == _enemies.Count;
@@ -39,6 +43,7 @@ internal class EnemiesSpawner
         _target = target;
         _levelConfig = levelConfig;
         CreatePool();
+        CreatePoolEffects();
     }
 
     public void Update(float delta)
@@ -67,6 +72,11 @@ internal class EnemiesSpawner
         {
             enemy.Died -= OnDied;
             enemy.Destroed -= OnDestroy;
+        }
+
+        foreach (var effect in _effects)
+        {
+            effect.Finished -= OnFinishedEffect;
         }
 
         _enemies.Clear();
@@ -98,10 +108,35 @@ internal class EnemiesSpawner
         }
     }
 
+    private void CreatePoolEffects()
+    {
+        int quantityEffects = 5;
+
+        for (int i = 0; i < quantityEffects; i++)
+        {
+            var newEffect = Object.Instantiate(_prefabEffect);
+            newEffect.Init();
+            newEffect.Finished += OnFinishedEffect;
+            _effects.Add(newEffect);
+            _effectsPool.AddObject(newEffect);
+        }
+    }
+
+    private void OnFinishedEffect(Effect effect)
+    {
+        _effectsPool.ReturnToPool(effect);
+    }
+
     private void OnDied(IDamageble enemy)
     {
         var enemyCasted = (Enemy)enemy;
         EnemyDied?.Invoke(enemyCasted);
+
+        if (_effectsPool.TryGetAvailableObject(out Effect effect))
+        {
+            Debug.Log(11);
+            effect.Active(enemy.Position);
+        }
     }
 
     private void OnDestroy(IDamageble enemy)
