@@ -1,3 +1,5 @@
+using UnityEngine;
+
 internal class EnemyStateMachine
 {
     private StateFactory _stateFactory;
@@ -33,5 +35,6 @@ internal class EnemyStateMachine
             return;
 
         _currentState = nextState;
+        _currentState.Enter();
     }
 }

@@ -2,7 +2,12 @@ using System.Collections.Generic;
 
 internal abstract class State
 {
+    private AnimationEnemy _animation;
     private IReadOnlyList<Transition> _transitions;
+
+    public State(AnimationEnemy animation) => _animation = animation;
+
+    public AnimationEnemy Animation => _animation;
 
     public abstract void Update(float delta);
 
@@ -32,4 +37,6 @@ internal abstract class State
     {
         _transitions = transitions;
     }
+
+    public abstract void Enter();
 }

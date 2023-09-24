@@ -1,16 +1,20 @@
 using System;
 using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
 internal class Enemy : MonoBehaviour, IDamageble, IPoolElement, IModelHealth
 {
+    private Animator _animator;
     private EnemyInfo _config;
     private int _currentHealth;
     private float _raycastDistance;
     private StateFactory _stateFactory;
     private EnemyStateMachine _stateMachine;
+    private AnimationEnemy _animation;
     private IDamageble _target;
 
     public event Action<IDamageble> Died;
+    public event Action<IDamageble> Destroed;
     public event Action<int> RecievedDamage;
 
     internal void Init(EnemyInfo config, IDamageble target)
@@ -19,8 +23,10 @@ internal class Enemy : MonoBehaviour, IDamageble, IPoolElement, IModelHealth
         _config = config;
         _currentHealth = 0;
         _target = target;
-        _raycastDistance = UnityEngine.Random.Range(0.1f, 0.3f);
-        _stateFactory = new StateFactory(this, target);
+        _raycastDistance = UnityEngine.Random.Range(2f, 4f);
+        _animator = GetComponent<Animator>();
+        _animation = new AnimationEnemy(_animator);
+        _stateFactory = new StateFactory(this, target, _animation);
         _stateFactory.CreateStates();
         _stateMachine = new EnemyStateMachine(_stateFactory);
         _stateMachine.Reset();
@@ -56,5 +62,10 @@ internal class Enemy : MonoBehaviour, IDamageble, IPoolElement, IModelHealth
             _currentHealth = 0;
             Died?.Invoke(this);
         }
+    }
+
+    public void Clear()
+    {
+        Destroed?.Invoke(this);
     }
 }

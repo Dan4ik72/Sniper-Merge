@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 internal class AttackState : State
@@ -7,28 +5,25 @@ internal class AttackState : State
     private const int DamageableLayer = 3;
     private Enemy _enemy;
     private IDamageble _target;
-    private float _elapsedTime = 0;
 
-    public AttackState(Enemy enemy, IDamageble target)
+    public AttackState(Enemy enemy, IDamageble target, AnimationEnemy animation) : base(animation)
     {
         _enemy = enemy;
         _target = target;
     }
 
+    public override void Enter() { }
+
     public override void Update(float delta)
     {
-        _elapsedTime += delta;
+        var target = RayCastForward().collider.GetComponent<IDamageble>();
 
-        if (_elapsedTime > _enemy.Config.SpeedAttack)
-        {
-            _elapsedTime = 0;
-            var target = RayCastForward().collider.GetComponent<IDamageble>();
+        if (target == null)
+            _target.ApplyDamage(_enemy.Config.Damage);
+        else
+            target.ApplyDamage(_enemy.Config.Damage);
 
-            if (target == null)
-                _target.ApplyDamage(_enemy.Config.Damage);
-            else
-                target.ApplyDamage(_enemy.Config.Damage);
-        }
+        _enemy.ApplyDamage(_enemy.Health);
     }
 
     private RaycastHit RayCastForward()

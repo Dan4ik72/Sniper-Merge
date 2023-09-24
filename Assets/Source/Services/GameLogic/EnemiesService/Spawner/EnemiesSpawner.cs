@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using VContainer;
+using static UnityEngine.EventSystems.EventTrigger;
 using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 
@@ -63,7 +64,10 @@ internal class EnemiesSpawner
     public void Disable()
     {
         foreach (var enemy in _enemies)
-            enemy.Died -= OnDie;
+        {
+            enemy.Died -= OnDied;
+            enemy.Destroed -= OnDestroy;
+        }
 
         _enemies.Clear();
     }
@@ -79,7 +83,8 @@ internal class EnemiesSpawner
                         + _levelConfig.EnemyTypes[i].GetType() + " in " + _enemiesPrefabs + " list");
             
             var newEnemy = Object.Instantiate(currentPrefab.View, Vector3.zero, Quaternion.identity, _parent);
-            newEnemy.Died += OnDie;
+            newEnemy.Died += OnDied;
+            newEnemy.Destroed += OnDestroy;
             newEnemy.Init(_enemiesPrefabs[i], _target);
             _enemies.Add(newEnemy);
 
@@ -92,10 +97,15 @@ internal class EnemiesSpawner
         }
     }
 
-    private void OnDie(IDamageble enemy)
+    private void OnDied(IDamageble enemy)
     {
         var enemyCasted = (Enemy)enemy;
         EnemyDied?.Invoke(enemyCasted);
+    }
+
+    private void OnDestroy(IDamageble enemy)
+    {
+        var enemyCasted = (Enemy)enemy;
         _objectPool.ReturnToPool(enemyCasted);  
     } 
 }

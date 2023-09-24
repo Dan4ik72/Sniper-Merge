@@ -18,4 +18,4 @@ MonoBehaviour:
   _speed: 3
   _speedAttack: 2
   _reward: 30
-  _view: {fileID: 2542714606042819532, guid: 12e94878d720ab644b6c52f475ba6b4c, type: 3}
+  _view: {fileID: 766222278820510220, guid: a390e27397eea89468f445ac6e9885f6, type: 3}

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
@@ -67,13 +68,14 @@ public class SpikeObstacleModel
             OnObstacleBroke();
     }
 
-    private void OnCurrentDamageableDied(IDamageble damageable)
+    private void OnCurrentDamageableDied(IDamageble damagable)
     {
-        if (_currentDamageables.ContainsKey(damageable) == false)
+        if (_currentDamageables.ContainsKey(damagable) == false)
             return;
 
-        _currentDamageables[damageable].Cancel();
-        _currentDamageables.Remove(damageable);
+        //damagable.Died -= OnCurrentDamageableDied;
+        _currentDamageables[damagable].Cancel();
+        _currentDamageables.Remove(damagable);
     }
 
     private void OnObstacleBroke()
