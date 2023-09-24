@@ -8,6 +8,8 @@ internal class Gun : IDamageble
     private Reloading _reloading;
     private Magazine _magazine;
     private Aiming _aiming;
+
+    private ParticleSystem _shotVfx;
     private int _currentHealth;
 
     public event Action<IDamageble> Died;
@@ -27,8 +29,9 @@ internal class Gun : IDamageble
 
     public Vector3 Position => _position.position;
 
-    public void Init(GunData data, Transform gun)
+    public void Init(GunData data, Transform gun, ParticleSystem particleSystem)
     {
+        _shotVfx = particleSystem;
         _currentHealth = data.Health;
         _position = gun;
     }
@@ -43,6 +46,7 @@ internal class Gun : IDamageble
         if (_aiming.CurrentTarget != null)
         {
             _aiming.CurrentTarget.ApplyDamage(_magazine.GiveBullet());
+            OnShotPerformed();
             _aiming.FindNearestTarget();
             _reloading.Reset();
         }
@@ -60,5 +64,10 @@ internal class Gun : IDamageble
             _currentHealth = 0;
             Died?.Invoke(this);
         }
+    }
+    
+    private void OnShotPerformed()
+    {
+        _shotVfx.Play();
     }
 }

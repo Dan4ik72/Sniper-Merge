@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using VContainer;
 
@@ -15,6 +16,7 @@ internal class BulletConveyor
     private BulletInfo _previousBulletInfo;
 
     private Transform _bulletViewSpawnPosition;
+    private Transform _gunPosition;
 
     [Inject]
     internal BulletConveyor(BulletViewFactory bulletViewFactory, BulletConveyorMover mover, BulletViewsHolder holder, Transform bulletViewSpawnPosition)
@@ -25,9 +27,10 @@ internal class BulletConveyor
         _bulletViewSpawnPosition = bulletViewSpawnPosition;
     }
 
-    public void Init()
+    public void Init(Transform target)
     {
         _mover.Arrived += OnBulletArrived;
+        _gunPosition = target;
     }
 
     public void SetNewBulletInfo(BulletInfo newBulletInfo)
@@ -60,12 +63,14 @@ internal class BulletConveyor
         _bulletViewsHolder.PlaceViewToGrid(view);
     }
 
-    public void OnBulletUsed(BulletInfo bulletInfo)
+    public async void OnBulletUsed(BulletInfo bulletInfo)
     {
         var removing = _bulletViewsHolder.RemoveView();
 
         if (removing == null)
             return;
+        
+        await MoveBulletToGun(removing.transform, _gunPosition.position);
 
         _bulletViewPool.ReturnToPool(removing);
         removing.SetAlive(false);
@@ -86,5 +91,18 @@ internal class BulletConveyor
             var created = _bulletViewFactory.CreateBulletView(_currentBulletInfo);
             _bulletViewPool.AddObject(created, false);
         }
+    }
+
+    private async UniTask MoveBulletToGun(Transform transform, Vector3 target)
+    {
+        Debug.Log("Cum");
+        
+        while (Vector3.Distance(transform.position, target) > 0.1)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, target, Time.deltaTime * 15f);
+            await UniTask.Yield();
+        }
+        
+        Debug.Log("Cum2");
     }
 }

@@ -48,14 +48,10 @@ public class ShootingService
 
     public void Init(IReadOnlyList<IDamageble> enemies)
     {
-        _aiming.Init(enemies);
-
         _gun.RecievedDamage += OnGunRecievedDamage;
-        
-        InitData();
-        
-        _bulletConveyor.Init();
-
+         
+        InitData(enemies);
+         
         _bulletHolder.OnNewBulletPlaced += _bulletSpawner.ChangeBullet;
         _bulletHolder.OnNewBulletPlaced += _bulletConveyor.SetNewBulletInfo;
         _bulletHolder.BulletRemoved += _bulletSpawner.ChangeBullet;
@@ -63,7 +59,7 @@ public class ShootingService
         _magazine.BulletSpawned += _bulletConveyor.OnBulletUsed;
     }
 
-    private void InitData()
+    private void InitData(IReadOnlyList<IDamageble> enemies)
     {
         var gunData = _defaultConfig.GunData;
 
@@ -72,11 +68,14 @@ public class ShootingService
 
         _data = gunData;
 
-        var gunTransform = SpawnGunByData(); 
+        var gunTransform = SpawnGunByData();
+        _bulletConveyor.Init(gunTransform);
+
+        var particleSystem = gunTransform.GetComponentInChildren<ParticleSystem>();
         
-        _gun.Init(gunData, gunTransform);
+        _gun.Init(gunData, gunTransform, particleSystem);
         _reloading.Init(gunData);
-        _aiming.Init(gunData, gunTransform);
+        _aiming.Init(gunData, gunTransform, enemies);
     }
 
     private Transform SpawnGunByData() => Object.Instantiate(Resources.Load<Transform>(_data.PathToGunPrefab), _data.Position, _data.Rotation);
@@ -100,7 +99,7 @@ public class ShootingService
         _bulletConveyor.Disable();
 
         _gun.RecievedDamage += OnGunRecievedDamage;
-        
+         
         _bulletHolder.OnNewBulletPlaced -= _bulletSpawner.ChangeBullet;
         _bulletHolder.OnNewBulletPlaced -= _bulletConveyor.SetNewBulletInfo;
         _bulletHolder.BulletRemoved -= _bulletSpawner.ChangeBullet;
@@ -109,4 +108,5 @@ public class ShootingService
     }
     
     private void OnGunRecievedDamage(int currentHealth) => GunRecievedDamage?.Invoke(currentHealth);
+ 
 }

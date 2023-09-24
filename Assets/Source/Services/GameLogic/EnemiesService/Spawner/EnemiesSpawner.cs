@@ -80,7 +80,8 @@ internal class EnemiesSpawner
             
             var newEnemy = Object.Instantiate(currentPrefab.View, Vector3.zero, Quaternion.identity, _parent);
             newEnemy.Died += OnDie;
-            newEnemy.Init(_enemiesPrefabs[i], _target);
+            
+            newEnemy.Init(currentPrefab, _target);
             _enemies.Add(newEnemy);
 
             var healthView = newEnemy.GetComponentInChildren<EnemyHealthView>();
