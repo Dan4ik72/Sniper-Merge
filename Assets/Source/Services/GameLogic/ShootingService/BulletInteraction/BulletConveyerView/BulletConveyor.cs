@@ -95,14 +95,10 @@ internal class BulletConveyor
 
     private async UniTask MoveBulletToGun(Transform transform, Vector3 target)
     {
-        Debug.Log("Cum");
-        
-        while (Vector3.Distance(transform.position, target) > 0.1)
+        while (Vector3.Distance(transform.position, target) > 0.1 )
         {
             transform.position = Vector3.MoveTowards(transform.position, target, Time.deltaTime * 15f);
             await UniTask.Yield();
         }
-        
-        Debug.Log("Cum2");
     }
 }
