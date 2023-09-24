@@ -7,17 +7,22 @@ using VContainer;
 public class EndLevelService
 {
     private CheckingEndLevel _checkingEndLevel;
+    private LevelWalletService _levelWalletService;
+    private PlayerMoneyService _playerMoneyService;
 
     public event Action Won;
     public event Action Lost;
     
     [Inject]
-    internal EndLevelService(CheckingEndLevel checkingEndLevel)
+    internal EndLevelService(CheckingEndLevel checkingEndLevel, LevelWalletService levelWalletService, PlayerMoneyService playerMoneyService )
     {
         _checkingEndLevel = checkingEndLevel;
+        _levelWalletService = levelWalletService;
+        _playerMoneyService = playerMoneyService;
     }
 
     public int EnemyKilledCount => _checkingEndLevel.EnemyKilledCount;
+    public int TotalLevelReward { get; private set; }
     
     public void Init(IReadOnlyList<IDamageble> enemies, IDamageble gun, LevelConfig levelConfig)
     {
@@ -34,7 +39,19 @@ public class EndLevelService
         _checkingEndLevel.Victory -= OnGameWon;
     }
 
-    private void OnGameLost() => Lost?.Invoke();
-    
-    private void OnGameWon() => Won?.Invoke();
+    private void OnGameLost()
+    {
+        _playerMoneyService.ReceiveMoney(_checkingEndLevel.TotalReward);
+        TotalLevelReward = _checkingEndLevel.TotalReward;
+        
+        Lost?.Invoke();
+    }
+
+    private void OnGameWon()
+    {
+        _playerMoneyService.ReceiveMoney(_checkingEndLevel.TotalReward);
+        TotalLevelReward = _checkingEndLevel.TotalReward;
+        
+        Won?.Invoke();
+    }
 }

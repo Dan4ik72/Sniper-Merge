@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "EnemyInfo", menuName = "Enemy info/Create new enemy info")]
-internal class EnemyInfo : ScriptableObject
+public class EnemyInfo : ScriptableObject
 {
     [SerializeField] private EnemyType _type;
     [SerializeField] private int _damage;

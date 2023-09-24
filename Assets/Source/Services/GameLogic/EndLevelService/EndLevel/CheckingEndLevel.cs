@@ -6,6 +6,7 @@ using VContainer;
 internal class CheckingEndLevel
 {
     private IReadOnlyList<IDamageble> _enemies;
+
     private IDamageble _gun;
 
     private int _totalEnemies;
@@ -15,6 +16,7 @@ internal class CheckingEndLevel
     public event Action Victory;
 
     public int EnemyKilledCount => _counterKilledEnemies;
+    public int TotalReward { get; set; }
 
     public void Init(IReadOnlyList<IDamageble> enemies, IDamageble gun, LevelConfig levelConfig)
     {
@@ -40,8 +42,14 @@ internal class CheckingEndLevel
 
     private void OnDieEnemy(IDamageble damageble)
     {
+        Debug.Log("Enemy died");
+        
         _counterKilledEnemies++;
-
+        
+        TotalReward += ((IReward)damageble).RewardAmount;
+        
+        Debug.Log(((IReward)damageble).RewardAmount);
+        
         if (_counterKilledEnemies == _totalEnemies)
             Victory?.Invoke();
     }

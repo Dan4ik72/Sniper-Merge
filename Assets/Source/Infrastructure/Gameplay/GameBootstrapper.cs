@@ -18,9 +18,11 @@ public class GameBootstrapper : MonoBehaviour, IDisposable
     [Inject] private UIPanelTransitService _uiPanelTransitService;
     [Inject] private BuffProcessingService _buffProcessingService;
     [Inject] private LevelLoadService _levelLoadService;
+    [Inject] private PlayerMoneyService _playerMoneyService;
     
     private void Start()
     {
+        _playerMoneyService.Init();
         _levelLoadService.Init();
         _inputService.Init();
         _mergeItemDragService.Init();

@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
-internal class Enemy : MonoBehaviour, IDamageble, IPoolElement, IModelHealth
+public class Enemy : MonoBehaviour, IDamageble, IPoolElement, IModelHealth, IReward
 {
     private Animator _animator;
     private EnemyInfo _config;
@@ -17,7 +17,7 @@ internal class Enemy : MonoBehaviour, IDamageble, IPoolElement, IModelHealth
     public event Action<IDamageble> Destroed;
     public event Action<int> RecievedDamage;
 
-    internal void Init(EnemyInfo config, IDamageble target)
+    public void Init(EnemyInfo config, IDamageble target)
     {
         Level = (int)config.Type;
         _config = config;
@@ -39,6 +39,7 @@ internal class Enemy : MonoBehaviour, IDamageble, IPoolElement, IModelHealth
     public float RaycastDistance => _raycastDistance;
     internal EnemyInfo Config => _config;
     public Vector3 Position => transform.position;
+    public int RewardAmount => _config.Reward;
 
     public void Update() => _stateMachine.Update(Time.deltaTime);
 
@@ -68,4 +69,6 @@ internal class Enemy : MonoBehaviour, IDamageble, IPoolElement, IModelHealth
     {
         Destroed?.Invoke(this);
     }
+
+    
 }

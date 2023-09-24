@@ -3,19 +3,17 @@ using System;
 internal class EndLevelViewModel
 {
     private EndLevelService _endLevelService;
-    private LevelWalletService _levelWalletService;
 
     public event Action ShowLostGamePanel;
     public event Action ShowWonGamePanel;
 
-    public EndLevelViewModel(EndLevelService endLevelService, LevelWalletService levelWalletService)
+    public EndLevelViewModel(EndLevelService endLevelService)
     {
         _endLevelService = endLevelService;
-        _levelWalletService = levelWalletService;
     }
 
     public int EnemyKilled => _endLevelService.EnemyKilledCount;
-    public uint MoneyReceived => _levelWalletService.GetCurrentMoneyCount();
+    public int MoneyReceived => _endLevelService.TotalLevelReward;
 
     public void Init()
     {
