@@ -1,4 +1,3 @@
-using Cysharp.Threading.Tasks;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,23 +14,19 @@ internal class EnemiesSpawner
     private IReadOnlyList<EnemyInfo> _enemiesPrefabs;
     private LevelConfig _levelConfig;
     private IDamageble _target;
-    private Effect _prefabEffect;
     private float _elapsedTime = 0;
     private int _counterSpawn = 0;
 
     private ObjectPool<Enemy> _objectPool = new();
     private List<Enemy> _enemies = new();
-    private ObjectPool<Effect> _effectsPool = new();
-    private List<Effect> _effects = new();
 
     public event Action<Enemy> EnemyDied;
 
     [Inject]
-    public EnemiesSpawner(Transform parent, IReadOnlyList<EnemyInfo> enemiesPrefabs, Effect prefabEffect)
+    public EnemiesSpawner(Transform parent, IReadOnlyList<EnemyInfo> enemiesPrefabs)
     {
         _parent = parent;
         _enemiesPrefabs = enemiesPrefabs;
-        _prefabEffect = prefabEffect;
     }
 
     private bool _isFinished => _counterSpawn == _enemies.Count;
@@ -43,19 +38,18 @@ internal class EnemiesSpawner
         _target = target;
         _levelConfig = levelConfig;
         CreatePool();
-        CreatePoolEffects();
     }
 
     public void Update(float delta)
     {
         _elapsedTime += delta;
-        
-        if(_counterSpawn > _levelConfig.EnemyTypes.Count - 1)
+
+        if (_counterSpawn > _levelConfig.EnemyTypes.Count - 1)
             return;
-        
+
         if (_elapsedTime < _levelConfig.SpawnDelayForEachEnemy[_counterSpawn])
             return;
-        
+
         if (_isFinished == false && _target.IsAlive && _objectPool.TryGetAvailableObject(out Enemy enemy, _enemies[_counterSpawn++].Level))
         {
             _elapsedTime = 0;
@@ -74,11 +68,6 @@ internal class EnemiesSpawner
             enemy.Destroed -= OnDestroy;
         }
 
-        foreach (var effect in _effects)
-        {
-            effect.Finished -= OnFinishedEffect;
-        }
-
         _enemies.Clear();
     }
 
@@ -88,14 +77,14 @@ internal class EnemiesSpawner
         {
             var currentPrefab = _enemiesPrefabs.FirstOrDefault(obj => obj.Type == _levelConfig.EnemyTypes[i]);
 
-            if(currentPrefab == null)
-                throw new NullReferenceException("There is no such an enemy Prefab with type " 
+            if (currentPrefab == null)
+                throw new NullReferenceException("There is no such an enemy Prefab with type "
                         + _levelConfig.EnemyTypes[i].GetType() + " in " + _enemiesPrefabs + " list");
-            
+
             var newEnemy = Object.Instantiate(currentPrefab.View, Vector3.zero, Quaternion.identity, _parent);
             newEnemy.Died += OnDied;
             newEnemy.Destroed += OnDestroy;
-            
+
             newEnemy.Init(currentPrefab, _target);
             _enemies.Add(newEnemy);
 
@@ -108,37 +97,15 @@ internal class EnemiesSpawner
         }
     }
 
-    private void CreatePoolEffects()
-    {
-        int quantityEffects = 5;
-
-        for (int i = 0; i < quantityEffects; i++)
-        {
-            var newEffect = Object.Instantiate(_prefabEffect);
-            newEffect.Init();
-            newEffect.Finished += OnFinishedEffect;
-            _effects.Add(newEffect);
-            _effectsPool.AddObject(newEffect);
-        }
-    }
-
-    private void OnFinishedEffect(Effect effect)
-    {
-        _effectsPool.ReturnToPool(effect);
-    }
-
     private void OnDied(IDamageble enemy)
     {
         var enemyCasted = (Enemy)enemy;
         EnemyDied?.Invoke(enemyCasted);
-
-        if (_effectsPool.TryGetAvailableObject(out Effect effect))
-            effect.Active(enemy.Position);
     }
 
     private void OnDestroy(IDamageble enemy)
     {
         var enemyCasted = (Enemy)enemy;
-        _objectPool.ReturnToPool(enemyCasted);  
-    } 
+        _objectPool.ReturnToPool(enemyCasted);
+    }
 }

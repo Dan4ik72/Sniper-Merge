@@ -12,9 +12,18 @@ public class EnemiesServiceInstaller : Installer
     protected override void Configure(IContainerBuilder builder)
     {
         builder.Register<EnemiesService>(Lifetime.Scoped);
+
         builder.Register(container =>
         {
-            return new EnemiesSpawner(_parent, _enemiesPrefabs, _prefabEffect);
+            return new EnemiesSpawner(_parent, _enemiesPrefabs);
+
+        }, Lifetime.Scoped);
+
+        builder.Register(container =>
+        {
+            var enemiesSpawner = container.Resolve<EnemiesSpawner>();
+
+            return new EffectsSpawner(enemiesSpawner, _prefabEffect);
 
         }, Lifetime.Scoped);
     }
