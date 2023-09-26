@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: DefaultSpikeObstacleConfig
   m_EditorClassIdentifier: 
   _data:
-    ViewPrefabPath: Prefabs/Gameplay/Obstacles/SpikeView
+    Level: 0
+    ViewPrefabPath: Prefabs/Gameplay/Obstacles/SpikeObstacle/Spike_Level1
     Position: {x: 3.09, y: 2.9, z: 2.61}
-    Rotation: {x: 2, y: 1, z: 0, w: 0}
+    Rotation: {x: 0, y: 0, z: 0, w: 0}
     Damage: 13
     ObstacleDurability: 336
     DamageTickRate: 2
