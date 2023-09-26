@@ -4438,6 +4438,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TurrelDiedVFX
       objectReference: {fileID: 0}
+    - target: {fileID: 6622191050231882725, guid: 26d3ffea35defef42b92012a6bce98df, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
