@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour, IDamageble, IPoolElement, IModelHealth, IRew
     private EnemyInfo _config;
     private int _currentHealth;
     private float _raycastDistance;
+    private bool _isActive;
     private StateFactory _stateFactory;
     private EnemyStateMachine _stateMachine;
     private AnimationEnemy _animation;
@@ -23,13 +24,14 @@ public class Enemy : MonoBehaviour, IDamageble, IPoolElement, IModelHealth, IRew
         _config = config;
         _currentHealth = 0;
         _target = target;
-        _raycastDistance = UnityEngine.Random.Range(0, 0.5f);
+        _raycastDistance = UnityEngine.Random.Range(0.1f, 0.5f);
         _animator = GetComponent<Animator>();
         _animation = new AnimationEnemy(_animator);
         _stateFactory = new StateFactory(this, target, _animation);
         _stateFactory.CreateStates();
         _stateMachine = new EnemyStateMachine(_stateFactory);
         _stateMachine.Reset();
+        _isActive = false;
     }
 
     public int Level { get; private set; }
@@ -40,11 +42,13 @@ public class Enemy : MonoBehaviour, IDamageble, IPoolElement, IModelHealth, IRew
     internal EnemyInfo Config => _config;
     public Vector3 Position => transform.position;
     public int RewardAmount => _config.Reward;
+    public bool IsActive => _isActive;
 
     public void Update() => _stateMachine.Update(Time.deltaTime);
 
     public void Respawn() 
     {
+        _isActive = true;
         _currentHealth = _config.Health;
         transform.LookAt(_target.Position);
     }
@@ -67,8 +71,7 @@ public class Enemy : MonoBehaviour, IDamageble, IPoolElement, IModelHealth, IRew
 
     public void Clear()
     {
+        _isActive = false;
         Destroed?.Invoke(this);
     }
-
-    
 }

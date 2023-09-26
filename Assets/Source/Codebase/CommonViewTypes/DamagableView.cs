@@ -5,6 +5,8 @@ public class DamagableView : View, IDamageble
 {
     public Vector3 Position => transform.position;
 
+    public bool IsAlive { get; private set; }
+
     public event Action<IDamageble> Died;
     public event Action<int> ReceivingDamage;
 

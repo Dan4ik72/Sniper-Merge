@@ -18,7 +18,7 @@ public class ObjectPool<T> where T : IPoolElement
 
     public bool TryGetAvailableObject(out T available, int level = 0)
     {
-        available = _objects.FirstOrDefault(obj => obj.Level == level && obj.IsAlive == false);
+        available = _objects.FirstOrDefault(obj => obj.Level == level && obj.IsActive == false);
 
         return available != null;
     }

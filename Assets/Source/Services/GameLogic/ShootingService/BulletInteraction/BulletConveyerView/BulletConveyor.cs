@@ -53,7 +53,7 @@ internal class BulletConveyor
             return;
         }
 
-        obj.SetAlive(true);
+        obj.SetActive(true);
         obj.transform.position = _bulletViewSpawnPosition.transform.position;
         _mover.Move(obj);
     }
@@ -73,7 +73,7 @@ internal class BulletConveyor
         await MoveBulletToGun(removing.transform, _gunPosition.position);
 
         _bulletViewPool.ReturnToPool(removing);
-        removing.SetAlive(false);
+        removing.SetActive(false);
     }
 
     public void Disable()

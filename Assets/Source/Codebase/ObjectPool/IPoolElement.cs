@@ -4,7 +4,7 @@ public interface IPoolElement
 {
     public int Level { get; }
 
-    public bool IsAlive { get; }
+    public bool IsActive { get; }
 
     public Transform GetTransform();
 }

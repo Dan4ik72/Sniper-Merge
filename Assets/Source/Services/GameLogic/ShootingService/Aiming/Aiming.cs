@@ -23,6 +23,8 @@ internal class Aiming
     
     public void Update(float delta)
     {
+        FindNearestTarget();
+
         if (_currentTarget != null)
             LookAt(new Vector3(_currentTarget.Position.x, _gun.transform.position.y, _currentTarget.Position.z), delta);
         else

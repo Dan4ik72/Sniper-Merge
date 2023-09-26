@@ -3,15 +3,15 @@
 public class View : MonoBehaviour, IPoolElement
 {
     public int Level { get; private set; } = 1;
-    public bool IsAlive { get; private set; } = false;
+    public bool IsActive { get; private set; } = false;
 
     public void Init(int level, bool isAliveByDefault)
     {
         Level = level;
-        IsAlive = isAliveByDefault;
+        IsActive = isAliveByDefault;
     }
 
-    public void SetAlive(bool isAlive) => IsAlive = isAlive;
+    public void SetActive(bool isActive) => IsActive = isActive;
     
     public Transform GetTransform() => transform;
 }

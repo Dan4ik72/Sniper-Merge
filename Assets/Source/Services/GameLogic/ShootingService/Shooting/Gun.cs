@@ -42,8 +42,6 @@ internal class Gun : IDamageble
         if (IsAlive == false || _reloading.IsLoaded == false || _magazine.IsLoaded == false)
             return;
 
-        _aiming.FindNearestTarget();
-
         if (_aiming.CurrentTarget == null)
             return;
 

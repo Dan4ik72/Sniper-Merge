@@ -21,4 +21,4 @@ MonoBehaviour:
     SpeedCooldown: 2
     MinSpeedCooldown: 0
     RotateSpeed: 7
-    Range: 20
+    Range: 30
