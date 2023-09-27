@@ -12,7 +12,7 @@ public class MainMenuBootstrapper : MonoBehaviour, IDisposable
 
     private void Start()
     {
-        _levelLoadService.Init();
+        _levelLoadService.Init(); 
         _playerMoneyService.Init();
         _uiBootstrapService.Init();
     }
