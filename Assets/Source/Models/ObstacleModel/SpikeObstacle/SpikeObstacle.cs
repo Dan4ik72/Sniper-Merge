@@ -11,6 +11,9 @@ public class SpikeObstacle : IObstacle
 
     public void Init()
     {
+        if(_view == null)
+            return;
+        
         _view.TriggerEntered += _model.OnTriggerEnter;
         _view.TriggerExited += _model.OnTriggerExit;
 
@@ -19,6 +22,9 @@ public class SpikeObstacle : IObstacle
 
     public void Dispose()
     {
+        if(_view == null)
+            return;
+        
         _view.TriggerEntered -= _model.OnTriggerEnter;
         _view.TriggerExited -= _model.OnTriggerExit;
 

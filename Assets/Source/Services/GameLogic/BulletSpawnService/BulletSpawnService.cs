@@ -16,10 +16,6 @@ public class BulletSpawnService
 
     public void Init()
     {
-        SpawnBullet(MergeItemType.Level1Item, "0");
-        SpawnBullet(MergeItemType.Level1Item, "1");
-        SpawnBullet(MergeItemType.Level1Item, "2");
-        SpawnBullet(MergeItemType.Level1Item, "3");
     }
 
     public void SpawnBullet(MergeItemType bulletType, string name = "MergeItem")

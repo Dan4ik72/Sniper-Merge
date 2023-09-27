@@ -15,6 +15,8 @@ internal class ObjectDragHandler : IObjectDragHandler
     private RaycastHit _raycastInfo;
     private Vector3 _currentDraggingItemPositionOffset;
 
+    private float _draggingObjectHeight = 0.3f;
+
     public event Action<MergeItem> ItemReleased;
     public event Action<MergeItem> ItemGrabbed;
 
@@ -52,7 +54,7 @@ internal class ObjectDragHandler : IObjectDragHandler
         Ray screenToWorldPointRay = _camera.ScreenPointToRay(Input.mousePosition);
 
         if (Physics.Raycast(screenToWorldPointRay, out _raycastInfo, 100f, 1 << MergePlaneLayerIndex))
-            _currentDraggingItem.View.transform.position = _raycastInfo.point + _currentDraggingItemPositionOffset;
+            _currentDraggingItem.View.transform.position = new Vector3(0, _draggingObjectHeight,0) + _raycastInfo.point + _currentDraggingItemPositionOffset;
         else
             ReleaseItem(Input.mousePosition);
     }

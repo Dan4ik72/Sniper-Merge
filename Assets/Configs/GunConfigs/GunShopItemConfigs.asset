@@ -13,128 +13,128 @@ MonoBehaviour:
   m_Name: GunShopItemConfigs
   m_EditorClassIdentifier: 
   _gunShopItems:
-  - _gunIcon: {fileID: 0}
+  - _gunIcon: {fileID: 21300000, guid: 149c85f5f8b4ff24eb4a8f0acb40bf56, type: 3}
     _price: 0
     _levelRequired: 0
     _gunConfig: {fileID: 11400000, guid: 933f11ce6a1459e4bab6629cccbc619e, type: 2}
-    _isMoneyCurrency: 0
-  - _gunIcon: {fileID: 0}
+    _isMoneyCurrency: 1
+  - _gunIcon: {fileID: 21300000, guid: e16e39db6c1bea24a87bb952e25c26ec, type: 3}
     _price: 0
     _levelRequired: 0
     _gunConfig: {fileID: 11400000, guid: 97058e119dbbdf245b76eea029590217, type: 2}
-    _isMoneyCurrency: 0
-  - _gunIcon: {fileID: 0}
+    _isMoneyCurrency: 1
+  - _gunIcon: {fileID: 21300000, guid: 4129e895e4ce9934c849f27783e3abf3, type: 3}
     _price: 0
     _levelRequired: 0
     _gunConfig: {fileID: 11400000, guid: b5d876764e0d76f4391e3e55ae942ac0, type: 2}
-    _isMoneyCurrency: 0
-  - _gunIcon: {fileID: 0}
+    _isMoneyCurrency: 1
+  - _gunIcon: {fileID: 21300000, guid: 180da92cc88f2fd45a5def2a94d997d7, type: 3}
     _price: 0
     _levelRequired: 0
     _gunConfig: {fileID: 11400000, guid: d29db9e4e9e43334ebc7eb94f7d1d2df, type: 2}
-    _isMoneyCurrency: 0
-  - _gunIcon: {fileID: 0}
+    _isMoneyCurrency: 1
+  - _gunIcon: {fileID: 21300000, guid: aeb9d27bf418b7f4d8ad87b3ab19b05c, type: 3}
     _price: 0
     _levelRequired: 0
     _gunConfig: {fileID: 11400000, guid: 9003bfe826abcb84380c1a50c7347a3e, type: 2}
-    _isMoneyCurrency: 0
-  - _gunIcon: {fileID: 0}
+    _isMoneyCurrency: 1
+  - _gunIcon: {fileID: 21300000, guid: d249131c13858c14b9d3c9b7b7b26789, type: 3}
     _price: 0
     _levelRequired: 0
     _gunConfig: {fileID: 11400000, guid: cedabaef7af74e4458e07f9a71e24c0d, type: 2}
-    _isMoneyCurrency: 0
-  - _gunIcon: {fileID: 0}
+    _isMoneyCurrency: 1
+  - _gunIcon: {fileID: 21300000, guid: 9f58fdfa154cedd4484c05ed52f79ad7, type: 3}
     _price: 0
     _levelRequired: 0
     _gunConfig: {fileID: 11400000, guid: 782a55f8c7922484fa530837911593b3, type: 2}
-    _isMoneyCurrency: 0
-  - _gunIcon: {fileID: 0}
+    _isMoneyCurrency: 1
+  - _gunIcon: {fileID: 21300000, guid: 3f4fad0ca3f86fc4981f1f454322c08b, type: 3}
     _price: 0
     _levelRequired: 0
     _gunConfig: {fileID: 11400000, guid: 1b2020d72f68a8447b8318bc7cba7b2c, type: 2}
-    _isMoneyCurrency: 0
-  - _gunIcon: {fileID: 0}
+    _isMoneyCurrency: 1
+  - _gunIcon: {fileID: 21300000, guid: 5869bd91a5aea6b409d912c72974f71e, type: 3}
     _price: 0
     _levelRequired: 0
     _gunConfig: {fileID: 11400000, guid: 11adcf1b91d9ade45acabb4118116c05, type: 2}
-    _isMoneyCurrency: 0
-  - _gunIcon: {fileID: 0}
+    _isMoneyCurrency: 1
+  - _gunIcon: {fileID: 21300000, guid: 6a3e7e5495ca0a44bad153675024bcee, type: 3}
     _price: 0
     _levelRequired: 0
     _gunConfig: {fileID: 11400000, guid: a10d01201d674504b8f717b849e34871, type: 2}
-    _isMoneyCurrency: 0
-  - _gunIcon: {fileID: 0}
+    _isMoneyCurrency: 1
+  - _gunIcon: {fileID: 21300000, guid: 06d6384734bf41e49a2b745f90201dea, type: 3}
     _price: 0
     _levelRequired: 0
     _gunConfig: {fileID: 11400000, guid: 8757d5802feabd1428c94973b52ff390, type: 2}
-    _isMoneyCurrency: 0
-  - _gunIcon: {fileID: 0}
+    _isMoneyCurrency: 1
+  - _gunIcon: {fileID: 21300000, guid: a9adcb6f21e907a4789372fe1fd794d5, type: 3}
     _price: 0
     _levelRequired: 0
     _gunConfig: {fileID: 11400000, guid: 50f03162c718f234eb61ca1b39ff5842, type: 2}
-    _isMoneyCurrency: 0
-  - _gunIcon: {fileID: 0}
+    _isMoneyCurrency: 1
+  - _gunIcon: {fileID: 21300000, guid: ad9648941e7efcd46baa2a9d20b6e4f6, type: 3}
     _price: 0
     _levelRequired: 0
     _gunConfig: {fileID: 11400000, guid: b7fc5f0fd4fce944cab214a14f02cc9c, type: 2}
-    _isMoneyCurrency: 0
-  - _gunIcon: {fileID: 0}
+    _isMoneyCurrency: 1
+  - _gunIcon: {fileID: 21300000, guid: b3d2051852040104aa3b8cfb3efbccb1, type: 3}
     _price: 0
     _levelRequired: 0
     _gunConfig: {fileID: 11400000, guid: acc05476b3c3b16468be8a0ed3b94e26, type: 2}
-    _isMoneyCurrency: 0
-  - _gunIcon: {fileID: 0}
+    _isMoneyCurrency: 1
+  - _gunIcon: {fileID: 21300000, guid: 17bc1c2af3be7574cad3a6ddad500863, type: 3}
     _price: 0
     _levelRequired: 0
     _gunConfig: {fileID: 11400000, guid: 891673705a1c7f742b92c0015d719cc9, type: 2}
-    _isMoneyCurrency: 0
-  - _gunIcon: {fileID: 0}
+    _isMoneyCurrency: 1
+  - _gunIcon: {fileID: 21300000, guid: caabb3bb9ee4b824fbb15badaf7b75f2, type: 3}
     _price: 0
     _levelRequired: 0
     _gunConfig: {fileID: 11400000, guid: 73b5568ad6dc76742becb999d5a2bbe8, type: 2}
-    _isMoneyCurrency: 0
-  - _gunIcon: {fileID: 0}
+    _isMoneyCurrency: 1
+  - _gunIcon: {fileID: 21300000, guid: 266939b61b4e7e9468905e271ba8a870, type: 3}
     _price: 0
     _levelRequired: 0
     _gunConfig: {fileID: 11400000, guid: ad2a9e0c0ed6c924a99716914625d6ce, type: 2}
-    _isMoneyCurrency: 0
-  - _gunIcon: {fileID: 0}
+    _isMoneyCurrency: 1
+  - _gunIcon: {fileID: 21300000, guid: 3834e047344444f4da4c4578272f8279, type: 3}
     _price: 0
     _levelRequired: 0
     _gunConfig: {fileID: 11400000, guid: 57ab78ca4d6a179439284afad848d05c, type: 2}
-    _isMoneyCurrency: 0
-  - _gunIcon: {fileID: 0}
+    _isMoneyCurrency: 1
+  - _gunIcon: {fileID: 21300000, guid: cf6b439a8c882a34c8778c95731fd180, type: 3}
     _price: 0
     _levelRequired: 0
     _gunConfig: {fileID: 11400000, guid: 0962f643b55e8e24fb759c99aa4ea1c2, type: 2}
-    _isMoneyCurrency: 0
-  - _gunIcon: {fileID: 0}
+    _isMoneyCurrency: 1
+  - _gunIcon: {fileID: 21300000, guid: ff21cd4c2b47dca4884c1e3ffc8b8cf8, type: 3}
     _price: 0
     _levelRequired: 0
     _gunConfig: {fileID: 11400000, guid: cc8d5476c1abdcc429036003595508e4, type: 2}
-    _isMoneyCurrency: 0
-  - _gunIcon: {fileID: 0}
+    _isMoneyCurrency: 1
+  - _gunIcon: {fileID: 21300000, guid: ae2ee1f2afc498446b7e9b13cb9cdbd3, type: 3}
     _price: 0
     _levelRequired: 0
     _gunConfig: {fileID: 11400000, guid: b614f8c3b3cf26f4eabdad7d434f2338, type: 2}
-    _isMoneyCurrency: 0
-  - _gunIcon: {fileID: 0}
+    _isMoneyCurrency: 1
+  - _gunIcon: {fileID: 21300000, guid: 12858d76f97962441ba246a75047bdc4, type: 3}
     _price: 0
     _levelRequired: 0
     _gunConfig: {fileID: 11400000, guid: 83b69975abafaf54d83e09bf6941e408, type: 2}
-    _isMoneyCurrency: 0
-  - _gunIcon: {fileID: 0}
+    _isMoneyCurrency: 1
+  - _gunIcon: {fileID: 21300000, guid: 47d5b6fd0bd6b834ca1f52dafb13b115, type: 3}
     _price: 0
     _levelRequired: 0
     _gunConfig: {fileID: 11400000, guid: 7d6568432f2c5bd41831a016cb00a29a, type: 2}
-    _isMoneyCurrency: 0
-  - _gunIcon: {fileID: 0}
+    _isMoneyCurrency: 1
+  - _gunIcon: {fileID: 21300000, guid: 2c11d56a66cb6d042abff0a31107374b, type: 3}
     _price: 0
     _levelRequired: 0
     _gunConfig: {fileID: 11400000, guid: 79cf1ac9d789ed74698eeb76b3fbea4e, type: 2}
-    _isMoneyCurrency: 0
-  - _gunIcon: {fileID: 0}
+    _isMoneyCurrency: 1
+  - _gunIcon: {fileID: 21300000, guid: 725ab6042a781b041b09a14bc39f4fda, type: 3}
     _price: 0
     _levelRequired: 0
     _gunConfig: {fileID: 11400000, guid: 1c42c3c508d8c894b99184bc255fa2aa, type: 2}
-    _isMoneyCurrency: 0
+    _isMoneyCurrency: 1

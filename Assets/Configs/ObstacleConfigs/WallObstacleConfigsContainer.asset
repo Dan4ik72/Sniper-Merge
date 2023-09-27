@@ -16,10 +16,5 @@ MonoBehaviour:
   - _sprite: {fileID: 0}
     _price: 2
     _levelRequired: 0
-    _wallObstacleConfig: {fileID: 11400000, guid: cd92c78e13cb0aa46889b54532487833, type: 2}
-    _isMoneyCurrency: 1
-  - _sprite: {fileID: 0}
-    _price: 10
-    _levelRequired: 0
-    _wallObstacleConfig: {fileID: 11400000, guid: 0cb2537087bffa24ea4c651fbc9376c5, type: 2}
+    _wallObstacleConfig: {fileID: 11400000, guid: 1f21b25797a5a804e8a382a16d4002f1, type: 2}
     _isMoneyCurrency: 1

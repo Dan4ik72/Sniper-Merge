@@ -2,13 +2,10 @@
 
 internal class WallObstacleFactory : IObstacleFactory
 {
-    private WallObstacleConfig _defaultConfig;
-    
     private DataStorageService _dataStorageService;
     
-    internal WallObstacleFactory(WallObstacleConfig defaultConfig, DataStorageService dataStorageService)
+    internal WallObstacleFactory(DataStorageService dataStorageService)
     {
-        _defaultConfig = defaultConfig;
         _dataStorageService = dataStorageService;
     }
 
@@ -23,29 +20,25 @@ internal class WallObstacleFactory : IObstacleFactory
 
     private WallObstacleModel CreateModel(WallObstacleData data)
     {
+        if (data == null)
+            return null;
+        
         return new WallObstacleModel(data.Durability);
     }
 
     private DamagableView CreateView(WallObstacleData data)
     {
-         return Object.Instantiate(Resources.Load<DamagableView>(data.PrefabPath), data.Position, data.Rotation);
+        if (data == null)
+            return null;
+        
+        return Object.Instantiate(Resources.Load<DamagableView>(data.PrefabPath), data.Position, data.Rotation);
     }
 
     private WallObstacleData CreateData()
     {
         if (_dataStorageService.TryGetData(out WallObstacleData data))
             return data;
-
-        var defaultData = new WallObstacleData
-        {
-            PrefabPath = _defaultConfig.PrefabPath,
-            Durability = _defaultConfig.Durability,
-            Position = _defaultConfig.Position,
-            Rotation = _defaultConfig.Rotation
-        };
         
-        _dataStorageService.SaveData<WallObstacleData>(defaultData);
-        
-        return defaultData;
+        return null;
     }
 }

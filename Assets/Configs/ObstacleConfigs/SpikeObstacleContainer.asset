@@ -13,8 +13,28 @@ MonoBehaviour:
   m_Name: SpikeObstacleContainer
   m_EditorClassIdentifier: 
   _spikeObstacleShopItemsData:
-  - _sprite: {fileID: 0}
-    _price: 20
+  - _sprite: {fileID: 21300000, guid: 7f23d1107fc3a7e45b2dabdae4687efa, type: 3}
+    _price: 0
     _levelRequired: 0
     _spikeObstacleConfig: {fileID: 11400000, guid: 3c6a20461ec62414dbc7b59fb93b26c8, type: 2}
+    _isMoneyCurrency: 1
+  - _sprite: {fileID: 21300000, guid: b62a9af9a2f28d54ba8d0d1fc0399296, type: 3}
+    _price: 0
+    _levelRequired: 0
+    _spikeObstacleConfig: {fileID: 11400000, guid: 2369471a36ec86046be092635e05c3ed, type: 2}
+    _isMoneyCurrency: 1
+  - _sprite: {fileID: 21300000, guid: 80ede0ad6165501468d409e3ae8aa7f0, type: 3}
+    _price: 0
+    _levelRequired: 0
+    _spikeObstacleConfig: {fileID: 11400000, guid: 03c5689d073ece04e8fc6933ef09667f, type: 2}
+    _isMoneyCurrency: 1
+  - _sprite: {fileID: 21300000, guid: 2b0ac81fddba76546a4a4f2e7d910ade, type: 3}
+    _price: 0
+    _levelRequired: 0
+    _spikeObstacleConfig: {fileID: 11400000, guid: 9acd0f69dd1bb6b4d9c5ec1627e6d120, type: 2}
+    _isMoneyCurrency: 1
+  - _sprite: {fileID: 21300000, guid: 834b2c78c1b629a428e273cb96fb4524, type: 3}
+    _price: 0
+    _levelRequired: 0
+    _spikeObstacleConfig: {fileID: 11400000, guid: e1c94cc7deddba44cbe4161322768b61, type: 2}
     _isMoneyCurrency: 1

@@ -19,6 +19,6 @@
         if(_levelWalletService.TrySpendMoney(_mergeItemPrice) == false)
             return;
         
-        _bulletSpawnService.SpawnBullet(MergeItemType.Level1Item);
+        _bulletSpawnService.SpawnBullet(MergeItemType.ItemLevel1);
     }
 }

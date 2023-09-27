@@ -1,6 +1,13 @@
 public enum MergeItemType
 {
-    Level1Item,
-    Level2Item,
-    Level3Item
+    ItemLevel1,
+    ItemLevel2,
+    ItemLevel3,
+    ItemLevel4,
+    ItemLevel5,
+    ItemLevel6,
+    ItemLevel7,
+    ItemLevel8,
+    ItemLevel9
+    
 }
