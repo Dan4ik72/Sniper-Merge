@@ -1484,6 +1484,7 @@ GameObject:
   - component: {fileID: 4979176934607002261}
   - component: {fileID: 6316257379622274680}
   - component: {fileID: -350289415467238824}
+  - component: {fileID: -5418696845855065760}
   m_Layer: 0
   m_Name: Common_Gray
   m_TagString: Untagged
@@ -1501,7 +1502,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6873052847963501860}
@@ -1542,6 +1543,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93c6d4994f951004ea1ad92c2871554c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!136 &-5418696845855065760
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5542826288255706090}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1.8673099
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.92466086, z: 0}
 --- !u!1 &5576683312855480819
 GameObject:
   m_ObjectHideFlags: 0

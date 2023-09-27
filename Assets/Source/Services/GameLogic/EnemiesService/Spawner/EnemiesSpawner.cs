@@ -8,7 +8,7 @@ using Random = UnityEngine.Random;
 
 internal class EnemiesSpawner
 {
-    private readonly float _spredSpawnPositionX = 10;
+    private readonly float _spredSpawnPositionX = 30;
 
     private Transform _parent;
     private IReadOnlyList<EnemyInfo> _enemiesPrefabs;
