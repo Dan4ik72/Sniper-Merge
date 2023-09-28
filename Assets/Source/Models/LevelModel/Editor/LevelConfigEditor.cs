@@ -5,7 +5,9 @@ using UnityEditor;
 using UnityEngine;
 using Object = System.Object;
 
+#if UNITY_EDITOR
 [CustomEditor((typeof(LevelConfig)))]
+
 public class LevelConfigEditor : Editor
 {
     private LevelConfig _levelConfig;
@@ -200,3 +202,4 @@ public class EnemyUnitSetUp
     public EnemyType EnemyType;
     public float SpawnDelay;
 }
+#endif

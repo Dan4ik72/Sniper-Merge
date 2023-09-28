@@ -1,5 +1,4 @@
-﻿using PlasticPipe.PlasticProtocol.Messages;
-using UnityEngine;
+﻿using UnityEngine;
 
 [CreateAssetMenu(fileName = "ObstacleInfo", menuName = "Obstacle info/Create wall obstacle config")]
 public class WallObstacleConfig : ScriptableObject
