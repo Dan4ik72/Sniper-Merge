@@ -64,6 +64,11 @@ internal class EnemiesSpawner
     {
         foreach (var enemy in _enemies)
         {
+            var healthView = enemy.GetComponentInChildren<EnemyHealthView>();
+
+            if (healthView != null)
+                healthView.Disable();
+
             enemy.Died -= OnDied;
             enemy.Destroed -= OnDestroy;
         }

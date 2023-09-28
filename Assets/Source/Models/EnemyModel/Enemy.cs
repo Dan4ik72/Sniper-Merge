@@ -60,6 +60,7 @@ public class Enemy : MonoBehaviour, IDamageble, IPoolElement, IModelHealth, IRew
         if (damage > 0)
             _currentHealth -= damage;
 
+        Debug.Log("damage " + this.GetHashCode());
         RecievedDamage?.Invoke(_currentHealth);
 
         if (_currentHealth <= 0)
