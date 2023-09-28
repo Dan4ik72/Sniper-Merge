@@ -14,12 +14,12 @@ public class ShopOverlayPanel : MonoBehaviour, IUiPanel
     private Canvas _canvas;
 
     [Inject]
-    public void Construct(DataStorageService dataStorageService, PlayerMoneyService playerMoneyService)
+    public void Construct(DataStorageService dataStorageService, PlayerMoneyService playerMoneyService, LevelLoadService levelLoadService)
     {
         _canvas = GetComponent<Canvas>();
 
         foreach (var shopPanel in _shopPanels)
-            shopPanel.Construct(dataStorageService, playerMoneyService);
+            shopPanel.Construct(dataStorageService, playerMoneyService, levelLoadService);
     }
     
     public void Init()

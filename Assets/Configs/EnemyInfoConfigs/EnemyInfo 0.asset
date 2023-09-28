@@ -9,14 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49dfeaedf6faf34408c2c9c200a4f0d5, type: 3}
-  m_Name: Cum 1
+  m_Script: {fileID: 11500000, guid: 1b7f3028fb5d7d84285956da03e880eb, type: 3}
+  m_Name: EnemyInfo 0
   m_EditorClassIdentifier: 
-  _levelIndex: 1
-  _enemyTypes: 0000000000000000000000000000000000000000
-  _spawnDelay:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
+  _type: 0
+  _damage: 2
+  _health: 10
+  _speed: 2
+  _speedAttack: 2
+  _reward: 7
+  _view: {fileID: 2925488825115128398, guid: fe0123b60ad17804e9f0f495e86dacd0, type: 3}

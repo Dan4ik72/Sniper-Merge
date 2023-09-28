@@ -18,6 +18,6 @@ MonoBehaviour:
     Position: {x: 0.84, y: 4.416, z: 11.06}
     Rotation: {x: 0, y: 0, z: 0, w: 0}
     Damage: 13
-    ObstacleDurability: 336
-    DamageTickRate: 2
-    DurabilityDecreasingStep: 2
+    ObstacleDurability: 33
+    DamageTickRate: 1
+    DurabilityDecreasingStep: 5

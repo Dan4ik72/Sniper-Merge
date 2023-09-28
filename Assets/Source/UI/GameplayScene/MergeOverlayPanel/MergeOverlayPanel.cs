@@ -9,15 +9,15 @@ public class MergeOverlayPanel : MonoBehaviour, IUiPanel
     
     private Canvas _canvas;
 
-    private ButtonViewPresenter _mergeButtonPresenter;
+    private MergeButtonViewPresenter _mergeButtonPresenter;
     private MergeButtonViewModel _mergeButtonModel;
 
     [Inject]
     public void Construct(LevelWalletService levelWalletService, BulletSpawnService bulletSpawnService)
     {
         _canvas = GetComponent<Canvas>();
-        _mergeButtonModel = new MergeButtonViewModel(levelWalletService,bulletSpawnService, /*temporary code*/5);
-        _mergeButtonPresenter = new ButtonViewPresenter(_mergeButtonView, _mergeButtonModel);
+        _mergeButtonModel = new MergeButtonViewModel(levelWalletService,bulletSpawnService,15);
+        _mergeButtonPresenter = new MergeButtonViewPresenter(_mergeButtonView, _mergeButtonModel);
     }
     
     public void Init()

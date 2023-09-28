@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: EnemyBoss 3
   m_EditorClassIdentifier: 
   _type: 9
-  _damage: 40
-  _health: 320
+  _damage: 55
+  _health: 115
   _speed: 2
-  _speedAttack: 2
+  _speedAttack: 1.3
   _reward: 250
   _view: {fileID: 5546974731711797504, guid: 4039ca8469de10c4a936c945553f15e4, type: 3}
