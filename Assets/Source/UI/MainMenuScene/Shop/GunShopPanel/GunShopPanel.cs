@@ -74,8 +74,6 @@ public class GunShopPanel : ShopPanel
     {
         var currentPlayerLevel = LevelLoadService.LevelsOpened;
 
-        Debug.Log(currentPlayerLevel);
-
         foreach (var data in _gunShopItemsData)
         {
             bool isBought = DataStorageService.TryGetData(BoughtShopItemKey + data.GunData.GunLevel, out string bought);

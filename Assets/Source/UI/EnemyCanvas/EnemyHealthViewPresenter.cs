@@ -30,7 +30,6 @@ public class EnemyHealthViewPresenter
 
     private void OnTextUpdate(int newValue)
     {
-        Debug.Log("hit " + _model.GetHashCode());
         if (_slider.GetCanvas().enabled == false)
         {
             _slider.GetCanvas().enabled = true;
