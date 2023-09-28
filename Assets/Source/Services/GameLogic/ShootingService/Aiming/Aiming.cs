@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using VContainer;
 
 internal class Aiming
 {
@@ -9,10 +8,8 @@ internal class Aiming
     private IReadOnlyList<IDamageble> _targets;
 
     private IDamageble _currentTarget;
-    
-    public IDamageble CurrentTarget => _currentTarget;
 
-    public void Init(IReadOnlyList<IDamageble> targets) => _targets = targets;
+    public IDamageble CurrentTarget => _currentTarget;
 
     public void Init(GunData data, Transform gun, IReadOnlyList<IDamageble> targets)
     {
@@ -20,7 +17,7 @@ internal class Aiming
         _gun = gun;
         _targets = targets;
     }
-    
+
     public void Update(float delta)
     {
         FindNearestTarget();
@@ -33,6 +30,8 @@ internal class Aiming
 
     private void FindNearestTarget()
     {
+        bool isTarget = false;
+
         if (_targets.Count == 0 || FindLiveTarget())
         {
             _currentTarget = null;
@@ -43,14 +42,24 @@ internal class Aiming
 
         foreach (var target in _targets)
         {
+            if (target.IsAlive == false)
+                continue;
+
             float currentMagnitude = (target.Position - _gun.position).magnitude;
 
-            if (target.IsAlive && minMagnitude > currentMagnitude && currentMagnitude < _data.Range)
-            {
-                minMagnitude = currentMagnitude;
-                _currentTarget = target;
-            }
+            if (minMagnitude < currentMagnitude)
+                continue;
+
+            if (currentMagnitude > _data.Range)
+                continue;
+
+            minMagnitude = currentMagnitude;
+            _currentTarget = target;
+            isTarget = true;
         }
+
+        if (isTarget == false)
+            _currentTarget = null;
     }
 
     public void Disable()

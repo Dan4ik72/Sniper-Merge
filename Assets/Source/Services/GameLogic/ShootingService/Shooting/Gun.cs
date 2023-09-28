@@ -36,7 +36,7 @@ internal class Gun : IDamageble
         _currentHealth = data.Health;
         _position = gun;
     }
-    
+
     public void Update()
     {
         if (IsAlive == false || _reloading.IsLoaded == false || _magazine.IsLoaded == false)
