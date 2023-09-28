@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 internal class CheckingEndLevel
 {
@@ -19,6 +20,7 @@ internal class CheckingEndLevel
     public void Init(IReadOnlyList<IDamageble> enemies, IDamageble gun, LevelConfig levelConfig)
     {
         _totalEnemies = levelConfig.EnemyCount;
+        
         _enemies = enemies;
         _gun = gun;
         _gun.Died += OnDieGun;

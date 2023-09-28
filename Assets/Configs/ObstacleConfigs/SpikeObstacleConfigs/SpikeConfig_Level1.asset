@@ -17,7 +17,7 @@ MonoBehaviour:
     ViewPrefabPath: Prefabs/Gameplay/Obstacles/SpikeObstacle/Spike_Level1
     Position: {x: 0.45, y: 4.69, z: 10.54}
     Rotation: {x: 0, y: 0, z: 0, w: 0}
-    Damage: 3
-    ObstacleDurability: 5
+    Damage: 5
+    ObstacleDurability: 20
     DamageTickRate: 1
-    DurabilityDecreasingStep: 3
+    DurabilityDecreasingStep: 4

@@ -19,6 +19,8 @@ internal class BulletSpawner
         _magazine = magazine;
     }
 
+    public void Init(float spawnTime) => _spawnTime = spawnTime;
+    
     public void Update()
     {
         if(_currentSpawningBullet == null)

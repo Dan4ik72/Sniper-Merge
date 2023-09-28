@@ -15,6 +15,6 @@ MonoBehaviour:
   _data:
     Level: 3
     PrefabPath: Prefabs/Gameplay/Obstacles/WallObstacles/Wall_Level3
-    Durability: 0
+    Durability: 20
     Position: {x: -7.31, y: 5.8, z: 15.13}
     Rotation: {x: 0, y: -2.266, z: 0, w: 0}

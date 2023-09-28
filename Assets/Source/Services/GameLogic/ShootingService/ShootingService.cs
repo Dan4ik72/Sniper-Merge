@@ -73,6 +73,7 @@ public class ShootingService
 
         var particleSystem = gunTransform.GetComponentInChildren<ParticleSystem>();
         
+        _bulletSpawner.Init(data.BulletSpawnDelay);
         _gun.Init(gunData, gunTransform, particleSystem);
         _reloading.Init(gunData);
         _aiming.Init(gunData, gunTransform, enemies);

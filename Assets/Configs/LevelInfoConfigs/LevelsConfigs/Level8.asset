@@ -10,6 +10,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 49dfeaedf6faf34408c2c9c200a4f0d5, type: 3}
-  m_Name: Cum 5
+  m_Name: Level8
   m_EditorClassIdentifier: 
-  _levelIndex: 2
+  _levelIndex: 8
+  _enemyTypes: 020000000200000001000000020000000600000001000000010000000000000000000000020000000200000006000000020000000200000001000000000000000200000006000000
+  _spawnDelay:
+  - 3
+  - 2
+  - 2
+  - 3
+  - 8
+  - 6
+  - 3
+  - 2
+  - 3
+  - 8
+  - 2
+  - 8
+  - 6
+  - 3
+  - 2
+  - 3
+  - 3
+  - 15

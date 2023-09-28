@@ -14,7 +14,7 @@ public class GunShopPanel : ShopPanel
     private IReadOnlyList<GunShopItemData> _gunShopItemsData;
     
     private Dictionary<ShopItemView, GunShopItemData> _gunShopItemsInstances = new();
-    
+
     public override void Init()
     {
         base.Init();
@@ -72,10 +72,9 @@ public class GunShopPanel : ShopPanel
 
     private void CreateShopItems()
     {
-        var currentPlayerLevel = 1;
+        var currentPlayerLevel = LevelLoadService.LevelsOpened;
 
-        if (DataStorageService.TryGetData("CurrentPlayerLevel", out int currentLevel))
-            currentPlayerLevel = currentLevel;
+        Debug.Log(currentPlayerLevel);
 
         foreach (var data in _gunShopItemsData)
         {

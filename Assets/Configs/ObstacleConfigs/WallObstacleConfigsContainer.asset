@@ -13,8 +13,23 @@ MonoBehaviour:
   m_Name: WallObstacleConfigsContainer
   m_EditorClassIdentifier: 
   _wallObstaclesData:
-  - _sprite: {fileID: 0}
-    _price: 2
-    _levelRequired: 0
+  - _sprite: {fileID: 21300000, guid: 26fe9f6168a9eec4890d0272a4f225fc, type: 3}
+    _price: 30
+    _levelRequired: 3
     _wallObstacleConfig: {fileID: 11400000, guid: 1f21b25797a5a804e8a382a16d4002f1, type: 2}
+    _isMoneyCurrency: 1
+  - _sprite: {fileID: 21300000, guid: 338ae73bf361bef4cb88e519c33fdedc, type: 3}
+    _price: 60
+    _levelRequired: 5
+    _wallObstacleConfig: {fileID: 11400000, guid: 5e0551d1800c32d4e8074fa7665a2eaf, type: 2}
+    _isMoneyCurrency: 1
+  - _sprite: {fileID: 21300000, guid: 3b0af2645dafb9c4dbe374d01f581506, type: 3}
+    _price: 90
+    _levelRequired: 8
+    _wallObstacleConfig: {fileID: 11400000, guid: ab7dec63269f3db49bba052f49f02d9c, type: 2}
+    _isMoneyCurrency: 1
+  - _sprite: {fileID: 21300000, guid: c3a7e8e8fb6a2b647b4986bf6770ae23, type: 3}
+    _price: 120
+    _levelRequired: 12
+    _wallObstacleConfig: {fileID: 11400000, guid: e80e3e2c350fd344fb461a08681cff60, type: 2}
     _isMoneyCurrency: 1

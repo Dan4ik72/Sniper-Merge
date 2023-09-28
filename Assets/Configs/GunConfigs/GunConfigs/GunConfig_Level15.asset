@@ -17,8 +17,9 @@ MonoBehaviour:
     PathToGunPrefab: Prefabs/Gameplay/Turrels/Turrel_Level15
     Position: {x: -4.2, y: 5.8, z: 0}
     Rotation: {x: 0, y: 0, z: 0, w: 0}
-    Health: 0
-    SpeedCooldown: 0
-    MinSpeedCooldown: 0
-    RotateSpeed: 0
-    Range: 0
+    Health: 63
+    SpeedCooldown: 1.2
+    MinSpeedCooldown: 0.4
+    BulletSpawnDelay: 1.2
+    RotateSpeed: 6
+    Range: 25

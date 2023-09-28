@@ -18,6 +18,7 @@ public class GunConfig : ScriptableObject
     public float MinSpeedCooldown => _gunData.MinSpeedCooldown;
     public float RotateSpeed => _gunData.RotateSpeed;
     public float Range => _gunData.Range;
+    public float BulletSpawnDelay => _gunData.BulletSpawnDelay;
 }
 
 [System.Serializable]
@@ -30,6 +31,7 @@ public class GunData : IData
     public int Health;
     public float SpeedCooldown;
     public float MinSpeedCooldown;
+    public float BulletSpawnDelay;
     public float RotateSpeed;
     public float Range;
 }

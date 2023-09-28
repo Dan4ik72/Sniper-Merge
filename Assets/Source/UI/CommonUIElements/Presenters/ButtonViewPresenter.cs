@@ -9,7 +9,12 @@
         _model = model;
     }
 
-    public void Init() => _view.Clicked += _model.OnButtonClick;
+    protected ButtonView View => _view;
+    protected IButtonViewModel Model => _model;
+    
+    public virtual void Init() => _view.Clicked += OnButtonClick;
 
-    public void Disable() => _view.Clicked -= _model.OnButtonClick;
+    public virtual void Disable() => _view.Clicked -= _model.OnButtonClick;
+
+    protected virtual void OnButtonClick() => _model.OnButtonClick();
 }

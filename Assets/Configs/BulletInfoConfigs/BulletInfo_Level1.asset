@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: BulletInfo_Level1
   m_EditorClassIdentifier: 
   _type: 0
-  _damage: 5
+  _damage: 4
   _bulletBoxViewPrefab: {fileID: 3696463434876284364, guid: 11a76e01aa3d18b4995b920ed282f0f3, type: 3}
   _bulletViewPrefab: {fileID: 2159394765876485517, guid: 983bc079d78b6dc4a82d048b8ffe5138, type: 3}

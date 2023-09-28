@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: EnemyInfo 4
   m_EditorClassIdentifier: 
   _type: 4
-  _damage: 7
-  _health: 60
+  _damage: 16
+  _health: 30
   _speed: 2
   _speedAttack: 2
-  _reward: 50
+  _reward: 34
   _view: {fileID: -8011619726064168609, guid: 7bc75b03cef5d5047a794fbd38cc3db6, type: 3}

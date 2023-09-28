@@ -31,7 +31,7 @@ internal class Aiming
             LookAt(_gun.transform.position + Vector3.forward, delta);
     }
 
-    public void FindNearestTarget()
+    private void FindNearestTarget()
     {
         if (_targets.Count == 0 || FindLiveTarget())
         {

@@ -63,7 +63,7 @@ public class LevelLoadService
     
     private void InitCurrentLevel()
     {
-        _currentLevel = 0;
+        _currentLevel = 1;
         
         if(_dataStorageService.TryGetData(CurrentLevelSaveKey, out int data) == false)
             return;
@@ -73,7 +73,7 @@ public class LevelLoadService
 
     private void InitLevelsOpenedCount()
     {
-        _levelsOpened = 0;
+        _levelsOpened = 1;
         
         if(_dataStorageService.TryGetData(OpenedLevelsCountSaveKey, out int data) == false)
             return;

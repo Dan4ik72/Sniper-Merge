@@ -13,17 +13,19 @@ public abstract class ShopPanel : MonoBehaviour, IUiPanel
     
     public event Action<ShopPanel> PanelSwitchRequested;
 
-    public void Construct(DataStorageService dataStorageService, PlayerMoneyService playerMoneyService)
+    public void Construct(DataStorageService dataStorageService, PlayerMoneyService playerMoneyService, LevelLoadService levelLoadService)
     {
         _canvas = GetComponent<Canvas>();
         ShopItemFactory = new ShopItemFactory(_shopItemPrefab);
         PlayerMoneyService = playerMoneyService;
         DataStorageService = dataStorageService;
+        LevelLoadService = levelLoadService;
     }
 
     protected DataStorageService DataStorageService { get; private set; }
     protected ShopItemFactory ShopItemFactory { get; private set; }
     protected PlayerMoneyService PlayerMoneyService { get; private set; }
+    protected LevelLoadService LevelLoadService { get; private set; }
 
     public virtual void Init()
     {
