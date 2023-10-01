@@ -1,4 +1,4 @@
-//using Agava.YandexGames;
+using YG;
 using Lean.Localization;
 using System.Collections.Generic;
 using VContainer;
@@ -16,14 +16,7 @@ public class InterpreterService
         _languages.Add("ru", "Russian");
         _languages.Add("tr", "Turkish");
 
-#if !UNITY_WEBGL || UNITY_EDITOR
-        Set("ru");
-        return;
-#endif
-#if YANDEX_GAMES
-        Set("ru");
-        //Set(YandexGamesSdk.Environment.i18n.lang);
-#endif
+        Set(YandexGame.EnvironmentData.language);
     }
 
     private void Set(string name)
