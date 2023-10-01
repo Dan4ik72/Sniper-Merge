@@ -2,6 +2,7 @@ using VContainer;
 using System.Collections.Generic;
 using UnityEngine;
 using VContainer.Unity;
+using Lean.Localization;
 
 public class GameSceneUIBootstrapServiceInstaller : Installer
 {
