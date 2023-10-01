@@ -14,6 +14,7 @@ public class MainMenuBootstrapper : MonoBehaviour, IDisposable
         _levelLoadService.Init(); 
         _playerMoneyService.Init();
         _uiBootstrapService.Init();
+        YandexGameInterstitialHandler.InvokeInterstitial();
     }
 
     private void Update()

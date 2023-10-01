@@ -7,6 +7,7 @@ public class MainMenuBasicOverlayPanel : MonoBehaviour, IUiPanel
 {
     [SerializeField] private UpdatableTextView _playerMoneyText;
     [SerializeField] private UpdatableTextView _playerGemsText;
+    [SerializeField] private ButtonView _rewardedButton;
 
     private PlayerMoneyService _playerMoneyService;
     
