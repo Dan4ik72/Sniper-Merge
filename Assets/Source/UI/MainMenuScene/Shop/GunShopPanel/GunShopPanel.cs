@@ -25,8 +25,10 @@ public class GunShopPanel : ShopPanel
         SortGunShopItemsListByGunLevel();
         CreateShopItems();
         UpdateButtons();
+        
+        CheckSelectedGun();
     }
-
+    
     public override void Disable()
     {
         base.Disable();
@@ -90,6 +92,15 @@ public class GunShopPanel : ShopPanel
         }
     }
 
+    private void CheckSelectedGun()
+    {
+        if(PlayerPrefs.HasKey(SelectedShopItemKey))
+            return;
+            
+        OnShopItemBuyButtonClicked(_gunShopItemsInstances.Keys.ToList()[0]);
+        OnShopItemSelectButtonClicked(_gunShopItemsInstances.Keys.ToList()[0]);
+    }
+    
     private void SortGunShopItemsListByGunLevel() =>
         _gunShopItemsData = _gunShopItemsConfig.GunShopItems.OrderBy(gunShopItem => gunShopItem.GunData.GunLevel)
             .ToList();

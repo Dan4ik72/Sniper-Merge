@@ -26,13 +26,14 @@ internal class BulletSpawner
         if(_currentSpawningBullet == null)
             return;
 
+
         _timer += Time.deltaTime;
 
         if(_timer < _spawnTime)
             return;
-
-        FillMagazine(_currentSpawningBullet);
+    
         _timer = 0f;
+        FillMagazine(_currentSpawningBullet);
     }
 
     public void ChangeBullet(BulletInfo newBullet) => _currentSpawningBullet = newBullet;

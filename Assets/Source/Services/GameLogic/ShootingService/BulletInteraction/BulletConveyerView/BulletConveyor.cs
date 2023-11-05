@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using VContainer;
@@ -63,14 +65,14 @@ internal class BulletConveyor
         _bulletViewsHolder.PlaceViewToGrid(view);
     }
 
-    public async void OnBulletUsed(BulletInfo bulletInfo)
+    public void OnBulletUsed(BulletInfo bulletInfo)
     {
         var removing = _bulletViewsHolder.RemoveView();
 
         if (removing == null)
             return;
-        
-        await MoveBulletToGun(removing.transform, _gunPosition.position);
+
+        CoroutineRunner.StartRoutine(MoveBulletToGun(removing.transform, _gunPosition.position));
 
         _bulletViewPool.ReturnToPool(removing);
         removing.SetActive(false);
@@ -93,12 +95,12 @@ internal class BulletConveyor
         }
     }
 
-    private async UniTask MoveBulletToGun(Transform transform, Vector3 target)
+    private IEnumerator MoveBulletToGun(Transform transform, Vector3 target)
     {
         while (Vector3.Distance(transform.position, target) > 0.1 )
         {
             transform.position = Vector3.MoveTowards(transform.position, target, Time.deltaTime * 15f);
-            await UniTask.Yield();
+            yield return null;
         }
     }
 }
