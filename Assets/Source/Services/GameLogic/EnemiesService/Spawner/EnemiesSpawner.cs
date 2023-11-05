@@ -14,6 +14,7 @@ internal class EnemiesSpawner
     private IReadOnlyList<EnemyInfo> _enemiesPrefabs;
     private LevelConfig _levelConfig;
     private IDamageble _target;
+    private AudioSource _dieEnemy;
     private float _elapsedTime = 0;
     private int _counterSpawn = 0;
 
@@ -23,10 +24,11 @@ internal class EnemiesSpawner
     public event Action<Enemy> EnemyDied;
 
     [Inject]
-    public EnemiesSpawner(Transform parent, IReadOnlyList<EnemyInfo> enemiesPrefabs)
+    public EnemiesSpawner(Transform parent, IReadOnlyList<EnemyInfo> enemiesPrefabs, AudioSource dieEnemy)
     {
         _parent = parent;
         _enemiesPrefabs = enemiesPrefabs;
+        _dieEnemy = dieEnemy;
     }
 
     private bool _isFinished => _counterSpawn == _enemies.Count;
@@ -90,7 +92,7 @@ internal class EnemiesSpawner
             newEnemy.Died += OnDied;
             newEnemy.Destroed += OnDestroy;
 
-            newEnemy.Init(currentPrefab, _target);
+            newEnemy.Init(currentPrefab, _target, _dieEnemy);
             _enemies.Add(newEnemy);
 
             var healthView = newEnemy.GetComponentInChildren<EnemyHealthView>();

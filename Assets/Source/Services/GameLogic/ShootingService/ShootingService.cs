@@ -99,8 +99,8 @@ public class ShootingService
     {
         _bulletConveyor.Disable();
 
-        _gun.RecievedDamage += OnGunRecievedDamage;
-         
+        _gun.RecievedDamage -= OnGunRecievedDamage;
+
         _bulletHolder.OnNewBulletPlaced -= _bulletSpawner.ChangeBullet;
         _bulletHolder.OnNewBulletPlaced -= _bulletConveyor.SetNewBulletInfo;
         _bulletHolder.BulletRemoved -= _bulletSpawner.ChangeBullet;
@@ -109,5 +109,4 @@ public class ShootingService
     }
     
     private void OnGunRecievedDamage(int currentHealth) => GunRecievedDamage?.Invoke(currentHealth);
- 
 }

@@ -10,7 +10,7 @@ public class GameBootstrapper : MonoBehaviour, IDisposable
     [Inject] private InputService _inputService;
     [Inject] private MergeItemDragService _mergeItemDragService;
     [Inject] private BulletSpawnService _bulletSpawnService;
-    [Inject] private EndLevelService _endLevelService;   
+    [Inject] private EndLevelService _endLevelService;
     [Inject] private ObstacleSpawnService _obstacleSpawnService;
     [Inject] private DataStorageService _dataStorageService;
     [Inject] private LevelWalletService _levelWalletService;

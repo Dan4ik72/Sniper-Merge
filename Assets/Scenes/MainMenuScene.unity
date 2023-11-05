@@ -163,6 +163,7 @@ MonoBehaviour:
   - {fileID: 136713906}
   - {fileID: 1427425548}
   - {fileID: 451965309}
+  - {fileID: 1830051357}
 --- !u!4 &73326542
 Transform:
   m_ObjectHideFlags: 0
@@ -6496,7 +6497,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parentReference:
     TypeName: 
-  autoRun: 1
+  autoRun: 0
   autoInjectGameObjects: []
   _leanLocalization: {fileID: 1700836000}
 --- !u!1 &1846200321
@@ -6646,6 +6647,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerMoneyText: {fileID: 799587664}
   _playerGemsText: {fileID: 232942747}
+  _rewardedButton: {fileID: 0}
 --- !u!114 &1859336282
 MonoBehaviour:
   m_ObjectHideFlags: 0

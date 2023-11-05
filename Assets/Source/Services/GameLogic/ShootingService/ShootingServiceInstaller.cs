@@ -8,6 +8,8 @@ public class ShootingServiceInstaller : Installer
     [SerializeField] private GunConfig _config;
     [SerializeField] private BulletHolderCell _cell;
     [SerializeField] private ParticleSystem _dieEffectGun;
+    [SerializeField] private AudioSource _shootSound;
+    [SerializeField] private AudioSource _dieSound;
     
     //temporary code
     [SerializeField] private List<Transform> _bulletViewPathPoints;
@@ -29,7 +31,7 @@ public class ShootingServiceInstaller : Installer
             var magazine = container.Resolve<Magazine>();
             var aiming = container.Resolve<Aiming>();
 
-            return new Gun(reloading, magazine, aiming, _dieEffectGun);
+            return new Gun(reloading, magazine, aiming, _dieEffectGun, _shootSound, _dieSound);
 
         }, Lifetime.Scoped);
 

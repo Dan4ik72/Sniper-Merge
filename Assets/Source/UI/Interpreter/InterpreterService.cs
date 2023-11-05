@@ -2,6 +2,7 @@ using YG;
 using Lean.Localization;
 using System.Collections.Generic;
 using VContainer;
+using UnityEngine;
 
 public class InterpreterService
 {
@@ -15,12 +16,12 @@ public class InterpreterService
         _languages.Add("en", "English");
         _languages.Add("ru", "Russian");
         _languages.Add("tr", "Turkish");
-
         Set(YandexGame.EnvironmentData.language);
     }
 
     private void Set(string name)
     {
+        Debug.Log(111);
         if (_languages.ContainsKey(name))
             _leanLocalization.SetCurrentLanguage(_languages[name]);
     }

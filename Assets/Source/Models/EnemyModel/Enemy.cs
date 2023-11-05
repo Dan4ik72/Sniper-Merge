@@ -13,17 +13,19 @@ public class Enemy : MonoBehaviour, IDamageble, IPoolElement, IModelHealth, IRew
     private EnemyStateMachine _stateMachine;
     private AnimationEnemy _animation;
     private IDamageble _target;
+    private AudioSource _dieSound;
 
     public event Action<IDamageble> Died;
     public event Action<IDamageble> Destroed;
     public event Action<int> RecievedDamage;
 
-    public void Init(EnemyInfo config, IDamageble target)
+    public void Init(EnemyInfo config, IDamageble target, AudioSource dieSound)
     {
         Level = (int)config.Type;
         _config = config;
         _currentHealth = 0;
         _target = target;
+        _dieSound = dieSound;
         _raycastDistance = UnityEngine.Random.Range(0.1f, 0.5f);
         _animator = GetComponent<Animator>();
         _animation = new AnimationEnemy(_animator);
@@ -65,6 +67,7 @@ public class Enemy : MonoBehaviour, IDamageble, IPoolElement, IModelHealth, IRew
         if (_currentHealth <= 0)
         {
             _currentHealth = 0;
+            _dieSound.Play();
             Died?.Invoke(this);
         }
     }

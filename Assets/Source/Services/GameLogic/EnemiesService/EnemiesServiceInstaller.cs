@@ -7,6 +7,7 @@ public class EnemiesServiceInstaller : Installer
 {
     [SerializeField] private Transform _parent;
     [SerializeField] private Effect _prefabEffect;
+    [SerializeField] private AudioSource _dieEnemy;
     [SerializeField] private List<EnemyInfo> _enemiesPrefabs;
 
     protected override void Configure(IContainerBuilder builder)
@@ -15,7 +16,7 @@ public class EnemiesServiceInstaller : Installer
 
         builder.Register(container =>
         {
-            return new EnemiesSpawner(_parent, _enemiesPrefabs);
+            return new EnemiesSpawner(_parent, _enemiesPrefabs, _dieEnemy);
 
         }, Lifetime.Scoped);
 

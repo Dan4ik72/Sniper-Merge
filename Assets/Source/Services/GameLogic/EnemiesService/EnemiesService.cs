@@ -8,6 +8,7 @@ public class EnemiesService
 {
     private EnemiesSpawner _enemiesSpawner;
     private EffectsSpawner _effectsSpawner;
+    private AudioSource _dieSound;
 
     public event Action<int> EnemyDied;
     

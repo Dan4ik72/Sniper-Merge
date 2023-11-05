@@ -10,18 +10,21 @@ internal class Gun : IDamageble
     private Aiming _aiming;
     private ParticleSystem _dieEffect;
     private ParticleSystem _shotVfx;
+    private AudioSource _shootSound, _dieSound;
     private int _currentHealth;
 
     public event Action<IDamageble> Died;
     public event Action<int> RecievedDamage;
     
     [Inject]
-    internal Gun(Reloading reloading, Magazine magazine, Aiming aiming, ParticleSystem particleSystem)
+    internal Gun(Reloading reloading, Magazine magazine, Aiming aiming, ParticleSystem particleSystem, AudioSource shootSound, AudioSource dieSound)
     {
         _reloading = reloading;
         _magazine = magazine;
         _aiming = aiming;
         _dieEffect = particleSystem;
+        _shootSound = shootSound;
+        _dieSound = dieSound;
     }
 
     public int Health => _currentHealth;
@@ -66,11 +69,13 @@ internal class Gun : IDamageble
         _currentHealth = 0;
         _aiming.Disable();
         _dieEffect.Play();
+        _dieSound.Play();
         Died?.Invoke(this);
     }
     
     private void OnShotPerformed()
     {
         _shotVfx.Play();
+        _shootSound.Play();
     }
 }
