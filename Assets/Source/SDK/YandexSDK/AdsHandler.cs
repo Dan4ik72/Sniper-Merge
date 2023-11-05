@@ -1,7 +1,8 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 using YG;
 
-internal static class YandexGameInterstitialHandler
+internal class AdsHandler
 {
     public static void InvokeInterstitial()
     {

@@ -1,13 +1,14 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using VContainer;
+using YG;
 
 [RequireComponent(typeof(Canvas), typeof(GraphicRaycaster))]
 public class MainMenuBasicOverlayPanel : MonoBehaviour, IUiPanel
 {
     [SerializeField] private UpdatableTextView _playerMoneyText;
     [SerializeField] private UpdatableTextView _playerGemsText;
-    [SerializeField] private ButtonView _rewardedButton;
+    [SerializeField] private Button _rewardedButton;
 
     private PlayerMoneyService _playerMoneyService;
     
@@ -22,6 +23,7 @@ public class MainMenuBasicOverlayPanel : MonoBehaviour, IUiPanel
         
         _playerMoneyService.MoneyReceived += OnMoneyValueChanged;
         _playerMoneyService.MoneySpent += OnMoneyValueChanged;
+        _rewardedButton.onClick.AddListener(OnRewardedButtonClick);
     }
 
     public void Disable()
@@ -36,5 +38,26 @@ public class MainMenuBasicOverlayPanel : MonoBehaviour, IUiPanel
     {
         _playerMoneyText.UpdateText(_playerMoneyService.MoneyCount.ToString());
         _playerGemsText.UpdateText(_playerMoneyService.GemsCount.ToString());
+    }
+    
+    private void OnRewardedButtonClick()
+    {
+        Debug.Log("Reward");
+        _rewardedButton.gameObject.SetActive(false);
+        YandexGame.Instance._RewardedShow(0);
+        AudioListener.pause = true;
+        Time.timeScale = 0f;
+        
+        
+
+        YandexGame.RewardVideoEvent += OnRewardedComplete;
+    }
+
+    private void OnRewardedComplete(int id)
+    {
+        _playerMoneyService.ReceiveMoney(100);
+        _rewardedButton.gameObject.SetActive(true);
+        Time.timeScale = 1;
+        AudioListener.pause = false;
     }
 }
