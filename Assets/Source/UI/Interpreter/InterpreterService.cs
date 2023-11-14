@@ -24,7 +24,6 @@ public class InterpreterService
 
     private void Set(string name)
     {
-        Debug.Log(111);
         if (_languages.ContainsKey(name))
             _leanLocalization.SetCurrentLanguage(_languages[name]);
     }

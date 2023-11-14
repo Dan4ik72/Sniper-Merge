@@ -7,7 +7,7 @@ using YG;
 public class MainMenuBasicOverlayPanel : MonoBehaviour, IUiPanel
 {
     [SerializeField] private UpdatableTextView _playerMoneyText;
-    [SerializeField] private UpdatableTextView _playerGemsText;
+    //[SerializeField] private UpdatableTextView _playerGemsText;
     [SerializeField] private Button _rewardedButton;
 
     private PlayerMoneyService _playerMoneyService;
@@ -37,7 +37,7 @@ public class MainMenuBasicOverlayPanel : MonoBehaviour, IUiPanel
     private void OnMoneyValueChanged(int newValue)
     {
         _playerMoneyText.UpdateText(_playerMoneyService.MoneyCount.ToString());
-        _playerGemsText.UpdateText(_playerMoneyService.GemsCount.ToString());
+        //_playerGemsText.UpdateText(_playerMoneyService.GemsCount.ToString());
     }
     
     private void OnRewardedButtonClick()
