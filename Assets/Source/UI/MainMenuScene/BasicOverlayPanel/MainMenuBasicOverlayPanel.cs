@@ -48,8 +48,6 @@ public class MainMenuBasicOverlayPanel : MonoBehaviour, IUiPanel
         AudioListener.pause = true;
         Time.timeScale = 0f;
         
-        
-
         YandexGame.RewardVideoEvent += OnRewardedComplete;
     }
 

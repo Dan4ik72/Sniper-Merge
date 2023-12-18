@@ -5,9 +5,8 @@ using Vector3 = UnityEngine.Vector3;
 
 internal class BulletViewsHolder
 {
-    private Stack<BulletView> _views = new();
+    private Queue<BulletView> _views = new();
 
-    private Vector3 _heightOffset = new Vector3(0, 0.2f, 0);
     private Vector3 _widthOffset = new Vector3(0.2f, 0, 0);
 
     private Vector3 _currentOffset = new Vector3(0, 0.2f, 0);
@@ -29,7 +28,7 @@ internal class BulletViewsHolder
             _removedPosition = Vector3.zero;
         }
         
-        _views.Push(view);
+        _views.Enqueue(view);
     }
 
     public BulletView RemoveView()
@@ -37,9 +36,9 @@ internal class BulletViewsHolder
         if (_views.Count == 0)
             return null;
         
-        var removing = _views.Pop();
+        var removing = _views.Dequeue();
 
-        _removedPosition = removing.transform.position;
+        //_removedPosition = removing.transform.position * 1000f;
         
         return removing;
     }
@@ -49,7 +48,7 @@ internal class BulletViewsHolder
         if (_isWidth)
             _currentOffset = new Vector3(_widthOffset.x, _currentOffset.y, _currentOffset.z);
         else
-            _currentOffset += new Vector3(-_widthOffset.x, _heightOffset.y, 0);
+            _currentOffset += new Vector3(-_widthOffset.x, 0, 0);
 
         _isWidth = !_isWidth;
     }

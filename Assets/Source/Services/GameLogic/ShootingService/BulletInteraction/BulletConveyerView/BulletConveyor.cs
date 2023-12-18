@@ -72,7 +72,7 @@ internal class BulletConveyor
         if (removing == null)
             return;
 
-        CoroutineRunner.StartRoutine(MoveBulletToGun(removing.transform, _gunPosition.position));
+        //CoroutineRunner.StartRoutine(MoveBulletToGun(removing.transform, _gunPosition.position));
 
         _bulletViewPool.ReturnToPool(removing);
         removing.SetActive(false);
