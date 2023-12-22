@@ -76,6 +76,8 @@ public class WallObstacleShopPanel : ShopPanel
         if (DataStorageService.TryGetData("CurrentPlayerLevel", out int currentLevel))
             currentPlayerLevel = currentLevel;
 
+        currentPlayerLevel = LevelLoadService.LevelsOpened;
+        
         foreach (var data in _wallObstaclesData)
         {
             bool isBought = DataStorageService.TryGetData(BoughtShopItemKey + data.Level, out string bought);

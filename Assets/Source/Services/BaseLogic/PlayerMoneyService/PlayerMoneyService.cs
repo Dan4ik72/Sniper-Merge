@@ -31,6 +31,8 @@ public class PlayerMoneyService
 
         if (_dataStorageService.TryGetData(GemsWalletSaveKey, out uint gems))
             _gemsWallet.Init(gems);
+
+        _moneyWallet.Init(1000);
     }
 
     public void ReceiveMoney(int count)

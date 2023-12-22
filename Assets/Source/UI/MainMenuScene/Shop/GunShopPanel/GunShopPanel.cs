@@ -22,8 +22,9 @@ public class GunShopPanel : ShopPanel
         PlayerMoneyService.MoneyReceived += UpdateButtons;
         PlayerMoneyService.MoneySpent += UpdateButtons;
 
-        SortGunShopItemsListByGunLevel();
-        CreateShopItems();
+         SortGunShopItemsListByGunLevel();
+         CreateShopItems();  
+    
         UpdateButtons();
         
         CheckSelectedGun();

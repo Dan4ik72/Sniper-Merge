@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Mono.Cecil.Cil;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -75,9 +76,13 @@ public class SpikeObstacleShopPanel : ShopPanel
     {
         var currentPlayerLevel = 1;
 
-        if (DataStorageService.TryGetData("CurrentPlayerLevel", out int currentLevel))
+        if (DataStorageService.TryGetData("CurrentLevel", out int currentLevel))
             currentPlayerLevel = currentLevel;
 
+        currentPlayerLevel = LevelLoadService.LevelsOpened;
+        
+        Debug.Log(currentPlayerLevel);
+        
         foreach (var data in _wallObstaclesData)
         {
             bool isBought = DataStorageService.TryGetData(BoughtShopItemKey + data.Level, out string bought);
