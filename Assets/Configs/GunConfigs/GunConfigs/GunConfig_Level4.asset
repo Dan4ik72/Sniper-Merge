@@ -20,6 +20,6 @@ MonoBehaviour:
     Health: 30
     SpeedCooldown: 1.7
     MinSpeedCooldown: 0.7
-    BulletSpawnDelay: 1.6
+    BulletSpawnDelay: 1.3
     RotateSpeed: 6
     Range: 25
