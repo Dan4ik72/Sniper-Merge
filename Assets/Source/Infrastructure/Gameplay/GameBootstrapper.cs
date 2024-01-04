@@ -19,7 +19,8 @@ public class GameBootstrapper : MonoBehaviour, IDisposable
     [Inject] private BuffProcessingService _buffProcessingService;
     [Inject] private LevelLoadService _levelLoadService;
     [Inject] private PlayerMoneyService _playerMoneyService;
-    
+    [Inject] private InterpreterService _interpreterService;
+
     private void Start()
     {
         _levelLoadService.Init();
@@ -34,7 +35,8 @@ public class GameBootstrapper : MonoBehaviour, IDisposable
         _shootingService.Init(_enemiesService.Enemies);
         _obstacleSpawnService.Init();
         _uiBootstrapService.Init();
-        
+        _interpreterService.SetUpLocalization();
+
         SubscribeEvents();
     }
 
