@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gunShopItems:
   - _gunIcon: {fileID: 21300000, guid: 149c85f5f8b4ff24eb4a8f0acb40bf56, type: 3}
-    _price: 80
+    _price: 0
     _levelRequired: 0
     _gunConfig: {fileID: 11400000, guid: 933f11ce6a1459e4bab6629cccbc619e, type: 2}
     _isMoneyCurrency: 1

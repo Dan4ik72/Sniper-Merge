@@ -6,7 +6,7 @@
 
     public uint MoneyCount => _moneyCount;
 
-    public void Init(uint startMoneyCount) => _moneyCount = startMoneyCount;
+    public void Init(uint startMoneyCount) => _moneyCount = startMoneyCount; 
     
     public void ReceiveMoney(uint money)
     {

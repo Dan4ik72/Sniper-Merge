@@ -361,7 +361,10 @@
         scopesForInit = scopes;
 
         if (initSDK == true) {
-            ysdk.features.LoadingAPI?.ready();
+            setTimeout(function (){
+                ysdk.features.LoadingAPI?.ready();
+            }, 1000);
+            
             InitPlayer(photoSize, scopes);
         }
         else {

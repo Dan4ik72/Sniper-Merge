@@ -8,7 +8,7 @@ public class InitYandexSDK : MonoBehaviour
 {
     private void Awake()
     {
-        WaitForSdkIniting();
+        _ = WaitForSdkIniting();
     }
     
     private async UniTask WaitForSdkIniting()

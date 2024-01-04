@@ -71,7 +71,6 @@ namespace YG
             }
         }
 
-
         static bool _SDKEnabled;
         static bool _startGame;
         static bool _auth;

@@ -31,7 +31,11 @@ internal class WallObstacleFactory : IObstacleFactory
         if (data == null)
             return null;
         
-        return Object.Instantiate(Resources.Load<DamagableView>(data.PrefabPath), data.Position, data.Rotation);
+        var created = Object.Instantiate(Resources.Load<DamagableView>(data.PrefabPath), data.Position, Quaternion.identity);
+
+        created.transform.eulerAngles += new Vector3(data.Rotation.x, data.Rotation.y, data.Rotation.z);
+        
+        return created;
     }
 
     private WallObstacleData CreateData()

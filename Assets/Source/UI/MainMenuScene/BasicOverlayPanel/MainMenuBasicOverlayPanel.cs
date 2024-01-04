@@ -53,6 +53,7 @@ public class MainMenuBasicOverlayPanel : MonoBehaviour, IUiPanel
 
     private void OnRewardedComplete(int id)
     {
+        YandexGame.RewardVideoEvent -= OnRewardedComplete;
         _playerMoneyService.ReceiveMoney(100);
         _rewardedButton.gameObject.SetActive(true);
         Time.timeScale = 1;
