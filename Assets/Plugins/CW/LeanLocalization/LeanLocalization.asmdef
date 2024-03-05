@@ -1,5 +1,6 @@
 {
     "name": "LeanLocalization",
+    "rootNamespace": "",
     "references": [
         "LeanCommon",
         "CW.Common"

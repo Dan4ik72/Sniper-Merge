@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using VContainer;
+using YG;
 
 public class MainMenuBootstrapper : MonoBehaviour, IDisposable
 {
@@ -12,10 +13,12 @@ public class MainMenuBootstrapper : MonoBehaviour, IDisposable
 
     private void Start()
     {
+        YandexGame.Instance._GameReadyAPI();
+        
         _levelLoadService.Init(); 
         _playerMoneyService.Init();
         _uiBootstrapService.Init();
-        _interpreterService.SetUpLocalization();
+        _interpreterService.SetUpLocalization(YandexGame.EnvironmentData.language);
         AdsHandler.InvokeInterstitial();
     }
 
