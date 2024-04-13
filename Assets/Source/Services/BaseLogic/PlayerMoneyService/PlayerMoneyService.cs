@@ -23,16 +23,14 @@ public class PlayerMoneyService
     
     public void Init()
     {
-        _moneyWallet = new Wallet(100);
+        _moneyWallet = new Wallet(180);
         _gemsWallet = new Wallet(0);
-        
-        if(_dataStorageService.TryGetData(MoneyWalletSaveKey, out uint money))
+
+        if (_dataStorageService.TryGetData(MoneyWalletSaveKey, out uint money)) 
             _moneyWallet.Init(money);
 
         if (_dataStorageService.TryGetData(GemsWalletSaveKey, out uint gems))
             _gemsWallet.Init(gems);
-
-        _moneyWallet.Init(1000);
     }
 
     public void ReceiveMoney(int count)
@@ -61,6 +59,8 @@ public class PlayerMoneyService
     public bool TrySpendGems(uint required)
     {
         var isSuccess = TrySpend(required, _gemsWallet);
+        
+        Debug.LogError(isSuccess);
         
         if(isSuccess)
             _dataStorageService.SaveData<uint>(GemsWalletSaveKey, _gemsWallet.MoneyCount);

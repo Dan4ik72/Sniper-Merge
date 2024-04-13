@@ -22,12 +22,14 @@ public class GunShopPanel : ShopPanel
         PlayerMoneyService.MoneyReceived += UpdateButtons;
         PlayerMoneyService.MoneySpent += UpdateButtons;
 
-         SortGunShopItemsListByGunLevel();
-         CreateShopItems();  
+        SortGunShopItemsListByGunLevel();
+        CreateShopItems();  
     
         UpdateButtons();
         
         CheckSelectedGun();
+        
+        SelectCoolestGun();
     }
     
     public override void Disable()
@@ -106,6 +108,17 @@ public class GunShopPanel : ShopPanel
         _gunShopItemsData = _gunShopItemsConfig.GunShopItems.OrderBy(gunShopItem => gunShopItem.GunData.GunLevel)
             .ToList();
 
+    private void SelectCoolestGun()
+    {
+        var bought =  _gunShopItemsInstances.Where(shopItemView => shopItemView.Key.IsBought)
+            .OrderByDescending(shopItemView => shopItemView.Value.Price).FirstOrDefault().Key;
+
+        if (bought == null)
+            return;
+        
+        OnShopItemSelectButtonClicked(bought);
+    }
+    
     private void UpdateButtons(int newValue = 0)
     {
         var unlockedNotBoughtForMoney = _gunShopItemsInstances.Where(keyValuePair =>
@@ -119,5 +132,7 @@ public class GunShopPanel : ShopPanel
 
         foreach(var shopItemView in unlockedNotBoughtForGems)
             shopItemView.Key.SetPurchaseAvailableState(PlayerMoneyService.GemsCount >= shopItemView.Value.Price);
+
+        
     }
 }

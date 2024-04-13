@@ -24,11 +24,13 @@ public class CollisionDetectionView : View
 
     private void OnCollisionEnter(Collision collision)
     {
+        TriggerEntered?.Invoke(collision.collider);
         CollisionEntered?.Invoke(collision);
     }
 
     private void OnCollisionExit(Collision collision)
     {
+        TriggerExited?.Invoke(collision.collider);
         CollisionExited?.Invoke(collision);
     }
 }

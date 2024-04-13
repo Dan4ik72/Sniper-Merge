@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using VContainer;
+using YG;
 
 public class GameBootstrapper : MonoBehaviour, IDisposable
 {
@@ -35,7 +36,7 @@ public class GameBootstrapper : MonoBehaviour, IDisposable
         _shootingService.Init(_enemiesService.Enemies);
         _obstacleSpawnService.Init();
         _uiBootstrapService.Init();
-        _interpreterService.SetUpLocalization();
+        _interpreterService.SetUpLocalization(YandexGame.EnvironmentData.language);
 
         SubscribeEvents();
     }

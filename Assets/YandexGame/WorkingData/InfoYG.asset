@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efa747916aa66674d96ea40ca8a480b2, type: 3}
   m_Name: InfoYG
   m_EditorClassIdentifier: 
-  scopes: 1
+  scopes: 0
   playerPhotoSize: 0
+  autoGameReadyAPI: 0
   playerInfoSimulation:
     authorized: 1
     isMobile: 0
@@ -22,18 +23,23 @@ MonoBehaviour:
     uniqueID: 000
     photo: https://justplaygames.ru/public/icon_player.png
   AdWhenLoadingScene: 0
-  showFirstAd: 0
+  showFirstAd: 1
   rewardedAfterClosing: 1
   adDisplayCalls: 0
   fullscreenAdInterval: 60
   durationOfAdSimulation: 0.5
+  loadAdWithDelaySimulation: 0
   testErrorOfRewardedAdsInEditor: 0
   saveCloud: 0
   flush: 0
   localSaveSync: 1
   saveCloudInterval: 5
-  saveOnQuitGame: 1
+  saveOnQuitGame: 0
+  quitGameParameters:
+    objectName: YandexGame
+    methodName: _SaveProgress
   leaderboardEnable: 0
+  saveScoreAnonymousPlayers: 1
   leaderboardSimulation:
   - technoName: advanced
     entries: 'Test LeaderBoard
@@ -176,7 +182,7 @@ MonoBehaviour:
       score: 10
   LocalizationEnable: 0
   callingLanguageCheck: 1
-  translateMethod: 1
+  translateMethod: 0
   domainAutoLocalization: com
   CSVFileTranslate:
     format: 0
@@ -266,32 +272,14 @@ MonoBehaviour:
     it: 
     de: 
     hi: 
-  purshasesSimulation:
-  - id: gun
-    title: Gun
-    description: Product - Gun
-    imageURI: https://justplaygames.ru/public/Paymant1.png
-    priceValue: 5
-    consumed: 1
-  - id: gun
-    title: Gun
-    description: Product - Gun
-    imageURI: https://justplaygames.ru/public/Paymant1.png
-    priceValue: 5
-    consumed: 1
-  - id: gun
-    title: Gun
-    description: Product - Gun
-    imageURI: https://justplaygames.ru/public/Paymant1.png
-    priceValue: 5
-    consumed: 1
+  purshasesSimulation: []
   metricaEnable: 0
   metricaCounterID: 0
   debug: 1
-  archivingBuild: 0
+  archivingBuild: 1
   logoImageFormat: 1
   backgroundImageFormat: 3
   pixelRatioEnable: 0
   pixelRatioValue: 1
-  SDKStartDelay: 0
+  loadGameRun: 0
   staticRBTInGame: 0

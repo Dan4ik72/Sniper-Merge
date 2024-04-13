@@ -38,6 +38,8 @@ public class WallObstacleShopPanel : ShopPanel
     {
         if (shopItemView.IsMoneyCurrency)
         {
+            Debug.LogError("TryingToSpend");
+            
             if(PlayerMoneyService.TrySpendMoney((uint)shopItemView.Price) == false)
                 return;
         }

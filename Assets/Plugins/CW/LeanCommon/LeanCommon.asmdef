@@ -1,5 +1,6 @@
 {
     "name": "LeanCommon",
+    "rootNamespace": "",
     "references": [
         "CW.Common"
     ],

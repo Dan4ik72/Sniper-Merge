@@ -1,4 +1,3 @@
-using YG;
 using Lean.Localization;
 using System.Collections.Generic;
 using VContainer;
@@ -12,12 +11,13 @@ public class InterpreterService
     [Inject]
     public InterpreterService(LeanLocalization leanLanguage) => _leanLocalization = leanLanguage;
 
-    public void SetUpLocalization()
+    public void SetUpLocalization(string lan)
     {
         _languages.Add("en", "English");
         _languages.Add("ru", "Russian");
         _languages.Add("tr", "Turkish");
-        Set(YandexGame.EnvironmentData.language);
+
+        Set(lan);
     }
 
     private void Set(string name)

@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using VContainer;
-using YG;
 
 [RequireComponent(typeof(Canvas), typeof(GraphicRaycaster))]
 public class MainMenuBasicOverlayPanel : MonoBehaviour, IUiPanel
@@ -44,18 +43,12 @@ public class MainMenuBasicOverlayPanel : MonoBehaviour, IUiPanel
     {
         Debug.Log("Reward");
         _rewardedButton.gameObject.SetActive(false);
-        YandexGame.Instance._RewardedShow(0);
-        AudioListener.pause = true;
-        Time.timeScale = 0f;
-        
-        YandexGame.RewardVideoEvent += OnRewardedComplete;
+        AdsHandler.InvokeReward(OnRewarded);
     }
 
-    private void OnRewardedComplete(int id)
+    private void OnRewarded()
     {
         _playerMoneyService.ReceiveMoney(100);
         _rewardedButton.gameObject.SetActive(true);
-        Time.timeScale = 1;
-        AudioListener.pause = false;
     }
 }
